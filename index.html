@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>김소정 | Data Scientist Portfolio</title>
+  <meta name="description" content="데이터과학 기반 연구개발자 김소정의 포트폴리오 – 시계열 분석, 의료 데이터, 머신러닝" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg0: #F0F4FA;
+      --bg1: #FFFFFF;
+      --card: #FFFFFF;
+      --border: rgba(58,90,174,.1);
+      --c1: #3A5AAE;
+      --c2: #6264C4;
+      --grad: linear-gradient(135deg,#3A5AAE,#6264C4);
+      --txt: #0F172A;
+      --muted: #64748B;
+      --dim: #94A3B8;
+      --r: 16px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--bg0);color:var(--txt);overflow-x:hidden;line-height:1.6}
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:99;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:.9rem 2.5rem;
+      background:rgba(255,255,255,.93);backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(58,90,174,.06);
+    }
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.1rem;color:var(--muted)}
+    nav ul{display:flex;gap:2rem;list-style:none}
+    nav a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .25s}
+    nav a:hover{color:var(--c1)}
+    #hero{
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+      padding:7rem 2rem 4rem;position:relative;overflow:hidden;
+    }
+    .hero-bg{
+      position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 70% 70% at 15% 50%,rgba(58,90,174,.08) 0%,transparent 65%),
+        radial-gradient(ellipse 60% 60% at 85% 20%,rgba(98,100,196,.07) 0%,transparent 65%);
+    }
+    .grid-lines{
+      position:absolute;inset:0;
+      background-image:linear-gradient(rgba(58,90,174,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(58,90,174,.05) 1px,transparent 1px);
+      background-size:60px 60px;
+    }
+    .hero-inner{position:relative;max-width:900px;display:flex;align-items:center;gap:4rem;}
+    .hero-photo{flex-shrink:0;width:160px;height:200px;border-radius:14px;object-fit:cover;object-position:center top;border:3px solid rgba(58,90,174,.2);box-shadow:0 8px 32px rgba(58,90,174,.15);animation:fadeUp .7s ease both;}
+    .hero-text{flex:1;text-align:left;}
+    .badge{
+      display:inline-flex;align-items:center;gap:.45rem;
+      background:rgba(58,90,174,.08);border:1px solid rgba(58,90,174,.2);
+      border-radius:100px;padding:.35rem 1rem;font-size:.82rem;color:var(--c1);
+      margin-bottom:1.5rem;animation:fadeUp .7s ease both;font-weight:500;
+    }
+    h1.name{
+      font-family:'Outfit',sans-serif;font-size:clamp(2.4rem,7vw,4.5rem);font-weight:900;line-height:1.08;
+      background:linear-gradient(135deg,#2D4880 0%,#3A5AAE 45%,#6264C4 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      margin-bottom:.75rem;animation:fadeUp .7s .15s ease both;
+    }
+    .role{font-family:'Outfit',sans-serif;font-size:clamp(1rem,2.5vw,1.35rem);color:var(--muted);margin-bottom:1.25rem;animation:fadeUp .7s .25s ease both}
+    .tagline{font-size:clamp(1rem,2vw,1.25rem);font-weight:500;margin-bottom:2.5rem;animation:fadeUp .7s .35s ease both;color:var(--txt)}
+    .tagline em{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal;font-weight:700}
+    .stats{display:flex;justify-content:center;gap:3rem;margin-bottom:2.5rem;animation:fadeUp .7s .45s ease both}
+    .stat-n{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .stat-l{font-size:.78rem;color:var(--muted);margin-top:.1rem}
+    .cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .7s .55s ease both}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.75rem 1.7rem;border-radius:100px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .3s;border:none;cursor:pointer}
+    .btn-p{background:var(--grad);color:#fff;box-shadow:0 4px 20px rgba(58,90,174,.3)}
+    .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(58,90,174,.4)}
+    .btn-o{background:#fff;color:var(--txt);border:1.5px solid rgba(58,90,174,.2)}
+    .btn-o:hover{background:rgba(58,90,174,.05);border-color:rgba(58,90,174,.4);transform:translateY(-2px)}
+    .sec{padding:5.5rem 2rem;max-width:1100px;margin:0 auto}
+    .sec-rule{border:none;border-top:1px solid var(--border);margin:0}
+    .sec-label{font-size:.8rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--c1);margin-bottom:.6rem}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:700;margin-bottom:.75rem;color:var(--txt)}
+    .sec-sub{color:var(--muted);max-width:580px;margin-bottom:2.8rem}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+    .about-text p{color:var(--muted);line-height:1.85;margin-bottom:1rem}
+    .hl-cards{display:flex;flex-direction:column;gap:.85rem}
+    .hl{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.4rem;transition:all .3s;box-shadow:0 1px 4px rgba(58,90,174,.05)}
+    .hl:hover{border-color:rgba(58,90,174,.3);transform:translateX(4px);box-shadow:0 4px 16px rgba(58,90,174,.1)}
+    .hl-ico{font-size:1.4rem;flex-shrink:0}
+    .hl-t{font-weight:600;font-size:.93rem;margin-bottom:.15rem;color:var(--txt)}
+    .hl-d{font-size:.82rem;color:var(--muted)}
+    .feat-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:1.4rem}
+    .card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.8rem;transition:all .3s;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(58,90,174,.06)}
+    .card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);opacity:0;transition:opacity .3s}
+    .card:hover{border-color:rgba(58,90,174,.3);transform:translateY(-4px);box-shadow:0 16px 48px rgba(58,90,174,.12)}
+    .card:hover::after{opacity:1}
+    .card-full{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+    .p-ico{font-size:1.8rem;margin-bottom:.75rem}
+    .p-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.75rem}
+    .bdg{padding:.18rem .6rem;border-radius:100px;font-size:.73rem;font-weight:700}
+    .bdg-award{background:rgba(245,158,11,.1);color:#92400e;border:1px solid rgba(245,158,11,.3)}
+    .bdg-new{background:rgba(58,90,174,.1);color:var(--c1);border:1px solid rgba(58,90,174,.25)}
+    .bdg-res{background:rgba(98,100,196,.1);color:var(--c2);border:1px solid rgba(98,100,196,.25)}
+    .p-org{font-size:.82rem;color:var(--c1);font-weight:500;margin-bottom:.6rem}
+    .p-title{font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.5rem;color:var(--txt)}
+    .p-desc{color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:1.1rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1rem}
+    .tag{background:rgba(58,90,174,.07);border:1px solid rgba(58,90,174,.15);border-radius:6px;padding:.2rem .55rem;font-size:.77rem;color:var(--c1);font-family:'Courier New',monospace}
+    .p-links{display:flex;gap:.6rem}
+    .p-link{display:inline-flex;align-items:center;gap:.3rem;font-size:.82rem;color:var(--muted);text-decoration:none;padding:.25rem .7rem;border:1px solid var(--border);border-radius:100px;transition:all .3s}
+    .p-link:hover{color:var(--c1);border-color:rgba(58,90,174,.35);background:rgba(58,90,174,.05)}
+    .vis{background:linear-gradient(135deg,rgba(58,90,174,.04),rgba(98,100,196,.04));border:1px solid rgba(58,90,174,.1);border-radius:var(--r);padding:1.4rem;height:100%}
+    .vis-title{font-size:.7rem;color:var(--muted);margin-bottom:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+    .bar-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
+    .bar-lbl{font-size:.68rem;color:var(--muted);width:38px;flex-shrink:0}
+    .bar-bg{flex:1;height:6px;background:rgba(58,90,174,.08);border-radius:100px;overflow:hidden}
+    .bar-fill{height:100%;border-radius:100px;background:var(--grad);animation:grow 1.4s ease forwards;transform-origin:left;transform:scaleX(0)}
+    @keyframes grow{to{transform:scaleX(1)}}
+    .mini-chart{display:flex;gap:3px;align-items:flex-end;height:44px;margin-top:.9rem}
+    .mc-bar{flex:1;border-radius:2px 2px 0 0;background:rgba(58,90,174,.25)}
+    .mc-bar.peak{background:rgba(98,100,196,.7)}
+    .mc-labels{display:flex;justify-content:space-between;font-size:.6rem;color:var(--dim);margin-top:3px}
+    .sm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1rem}
+    .sm-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;transition:all .3s;box-shadow:0 1px 4px rgba(58,90,174,.05)}
+    .sm-card:hover{border-color:rgba(58,90,174,.3);transform:translateY(-3px);box-shadow:0 12px 32px rgba(58,90,174,.1)}
+    .sm-ico{font-size:1.4rem;margin-bottom:.6rem}
+    .sm-title{font-family:'Outfit',sans-serif;font-size:.98rem;font-weight:700;margin-bottom:.25rem;color:var(--txt)}
+    .sm-org{font-size:.78rem;color:var(--c1);margin-bottom:.5rem;font-weight:500}
+    .sm-desc{font-size:.83rem;color:var(--muted);line-height:1.65;margin-bottom:.75rem}
+    .award-list{display:flex;flex-direction:column;gap:.9rem}
+    .award{display:flex;align-items:center;gap:1.4rem;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.5rem;transition:all .3s;box-shadow:0 1px 4px rgba(58,90,174,.05)}
+    .award:hover{border-color:rgba(245,158,11,.35);box-shadow:0 8px 24px rgba(245,158,11,.1)}
+    .award-ico{font-size:1.8rem;flex-shrink:0}
+    .award-t{font-weight:600;margin-bottom:.2rem;color:var(--txt)}
+    .award-d{font-size:.83rem;color:var(--muted)}
+    .award-yr{margin-left:auto;font-family:'Outfit',sans-serif;font-weight:700;font-size:.85rem;color:var(--dim);flex-shrink:0}
+    .skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.2rem}
+    .skill-grp{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;box-shadow:0 1px 4px rgba(58,90,174,.05)}
+    .skill-h{font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c1);margin-bottom:.9rem}
+    .skill-tags{display:flex;flex-wrap:wrap;gap:.45rem}
+    .sk{background:rgba(58,90,174,.06);border:1px solid rgba(58,90,174,.12);border-radius:6px;padding:.28rem .65rem;font-size:.8rem;transition:all .2s;color:var(--txt)}
+    .sk:hover{background:rgba(58,90,174,.14);border-color:rgba(58,90,174,.35);color:var(--c1)}
+    #contact{text-align:center;padding:6rem 2rem}
+    .contact-box{max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:24px;padding:3rem 2rem;box-shadow:0 4px 24px rgba(58,90,174,.08)}
+    .contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
+    footer{text-align:center;padding:1.8rem;color:var(--dim);font-size:.82rem;border-top:1px solid var(--border);background:#fff}
+    .fade{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .fade.show{opacity:1;transform:translateY(0)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .profile-photo{
+      width:108px;height:108px;border-radius:50%;object-fit:cover;object-position:center top;
+      border:3px solid rgba(58,90,174,.25);
+      box-shadow:0 4px 24px rgba(58,90,174,.18),0 0 0 6px rgba(58,90,174,.06);
+      display:block;margin:0 auto 1.4rem;
+      animation:fadeUp .7s ease both;
+    }
+    @media(max-width:768px){
+      .about-grid,.card-full,.feat-wrap{grid-template-columns:1fr}
+      .card-full{grid-column:span 1}
+      nav ul{display:none}
+      .stats{gap:1.5rem}
+      .hero-inner{flex-direction:column;text-align:center;gap:2rem;}
+      .hero-text{text-align:center;}
+      .hero-photo{width:110px;height:140px;}
+      .badge{justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">김소정</div>
+  <ul>
+    <li><a href="#about">소개</a></li>
+    <li><a href="#projects">프로젝트</a></li>
+    <li><a href="#awards">수상·논문</a></li>
+    <li><a href="#skills">기술스택</a></li>
+    <li><a href="#contact">연락처</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-lines"></div>
+  <div class="hero-inner">
+    <img src="profile.jpg" alt="김소정" class="hero-photo">
+    <div class="hero-text">
+      <div class="badge">📊 Data Science &nbsp;·&nbsp; Medical & Environmental Analysis &nbsp;·&nbsp; Research Developer</div>
+      <h1 class="name">김소정</h1>
+      <p class="role">Data Scientist &amp; Research Developer &nbsp;·&nbsp; 수원대학교 데이터과학부</p>
+      <p class="tagline">
+        <em>"한 번 같이 일하면 계속 찾게 되는 연구자"</em><br>
+        의료·환경·자연어 데이터로 복잡한 현상을 읽어냅니다
+      </p>
+      <div style="display:flex;gap:2rem;margin-top:1.4rem;">
+        <div><div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#3A5AAE;">3편</div><div style="font-size:.75rem;color:var(--muted);margin-top:.1rem;">논문 발표</div></div>
+        <div><div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#3A5AAE;">4회</div><div style="font-size:.75rem;color:var(--muted);margin-top:.1rem;">수상 이력</div></div>
+        <div><div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#3A5AAE;">10+</div><div style="font-size:.75rem;color:var(--muted);margin-top:.1rem;">프로젝트</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<hr class="sec-rule" />
+<div class="sec" id="about">
+  <div class="sec-label">About Me</div>
+  <h2 class="sec-title">함께 일하고 싶어지는 연구자</h2>
+  <div class="about-grid fade">
+    <div class="about-text">
+      <p>수원대학교 데이터과학부를 졸업하며 시계열 데이터 처리, 머신러닝·딥러닝, 의료 데이터 분석 연구를 수행해왔습니다. 수업 프로젝트부터 서울대병원·동국대병원·가톨릭대병원과의 실제 연구 협업까지, 다양한 도메인에서 데이터가 말하는 이야기를 찾아왔습니다.</p>
+      <p>3학년부터 함께한 홍교수님이 타 대학으로 이직하신 후에도 연구가 이어졌고, 재차 대학원 진학을 권유해 주셨습니다. 이를 지켜보신 김교수님이 먼저 학부연구생 제안을 주셔서 4학년부터 두 연구실을 병행했습니다. 찾아가는 것이 아니라 <strong>먼저 찾게 되는 동료</strong>가 되는 것을 가장 중요하게 생각합니다.</p>
+    </div>
+    <div class="hl-cards">
+      <div class="hl"><div class="hl-ico">🌊</div><div><div class="hl-t">시계열 & 환경 데이터 분석</div><div class="hl-d">수문·기상·발전량 시계열 분석, 위기 구간 탐지</div></div></div>
+      <div class="hl"><div class="hl-ico">📈</div><div><div class="hl-t">시계열 & 예측 분석</div><div class="hl-d">기상·발전량 시계열 분석, 공모전 장려상 수상</div></div></div>
+      <div class="hl"><div class="hl-ico">🔬</div><div><div class="hl-t">의료·연구 데이터 분석</div><div class="hl-d">서울대병원 실제 데이터 · 가톨릭대병원 협력(MIMIC 데이터) 연구 참여</div></div></div>
+      <div class="hl"><div class="hl-ico">📝</div><div><div class="hl-t">논문 및 보고서 작성</div><div class="hl-d">한국정보과학회 논문 3편 발표, 연구보고서 다수</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<hr class="sec-rule" />
+<div class="sec" id="projects">
+  <div class="sec-label">Projects</div>
+  <h2 class="sec-title">주요 프로젝트</h2>
+  <p class="sec-sub">시계열 분석, 의료 데이터, 딥러닝 등 다양한 분야의 데이터 프로젝트를 수행했습니다.</p>
+
+  <div class="feat-wrap fade">
+    <!-- FEATURED: Dam Analysis -->
+    <div id="card-dam" class="card card-full" onclick="openProj('dam')" style="cursor:pointer">
+      <div>
+        <div class="p-ico">🌊</div>
+        <div class="p-badges"><span class="bdg bdg-new">● NEW</span><span class="bdg bdg-res">시계열</span></div>
+        <div class="p-title">한국 다목적댐 수문운영 분석</div>
+        <div class="p-org">한국수자원공사 공개 데이터 · 2024</div>
+        <div class="p-desc">K-water 9개 다목적댐 2024년 79,056건 시계열 데이터 분석. 저수율 위기 구간 자동 탐지. 연간 트렌드·계절성 시각화. Folium 인터랙티브 지도 매핑.</div>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">GeoPandas</span><span class="tag">Matplotlib</span><span class="tag">Pandas</span><span class="tag">시계열분석</span><span class="tag">GIS시각화</span>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/sizi00/korea_dam_hydro_analysis" target="_blank" class="p-link">⬡ GitHub</a>
+        </div>
+      </div>
+      <div class="vis">
+        <div class="vis-title">연평균 저수율 by 댐 (2024 실측치)</div>
+        <div class="bar-row"><span class="bar-lbl">안동</span><div class="bar-bg"><div class="bar-fill" style="width:72.9%"></div></div><span style="font-size:.68rem;color:var(--muted)">72.9%</span></div>
+        <div class="bar-row"><span class="bar-lbl">용담</span><div class="bar-bg"><div class="bar-fill" style="width:70.2%;animation-delay:.08s"></div></div><span style="font-size:.68rem;color:var(--muted)">70.2%</span></div>
+        <div class="bar-row"><span class="bar-lbl">소양강</span><div class="bar-bg"><div class="bar-fill" style="width:69.6%;animation-delay:.16s"></div></div><span style="font-size:.68rem;color:var(--muted)">69.6%</span></div>
+        <div class="bar-row"><span class="bar-lbl">합천</span><div class="bar-bg"><div class="bar-fill" style="width:68.6%;animation-delay:.24s"></div></div><span style="font-size:.68rem;color:var(--muted)">68.6%</span></div>
+        <div class="bar-row"><span class="bar-lbl">대청</span><div class="bar-bg"><div class="bar-fill" style="width:68.4%;animation-delay:.32s"></div></div><span style="font-size:.68rem;color:var(--muted)">68.4%</span></div>
+        <div class="bar-row"><span class="bar-lbl">충주</span><div class="bar-bg"><div class="bar-fill" style="width:61.1%;animation-delay:.4s"></div></div><span style="font-size:.68rem;color:var(--muted)">61.1%</span></div>
+        <div class="bar-row"><span class="bar-lbl">남강</span><div class="bar-bg"><div class="bar-fill" style="width:51.4%;animation-delay:.48s"></div></div><span style="font-size:.68rem;color:var(--muted)">51.4%</span></div>
+        <div style="border-top:1px solid var(--border);margin-top:1rem;padding-top:.9rem">
+          <div class="vis-title">월별 평균 유입량 (CMS, 개념도)</div>
+          <div class="mini-chart">
+            <div class="mc-bar" style="height:28%"></div>
+            <div class="mc-bar" style="height:24%"></div>
+            <div class="mc-bar" style="height:32%"></div>
+            <div class="mc-bar" style="height:42%"></div>
+            <div class="mc-bar" style="height:52%"></div>
+            <div class="mc-bar" style="height:62%"></div>
+            <div class="mc-bar peak" style="height:100%"></div>
+            <div class="mc-bar peak" style="height:92%"></div>
+            <div class="mc-bar" style="height:48%"></div>
+            <div class="mc-bar" style="height:33%"></div>
+            <div class="mc-bar" style="height:24%"></div>
+            <div class="mc-bar" style="height:20%"></div>
+          </div>
+          <div class="mc-labels"><span>1월</span><span>4월</span><span style="color:#a78bfa">7↑장마</span><span>10월</span><span>12월</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wind Power -->
+    <div id="card-wind" class="card fade" onclick="openProj('wind')" style="cursor:pointer">
+      <div class="p-ico">💨</div>
+      <div class="p-badges"><span class="bdg bdg-award">🏅 장려상</span><span class="bdg bdg-award">🏆 우수상</span></div>
+      <div class="p-title">풍력발전량 예측 분석</div>
+      <div class="p-org">풍력발전량 예측 공모전 · 교내 AI빅데이터 경진대회</div>
+      <div class="p-desc">LDAPS 기상 예측 데이터와 SCADA 발전 데이터를 분석하여 풍력발전량을 예측합니다. 공모전 장려상 수상 후 포스터로 발전, 교내 경진대회에서 우수상 추가 수상.</div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">LDAPS</span><span class="tag">SCADA</span><span class="tag">시계열</span><span class="tag">예측모델</span><span class="tag">기상데이터</span></div>
+    </div>
+
+    <!-- SAFER -->
+    <div id="card-safer" class="card fade" onclick="openProj('safer')" style="cursor:pointer">
+      <div class="p-ico">🏥</div>
+      <div class="p-badges"><span class="bdg bdg-res">서울대병원</span></div>
+      <div class="p-title">SAFER · 정신병동 환자 위치 시각화</div>
+      <div class="p-org">서울대학교병원 · 동국대 · 용인대 협력 연구</div>
+      <div class="p-desc">서울대병원·동국대병원·용인대 정신병동 환자 BLE 위치 데이터 분석. Plotly + PIL 병동 도면 합성 애니메이션 자체 개발. BPRS·YMRS·MADRS·HAMA 임상척도 연동. 격리·강제처치 이벤트 타임라인 매핑.</div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Plotly Express</span><span class="tag">PIL</span><span class="tag">도면합성</span><span class="tag">BPRS/YMRS</span><span class="tag">임상데이터</span><span class="tag">Pandas</span></div>
+      <div class="p-links"><a href="https://github.com/sizi00" target="_blank" class="p-link">⬡ GitHub</a></div>
+    </div>
+  </div>
+
+  <!-- Small projects -->
+  <h3 style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:600;color:var(--muted);margin:2.5rem 0 1.2rem">기타 프로젝트</h3>
+  <div class="sm-grid fade">
+    <div id="sm-chatbot" class="sm-card" onclick="openProj('chatbot')" style="cursor:pointer"><div class="sm-ico">🤖</div><div class="sm-title">심리상담챗봇 효과 분석</div><div class="sm-org">한국정보과학회 KCC2024 · KSC2024 장려상 ×2</div><div class="sm-desc">GPT-3.5, GPT-4.0, HyperCLOVA를 심리상담가로 프롬프팅하여 비교 분석. 293명 참가자, ISI·GAD-7·TEQ·PHQ-9 심리검사 기반 사전·사후 효과 측정. Turn/Session Level 평가(1,466 대화) 수행.</div><div class="tags"><span class="tag">Python</span><span class="tag">GPT-4.0</span><span class="tag">HyperCLOVA</span><span class="tag">심리검사분석</span></div></div>
+
+    <div id="sm-lifecare" class="sm-card" onclick="openProj('lifecare')" style="cursor:pointer"><div class="sm-ico">🧬</div><div class="sm-title">장내미생물 기반 알츠하이머 초기진단</div><div class="sm-org">수업 프로젝트 · R + Python (Random Forest)</div><div class="sm-desc">장내 마이크로바이옴 데이터를 활용해 전임상 알츠하이머 초기진단 가능성 탐색. R로 탐색적 분석 후 Python Random Forest 모델 구축. 의생명 도메인 집중 학습 병행.</div><div class="tags"><span class="tag">R</span><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">마이크로바이옴</span></div></div>
+
+    <div id="sm-bigdata" class="sm-card" onclick="openProj('bigdata')" style="cursor:pointer"><div class="sm-ico">🐾</div><div class="sm-title">LLM 기반 반려동물 장소 검색 플랫폼</div><div class="sm-org">수업 프로젝트 · Make + Python</div><div class="sm-desc">자동화 툴 Make, Python, Text-to-SQL을 파이프라인으로 연결한 반려동물 동반 가능 장소 검색 서비스. SQL 정확도 테스트 및 프롬프트 데이터베이스 최적화 수행.</div><div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Text-to-SQL</span><span class="tag">Make자동화</span></div></div>
+
+    <div id="sm-mimic" class="sm-card" onclick="openProj('mimic')" style="cursor:pointer"><div class="sm-ico">🏥</div><div class="sm-title">MIMIC4 의료 데이터 분석</div><div class="sm-org">수업 프로젝트 · SQL</div><div class="sm-desc">연령별 입원 이유·사망률 분석. 다빈도 진단명·사망 진단명 SQL 분석 및 시각화.</div><div class="tags"><span class="tag">SQL</span><span class="tag">데이터분석</span><span class="tag">시각화</span></div></div>
+
+    <div id="sm-noise" class="sm-card" onclick="openProj('noise')" style="cursor:pointer"><div class="sm-ico">🔊</div><div class="sm-title">재난 무전기 노이즈 제거 연구</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-desc">재난 현장 무전기 통신 노이즈 제거 기술 실험 설계 및 연구보고서 공동 작성.</div><div class="tags"><span class="tag">신호처리</span><span class="tag">실험설계</span><span class="tag">보고서</span></div></div>
+
+    <div id="sm-delirium" class="sm-card" onclick="openProj('delirium')" style="cursor:pointer"><div class="sm-ico">🫀</div><div class="sm-title">중환자실 섬망 예측 연구</div><div class="sm-org">가톨릭대학병원 협력 연구</div><div class="sm-desc">중환자실 생체 신호(Vitalsign 시계열) 기반 섬망 예측 연구 참여. MIMIC-IV ICD-9/10 진단코드 처리, 다중 테이블(subject_id, hadm_id, stay_id) 병합 및 검증 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">MIMIC-IV</span><span class="tag">ICD코딩</span><span class="tag">시계열전처리</span></div></div>
+
+    <div id="sm-vision" class="sm-card" onclick="openProj('vision')" style="cursor:pointer"><div class="sm-ico">🔬</div><div class="sm-title">조건부 VAE 기반 구리 부식 이미지 생성</div><div class="sm-org">연구실 프로젝트 · 한국정보과학회 포스터 발표</div><div class="sm-desc">전자제품 PCB 구리 부식 이미지를 조건부 VAE(cVAE)로 합성하여 안전 검사 데이터 부족 문제를 해결. 부식 유형별 이미지 생성 및 손실 함수 최적화 실험.</div><div class="tags"><span class="tag">PyTorch</span><span class="tag">cVAE</span><span class="tag">이미지생성</span><span class="tag">컴퓨터비전</span></div></div>
+
+    <div id="sm-sport" class="sm-card" onclick="openProj('sport')" style="cursor:pointer"><div class="sm-ico">🏃</div><div class="sm-title">교양체육 성취목표척도 개발 및 분석</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-desc">대학 교양체육 성취목표척도 개발 및 타당화. 코치 관계·자율성 지지·심리적 욕구·웰빙 간 관계를 설문 데이터로 분석. 탐색적 요인분석(EFA) 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">요인분석</span><span class="tag">스포츠심리</span></div></div>
+  </div>
+</div>
+
+<!-- AWARDS -->
+<hr class="sec-rule" />
+<div class="sec" id="awards">
+  <div class="sec-label">Awards &amp; Research</div>
+  <h2 class="sec-title">수상 및 연구 실적</h2>
+  <div class="award-list fade">
+    <div class="award"><div class="award-ico">🏆</div><div><div class="award-t">교내 AI빅데이터분석 경진대회 우수상</div><div class="award-d">풍력발전량 예측 연구 포스터 발표</div></div><div class="award-yr">2025</div></div>
+    <div class="award"><div class="award-ico">🥈</div><div><div class="award-t">풍력발전량 예측 공모전 장려상</div><div class="award-d">LDAPS · SCADA 기상 데이터 기반 발전량 예측</div></div><div class="award-yr">2025</div></div>
+    <div class="award"><div class="award-ico">📄</div><div><div class="award-t">한국정보과학회 KCC2024 논문 장려상 (학부생부문)</div><div class="award-d">"Chat-GPT 심리상담챗봇 사용자만족도 및 LLM 기반 평가 비교"</div></div><div class="award-yr">2024</div></div>
+    <div class="award"><div class="award-ico">📄</div><div><div class="award-t">한국정보과학회 KSC2024 논문 장려상 (학부생부문)</div><div class="award-d">"검색형·생성형 심리상담챗봇 유용성 연구 — ISI·GAD-7·TEQ·PHQ-9 기반"</div></div><div class="award-yr">2024</div></div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<hr class="sec-rule" />
+<div class="sec" id="skills">
+  <div class="sec-label">Tech Stack</div>
+  <h2 class="sec-title">기술 스택</h2>
+  <div class="skill-grid fade">
+    <div class="skill-grp"><div class="skill-h">Languages</div><div class="skill-tags"><span class="sk">Python</span><span class="sk">R</span><span class="sk">SQL</span></div></div>
+    <div class="skill-grp"><div class="skill-h">Analysis & ML</div><div class="skill-tags"><span class="sk">Pandas</span><span class="sk">NumPy</span><span class="sk">Scikit-learn</span><span class="sk">PyTorch</span><span class="sk">시계열분석</span></div></div>
+    <div class="skill-grp"><div class="skill-h">Visualization</div><div class="skill-tags"><span class="sk">Matplotlib</span><span class="sk">Plotly</span><span class="sk">Seaborn</span><span class="sk">Folium</span><span class="sk">PIL</span></div></div>
+    <div class="skill-grp"><div class="skill-h">Tools</div><div class="skill-tags"><span class="sk">Git</span><span class="sk">Jupyter</span><span class="sk">VSCode</span><span class="sk">Make</span><span class="sk">Claude Code</span><span class="sk">Antigravity</span></div></div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<hr class="sec-rule" />
+<section id="contact">
+  <div class="contact-box fade">
+    <div class="sec-label" style="justify-content:center;text-align:center">Contact</div>
+    <div class="contact-links">
+      <button onclick="copyEmail(this)" class="btn btn-p" style="border:none;cursor:pointer;">✉ sosizi0925@gmail.com</button>
+      <a href="https://github.com/sizi00" target="_blank" class="btn btn-o">⬡ GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 김소정</footer>
+
+
+<!-- PROJECT MODAL -->
+<div id="proj-overlay" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(15,23,42,.55);backdrop-filter:blur(6px);overflow-y:auto;padding:2rem 1rem;">
+  <div id="proj-box" style="max-width:740px;margin:0 auto;background:#fff;border-radius:20px;box-shadow:0 24px 80px rgba(58,90,174,.18);position:relative;overflow:hidden;">
+    <div style="height:4px;background:linear-gradient(135deg,#3A5AAE,#6264C4)"></div>
+    <div style="padding:2rem 2.2rem 1.5rem;">
+      <button id="proj-close" style="position:absolute;top:1.2rem;right:1.4rem;background:rgba(58,90,174,.08);border:none;border-radius:50%;width:36px;height:36px;font-size:1.1rem;cursor:pointer;color:#64748B;transition:all .2s;" onmouseover="this.style.background='rgba(58,90,174,.18)'" onmouseout="this.style.background='rgba(58,90,174,.08)'">×</button>
+      <div style="font-size:2.2rem;margin-bottom:.6rem;" id="proj-ico"></div>
+      <div id="proj-badges" style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.6rem;"></div>
+      <h2 id="proj-title" style="font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;color:#0F172A;margin-bottom:.3rem;"></h2>
+      <div id="proj-org" style="font-size:.85rem;color:#3A5AAE;font-weight:500;margin-bottom:1.2rem;"></div>
+      <p id="proj-desc" style="color:#64748B;line-height:1.85;font-size:.95rem;margin-bottom:1.4rem;"></p>
+      <div id="proj-highlights" style="background:#F0F4FF;border:1px solid rgba(58,90,174,.12);border-radius:12px;padding:1.2rem 1.4rem;margin-bottom:1.4rem;"></div>
+      <div id="proj-tags" style="display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.4rem;"></div>
+      <div id="proj-links" style="display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.2rem;"></div>
+      <div id="proj-gallery" style="display:none;">
+        <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3A5AAE;margin-bottom:.8rem;">📎 자료 &amp; 갤러리</div>
+        <div id="carousel-wrap" style="position:relative;background:#0F172A;border-radius:12px;overflow:hidden;user-select:none;">
+          <img id="carousel-img" src="" alt="" style="width:100%;max-height:460px;object-fit:contain;display:block;">
+          <div id="carousel-cap" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,23,42,.72));padding:.55rem .9rem;font-size:.76rem;color:#fff;"></div>
+          <button id="carousel-prev" onclick="carouselMove(-1)" style="position:absolute;top:50%;left:.6rem;transform:translateY(-50%);background:rgba(203,213,225,.82);border:none;border-radius:50%;width:38px;height:38px;font-size:1.4rem;line-height:1;color:#334155;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(148,163,184,.95)'" onmouseout="this.style.background='rgba(203,213,225,.82)'">‹</button>
+          <button id="carousel-next" onclick="carouselMove(1)" style="position:absolute;top:50%;right:.6rem;transform:translateY(-50%);background:rgba(203,213,225,.82);border:none;border-radius:50%;width:38px;height:38px;font-size:1.4rem;line-height:1;color:#334155;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(148,163,184,.95)'" onmouseout="this.style.background='rgba(203,213,225,.82)'">›</button>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:.55rem;padding:0 .2rem;">
+          <span id="carousel-counter" style="font-size:.78rem;color:var(--muted);"></span>
+          <button onclick="openLightbox(carouselImages[carouselIdx].src)" style="font-size:.75rem;color:var(--c1);background:none;border:1px solid rgba(58,90,174,.2);border-radius:100px;padding:.2rem .75rem;cursor:pointer;transition:all .2s;" onmouseover="this.style.background='rgba(58,90,174,.07)'" onmouseout="this.style.background='none'">🔍 크게 보기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" style="display:none;position:fixed;inset:0;z-index:1999;background:rgba(5,9,20,.93);backdrop-filter:blur(8px);cursor:zoom-out;display:flex;align-items:center;justify-content:center;" onclick="this.style.display='none'">
+  <img id="lightbox-img" src="" style="max-width:92vw;max-height:92vh;border-radius:10px;box-shadow:0 8px 60px rgba(0,0,0,.6);object-fit:contain;">
+</div>
+
+
+<script>
+  // Scroll fade-in
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
+  },{threshold:.12});
+  document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+
+  // ── Project data ──
+  const PROJ = {
+    dam: {
+      ico:'🌊', title:'한국 다목적댐 수문운영 분석',
+      org:'한국수자원공사 공개 데이터 · 2024',
+      badges:[{txt:'● NEW',cls:'bdg-new'},{txt:'시계열',cls:'bdg-res'}],
+      images:[
+        {src:'images/dam/01_dam_overview.png', cap:'댐별 연간 기초 통계 현황 (2024)'},
+        {src:'images/dam/02_storage_timeseries.png', cap:'9개 댐 저수율 연간 추이 (계절 음영 포함)'},
+        {src:'images/dam/03_monthly_storage_heatmap.png', cap:'월별 평균 저수율 히트맵'},
+        {src:'images/dam/04_monthly_inflow_stacked.png', cap:'월별 평균 유입량 누적 막대그래프'},
+        {src:'images/dam/05_inflow_vs_discharge_seasonal.png', cap:'계절별 유입량 vs 방류량 산점도'},
+        {src:'images/dam/06_corr_inflow_generation.png', cap:'댐별 유입량-발전량 상관관계'},
+        {src:'images/dam/07_crisis_detection.png', cap:'저수율 위기 구간 자동 탐지 (임계값 50%)'},
+      ],
+      desc:'K-water 9개 다목적댐 2024년 시간별 데이터 79,056건 분석. 한국 수문 고유 01~24시 체계 처리용 커스텀 datetime 파서 직접 구현. 임계값(50%) 기반 저수율 위기 구간 자동 탐지. Folium 인터랙티브 지도에 댐 위치·저수율 매핑.',
+      highlights:[
+        '📊 79,056건 시간별 데이터: 저수위·저수량·저수율·유입량·방류량·발전량 통합 분석',
+        '🗓️ 한국 수문 데이터 01~24시 체계 처리 커스텀 datetime 파서 직접 구현',
+        '📈 계절 음영 포함 연간 저수율 추이, 월별 히트맵, 누적 유입량 막대그래프',
+        '⚠️ 임계값(50%) 기반 저수율 위기 구간 자동 탐지 — 남강댐 66일 최저 23.3% 검출',
+        '🗺️ Folium 인터랙티브 지도: 댐 위치 + 저수율 상태 오버레이 시각화',
+        '⚡ 연간 총 발전량 2,153 GWh 분석 · 충주댐 단일 769.6 GWh 최대',
+      ],
+      tags:['Python','Folium','Matplotlib','Pandas','NumPy','시계열분석','GIS시각화','openpyxl'],
+      links:[{href:'https://github.com/sizi00/korea_dam_hydro_analysis',txt:'⬡ GitHub'}],
+    },
+    wind: {
+      ico:'💨', title:'기상터빈 데이터 융합 기반 풍력 발전량 예측 고도화',
+      org:'풍력발전량 예측 공모전 · 교내 AI빅데이터 경진대회',
+      badges:[{txt:'🏅 공모전 장려상',cls:'bdg-award'},{txt:'🏆 우수상',cls:'bdg-award'}],
+      images:[
+        {src:'images/wind/wind_paper_p1.png', cap:'논문 — 기상터빈 데이터 융합 기반 풍력 발전량 예측 고도화'},
+        {src:'images/wind/wind_award1_p1.png', cap:'풍력발전량 예측 공모전 장려상 수상증서'},
+        {src:'images/wind/wind_award2_p1.png', cap:'교내 AI빅데이터분석 경진대회 우수상'},
+        {src:'images/wind/wind_ppt_p1.png', cap:'발표자료 p1 — 표지 · 연구 개요'},
+        {src:'images/wind/wind_ppt_p2.png', cap:'발표자료 p2 — 연구 배경 및 동기'},
+        {src:'images/wind/wind_ppt_p3.png', cap:'발표자료 p3 — LDAPS 기상 예측 데이터 소개'},
+        {src:'images/wind/wind_ppt_p4.png', cap:'발표자료 p4 — SCADA 풍력발전기 데이터'},
+        {src:'images/wind/wind_ppt_p5.png', cap:'발표자료 p5 — 데이터 전처리 파이프라인'},
+        {src:'images/wind/wind_ppt_p6.png', cap:'발표자료 p6 — 특성 선택 및 상관관계 분석'},
+        {src:'images/wind/wind_ppt_p7.png', cap:'발표자료 p7 — 예측 모델 설계'},
+        {src:'images/wind/wind_ppt_p8.png', cap:'발표자료 p8 — 모델 학습 및 검증'},
+        {src:'images/wind/wind_ppt_p9.png', cap:'발표자료 p9 — 실험 결과 ①'},
+        {src:'images/wind/wind_ppt_p10.png', cap:'발표자료 p10 — 실험 결과 ②'},
+        {src:'images/wind/wind_ppt_p11.png', cap:'발표자료 p11 — 오차 분석'},
+        {src:'images/wind/wind_ppt_p12.png', cap:'발표자료 p12 — 발전량 예측 시각화'},
+        {src:'images/wind/wind_ppt_p13.png', cap:'발표자료 p13 — 모델 성능 비교'},
+        {src:'images/wind/wind_ppt_p14.png', cap:'발표자료 p14 — 결론 및 기여점'},
+        {src:'images/wind/wind_ppt_p15.png', cap:'발표자료 p15 — 한계점 및 향후 연구'},
+        {src:'images/wind/wind_ppt_p16.png', cap:'발표자료 p16 — 참고문헌'},
+      ],
+      desc:'LDAPS 기상 예측 데이터 + SCADA 발전량 데이터 융합. 기상 파라미터 선택·전처리·앙상블 모델 비교. 공모전 장려상 수상 후 포스터로 발전 → 교내 경진대회 우수상 추가 수상.',
+      highlights:[
+        '🌤️ LDAPS 기상 예측 변수 + SCADA 발전량 데이터 융합',
+        '📉 회귀·앙상블 모델 비교 및 하이퍼파라미터 튜닝',
+        '🏅 풍력발전량 예측 공모전 장려상 수상 (2025)',
+        '🏆 교내 AI빅데이터분석 경진대회 우수상 수상 (2025)',
+      ],
+      tags:['Python','LDAPS','SCADA','기상데이터','시계열','예측모델','앙상블'],
+      links:[{href:'https://github.com/sizi00',txt:'⬡ GitHub'}],
+    },
+    safer: {
+      ico:'🏥', title:'SAFER · 정신병동 환자 위치 데이터 시각화 및 분석',
+      org:'서울대학교병원 · 동국대 · 용인대 협력 연구',
+      badges:[{txt:'서울대병원',cls:'bdg-res'},{txt:'연구협력',cls:'bdg-res'}],
+      images:[
+        {src:'images/safer/safer_slide_p1.png', cap:'p1 — SAFER 프로젝트 개요'},
+        {src:'images/safer/safer_slide_p2.png', cap:'p2 — 연구 배경 및 목적'},
+        {src:'images/safer/safer_slide_p3.png', cap:'p3 — 데이터 소개 (BLE 위치 센서)'},
+        {src:'images/safer/safer_slide_p4.png', cap:'p4 — 병동 도면 합성 시각화'},
+        {src:'images/safer/safer_slide_p5.png', cap:'p5 — 환자 이동 동선 분석'},
+        {src:'images/safer/safer_slide_p6.png', cap:'p6 — 임상척도 연동 (BPRS·YMRS·MADRS·HAMA)'},
+        {src:'images/safer/safer_slide_p7.png', cap:'p7 — 격리·강제처치(VE) 이벤트 타임라인'},
+        {src:'images/safer/safer_slide_p8.png', cap:'p8 — CRF 데이터 주별 상태변화 추적'},
+        {src:'images/safer/safer_slide_p9.png', cap:'p9 — 분석 결과 ①'},
+        {src:'images/safer/safer_slide_p10.png', cap:'p10 — 분석 결과 ②'},
+        {src:'images/safer/safer_slide_p11.png', cap:'p11 — 분석 결과 ③'},
+        {src:'images/safer/safer_slide_p12.png', cap:'p12 — 다기관 비교 분석'},
+        {src:'images/safer/safer_slide_p13.png', cap:'p13 — 인사이트 및 발견점'},
+        {src:'images/safer/safer_slide_p14.png', cap:'p14 — 결론'},
+        {src:'images/safer/safer_slide_p15.png', cap:'p15 — 한계점 및 향후 연구'},
+        {src:'images/safer/safer_slide_p16.png', cap:'p16 — 참고문헌'},
+        {src:'images/safer/safer_slide_p17.png', cap:'p17 — 부록'},
+      ],
+      desc:'정신병동 환자 BLE 위치 데이터 분석. Plotly + PIL 병동 도면 합성 애니메이션 시각화 자체 개발. BPRS·YMRS·MADRS·HAMA 임상척도 연동. 격리·강제처치(VE) 이벤트 타임라인 매핑. CRF 주별 상태변화 추적.',
+      highlights:[
+        '🗺️ Plotly + PIL 병동 도면 합성 애니메이션 시각화 (자체 개발)',
+        '📐 SNUH, DUMC 다기관 실제 환자 위치 데이터 처리',
+        '🧠 BPRS·YMRS·MADRS·HAMA 임상척도 연동 분석',
+        '⏱️ 격리(seclusion)·강제투약(VE) 이벤트 타임라인 매핑',
+        '📋 CRF 데이터 주별(1~4주) 상태변화 추적 분석',
+      ],
+      tags:['Python','Plotly Express','PIL','도면합성','BPRS/YMRS','MADRS/HAMA','Pandas','CRF분석'],
+      links:[{href:'https://github.com/sizi00/SAFER',txt:'⬡ GitHub'}],
+    },
+    chatbot: {
+      ico:'🤖', title:'GPT·HyperCLOVA 심리상담 챗봇 효과 분석',
+      org:'한국정보과학회 KCC2024 · KSC2024 장려상 ×2',
+      badges:[{txt:'📄 KCC2024 장려상',cls:'bdg-award'},{txt:'📄 KSC2024 장려상',cls:'bdg-award'}],
+      images:[
+        {src:'images/chatbot/chatbot_poster1_p1.png', cap:'포스터 ① — GPT 심리상담 챗봇 사용자 만족도 vs LLM 기반 평가 비교'},
+        {src:'images/chatbot/chatbot_poster2_p1.png', cap:'포스터 ② — 검색형 vs 생성형 챗봇 유용성 비교 (ISI·GAD-7·PHQ-9)'},
+        {src:'images/chatbot/kcc_award_p1.png', cap:'KCC2024 한국정보과학회 학부생부문 장려상'},
+        {src:'images/chatbot/ksc_award_p1.png', cap:'KSC2024 한국정보과학회 학부생부문 장려상'},
+      ],
+      desc:'[논문 1] GPT-3.5·4.0 심리상담 프롬프팅 → 사용자 만족도 vs LLM 자동 평가 비교. [논문 2] HyperCLOVA·GPT-3.5·4.0 검색형·생성형 챗봇 유용성 실험 비교. ISI·GAD-7·TEQ·PHQ-9 심리검사 사전·사후 측정. KCC2024·KSC2024 학부생부문 장려상 수상.',
+      highlights:[
+        '📊 논문 1: 사용자 만족도 vs LLM 기반 자동 평가 비교 (80명, 1,368 대화)',
+        '🧪 논문 2: HyperCLOVA vs GPT-3.5 vs GPT-4.0 비교 (213명, 1,466 대화)',
+        '🔬 ISI·GAD-7·TEQ·PHQ-9 심리검사 기반 사전·사후 효과 측정',
+        '📈 Turn Level(7점) + Session Level(3점) 이중 평가 체계 적용',
+        '🏆 논문 2편 KCC2024, KSC2024 학부생부문 장려상',
+      ],
+      tags:['Python','GPT-4.0','GPT-3.5','HyperCLOVA','ISI','GAD-7','PHQ-9','통계분석'],
+      links:[],
+    },
+    lifecare: {
+      ico:'🧬', title:'장내미생물 기반 전임상 알츠하이머 초기진단',
+      org:'수업 프로젝트 · R + Python (Random Forest)',
+      badges:[],
+      images:[
+        {src:'images/lifecare/lc_p1.png', cap:'p1'},
+        {src:'images/lifecare/lc_p2.png', cap:'p2'},
+        {src:'images/lifecare/lc_p3.png', cap:'p3'},
+        {src:'images/lifecare/lc_p4.png', cap:'p4'},
+        {src:'images/lifecare/lc_p5.png', cap:'p5'},
+        {src:'images/lifecare/lc_p6.png', cap:'p6'},
+        {src:'images/lifecare/lc_p7.png', cap:'p7'},
+        {src:'images/lifecare/lc_p8.png', cap:'p8'},
+        {src:'images/lifecare/lc_p9.png', cap:'p9'},
+        {src:'images/lifecare/lc_p10.png', cap:'p10'},
+        {src:'images/lifecare/lc_p11.png', cap:'p11'},
+        {src:'images/lifecare/lc_p12.png', cap:'p12'},
+        {src:'images/lifecare/lc_p13.png', cap:'p13'},
+        {src:'images/lifecare/lc_p14.png', cap:'p14'},
+        {src:'images/lifecare/lc_p15.png', cap:'p15'},
+        {src:'images/lifecare/lc_p16.png', cap:'p16'},
+        {src:'images/lifecare/lc_p17.png', cap:'p17'},
+        {src:'images/lifecare/lc_p18.png', cap:'p18'},
+        {src:'images/lifecare/lc_p19.png', cap:'p19'},
+        {src:'images/lifecare/lc_p20.png', cap:'p20'},
+        {src:'images/lifecare/lc_p21.png', cap:'p21'},
+        {src:'images/lifecare/lc_p22.png', cap:'p22'},
+        {src:'images/lifecare/lc_p23.png', cap:'p23'},
+        {src:'images/lifecare/lc_p24.png', cap:'p24'},
+        {src:'images/lifecare/lc_p25.png', cap:'p25'},
+        {src:'images/lifecare/lc_p26.png', cap:'p26'},
+        {src:'images/lifecare/lc_p27.png', cap:'p27'},
+        {src:'images/lifecare/lc_p28.png', cap:'p28'},
+        {src:'images/lifecare/lc_p29.png', cap:'p29'},
+        {src:'images/lifecare/lc_p30.png', cap:'p30'},
+        {src:'images/lifecare/lc_p31.png', cap:'p31'},
+        {src:'images/lifecare/lc_p32.png', cap:'p32'},
+        {src:'images/lifecare/lc_p33.png', cap:'p33'},
+      ],
+      desc:'장내 마이크로바이옴 데이터로 전임상 알츠하이머 초기진단 가능성 탐색. R 탐색적 분석 → Python Random Forest 모델 구축. Feature Importance 기반 바이오마커 탐색.',
+      highlights:[
+        '🔬 장내미생물 다양성 지표 + 종별 풍부도 특성 분석',
+        '🌲 R 탐색적 분석 → Python Random Forest 이원화 파이프라인',
+        '📊 특성 중요도(Feature Importance) 기반 바이오마커 탐색',
+      ],
+      tags:['R','Python','Random Forest','Scikit-learn','마이크로바이옴','의생명데이터'],
+      links:[],
+    },
+    bigdata: {
+      ico:'🐾', title:'LLM 기반 반려동물 동반 장소 검색 플랫폼',
+      org:'수업 프로젝트 · Make + Python',
+      badges:[],
+      images:[],
+      desc:'Make 자동화·Python·Text-to-SQL 파이프라인 구성. 자연어로 반려동물 동반 장소 검색 서비스 구현. SQL 변환 정확도 테스트·프롬프트 DB 최적화.',
+      highlights:[
+        '🔗 Make 자동화 + Python + PostgreSQL 파이프라인 구성',
+        '🧪 Text-to-SQL 변환 정확도 테스트 및 에러 분석',
+        '🗃️ 프롬프트 데이터베이스 최적화로 응답 일관성 향상',
+      ],
+      tags:['Python','LLM','Text-to-SQL','Make자동화','PostgreSQL','프롬프트엔지니어링'],
+      links:[],
+    },
+    mimic: {
+      ico:'🏥', title:'MIMIC-IV 기반 임상 데이터 분석',
+      org:'수업 프로젝트 · SQL',
+      badges:[],
+      images:[
+        {src:'images/mimic/mimic_slide_p1.png', cap:'p1'},
+        {src:'images/mimic/mimic_slide_p3.png', cap:'p3'},
+        {src:'images/mimic/mimic_slide_p4.png', cap:'p4'},
+        {src:'images/mimic/mimic_slide_p5.png', cap:'p5'},
+        {src:'images/mimic/mimic_slide_p6.png', cap:'p6'},
+        {src:'images/mimic/mimic_slide_p7.png', cap:'p7'},
+        {src:'images/mimic/mimic_slide_p8.png', cap:'p8'},
+        {src:'images/mimic/mimic_slide_p9.png', cap:'p9'},
+        {src:'images/mimic/mimic_slide_p10.png', cap:'p10'},
+        {src:'images/mimic/mimic_slide_p11.png', cap:'p11'},
+        {src:'images/mimic/mimic_slide_p12.png', cap:'p12'},
+        {src:'images/mimic/mimic_slide_p13.png', cap:'p13'},
+        {src:'images/mimic/mimic_slide_p14.png', cap:'p14'},
+        {src:'images/mimic/mimic_slide_p15.png', cap:'p15'},
+        {src:'images/mimic/mimic_slide_p16.png', cap:'p16'},
+        {src:'images/mimic/mimic_slide_p17.png', cap:'p17'},
+        {src:'images/mimic/mimic_slide_p18.png', cap:'p18'},
+        {src:'images/mimic/mimic_slide_p19.png', cap:'p19'},
+        {src:'images/mimic/mimic_slide_p21.png', cap:'p21'},
+      ],
+      desc:'MIMIC-IV SQL 분석. 연령대별 입원 원인·다빈도 진단명·사망률 패턴 추출. ICD 코드 기반 진단 분포 시각화.',
+      highlights:[
+        '💊 연령대별 주요 입원 원인 및 사망 진단명 SQL 분석',
+        '📉 ICD 코드 기반 다빈도 진단 패턴 추출',
+        '📊 분석 결과 Matplotlib 시각화',
+      ],
+      tags:['SQL','MIMIC-IV','Python','Matplotlib','데이터베이스'],
+      links:[],
+    },
+    noise: {
+      ico:'🔊', title:'재난 무전기 노이즈 제거 연구',
+      org:'연구실 프로젝트 · 연구보고서 작성',
+      badges:[],
+      desc:'재난 무전기 통신 노이즈 제거 기술 실험·평가. WAV 분절 전처리·SNR 조건별 노이즈 특성 분석. 연구보고서 공동 집필.',
+      highlights:[
+        '🎙️ WAV 오디오 파일 분절(segmentation) 전처리 파이프라인 구현',
+        '🔧 SNR(신호 대 잡음비) 조건 변화에 따른 노이즈 특성 실험',
+        '📝 실험 설계, 결과 분석, 연구보고서 공동 집필 참여',
+      ],
+      tags:['Python','신호처리','SNR분석','WAV처리','실험설계','연구보고서'],
+      links:[],
+    },
+    delirium: {
+      ico:'🫀', title:'중환자실 섬망 예측 연구',
+      org:'가톨릭대학병원 협력 연구',
+      badges:[{txt:'병원협력',cls:'bdg-res'}],
+      images:[
+        {src:'images/delirium/delirium_slide_p1.png', cap:'p1'},
+        {src:'images/delirium/delirium_slide_p2.png', cap:'p2'},
+        {src:'images/delirium/delirium_slide_p3.png', cap:'p3'},
+        {src:'images/delirium/delirium_slide_p4.png', cap:'p4'},
+        {src:'images/delirium/delirium_slide_p5.png', cap:'p5'},
+        {src:'images/delirium/delirium_slide_p6.png', cap:'p6'},
+        {src:'images/delirium/delirium_slide_p7.png', cap:'p7'},
+        {src:'images/delirium/delirium_slide_p8.png', cap:'p8'},
+        {src:'images/delirium/delirium_slide_p9.png', cap:'p9'},
+        {src:'images/delirium/delirium_slide_p10.png', cap:'p10'},
+        {src:'images/delirium/delirium_slide_p11.png', cap:'p11'},
+        {src:'images/delirium/delirium_slide_p12.png', cap:'p12'},
+        {src:'images/delirium/delirium_slide_p13.png', cap:'p13'},
+        {src:'images/delirium/delirium_slide_p14.png', cap:'p14'},
+        {src:'images/delirium/delirium_slide_p15.png', cap:'p15'},
+        {src:'images/delirium/delirium_slide_p16.png', cap:'p16'},
+        {src:'images/delirium/delirium_slide_p17.png', cap:'p17'},
+        {src:'images/delirium/delirium_slide_p18.png', cap:'p18'},
+        {src:'images/delirium/delirium_slide_p19.png', cap:'p19'},
+        {src:'images/delirium/delirium_slide_p20.png', cap:'p20'},
+        {src:'images/delirium/delirium_slide_p21.png', cap:'p21'},
+        {src:'images/delirium/delirium_slide_p23.png', cap:'p23'},
+        {src:'images/delirium/delirium_slide_p24.png', cap:'p24'},
+        {src:'images/delirium/delirium_slide_p25.png', cap:'p25'},
+      ],
+      desc:'가톨릭대학병원 협력, ICU 생체신호 기반 섬망 조기 예측 연구. MIMIC-IV ICD-9/10 섬망 진단코드 추출·매핑. 다중 테이블 병합·Vitalsign 시계열 전처리 담당.',
+      highlights:[
+        '🏥 가톨릭대학병원 협력 연구',
+        '🩺 MIMIC-IV ICD-9/10 섬망 관련 진단코드 추출·매핑·검증',
+        '🔗 subject_id · hadm_id · stay_id 3중 키 기반 다중 테이블 조인',
+        '📈 혈압·심박수·체온 등 Vitalsign 시계열 전처리 및 결측치 보간',
+      ],
+      tags:['Python','MIMIC-IV','ICD코딩','시계열전처리','Pandas','임상데이터'],
+      links:[],
+    },
+    vision: {
+      ico:'🔬', title:'조건부 VAE 기반 구리 부식 이미지 생성',
+      org:'연구실 프로젝트 · 한국정보과학회 포스터 발표',
+      badges:[{txt:'📄 논문 발표',cls:'bdg-res'}],
+      images:[
+        {src:'images/vision/vision_poster_p1.png', cap:'포스터 — 조건부 VAE 기반 구리 부식 이미지 생성 및 손실 함수 최적화'},
+      ],
+      desc:'전자제품 PCB 구리 부식 이미지 cVAE로 합성·데이터 증강. 부식 유형 조건 입력 기반 이미지 생성. 손실 함수(Reconstruction Loss·KL Divergence) 최적화 실험. 한국정보과학회 포스터 발표.',
+      highlights:[
+        '🖼️ 조건부 VAE(cVAE)로 부식 유형별 이미지 생성 (데이터 증강)',
+        '📉 손실 함수 가중치 조합 실험: Reconstruction Loss vs. KL Divergence 트레이드오프 분석',
+        '🔬 생성 이미지 품질 정량 평가 (FID 등)',
+        '📄 한국정보과학회 포스터 발표',
+      ],
+      tags:['Python','PyTorch','cVAE','딥러닝','이미지생성','데이터증강','컴퓨터비전'],
+      links:[{href:'https://github.com/sizi00/corrosion-cvae',txt:'⬡ GitHub'}],
+    },
+    sport: {
+      ico:'🏃', title:'교양체육 성취목표척도 개발 및 스포츠심리 데이터 분석',
+      org:'연구실 프로젝트 · 연구보고서 작성',
+      badges:[],
+      images:[],
+      desc:'교양체육 성취목표척도(Achievement Goal Scale) 개발·타당화. 코치 관계·자율성 지지·심리적 욕구·웰빙 구조 설문 분석. 탐색적 요인분석(EFA)·기술통계 담당.',
+      highlights:[
+        '📋 교양체육 성취목표척도(Achievement Goal Scale) 개발 및 타당화',
+        '🤝 코치 관계 · 자율성 지지 · 심리적 욕구 · 웰빙 구조 분석',
+        '📊 설문 데이터 전처리, 탐색적 요인분석(EFA), 기술통계 분석 담당',
+      ],
+      tags:['Python','R','설문분석','요인분석','스포츠심리','통계분석'],
+      links:[],
+    },
+  };
+
+  // ── Badge renderer ──
+  function renderBadge(b){
+    return `<span style="padding:.18rem .6rem;border-radius:100px;font-size:.73rem;font-weight:700;background:rgba(245,158,11,.1);color:#92400e;border:1px solid rgba(245,158,11,.3);">${b.txt}</span>`;
+  }
+
+  // ── Open modal ──
+  function openProj(id){
+    const p = PROJ[id]; if(!p) return;
+    const ov = document.getElementById('proj-overlay');
+    document.getElementById('proj-ico').textContent = p.ico;
+    document.getElementById('proj-title').textContent = p.title;
+    document.getElementById('proj-org').textContent = p.org;
+    document.getElementById('proj-desc').textContent = p.desc;
+    document.getElementById('proj-badges').innerHTML = (p.badges||[]).map(renderBadge).join('');
+    document.getElementById('proj-tags').innerHTML = p.tags.map(t=>`<span style="background:rgba(58,90,174,.08);border:1px solid rgba(58,90,174,.18);border-radius:6px;padding:.2rem .55rem;font-size:.78rem;color:#3A5AAE;font-family:'Courier New',monospace;">${t}</span>`).join('');
+    document.getElementById('proj-highlights').innerHTML = '<div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3A5AAE;margin-bottom:.6rem;">Key Highlights</div>' + p.highlights.map(h=>`<div style="font-size:.88rem;color:#0F172A;padding:.35rem 0;border-bottom:1px solid rgba(58,90,174,.06);">${h}</div>`).join('');
+    document.getElementById('proj-links').innerHTML = p.links.map(l=>`<a href="${l.href}" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.85rem;color:#64748B;text-decoration:none;padding:.35rem .9rem;border:1px solid rgba(58,90,174,.15);border-radius:100px;transition:all .25s;" onmouseover="this.style.color='#3A5AAE';this.style.borderColor='rgba(58,90,174,.4)'" onmouseout="this.style.color='#64748B';this.style.borderColor='rgba(58,90,174,.15)'">${l.txt}</a>`).join('');
+    // Carousel
+    carouselSet(p.images || []);
+    ov.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    setTimeout(()=>{ document.getElementById('proj-box').scrollTop=0; }, 0);
+  }
+
+  // ── Carousel ──
+  let carouselImages = [];
+  let carouselIdx = 0;
+
+  function carouselSet(images){
+    carouselImages = images;
+    carouselIdx = 0;
+    const gallery = document.getElementById('proj-gallery');
+    if(!images || images.length === 0){ gallery.style.display='none'; return; }
+    gallery.style.display = 'block';
+    const show1 = images.length <= 1;
+    document.getElementById('carousel-prev').style.display = show1 ? 'none' : 'block';
+    document.getElementById('carousel-next').style.display = show1 ? 'none' : 'block';
+    carouselRender();
+  }
+
+  function carouselRender(){
+    if(!carouselImages.length) return;
+    const img = carouselImages[carouselIdx];
+    document.getElementById('carousel-img').src = img.src;
+    document.getElementById('carousel-img').alt = img.cap;
+    document.getElementById('carousel-cap').textContent = img.cap;
+    document.getElementById('carousel-counter').textContent = `${carouselIdx+1} / ${carouselImages.length}`;
+  }
+
+  function carouselMove(dir){
+    carouselIdx = (carouselIdx + dir + carouselImages.length) % carouselImages.length;
+    carouselRender();
+  }
+
+  // ── Email copy ──
+  function copyEmail(btn){
+    navigator.clipboard.writeText('sosizi0925@gmail.com').then(()=>{
+      const orig = btn.textContent;
+      btn.textContent = '✓ 복사됨!';
+      setTimeout(()=>{ btn.textContent = orig; }, 2000);
+    });
+  }
+
+  // ── Lightbox ──
+  function openLightbox(src){
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    lb.style.display = 'flex';
+  }
+  document.addEventListener('keydown', e=>{
+    if(e.key==='Escape'){ closeProj(); document.getElementById('lightbox').style.display='none'; }
+    const ov = document.getElementById('proj-overlay');
+    if(ov.style.display!=='none'){
+      if(e.key==='ArrowLeft') carouselMove(-1);
+      if(e.key==='ArrowRight') carouselMove(1);
+    }
+  });
+
+  // ── Close modal ──
+  function closeProj(){
+    document.getElementById('proj-overlay').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.getElementById('proj-close').onclick = closeProj;
+  document.getElementById('proj-overlay').onclick = function(e){ if(e.target===this) closeProj(); };
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeProj(); });
+
+  // ── Attach click listeners ──
+  const cardMap = {
+    'card-dam':'dam','card-wind':'wind','card-safer':'safer',
+    'sm-chatbot':'chatbot','sm-lifecare':'lifecare','sm-bigdata':'bigdata',
+    'sm-mimic':'mimic','sm-noise':'noise','sm-delirium':'delirium',
+    'sm-vision':'vision','sm-sport':'sport',
+  };
+  Object.entries(cardMap).forEach(([id,projId])=>{
+    const el = document.getElementById(id);
+    if(el){ el.style.cursor='pointer'; el.addEventListener('click',()=>openProj(projId)); }
+  });
+</script>
+</body>
+</html>
