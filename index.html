@@ -53,27 +53,27 @@
       background-size:60px 60px;
     }
     .hero-inner{position:relative;max-width:900px;display:flex;align-items:center;gap:4rem;}
-    .hero-photo{flex-shrink:0;width:160px;height:200px;border-radius:14px;object-fit:cover;object-position:center top;border:3px solid rgba(58,90,174,.2);box-shadow:0 8px 32px rgba(58,90,174,.15);animation:fadeUp .7s ease both;}
+    .hero-photo{flex-shrink:0;width:160px;height:200px;border-radius:14px;object-fit:cover;object-position:center top;border:3px solid rgba(58,90,174,.2);box-shadow:0 8px 32px rgba(58,90,174,.15);}
     .hero-text{flex:1;text-align:left;}
     .badge{
       display:inline-flex;align-items:center;gap:.45rem;
       background:rgba(58,90,174,.08);border:1px solid rgba(58,90,174,.2);
       border-radius:100px;padding:.35rem 1rem;font-size:.82rem;color:var(--c1);
-      margin-bottom:1.5rem;animation:fadeUp .7s ease both;font-weight:500;
+      margin-bottom:1.5rem;font-weight:500;
     }
     h1.name{
       font-family:'Outfit',sans-serif;font-size:clamp(2.4rem,7vw,4.5rem);font-weight:900;line-height:1.08;
       background:linear-gradient(135deg,#2D4880 0%,#3A5AAE 45%,#6264C4 100%);
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-      margin-bottom:.75rem;animation:fadeUp .7s .15s ease both;
+      margin-bottom:.75rem;
     }
-    .role{font-family:'Outfit',sans-serif;font-size:clamp(1rem,2.5vw,1.35rem);color:var(--muted);margin-bottom:1.25rem;animation:fadeUp .7s .25s ease both}
-    .tagline{font-size:clamp(1rem,2vw,1.25rem);font-weight:500;margin-bottom:2.5rem;animation:fadeUp .7s .35s ease both;color:var(--txt)}
+    .role{font-family:'Outfit',sans-serif;font-size:clamp(1rem,2.5vw,1.35rem);color:var(--muted);margin-bottom:1.25rem;}
+    .tagline{font-size:clamp(1rem,2vw,1.25rem);font-weight:500;margin-bottom:2.5rem;color:var(--txt)}
     .tagline em{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal;font-weight:700}
-    .stats{display:flex;justify-content:center;gap:3rem;margin-bottom:2.5rem;animation:fadeUp .7s .45s ease both}
+    .stats{display:flex;justify-content:center;gap:3rem;margin-bottom:2.5rem;}
     .stat-n{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .stat-l{font-size:.78rem;color:var(--muted);margin-top:.1rem}
-    .cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .7s .55s ease both}
+    .cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
     .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.75rem 1.7rem;border-radius:100px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .3s;border:none;cursor:pointer}
     .btn-p{background:var(--grad);color:#fff;box-shadow:0 4px 20px rgba(58,90,174,.3)}
     .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(58,90,174,.4)}
@@ -147,15 +147,11 @@
     .contact-box{max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:24px;padding:3rem 2rem;box-shadow:0 4px 24px rgba(58,90,174,.08)}
     .contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
     footer{text-align:center;padding:1.8rem;color:var(--dim);font-size:.82rem;border-top:1px solid var(--border);background:#fff}
-    .fade{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-    .fade.show{opacity:1;transform:translateY(0)}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
     .profile-photo{
       width:108px;height:108px;border-radius:50%;object-fit:cover;object-position:center top;
       border:3px solid rgba(58,90,174,.25);
       box-shadow:0 4px 24px rgba(58,90,174,.18),0 0 0 6px rgba(58,90,174,.06);
       display:block;margin:0 auto 1.4rem;
-      animation:fadeUp .7s ease both;
     }
     @media(max-width:768px){
       .about-grid,.card-full,.feat-wrap{grid-template-columns:1fr}
@@ -398,11 +394,6 @@
 
 
 <script>
-  // Scroll fade-in
-  const obs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
-  },{threshold:.12});
-  document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
 
   // ── Project data ──
   const PROJ = {
