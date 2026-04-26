@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bad6a9b56cf980e14e5bb6ce70681331 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 40px; left: 40px; z-index: 1000;
+     background:white; padding:10px; border-radius:8px; border:1px solid #ccc;
+     font-family:Malgun Gothic; font-size:12px">
+  <b>연평균 저수율</b><br>
+  <span style='color:green'>●</span> 70% 이상 (양호)<br>
+  <span style='color:orange'>●</span> 50~70% (보통)<br>
+  <span style='color:red'>●</span> 50% 미만 (주의)<br>
+  원 크기 = 저수율에 비례
+</div>
+    
+            <div class="folium-map" id="map_bad6a9b56cf980e14e5bb6ce70681331" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_bad6a9b56cf980e14e5bb6ce70681331 = L.map(
+                "map_bad6a9b56cf980e14e5bb6ce70681331",
+                {
+                    center: [36.5, 127.8],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7abee87d76be167cd0f081f24b101012 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_7abee87d76be167cd0f081f24b101012.addTo(map_bad6a9b56cf980e14e5bb6ce70681331);
+        
+    
+            var circle_marker_bfa4f043e58efd285fe9fc086ef2a2bc = L.circleMarker(
+                [37.9992, 127.8588],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.356597678000234, "stroke": true, "weight": 3}
+            ).addTo(map_bad6a9b56cf980e14e5bb6ce70681331);
+        
+    
+        var popup_209f9537228afe45694e40efc2e0004f = L.popup({"maxWidth": 220});
+
+        
+            
+                var html_a8078107f2b7204b3e49d822002e416e = $(`<div id="html_a8078107f2b7204b3e49d822002e416e" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Malgun Gothic; font-size:13px; width:200px'>         <b>소양강댐</b><br>         📊 연평균 저수율: <b>69.6%</b><br>         💧 평균 유입량: 73.1 CMS<br>         ⚡ 연간 발전량: 20.7 GWh     </div>     </div>`)[0];
+                popup_209f9537228afe45694e40efc2e0004f.setContent(html_a8078107f2b7204b3e49d822002e416e);
+            
+        
+
+        circle_marker_bfa4f043e58efd285fe9fc086ef2a2bc.bindPopup(popup_209f9537228afe45694e40efc2e0004f)
+        ;
+
+        
+    
+    
+            circle_marker_bfa4f043e58efd285fe9fc086ef2a2bc.bindTooltip(
+                `<div>
+                     소양강댐: 69.6%
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_474d9e5d673dbcc1c15abe681af1d3dc = L.circleMarker(
+                [36.4889, 127.4967],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.201821052008057, "stroke": true, "weight": 3}
+            ).addTo(map_bad6a9b56cf980e14e5bb6ce70681331);
+        
+    
+        var popup_423f5c9d84cb460af27997c572d76c18 = L.popup({"maxWidth": 220});
+
+        
+            
+                var html_761580b08e686fb01e771fe3ad679af8 = $(`<div id="html_761580b08e686fb01e771fe3ad679af8" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Malgun Gothic; font-size:13px; width:200px'>         <b>대청댐</b><br>         📊 연평균 저수율: <b>68.3%</b><br>         💧 평균 유입량: 97.7 CMS<br>         ⚡ 연간 발전량: 7.2 GWh     </div>     </div>`)[0];
+                popup_423f5c9d84cb460af27997c572d76c18.setContent(html_761580b08e686fb01e771fe3ad679af8);
+            
+        
+
+        circle_marker_474d9e5d673dbcc1c15abe681af1d3dc.bindPopup(popup_423f5c9d84cb460af27997c572d76c18)
+        ;
+
+        
+    
+    
+            circle_marker_474d9e5d673dbcc1c15abe681af1d3dc.bindTooltip(
+                `<div>
+                     대청댐: 68.3%
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4bb53690d1ba1f472c83cbad1a11e15d = L.circleMarker(
+                [37.0025, 127.9288],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.334818919559293, "stroke": true, "weight": 3}
+            ).addTo(map_bad6a9b56cf980e14e5bb6ce70681331);
+        
+    
+        var popup_8ce00d34ffc870d4aa36db31d66241ae = L.popup({"maxWidth": 220});
+
+        
+            
+                var html_1f6de1f201961555c688cab026b5046b = $(`<div id="html_1f6de1f201961555c688cab026b5046b" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Malgun Gothic; font-size:13px; width:200px'>         <b>충주댐</b><br>         📊 연평균 저수율: <b>61.1%</b><br>         💧 평균 유입량: 169.0 CMS<br>         ⚡ 연간 발전량: 32.1 GWh     </div>     </div>`)[0];
+                popup_8ce00d34ffc870d4aa36db31d66241ae.setContent(html_1f6de1f201961555c688cab026b5046b);
+            
+        
+
+        circle_marker_4bb53690d1ba1f472c83cbad1a11e15d.bindPopup(popup_8ce00d34ffc870d4aa36db31d66241ae)
+        ;
+
+        
+    
+    
+            circle_marker_4bb53690d1ba1f472c83cbad1a11e15d.bindTooltip(
+                `<div>
+                     충주댐: 61.1%
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f46d6e7affe5b492a8b6ff046762ae30 = L.circleMarker(
+                [35.9317, 127.5292],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.424576294277927, "stroke": true, "weight": 3}
+            ).addTo(map_bad6a9b56cf980e14e5bb6ce70681331);
+        
+    
+        var popup_b4c03c75a6ffb589e9ce7d32eba6e89d = L.popup({"maxWidth": 220});
+
+        
+            
+                var html_9dfa8f588c39c62685b1a15da6fb71c4 = $(`<div id="html_9dfa8f588c39c62685b1a15da6fb71c4" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Malgun Gothic; font-size:13px; width:200px'>         <b>용담댐</b><br>         📊 연평균 저수율: <b>70.2%</b><br>         💧 평균 유입량: 25.1 CMS<br>         ⚡ 연간 발전량: 6.2 GWh     </div>     </div>`)[0];
+                popup_b4c03c75a6ffb589e9ce7d32eba6e89d.setContent(html_9dfa8f588c39c62685b1a15da6fb71c4);
+            
+        
+
+        circle_marker_f46d6e7affe5b492a8b6ff046762ae30.bindPopup(popup_b4c03c75a6ffb589e9ce7d32eba6e89d)
+        ;
+
+        
+    
+    
+            circle_marker_f46d6e7affe5b492a8b6ff046762ae30.bindTooltip(
+                `<div>
+                     용담댐: 70.2%
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_de5a51b5b319f5dd56237dccf4956b76 = L.circleMarker(
+                [36.5783, 128.8186],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.74936376021798, "stroke": true, "weight": 3}
+            ).addTo(map_bad6a9b56cf980e14e5bb6ce70681331);
+        
+    
+        var popup_70418e809039d6033d71adb253f611bc = L.popup({"maxWidth": 220});
+
+        
+            
+                var html_796978d8c6033186f3209034ed067ff4 = $(`<div id="html_796978d8c6033186f3209034ed067ff4" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Malgun Gothic; font-size:13px; width:200px'>         <b>안동댐</b><br>         📊 연평균 저수율: <b>72.9%</b><br>         💧 평균 유입량: 41.3 CMS<br>         ⚡ 연간 발전량: 7.0 GWh     </div>     </div>`)[0];
+                popup_70418e809039d6033d71adb253f611bc.setContent(html_796978d8c6033186f3209034ed067ff4);
+            
+        
+
+        circle_marker_de5a51b5b319f5dd56237dccf4956b76.bindPopup(popup_70418e809039d6033d71adb253f611bc)
+        ;
+
+        
+    
+    
+            circle_marker_de5a51b5b319f5dd56237dccf4956b76.bindTooltip(
+                `<div>
+                     안동댐: 72.9%
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0f56a5260fd4ac5f5b07555349bb8fc7 = L.circleMarker(
+                [34.9817, 127.24],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.829747127117642, "stroke": true, "weight": 3}
+            ).addTo(map_bad6a9b56cf980e14e5bb6ce70681331);
+        
+    
+        var popup_4cd0899e3646fe4075faa21aa4ed8fa7 = L.popup({"maxWidth": 220});
+
+        
+            
+                var html_6b030808768ec5ad37351cd198390dc8 = $(`<div id="html_6b030808768ec5ad37351cd198390dc8" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Malgun Gothic; font-size:13px; width:200px'>         <b>주암댐</b><br>         📊 연평균 저수율: <b>65.2%</b><br>         💧 평균 유입량: 14.9 CMS<br>         ⚡ 연간 발전량: 3.6 GWh     </div>     </div>`)[0];
+                popup_4cd0899e3646fe4075faa21aa4ed8fa7.setContent(html_6b030808768ec5ad37351cd198390dc8);
+            
+        
+
+        circle_marker_0f56a5260fd4ac5f5b07555349bb8fc7.bindPopup(popup_4cd0899e3646fe4075faa21aa4ed8fa7)
+        ;
+
+        
+    
+    
+            circle_marker_0f56a5260fd4ac5f5b07555349bb8fc7.bindTooltip(
+                `<div>
+                     주암댐: 65.2%
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_18ff40fe2c546c8c56e5ef6fc709947c = L.circleMarker(
+                [36.5881, 129.0453],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.82044343087312, "stroke": true, "weight": 3}
+            ).addTo(map_bad6a9b56cf980e14e5bb6ce70681331);
+        
+    
+        var popup_f8d8aabec13ab350dd4f0a070b49947a = L.popup({"maxWidth": 220});
+
+        
+            
+                var html_5aa9bef77f29e9a3a56e0ff29bf958af = $(`<div id="html_5aa9bef77f29e9a3a56e0ff29bf958af" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Malgun Gothic; font-size:13px; width:200px'>         <b>임하댐</b><br>         📊 연평균 저수율: <b>65.2%</b><br>         💧 평균 유입량: 21.1 CMS<br>         ⚡ 연간 발전량: 2.3 GWh     </div>     </div>`)[0];
+                popup_f8d8aabec13ab350dd4f0a070b49947a.setContent(html_5aa9bef77f29e9a3a56e0ff29bf958af);
+            
+        
+
+        circle_marker_18ff40fe2c546c8c56e5ef6fc709947c.bindPopup(popup_f8d8aabec13ab350dd4f0a070b49947a)
+        ;
+
+        
+    
+    
+            circle_marker_18ff40fe2c546c8c56e5ef6fc709947c.bindTooltip(
+                `<div>
+                     임하댐: 65.2%
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8bda78cdf12cd4784920f6a6f3206e60 = L.circleMarker(
+                [35.6533, 128.1069],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.226767503850255, "stroke": true, "weight": 3}
+            ).addTo(map_bad6a9b56cf980e14e5bb6ce70681331);
+        
+    
+        var popup_2a41bc63d51987b718214510d2a1af64 = L.popup({"maxWidth": 220});
+
+        
+            
+                var html_2cf5443f65294b7cd82a28964dfa1074 = $(`<div id="html_2cf5443f65294b7cd82a28964dfa1074" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Malgun Gothic; font-size:13px; width:200px'>         <b>합천댐</b><br>         📊 연평균 저수율: <b>68.6%</b><br>         💧 평균 유입량: 20.4 CMS<br>         ⚡ 연간 발전량: 7.8 GWh     </div>     </div>`)[0];
+                popup_2a41bc63d51987b718214510d2a1af64.setContent(html_2cf5443f65294b7cd82a28964dfa1074);
+            
+        
+
+        circle_marker_8bda78cdf12cd4784920f6a6f3206e60.bindPopup(popup_2a41bc63d51987b718214510d2a1af64)
+        ;
+
+        
+    
+    
+            circle_marker_8bda78cdf12cd4784920f6a6f3206e60.bindTooltip(
+                `<div>
+                     합천댐: 68.6%
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_dffa0c139b48e470f68e7752efafdab8 = L.circleMarker(
+                [35.1803, 128.0894],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.17324327686293, "stroke": true, "weight": 3}
+            ).addTo(map_bad6a9b56cf980e14e5bb6ce70681331);
+        
+    
+        var popup_90423cdeebd5ed61af2832d5d6a69cda = L.popup({"maxWidth": 220});
+
+        
+            
+                var html_e768ccf353cb5f604a803a86ffc90f53 = $(`<div id="html_e768ccf353cb5f604a803a86ffc90f53" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Malgun Gothic; font-size:13px; width:200px'>         <b>남강댐</b><br>         📊 연평균 저수율: <b>51.4%</b><br>         💧 평균 유입량: 64.3 CMS<br>         ⚡ 연간 발전량: 2.8 GWh     </div>     </div>`)[0];
+                popup_90423cdeebd5ed61af2832d5d6a69cda.setContent(html_e768ccf353cb5f604a803a86ffc90f53);
+            
+        
+
+        circle_marker_dffa0c139b48e470f68e7752efafdab8.bindPopup(popup_90423cdeebd5ed61af2832d5d6a69cda)
+        ;
+
+        
+    
+    
+            circle_marker_dffa0c139b48e470f68e7752efafdab8.bindTooltip(
+                `<div>
+                     남강댐: 51.4%
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
