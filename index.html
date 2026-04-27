@@ -481,14 +481,39 @@
         {src:'images/wind/wind_ppt_p15.png', cap:'발표자료 p15 — 한계점 및 향후 연구'},
         {src:'images/wind/wind_ppt_p16.png', cap:'발표자료 p16 — 참고문헌'},
       ],
-      desc:'LDAPS 기상 예측 데이터 + SCADA 발전량 데이터 융합. 기상 파라미터 선택·전처리·앙상블 모델 비교. 공모전 장려상 수상 후 포스터로 발전 → 교내 경진대회 우수상 추가 수상.',
+      desc:'LDAPS 기상 예측 데이터와 SCADA 터빈 실측 데이터를 융합해 경주·양양·영덕 3개 풍력발전 단지의 발전량을 예측한 공모전 프로젝트.',
       highlights:[
-        '🌤️ LDAPS 기상 예측 변수 + SCADA 발전량 데이터 융합',
-        '📉 회귀·앙상블 모델 비교 및 하이퍼파라미터 튜닝',
-        '🏅 풍력발전량 예측 공모전 장려상 수상 (2025)',
-        '🏆 교내 AI빅데이터분석 경진대회 우수상 수상 (2025)',
+        '🌤️ LDAPS 기상 예측 + SCADA 실측 이기종 데이터 융합 및 전처리 파이프라인 구성',
+        '⚙️ 단지별 데이터 특성 분석 후 경주(LSTM) · 양양·영덕(물리모델+HGBR) 각각 설계',
+        '🏅 공모전 장려상 → 포스터 발전 → 교내 경진대회 우수상',
       ],
-      tags:['Python','LDAPS','SCADA','기상데이터','시계열','예측모델','앙상블'],
+      body:`<div class="proj-section">
+  <div class="proj-section-title">배경</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">2025 풍력 발전량 예측 공모전에서 경주·양양·영덕 3개 풍력발전 단지의 발전량 예측을 수행했습니다. 기상 예측 데이터(LDAPS)와 터빈 실측 데이터(SCADA)를 융합하는 전처리 파이프라인 구성과 데이터 수집·정제·가공을 담당했습니다.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">데이터 구성</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">LDAPS는 국지예보모델 기반 시간 단위 기상 예측 데이터로, 위·경도 격자 정보와 풍속·풍향·온습도·기압 등 핵심 변수를 포함. SCADA는 터빈 및 변전 설비의 풍속·생산 전력 실측 데이터(10분 단위)로, 발전단지별 제공 변수에 차이가 존재(경주: 전체 변수 / 양양·영덕: 풍속·풍향만).</p>
+  <img src="images/wind/wind_ppt_p3.png" class="proj-figure" alt="데이터 구성">
+  <div class="proj-fig-cap">LDAPS · SCADA 데이터 구성 및 특징</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">전처리 전략</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">LDAPS: 발전 단지 위치 기준 필터링, 48시간 예보 중 최근 24시간만 사용(KST 기준), 풍속·풍향 기반 파생 변수 생성.<br>SCADA: 이상치·중복·결측치 제거, 풍향 범위 통일(-180~180 → 0~360), 10분 샘플을 SIN/COS → ATAN2 원형 평균으로 1시간 단위 재구성.</p>
+  <img src="images/wind/wind_ppt_p5.png" class="proj-figure" alt="LDAPS 전처리">
+  <div class="proj-fig-cap">LDAPS 전처리 — 발전 단지 위치 기준 필터링 및 예보 시간 처리</div>
+  <img src="images/wind/wind_ppt_p7.png" class="proj-figure" alt="SCADA 전처리">
+  <div class="proj-fig-cap">SCADA 전처리 — 이상치 제거 및 1시간 단위 재구성</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">모델링</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">단지별 제공 변수 구성이 달라 단일 모델 대신 각 단지 특성에 맞게 설계. 경주는 장기 시계열 패턴 반영을 위한 LSTM(8주 길이) 기반 모델, 양양·영덕은 풍력 물리 모델(P ∝ WS³) + HGBR 잔차 보정 모델 적용.</p>
+  <img src="images/wind/wind_ppt_p9.png" class="proj-figure" alt="모델링 접근">
+  <div class="proj-fig-cap">단지별 모델링 접근 전략</div>
+  <img src="images/wind/wind_ppt_p13.png" class="proj-figure" alt="최종 파이프라인">
+  <div class="proj-fig-cap">최종 예측 파이프라인 (경주 · 양양 · 영덕)</div>
+</div>`,
+      tags:['Python','LDAPS','SCADA','LSTM','HGBR','시계열','예측모델','기상데이터'],
       links:[],
     },
     safer: {
