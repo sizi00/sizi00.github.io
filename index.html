@@ -104,7 +104,9 @@
     .bdg-award{background:rgba(245,158,11,.1);color:#92400e;border:1px solid rgba(245,158,11,.3)}
     .bdg-new{background:rgba(58,90,174,.1);color:var(--c1);border:1px solid rgba(58,90,174,.25)}
     .bdg-res{background:rgba(98,100,196,.1);color:var(--c2);border:1px solid rgba(98,100,196,.25)}
-    .p-org{font-size:.82rem;color:var(--c1);font-weight:500;margin-bottom:.6rem}
+    .p-org{font-size:.82rem;color:var(--c1);font-weight:500;margin-bottom:.4rem}
+    .p-contrib{font-size:.77rem;color:var(--muted);margin-bottom:.5rem;}
+    .sm-contrib{font-size:.74rem;color:var(--muted);margin-bottom:.4rem;}
     .p-title{font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.5rem;color:var(--txt)}
     .p-desc{color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:1.1rem}
     .tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1rem}
@@ -184,19 +186,16 @@
   <div class="hero-bg"></div>
   <div class="grid-lines"></div>
   <div class="hero-inner">
-    <img src="profile.jpg" alt="김소정" class="hero-photo">
+    <img src="김소정_증명사진.jpg" alt="김소정" class="hero-photo">
     <div class="hero-text">
       <div class="badge">📊 Data Science &nbsp;·&nbsp; Medical & Environmental Analysis &nbsp;·&nbsp; Research Developer</div>
       <h1 class="name">김소정</h1>
       <p class="role">Data Scientist &amp; Research Developer &nbsp;·&nbsp; 수원대학교 데이터과학부</p>
-      <p class="tagline">
-        <em>"한 번 같이 일하면 계속 찾게 되는 연구자"</em><br>
-        의료·환경·자연어 데이터로 복잡한 현상을 읽어냅니다
-      </p>
+      <p class="tagline">의료·환경·자연어 데이터로 복잡한 현상을 읽어냅니다</p>
       <div style="display:flex;gap:2rem;margin-top:1.4rem;">
         <div><div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#3A5AAE;">3편</div><div style="font-size:.75rem;color:var(--muted);margin-top:.1rem;">논문 발표</div></div>
         <div><div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#3A5AAE;">4회</div><div style="font-size:.75rem;color:var(--muted);margin-top:.1rem;">수상 이력</div></div>
-        <div><div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#3A5AAE;">10+</div><div style="font-size:.75rem;color:var(--muted);margin-top:.1rem;">프로젝트</div></div>
+        <div><div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#3A5AAE;">9+</div><div style="font-size:.75rem;color:var(--muted);margin-top:.1rem;">프로젝트</div></div>
       </div>
     </div>
   </div>
@@ -208,7 +207,7 @@
   <div class="sec-label">About Me</div>
   <div class="about-grid fade">
     <div class="about-text">
-      <p>수원대학교 데이터과학부에서 데이터 분석, 데이터 전처리, 머신러닝·딥러닝 연구를 수행해왔습니다. 수업 프로젝트부터 서울대병원·가톨릭대병원과의 연구 협업까지 다양한 문제를 다뤄보고 의료, 환경, 스포츠 등 다양한 도메인을 경험하며 데이터 수집부터 전처리, 분석, 모델링, 보고까지 전 과정을 수행해봤습니다. 3학년부터 함께한 지도교수님이 이직 후에도 연구를 이어가며 대학원 진학을 권유해 주셨고, 이를 지켜보신 다른 교수님의 제안으로 4학년부터 두 연구실을 병행했습니다.</p>
+      <p>수원대학교 데이터과학부에서 데이터 분석, 데이터 전처리, 머신러닝·딥러닝 연구를 수행해왔습니다. 수업 프로젝트부터 서울대병원·가톨릭대병원과의 연구 협업까지 다양한 문제를 다뤄보고 의료, 환경, 스포츠 등 다양한 도메인을 경험하며 데이터 수집부터 전처리, 분석, 모델링, 보고까지 전 과정을 수행해봤습니다. 3학년부터 함께한 지도교수님이 이직하신 후에도 공동 연구를 이어갈 만큼 신뢰를 쌓았고, 다른 교수님의 제안으로 4학년부터 두 연구실을 병행했습니다.</p>
     </div>
     <div class="hl-cards">
       <div class="hl"><div class="hl-ico">🌊</div><div><div class="hl-t">시계열 & 환경 데이터 분석</div><div class="hl-d">수문·기상·발전량 시계열 분석, 위기 구간 탐지</div></div></div>
@@ -234,6 +233,7 @@
         <div class="p-badges"><span class="bdg bdg-new">● NEW</span><span class="bdg bdg-res">시계열</span></div>
         <div class="p-title">한국 다목적댐 수문운영 분석</div>
         <div class="p-org">한국수자원공사 공개 데이터 · 2024</div>
+        <div class="p-contrib">단독 진행</div>
         <div class="p-desc">K-water 9개 다목적댐 2024년 79,056건 시계열 데이터 분석. 저수율 위기 구간 자동 탐지. 연간 트렌드·계절성 시각화. Folium 인터랙티브 지도 매핑.</div>
         <div class="tags">
           <span class="tag">Python</span><span class="tag">GeoPandas</span><span class="tag">Matplotlib</span><span class="tag">Pandas</span><span class="tag">시계열분석</span><span class="tag">GIS시각화</span>
@@ -278,6 +278,7 @@
       <div class="p-badges"><span class="bdg bdg-award">🏅 장려상</span><span class="bdg bdg-award">🏆 우수상</span></div>
       <div class="p-title">풍력발전량 예측 분석</div>
       <div class="p-org">풍력발전량 예측 공모전 · 교내 AI빅데이터 경진대회</div>
+      <div class="p-contrib">기여도 50% · 데이터 수집·정제·가공 담당</div>
       <div class="p-desc">LDAPS 기상 예측 데이터와 SCADA 발전 데이터를 분석하여 풍력발전량을 예측합니다. 공모전 장려상 수상 후 포스터로 발전, 교내 경진대회에서 우수상 추가 수상.</div>
       <div class="tags"><span class="tag">Python</span><span class="tag">LDAPS</span><span class="tag">SCADA</span><span class="tag">시계열</span><span class="tag">예측모델</span><span class="tag">기상데이터</span></div>
     </div>
@@ -288,30 +289,34 @@
       <div class="p-badges"><span class="bdg bdg-res">서울대병원</span></div>
       <div class="p-title">SAFER · 정신병동 환자 위치 시각화</div>
       <div class="p-org">서울대학교병원 · 동국대 · 용인대 협력 연구</div>
+      <div class="p-contrib">기여도 90%</div>
       <div class="p-desc">서울대병원·동국대병원·용인대 정신병동 환자 BLE 위치 데이터 분석. Plotly + PIL 병동 도면 합성 애니메이션 자체 개발. BPRS·YMRS·MADRS·HAMA 임상척도 연동. 격리·강제처치 이벤트 타임라인 매핑.</div>
       <div class="tags"><span class="tag">Python</span><span class="tag">Plotly Express</span><span class="tag">PIL</span><span class="tag">도면합성</span><span class="tag">BPRS/YMRS</span><span class="tag">임상데이터</span><span class="tag">Pandas</span></div>
-      <div class="p-links"><a href="https://github.com/sizi00" target="_blank" class="p-link">⬡ GitHub</a></div>
     </div>
   </div>
 
   <!-- Small projects -->
   <h3 style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:600;color:var(--muted);margin:2.5rem 0 1.2rem">기타 프로젝트</h3>
   <div class="sm-grid fade">
-    <div id="sm-chatbot" class="sm-card" onclick="openProj('chatbot')" style="cursor:pointer"><div class="sm-ico">🤖</div><div class="sm-title">심리상담챗봇 효과 분석</div><div class="sm-org">한국정보과학회 KCC2024 · KSC2024 장려상 ×2</div><div class="sm-desc">GPT-3.5, GPT-4.0, HyperCLOVA를 심리상담가로 프롬프팅하여 비교 분석. 293명 참가자, ISI·GAD-7·TEQ·PHQ-9 심리검사 기반 사전·사후 효과 측정. Turn/Session Level 평가(1,466 대화) 수행.</div><div class="tags"><span class="tag">Python</span><span class="tag">GPT-4.0</span><span class="tag">HyperCLOVA</span><span class="tag">심리검사분석</span></div></div>
+    <div id="sm-chatbot" class="sm-card" onclick="openProj('chatbot')" style="cursor:pointer"><div class="sm-ico">🤖</div><div class="sm-title">심리상담챗봇 효과 분석</div><div class="sm-org">한국정보과학회 KCC2024 · KSC2024 장려상 ×2</div><div class="sm-contrib">기여도 60% · 데이터 분석 코드 전담</div><div class="sm-desc">GPT-3.5, GPT-4.0, HyperCLOVA를 심리상담가로 프롬프팅하여 비교 분석. 293명 참가자, ISI·GAD-7·TEQ·PHQ-9 심리검사 기반 사전·사후 효과 측정. Turn/Session Level 평가(1,466 대화) 수행.</div><div class="tags"><span class="tag">Python</span><span class="tag">GPT-4.0</span><span class="tag">HyperCLOVA</span><span class="tag">심리검사분석</span></div></div>
 
-    <div id="sm-lifecare" class="sm-card" onclick="openProj('lifecare')" style="cursor:pointer"><div class="sm-ico">🧬</div><div class="sm-title">장내미생물 기반 알츠하이머 초기진단</div><div class="sm-org">수업 프로젝트 · R + Python (Random Forest)</div><div class="sm-desc">장내 마이크로바이옴 데이터를 활용해 전임상 알츠하이머 초기진단 가능성 탐색. R로 탐색적 분석 후 Python Random Forest 모델 구축. 의생명 도메인 집중 학습 병행.</div><div class="tags"><span class="tag">R</span><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">마이크로바이옴</span></div></div>
+    <div id="sm-lifecare" class="sm-card" onclick="openProj('lifecare')" style="cursor:pointer"><div class="sm-ico">🧬</div><div class="sm-title">장내미생물 기반 알츠하이머 초기진단</div><div class="sm-org">수업 프로젝트 · R + Python (Random Forest)</div><div class="sm-contrib">기여도 90%</div><div class="sm-desc">장내 마이크로바이옴 데이터를 활용해 전임상 알츠하이머 초기진단 가능성 탐색. R로 탐색적 분석 후 Python Random Forest 모델 구축. 의생명 도메인 집중 학습 병행.</div><div class="tags"><span class="tag">R</span><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">마이크로바이옴</span></div></div>
 
+    <!-- 임시 비활성화: 반려동물 장소 검색 플랫폼
     <div id="sm-bigdata" class="sm-card" onclick="openProj('bigdata')" style="cursor:pointer"><div class="sm-ico">🐾</div><div class="sm-title">LLM 기반 반려동물 장소 검색 플랫폼</div><div class="sm-org">수업 프로젝트 · Make + Python</div><div class="sm-desc">자동화 툴 Make, Python, Text-to-SQL을 파이프라인으로 연결한 반려동물 동반 가능 장소 검색 서비스. SQL 정확도 테스트 및 프롬프트 데이터베이스 최적화 수행.</div><div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Text-to-SQL</span><span class="tag">Make자동화</span></div></div>
+    -->
 
+    <!-- 임시 비활성화: MIMIC4 의료 데이터 분석
     <div id="sm-mimic" class="sm-card" onclick="openProj('mimic')" style="cursor:pointer"><div class="sm-ico">🏥</div><div class="sm-title">MIMIC4 의료 데이터 분석</div><div class="sm-org">수업 프로젝트 · SQL</div><div class="sm-desc">연령별 입원 이유·사망률 분석. 다빈도 진단명·사망 진단명 SQL 분석 및 시각화.</div><div class="tags"><span class="tag">SQL</span><span class="tag">데이터분석</span><span class="tag">시각화</span></div></div>
+    -->
 
-    <div id="sm-noise" class="sm-card" onclick="openProj('noise')" style="cursor:pointer"><div class="sm-ico">🔊</div><div class="sm-title">재난 무전기 노이즈 제거 연구</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-desc">재난 현장 무전기 통신 노이즈 제거 기술 실험 설계 및 연구보고서 공동 작성.</div><div class="tags"><span class="tag">신호처리</span><span class="tag">실험설계</span><span class="tag">보고서</span></div></div>
+    <div id="sm-noise" class="sm-card" onclick="openProj('noise')" style="cursor:pointer"><div class="sm-ico">🔊</div><div class="sm-title">재난 무전기 노이즈 제거 연구</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-contrib">담당 파트 100%</div><div class="sm-desc">재난 현장 무전기 통신 노이즈 제거 기술 실험 설계 및 연구보고서 공동 작성.</div><div class="tags"><span class="tag">신호처리</span><span class="tag">실험설계</span><span class="tag">보고서</span></div></div>
 
-    <div id="sm-delirium" class="sm-card" onclick="openProj('delirium')" style="cursor:pointer"><div class="sm-ico">🫀</div><div class="sm-title">중환자실 섬망 예측 연구</div><div class="sm-org">가톨릭대학병원 협력 연구</div><div class="sm-desc">중환자실 생체 신호(Vitalsign 시계열) 기반 섬망 예측 연구 참여. MIMIC-IV ICD-9/10 진단코드 처리, 다중 테이블(subject_id, hadm_id, stay_id) 병합 및 검증 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">MIMIC-IV</span><span class="tag">시계열전처리</span></div></div>
+    <div id="sm-delirium" class="sm-card" onclick="openProj('delirium')" style="cursor:pointer"><div class="sm-ico">🫀</div><div class="sm-title">중환자실 섬망 예측 연구</div><div class="sm-org">가톨릭대학병원 협력 연구</div><div class="sm-contrib">데이터 가공·정제 100% 담당</div><div class="sm-desc">중환자실 생체 신호(Vitalsign 시계열) 기반 섬망 예측 연구 참여. MIMIC-IV ICD-9/10 진단코드 처리, 다중 테이블(subject_id, hadm_id, stay_id) 병합 및 검증 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">MIMIC-IV</span><span class="tag">시계열전처리</span></div></div>
 
-    <div id="sm-vision" class="sm-card" onclick="openProj('vision')" style="cursor:pointer"><div class="sm-ico">🔬</div><div class="sm-title">조건부 VAE 기반 구리 부식 이미지 생성</div><div class="sm-org">연구실 프로젝트 · 한국정보과학회 포스터 발표</div><div class="sm-desc">전자제품 PCB 구리 부식 이미지를 조건부 VAE(cVAE)로 합성하여 안전 검사 데이터 부족 문제를 해결. 부식 유형별 이미지 생성 및 손실 함수 최적화 실험.</div><div class="tags"><span class="tag">PyTorch</span><span class="tag">cVAE</span><span class="tag">이미지생성</span><span class="tag">컴퓨터비전</span></div></div>
+    <div id="sm-vision" class="sm-card" onclick="openProj('vision')" style="cursor:pointer"><div class="sm-ico">🔬</div><div class="sm-title">조건부 VAE 기반 구리 부식 이미지 생성</div><div class="sm-org">연구실 프로젝트 · 한국정보과학회 포스터 발표</div><div class="sm-contrib">기여도 80%</div><div class="sm-desc">전자제품 PCB 구리 부식 이미지를 조건부 VAE(cVAE)로 합성하여 안전 검사 데이터 부족 문제를 해결. 부식 유형별 이미지 생성 및 손실 함수 최적화 실험.</div><div class="tags"><span class="tag">PyTorch</span><span class="tag">cVAE</span><span class="tag">이미지생성</span><span class="tag">컴퓨터비전</span></div></div>
 
-    <div id="sm-sport" class="sm-card" onclick="openProj('sport')" style="cursor:pointer"><div class="sm-ico">🏃</div><div class="sm-title">교양체육 성취목표척도 개발 및 분석</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-desc">대학 교양체육 성취목표척도 개발 및 타당화. 코치 관계·자율성 지지·심리적 욕구·웰빙 간 관계를 설문 데이터로 분석. 탐색적 요인분석(EFA) 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">요인분석</span><span class="tag">스포츠심리</span></div></div>
+    <div id="sm-sport" class="sm-card" onclick="openProj('sport')" style="cursor:pointer"><div class="sm-ico">🏃</div><div class="sm-title">교양체육 성취목표척도 개발 및 분석</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-contrib">단독 진행</div><div class="sm-desc">대학 교양체육 성취목표척도 개발 및 타당화. 코치 관계·자율성 지지·심리적 욕구·웰빙 간 관계를 설문 데이터로 분석. 탐색적 요인분석(EFA) 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">요인분석</span><span class="tag">스포츠심리</span></div></div>
   </div>
 </div>
 
@@ -337,7 +342,7 @@
     <div class="skill-grp"><div class="skill-h">Languages</div><div class="skill-tags"><span class="sk">Python</span><span class="sk">R</span><span class="sk">SQL</span></div></div>
     <div class="skill-grp"><div class="skill-h">Analysis & DL</div><div class="skill-tags"><span class="sk">Pandas</span><span class="sk">NumPy</span><span class="sk">Scikit-learn</span><span class="sk">PyTorch</span></div></div>
     <div class="skill-grp"><div class="skill-h">Visualization</div><div class="skill-tags"><span class="sk">Matplotlib</span><span class="sk">Plotly</span><span class="sk">Seaborn</span><span class="sk">Folium</span></div></div>
-    <div class="skill-grp"><div class="skill-h">Tools</div><div class="skill-tags"><span class="sk">Git</span><span class="sk">Jupyter</span><span class="sk">VSCode</span><span class="sk">Claude Code</span><span class="sk">Antigravity</span></div></div>
+    <div class="skill-grp"><div class="skill-h">Tools</div><div class="skill-tags"><span class="sk">Git</span><span class="sk">Jupyter</span><span class="sk">VSCode</span><span class="sk">Claude Code</span></div></div>
   </div>
 </div>
 
@@ -365,7 +370,8 @@
       <div style="font-size:2.2rem;margin-bottom:.6rem;" id="proj-ico"></div>
       <div id="proj-badges" style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.6rem;"></div>
       <h2 id="proj-title" style="font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;color:#0F172A;margin-bottom:.3rem;"></h2>
-      <div id="proj-org" style="font-size:.85rem;color:#3A5AAE;font-weight:500;margin-bottom:1.2rem;"></div>
+      <div id="proj-org" style="font-size:.85rem;color:#3A5AAE;font-weight:500;margin-bottom:.3rem;"></div>
+      <div id="proj-contrib" style="font-size:.8rem;color:#94A3B8;margin-bottom:1.1rem;"></div>
       <p id="proj-desc" style="color:#64748B;line-height:1.85;font-size:.95rem;margin-bottom:1.4rem;"></p>
       <div id="proj-highlights" style="background:#F0F4FF;border:1px solid rgba(58,90,174,.12);border-radius:12px;padding:1.2rem 1.4rem;margin-bottom:1.4rem;"></div>
       <div id="proj-tags" style="display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.4rem;"></div>
@@ -400,6 +406,7 @@
     dam: {
       ico:'🌊', title:'한국 다목적댐 수문운영 분석',
       org:'한국수자원공사 공개 데이터 · 2024',
+      contrib:'단독 진행',
       badges:[{txt:'● NEW',cls:'bdg-new'},{txt:'시계열',cls:'bdg-res'}],
       images:[
         {src:'images/dam/01_dam_overview.png', cap:'댐별 연간 기초 통계 현황 (2024)'},
@@ -425,6 +432,7 @@
     wind: {
       ico:'💨', title:'기상터빈 데이터 융합 기반 풍력 발전량 예측 고도화',
       org:'풍력발전량 예측 공모전 · 교내 AI빅데이터 경진대회',
+      contrib:'기여도 50% · 데이터 수집·정제·가공 담당',
       badges:[{txt:'🏅 공모전 장려상',cls:'bdg-award'},{txt:'🏆 우수상',cls:'bdg-award'}],
       images:[
         {src:'images/wind/wind_paper_p1.png', cap:'논문 — 기상터빈 데이터 융합 기반 풍력 발전량 예측 고도화'},
@@ -455,11 +463,12 @@
         '🏆 교내 AI빅데이터분석 경진대회 우수상 수상 (2025)',
       ],
       tags:['Python','LDAPS','SCADA','기상데이터','시계열','예측모델','앙상블'],
-      links:[{href:'https://github.com/sizi00',txt:'⬡ GitHub'}],
+      links:[],
     },
     safer: {
       ico:'🏥', title:'SAFER · 정신병동 환자 위치 데이터 시각화 및 분석',
       org:'서울대학교병원 · 동국대 · 용인대 협력 연구',
+      contrib:'기여도 90%',
       badges:[{txt:'서울대병원',cls:'bdg-res'},{txt:'연구협력',cls:'bdg-res'}],
       images:[
         {src:'images/safer/safer_slide_p1.png', cap:'p1 — SAFER 프로젝트 개요'},
@@ -489,11 +498,12 @@
         '📋 CRF 데이터 주별(1~4주) 상태변화 추적 분석',
       ],
       tags:['Python','Plotly Express','PIL','도면합성','BPRS/YMRS','MADRS/HAMA','Pandas','CRF분석'],
-      links:[{href:'https://github.com/sizi00/SAFER',txt:'⬡ GitHub'}],
+      links:[],
     },
     chatbot: {
       ico:'🤖', title:'GPT·HyperCLOVA 심리상담 챗봇 효과 분석',
       org:'한국정보과학회 KCC2024 · KSC2024 장려상 ×2',
+      contrib:'기여도 60% · 데이터 분석 코드 전담',
       badges:[{txt:'📄 KCC2024 장려상',cls:'bdg-award'},{txt:'📄 KSC2024 장려상',cls:'bdg-award'}],
       images:[
         {src:'images/chatbot/chatbot_poster1_p1.png', cap:'포스터 ① — GPT 심리상담 챗봇 사용자 만족도 vs LLM 기반 평가 비교'},
@@ -515,6 +525,7 @@
     lifecare: {
       ico:'🧬', title:'장내미생물 기반 전임상 알츠하이머 초기진단',
       org:'수업 프로젝트 · R + Python (Random Forest)',
+      contrib:'기여도 90%',
       badges:[],
       images:[
         {src:'images/lifecare/lc_p1.png', cap:'p1'},
@@ -611,6 +622,7 @@
     noise: {
       ico:'🔊', title:'재난 무전기 노이즈 제거 연구',
       org:'연구실 프로젝트 · 연구보고서 작성',
+      contrib:'담당 파트 100%',
       badges:[],
       desc:'재난 무전기 통신 노이즈 제거 기술 실험·평가. WAV 분절 전처리·SNR 조건별 노이즈 특성 분석. 연구보고서 공동 집필.',
       highlights:[
@@ -624,6 +636,7 @@
     delirium: {
       ico:'🫀', title:'중환자실 섬망 예측 연구',
       org:'가톨릭대학병원 협력 연구',
+      contrib:'데이터 가공·정제 100% 담당',
       badges:[{txt:'병원협력',cls:'bdg-res'}],
       images:[
         {src:'images/delirium/delirium_slide_p1.png', cap:'p1'},
@@ -664,6 +677,7 @@
     vision: {
       ico:'🔬', title:'조건부 VAE 기반 구리 부식 이미지 생성',
       org:'연구실 프로젝트 · 한국정보과학회 포스터 발표',
+      contrib:'기여도 80%',
       badges:[{txt:'📄 논문 발표',cls:'bdg-res'}],
       images:[
         {src:'images/vision/vision_poster_p1.png', cap:'포스터 — 조건부 VAE 기반 구리 부식 이미지 생성 및 손실 함수 최적화'},
@@ -676,11 +690,12 @@
         '📄 한국정보과학회 포스터 발표',
       ],
       tags:['Python','PyTorch','cVAE','딥러닝','이미지생성','데이터증강','컴퓨터비전'],
-      links:[{href:'https://github.com/sizi00/corrosion-cvae',txt:'⬡ GitHub'}],
+      links:[],
     },
     sport: {
       ico:'🏃', title:'교양체육 성취목표척도 개발 및 스포츠심리 데이터 분석',
       org:'연구실 프로젝트 · 연구보고서 작성',
+      contrib:'단독 진행',
       badges:[],
       images:[],
       desc:'교양체육 성취목표척도(Achievement Goal Scale) 개발·타당화. 코치 관계·자율성 지지·심리적 욕구·웰빙 구조 설문 분석. 탐색적 요인분석(EFA)·기술통계 담당.',
@@ -706,6 +721,7 @@
     document.getElementById('proj-ico').textContent = p.ico;
     document.getElementById('proj-title').textContent = p.title;
     document.getElementById('proj-org').textContent = p.org;
+    document.getElementById('proj-contrib').textContent = p.contrib || '';
     document.getElementById('proj-desc').textContent = p.desc;
     document.getElementById('proj-badges').innerHTML = (p.badges||[]).map(renderBadge).join('');
     document.getElementById('proj-tags').innerHTML = p.tags.map(t=>`<span style="background:rgba(58,90,174,.08);border:1px solid rgba(58,90,174,.18);border-radius:6px;padding:.2rem .55rem;font-size:.78rem;color:#3A5AAE;font-family:'Courier New',monospace;">${t}</span>`).join('');
