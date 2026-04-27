@@ -291,7 +291,7 @@
     <div id="card-safer" class="card fade" onclick="openProj('safer')" style="cursor:pointer">
       <div class="p-ico">🏥</div>
       <div class="p-badges"><span class="bdg bdg-res">서울대병원</span></div>
-      <div class="p-title">SAFER · 정신병동 환자 위치 시각화</div>
+      <div class="p-title">SAFER · 웨어러블 센서 기반 정신병동 환자 위험 예측</div>
       <div class="p-org">서울대학교병원 · 동국대 · 용인대 협력 연구</div>
       <div class="p-contrib">기여도 90%</div>
       <div class="p-desc">서울대병원·동국대병원·용인대 정신병동 환자 BLE 위치 데이터 분석. Plotly + PIL 병동 도면 합성 애니메이션 자체 개발. BPRS·YMRS·MADRS·HAMA 임상척도 연동. 격리·강제처치 이벤트 타임라인 매핑.</div>
@@ -517,7 +517,7 @@
       links:[],
     },
     safer: {
-      ico:'🏥', title:'SAFER · 정신병동 환자 위치 데이터 시각화 및 분석',
+      ico:'🏥', title:'SAFER · 웨어러블 센서 기반 정신병동 환자 위험 예측',
       org:'서울대학교병원 · 동국대 · 용인대 협력 연구',
       contrib:'기여도 90%',
       badges:[{txt:'서울대병원',cls:'bdg-res'},{txt:'연구협력',cls:'bdg-res'}],
@@ -540,15 +540,47 @@
         {src:'images/safer/safer_slide_p16.png', cap:'p16 — 참고문헌'},
         {src:'images/safer/safer_slide_p17.png', cap:'p17 — 부록'},
       ],
-      desc:'정신병동 환자 BLE 위치 데이터 분석. Plotly + PIL 병동 도면 합성 애니메이션 시각화 자체 개발. BPRS·YMRS·MADRS·HAMA 임상척도 연동. 격리·강제처치(VE) 이벤트 타임라인 매핑. CRF 주별 상태변화 추적.',
+      desc:'서울대병원·동국대병원·용인정신·의정부을지대 4개 기관 다기관 연구. 웨어러블 센서 데이터로 급성기 정신병동 환자의 증상 악화 및 자타해 위험 예측 AI 알고리즘 개발.',
       highlights:[
-        '🗺️ Plotly + PIL 병동 도면 합성 애니메이션 시각화 (자체 개발)',
-        '📐 SNUH, DUMC 다기관 실제 환자 위치 데이터 처리',
-        '🧠 BPRS·YMRS·MADRS·HAMA 임상척도 연동 분석',
-        '⏱️ 격리(seclusion)·강제투약(VE) 이벤트 타임라인 매핑',
-        '📋 CRF 데이터 주별(1~4주) 상태변화 추적 분석',
+        '🏥 4개 기관 다기관 실제 환자 데이터 — CRF·센서·위치 3종 통합 파이프라인 구성',
+        '🗺️ BLE 위치 데이터 → 8개 공간 카테고리 매핑 및 환자 이동 동선 시계열 시뮬레이션 구현',
+        '🔍 기존 논문 재현 과정에서 data leakage 문제 발견 및 검증',
       ],
-      tags:['Python','Plotly Express','PIL','도면합성','BPRS/YMRS','MADRS/HAMA','Pandas','CRF분석'],
+      body:`<div class="proj-section">
+  <div class="proj-section-title">배경</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">급성기 정신병동에 입원한 중증 정신질환 환자들의 증상 악화 및 자타해 위험을 조기 예측하는 AI 알고리즘 개발을 목표로 한 다기관 협력 연구입니다. 서울대병원·동국대병원·용인정신병원·의정부을지대 4개 기관의 실제 환자 데이터를 활용했습니다.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">데이터 구성</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">CRF(임상기록), 센서(심박수·가속도), 위치(BLE) 3종 데이터 통합. 병원별 센서 배치와 제공 변수가 달라 기관별 매핑 작업 필요. 예측 과제는 BPRS·YMRS·MADRS·HAMA 4개 지표 회귀 예측(Regression)과 응급 이벤트 발생 여부 분류 예측(Classification) 두 가지로 정의.</p>
+  <img src="images/safer/safer_slide_p5.png" class="proj-figure" alt="데이터 구성">
+  <div class="proj-fig-cap">데이터 구성 및 특성 — CRF · 센서 · 위치 3종</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">데이터 분석 및 시각화</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">CRF 임상기록의 주별 상태변화 추적 및 응급 이벤트 타임라인 분석. 센서 데이터(심박수·가속도)는 시계열 전처리 및 패턴 시각화 수행. 위치 데이터는 위도·경도 raw 데이터를 Room·Hallway·Safety·Therapy 등 8개 공간 카테고리로 매핑하고, 환자 이동 동선을 시계열로 시뮬레이션.</p>
+  <video controls style="width:100%;border-radius:10px;margin:.7rem 0 .25rem;border:1px solid rgba(58,90,174,.1);">
+    <source src="images/safer/patient_simulation.mp4" type="video/mp4">
+  </video>
+  <div class="proj-fig-cap">환자 병동 내 이동 동선 시계열 시뮬레이션</div>
+  <img src="images/safer/safer_slide_p11.png" class="proj-figure" alt="공간 카테고리 매핑">
+  <div class="proj-fig-cap">위도·경도 → 8개 공간 카테고리 매핑 기준</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">전처리 파이프라인</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">TRAIT·STATE·SENSOR·LOCATION 다중 테이블을 키 기반으로 병합하고, 시계열 resampling(6s·30s → 1시간 집계) 후 Feature set 생성.</p>
+  <img src="images/safer/diagram1.jpg" class="proj-figure" alt="전처리 파이프라인 1">
+  <div class="proj-fig-cap">데이터 전처리 파이프라인 초기 설계 기준 ① (이후 구조 변경)</div>
+  <img src="images/safer/diagram2.jpg" class="proj-figure" alt="전처리 파이프라인 2">
+  <div class="proj-fig-cap">데이터 전처리 파이프라인 초기 설계 기준 ②</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">모델링 및 검증</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">Conv1d + GRU Hybrid 모델로 34개 변수 기반 4개 지표 예측. 기존 논문(R²=0.83) 재현 시도 과정에서 split 전 SoftImpute·MinMaxScaler fit으로 인한 data leakage 문제를 발견. 누수 제거 후 val R²=0.18로 하락, 재현 불가 확인.</p>
+  <img src="images/safer/safer_slide_p14.png" class="proj-figure" alt="Hybrid 모델">
+  <div class="proj-fig-cap">Conv1d + GRU Hybrid 모델 구조</div>
+</div>`,
+      tags:['Python','Plotly','PIL','Pandas','시계열전처리','BLE위치데이터','BPRS/YMRS','Conv1d+GRU'],
       links:[],
     },
     chatbot: {
