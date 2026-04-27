@@ -615,6 +615,11 @@
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">HyperCLOVA·GPT-3.5·4.0 검색형·생성형 모델 비교로 확장. 213명·1,466 대화, ISI·GAD-7·TEQ·PHQ-9 심리검사 사전·사후 측정으로 실질적 효과 검증. 모델별 비교 분석 및 통계 처리 코드 전담. KSC2024 학부생부문 장려상 수상.</p>
   <img src="images/chatbot/chatbot_poster2_p1.png" class="proj-figure" alt="논문 2 포스터">
   <div class="proj-fig-cap">논문 2 포스터 — 검색형·생성형 심리상담 챗봇 유용성 연구</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">결과</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;"><strong style="color:#3A5AAE;">[논문 1]</strong> GPT-4.0이 GPT-3.5 대비 사용자 만족도 유의미하게 높음 (Turn Level 총합 5.50 vs 5.18). LLM 자동 평가 점수도 동일한 방향으로 일치하여, LLM 기반 자동 평가의 유효성 입증.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.7rem;"><strong style="color:#3A5AAE;">[논문 2]</strong> 생성형 모델(GPT-4.0)이 검색형(HyperCLOVA) 대비 Session Level 만족도 높음 (6.74 vs 5.45). ISI(불면증)·GAD-7(불안)·PHQ-9(우울) 심리검사 사전·사후 비교에서 세 지표 모두 사후 점수 감소 — 챗봇 상담의 실질적 심리 개선 효과 확인.</p>
 </div>`,
       tags:['Python','GPT-4.0','GPT-3.5','HyperCLOVA','ISI','GAD-7','PHQ-9','통계분석','LLM평가'],
       links:[],
@@ -659,13 +664,45 @@
         {src:'images/lifecare/lc_p32.png', cap:'p32'},
         {src:'images/lifecare/lc_p33.png', cap:'p33'},
       ],
-      desc:'장내 마이크로바이옴 데이터로 전임상 알츠하이머 초기진단 가능성 탐색. R 탐색적 분석 → Python Random Forest 모델 구축. Feature Importance 기반 바이오마커 탐색.',
+      desc:'장내 미생물 시퀀싱 데이터로 전임상 알츠하이머 초기 진단 가능성을 탐색한 수업 프로젝트. R + Python 이원화 파이프라인.',
       highlights:[
-        '🔬 장내미생물 다양성 지표 + 종별 풍부도 특성 분석',
-        '🌲 R 탐색적 분석 → Python Random Forest 이원화 파이프라인',
-        '📊 특성 중요도(Feature Importance) 기반 바이오마커 탐색',
+        '🧬 총 164명 장내 미생물 시퀀싱 데이터 — 전임상 AD 49명 vs 대조군 115명',
+        '🔬 R(EDA·다양성 분석) + Python(모델링) 이원화 파이프라인 구성',
+        '🌲 변수 선택 · KNNImputer 결측치 처리 · Random Forest — taxa 포함 여부별 성능 비교',
       ],
-      tags:['R','Python','Random Forest','Scikit-learn','마이크로바이옴','의생명데이터'],
+      body:`<div class="proj-section">
+  <div class="proj-section-title">배경</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">알츠하이머병(AD) 환자에서 장내 미생물 군집 불균형이 관찰된다는 기존 연구를 바탕으로, 장내 미생물 데이터만으로 전임상 AD를 조기 진단할 수 있는지 탐색한 수업 프로젝트입니다. 아밀로이드 베타·타우 단백질 같은 병리학적 바이오마커와 장내 미생물 변화의 연관성에 주목했습니다.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">데이터</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">총 164명(전임상 AD 49명, 대조군 115명), 연령 68~94세. 평균 2,150만 리드 깊이로 장내 미생물 시퀀싱 진행. R로 탐색적 분석(EDA), Python으로 모델링하는 이원화 파이프라인 구성.</p>
+  <img src="images/lifecare/lc_p9.png" class="proj-figure" alt="데이터 소개">
+  <div class="proj-fig-cap">데이터 구성 — 전임상 AD 49명 vs 대조군 115명</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">탐색적 분석</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">Beta Diversity PCoA 분석으로 AD 환자군과 대조군 간 장내 미생물 군집 구조 비교. 군집 간 분포가 약간 구분되는 양상이 확인되어 장내 미생물과 전임상 AD 상태 간 연관 가능성 제시.</p>
+  <img src="images/lifecare/lc_p14.png" class="proj-figure" alt="Beta Diversity PCoA">
+  <div class="proj-fig-cap">Beta Diversity PCoA 분석 결과 — AD vs 대조군 군집 분포</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">모델링</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">변수 선택 → KNNImputer(주변 5개 값 평균)로 결측치 처리 → Random Forest 모델 구축. ALL·ALL-A·CC+G·CC 4가지 변수 조합 설정, 장내 미생물 taxa 변수 포함 여부(Base vs WithTaxa)에 따른 Accuracy·Sensitivity·Specificity 비교.</p>
+  <img src="images/lifecare/lc_p25.png" class="proj-figure" alt="결측치 처리">
+  <div class="proj-fig-cap">KNNImputer 결측치 처리 과정</div>
+  <img src="images/lifecare/lc_p26.png" class="proj-figure" alt="모델 구성">
+  <div class="proj-fig-cap">모델 구성 — ALL / ALL-A / CC+G / CC 4가지 변수 조합 (Boruta 변수 선택 포함)</div>
+  <img src="images/lifecare/lc_p28.png" class="proj-figure" alt="모델 결과">
+  <div class="proj-fig-cap">Base vs WithTaxa 모델 성능 비교 (Accuracy · Sensitivity · Specificity)</div>
+  <img src="images/lifecare/lc_p29.png" class="proj-figure" alt="모델 성능 수치">
+  <div class="proj-fig-cap">변수 조합별 성능 수치 — ALL 모델 Accuracy 0.908, Specificity 0.999 최고 성능</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">결론</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">전임상 AD 환자군과 대조군의 장내 미생물 조성이 구별되며, 아밀로이드 베타(Aβ)·타우 단백질 등 초기 병리학적 바이오마커와의 상관관계 확인. 장내 미생물 데이터 기반 Random Forest 모델이 전임상 AD 예측의 정확도·특이도를 향상시킬 수 있음을 증명. 장내 미생물군이 조기 AD 진단을 위한 바이오마커로서의 잠재력을 가짐을 시사.</p>
+</div>`,
+      tags:['R','Python','Random Forest','Scikit-learn','KNNImputer','마이크로바이옴','의생명데이터'],
       links:[],
     },
     bigdata: {
@@ -768,6 +805,29 @@
         '🔗 subject_id · hadm_id · stay_id 3중 키 기반 다중 테이블 조인',
         '📈 혈압·심박수·체온 등 Vitalsign 시계열 전처리 및 결측치 보간',
       ],
+      body:`
+<div class="proj-section">
+  <div class="proj-section-title">배경</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">가톨릭대학병원과 협력하여 중환자실(ICU) 환자의 생체 신호로 섬망을 조기 예측하는 연구에 참여했습니다. 공개 임상 데이터셋 MIMIC-IV를 기반으로 섬망 예측에 필요한 변수를 추출·가공하는 전처리 파이프라인 구축을 담당했습니다.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">ICD 코드 분류</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">MIMIC-IV의 diagnoses_icd 테이블에서 ICD-9·ICD-10 두 버전을 동시에 유지하며 치매·심장질환·간질환·신부전·뇌졸중·COPD 6개 합병증 코드를 도메인 지식 기반으로 직접 분류. 각 환자(subject_id·hadm_id·stay_id)별 질병 유무를 True/False 플래그로 변환한 sub_diagnose.csv 생성.</p>
+  <img src="images/delirium/delirium_slide_p13.png" class="proj-figure" alt="diagnoses_icd 통합">
+  <div class="proj-fig-cap">6개 합병증 ICD 코드 통합 결과 — 질병 유무 True/False 플래그화</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">다중 테이블 통합</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">subject_id·hadm_id·stay_id 3중 키를 기준으로 Vitalsign 시계열 테이블과 질병 플래그 테이블을 병합. 총 4,058,311행, 결측치 0으로 통합 완료.</p>
+  <img src="images/delirium/delirium_slide_p19.png" class="proj-figure" alt="다중 테이블 통합">
+  <div class="proj-fig-cap">sub_vitalsign + sub_diagnose 통합 결과 (4,058,311행 × 9컬럼)</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">Catheter 데이터 처리</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">카테터 테이블 병합 시 동일 starttime에 itemid가 여러 개 존재하는 구조 문제 발생. list로 묶어 dictionary 형태로 저장하는 방식으로 해결, 4,058,311행 중 1,022,167건 카테터 데이터 매칭.</p>
+  <img src="images/delirium/delirium_slide_p23.png" class="proj-figure" alt="Catheter 처리">
+  <div class="proj-fig-cap">starttime 충돌 문제 → dictionary 형태로 catheter 변수 저장</div>
+</div>`,
       tags:['Python','MIMIC-IV','시계열전처리','Pandas','임상데이터'],
       links:[],
     },
@@ -801,6 +861,19 @@
         '🤝 코치 관계 · 자율성 지지 · 심리적 욕구 · 웰빙 구조 분석',
         '📊 설문 데이터 전처리, 탐색적 요인분석(EFA), 기술통계 분석 담당',
       ],
+      body:`
+<div class="proj-section">
+  <div class="proj-section-title">배경</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">연구실에서 진행한 교양체육 관련 스포츠심리 설문 데이터 분석 프로젝트입니다. 성취목표척도 개발·타당화, 자율성지지·운동행동·심리적욕구 구조 분석, 코치관계·심리적웰빙 상관 분석 등 3종 설문지·4종 엑셀 데이터(최대 712명)를 수집·정제·분석했습니다.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">상관관계 분석</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">성취목표·참여동기·주관적안녕감·생활기술·흥미 5개 변수 간 상관관계 분석. 5개 변수 모두 서로 유의미한 상관 확인. 자율성지지·운동행동·심리적욕구 설문에서는 자율성지지와 심리적욕구 간 강한 상관, 운동행동은 두 변수 모두와 상관이 낮은 것으로 분석. 코치관계 설문에서는 심리적욕구–코치선수관계(r=0.53), 심리적욕구–심리적웰빙(r=0.44) 강한 상관 확인.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">k-means 클러스터링</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">자율성지지·운동행동·심리적욕구 기반 k-means(k=3) 군집 분류. Cluster 1은 자율성지지(4.45)·심리적욕구(4.86)가 가장 높으나 운동행동(1.07)은 최저 — 경력이 가장 높고 학년이 가장 낮은 그룹으로, 어린 나이부터 스포츠를 시작할수록 자율성 지지와 심리적 욕구에 긍정적 영향을 미쳤을 가능성 제시.</p>
+</div>`,
       tags:['Python','R','설문분석','요인분석','스포츠심리','통계분석'],
       links:[],
     },
