@@ -195,7 +195,7 @@
       <div class="badge">📊 Data Science &nbsp;·&nbsp; Medical & Environmental Analysis &nbsp;·&nbsp; Research Developer</div>
       <h1 class="name">김소정</h1>
       <p class="role">Data Scientist &amp; Research Developer &nbsp;·&nbsp; 수원대학교 데이터과학부</p>
-      <p class="tagline">의료·환경·자연어 데이터로 복잡한 현상을 읽어냅니다</p>
+      <p class="tagline">의료·환경·센서 데이터로 복잡한 현상을 읽어냅니다</p>
       <div style="display:flex;gap:2rem;margin-top:1.4rem;">
         <div><div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#3A5AAE;">3편</div><div style="font-size:.75rem;color:var(--muted);margin-top:.1rem;">논문 발표</div></div>
         <div><div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:#3A5AAE;">4회</div><div style="font-size:.75rem;color:var(--muted);margin-top:.1rem;">수상 이력</div></div>
@@ -230,48 +230,31 @@
   <p class="sec-sub">시계열 분석, 의료 데이터, 딥러닝 등 다양한 분야의 데이터 프로젝트를 수행했습니다.</p>
 
   <div class="feat-wrap fade">
-    <!-- FEATURED: Dam Analysis -->
-    <div id="card-dam" class="card card-full" onclick="openProj('dam')" style="cursor:pointer">
+    <!-- SAFER -->
+    <div id="card-safer" class="card card-full" onclick="openProj('safer')" style="cursor:pointer">
       <div>
-        <div class="p-ico">🌊</div>
-        <div class="p-badges"><span class="bdg bdg-new">● NEW</span><span class="bdg bdg-res">시계열</span></div>
-        <div class="p-title">한국 다목적댐 수문운영 분석</div>
-        <div class="p-org">한국수자원공사 공개 데이터 · 2024</div>
-        <div class="p-contrib">단독 진행</div>
-        <div class="p-desc">K-water 9개 다목적댐 2024년 79,056건 시계열 데이터 분석. 저수율 위기 구간 자동 탐지. 연간 트렌드·계절성 시각화. Folium 인터랙티브 지도 매핑.</div>
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">GeoPandas</span><span class="tag">Matplotlib</span><span class="tag">Pandas</span><span class="tag">시계열분석</span><span class="tag">GIS시각화</span>
-        </div>
-        <div class="p-links">
-          <a href="https://github.com/sizi00/korea_dam_hydro_analysis" target="_blank" class="p-link">⬡ GitHub</a>
-        </div>
+        <div class="p-ico">🏥</div>
+        <div class="p-badges"><span class="bdg bdg-res">서울대병원</span><span class="bdg bdg-res">연구실</span></div>
+        <div class="p-title">SAFER · 웨어러블 센서 기반 정신병동 환자 위험 예측</div>
+        <div class="p-org">서울대학교병원 · 동국대 · 용인대 협력 연구</div>
+        <div class="p-contrib">기여도 90%</div>
+        <div class="p-desc">서울대병원·동국대병원·용인대 정신병동 환자 BLE 위치 데이터 분석. Plotly + PIL 병동 도면 합성 애니메이션 자체 개발. BPRS·YMRS·MADRS·HAMA 임상척도 연동. 격리·강제처치 이벤트 타임라인 매핑.</div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Plotly Express</span><span class="tag">PIL</span><span class="tag">도면합성</span><span class="tag">BPRS/YMRS</span><span class="tag">임상데이터</span><span class="tag">Pandas</span></div>
       </div>
       <div class="vis">
-        <div class="vis-title">연평균 저수율 by 댐 (2024 실측치)</div>
-        <div class="bar-row"><span class="bar-lbl">안동</span><div class="bar-bg"><div class="bar-fill" style="width:72.9%"></div></div><span style="font-size:.68rem;color:var(--muted)">72.9%</span></div>
-        <div class="bar-row"><span class="bar-lbl">용담</span><div class="bar-bg"><div class="bar-fill" style="width:70.2%;animation-delay:.08s"></div></div><span style="font-size:.68rem;color:var(--muted)">70.2%</span></div>
-        <div class="bar-row"><span class="bar-lbl">소양강</span><div class="bar-bg"><div class="bar-fill" style="width:69.6%;animation-delay:.16s"></div></div><span style="font-size:.68rem;color:var(--muted)">69.6%</span></div>
-        <div class="bar-row"><span class="bar-lbl">합천</span><div class="bar-bg"><div class="bar-fill" style="width:68.6%;animation-delay:.24s"></div></div><span style="font-size:.68rem;color:var(--muted)">68.6%</span></div>
-        <div class="bar-row"><span class="bar-lbl">대청</span><div class="bar-bg"><div class="bar-fill" style="width:68.4%;animation-delay:.32s"></div></div><span style="font-size:.68rem;color:var(--muted)">68.4%</span></div>
-        <div class="bar-row"><span class="bar-lbl">충주</span><div class="bar-bg"><div class="bar-fill" style="width:61.1%;animation-delay:.4s"></div></div><span style="font-size:.68rem;color:var(--muted)">61.1%</span></div>
-        <div class="bar-row"><span class="bar-lbl">남강</span><div class="bar-bg"><div class="bar-fill" style="width:51.4%;animation-delay:.48s"></div></div><span style="font-size:.68rem;color:var(--muted)">51.4%</span></div>
+        <div class="vis-title">연구 데이터 규모</div>
+        <div class="bar-row"><span class="bar-lbl">위치 데이터</span><div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div><span style="font-size:.68rem;color:var(--muted)">28M+ 행</span></div>
+        <div class="bar-row"><span class="bar-lbl">센서 데이터</span><div class="bar-bg"><div class="bar-fill" style="width:100%;animation-delay:.08s"></div></div><span style="font-size:.68rem;color:var(--muted)">80M+ 행</span></div>
+        <div class="bar-row"><span class="bar-lbl">참여 환자</span><div class="bar-bg"><div class="bar-fill" style="width:62%;animation-delay:.16s"></div></div><span style="font-size:.68rem;color:var(--muted)">100명+</span></div>
+        <div class="bar-row"><span class="bar-lbl">협력 병원</span><div class="bar-bg"><div class="bar-fill" style="width:18%;animation-delay:.24s"></div></div><span style="font-size:.68rem;color:var(--muted)">3개소</span></div>
         <div style="border-top:1px solid var(--border);margin-top:1rem;padding-top:.9rem">
-          <div class="vis-title">월별 평균 유입량 (CMS, 개념도)</div>
-          <div class="mini-chart">
-            <div class="mc-bar" style="height:28%"></div>
-            <div class="mc-bar" style="height:24%"></div>
-            <div class="mc-bar" style="height:32%"></div>
-            <div class="mc-bar" style="height:42%"></div>
-            <div class="mc-bar" style="height:52%"></div>
-            <div class="mc-bar" style="height:62%"></div>
-            <div class="mc-bar peak" style="height:100%"></div>
-            <div class="mc-bar peak" style="height:92%"></div>
-            <div class="mc-bar" style="height:48%"></div>
-            <div class="mc-bar" style="height:33%"></div>
-            <div class="mc-bar" style="height:24%"></div>
-            <div class="mc-bar" style="height:20%"></div>
+          <div class="vis-title">수집 데이터 종류</div>
+          <div style="display:flex;flex-direction:column;gap:.5rem;font-size:.78rem;color:var(--fg)">
+            <div style="display:flex;align-items:center;gap:.5rem"><span style="color:var(--c1)">●</span><span>BLE 실내 위치 추적 (병동 도면 오버레이)</span></div>
+            <div style="display:flex;align-items:center;gap:.5rem"><span style="color:var(--c1)">●</span><span>웨어러블 센서 (심박수 · 3축 가속도)</span></div>
+            <div style="display:flex;align-items:center;gap:.5rem"><span style="color:var(--c1)">●</span><span>임상척도 주간평가 (BPRS·YMRS·MADRS·HAMA)</span></div>
+            <div style="display:flex;align-items:center;gap:.5rem"><span style="color:var(--c1)">●</span><span>격리·강제처치(CBI) 이벤트 타임라인</span></div>
           </div>
-          <div class="mc-labels"><span>1월</span><span>4월</span><span style="color:#a78bfa">7↑장마</span><span>10월</span><span>12월</span></div>
         </div>
       </div>
     </div>
@@ -281,30 +264,30 @@
       <div class="p-ico">💨</div>
       <div class="p-badges"><span class="bdg bdg-award">🏅 장려상</span><span class="bdg bdg-award">🏆 우수상</span></div>
       <div class="p-title">풍력발전량 예측 분석</div>
-      <div class="p-org">풍력발전량 예측 공모전 · 교내 AI빅데이터 경진대회</div>
-      <div class="p-contrib">기여도 50% · 데이터 수집·정제·가공 담당</div>
+      <div class="p-org" style="font-size:.75rem;color:var(--c1)">2025 · 풍력발전량 예측 공모전 · 교내 AI빅데이터 경진대회</div>
+      <div class="p-contrib">기여도 60% · 데이터 수집·정제·가공 담당</div>
       <div class="p-desc">LDAPS 기상 예측 데이터와 SCADA 발전 데이터를 분석하여 풍력발전량을 예측합니다. 공모전 장려상 수상 후 포스터로 발전, 교내 경진대회에서 우수상 추가 수상.</div>
       <div class="tags"><span class="tag">Python</span><span class="tag">LDAPS</span><span class="tag">SCADA</span><span class="tag">시계열</span><span class="tag">예측모델</span><span class="tag">기상데이터</span></div>
     </div>
 
-    <!-- SAFER -->
-    <div id="card-safer" class="card fade" onclick="openProj('safer')" style="cursor:pointer">
-      <div class="p-ico">🏥</div>
-      <div class="p-badges"><span class="bdg bdg-res">서울대병원</span></div>
-      <div class="p-title">SAFER · 웨어러블 센서 기반 정신병동 환자 위험 예측</div>
-      <div class="p-org">서울대학교병원 · 동국대 · 용인대 협력 연구</div>
-      <div class="p-contrib">기여도 90%</div>
-      <div class="p-desc">서울대병원·동국대병원·용인대 정신병동 환자 BLE 위치 데이터 분석. Plotly + PIL 병동 도면 합성 애니메이션 자체 개발. BPRS·YMRS·MADRS·HAMA 임상척도 연동. 격리·강제처치 이벤트 타임라인 매핑.</div>
-      <div class="tags"><span class="tag">Python</span><span class="tag">Plotly Express</span><span class="tag">PIL</span><span class="tag">도면합성</span><span class="tag">BPRS/YMRS</span><span class="tag">임상데이터</span><span class="tag">Pandas</span></div>
+    <!-- Chatbot -->
+    <div id="card-chatbot" class="card fade" onclick="openProj('chatbot')" style="cursor:pointer">
+      <div class="p-ico">🤖</div>
+      <div class="p-badges"><span class="bdg bdg-award">🏅 KCC 장려상</span><span class="bdg bdg-award">🏅 KSC 장려상</span></div>
+      <div class="p-title">심리상담챗봇 효과 분석</div>
+      <div class="p-org">한국정보과학회 KCC2024 · KSC2024 장려상 ×2</div>
+      <div class="p-contrib">기여도 70% · 데이터 분석 코드 전담</div>
+      <div class="p-desc">GPT-3.5·4.0·HyperCLOVA 심리상담 챗봇 대화·설문 데이터 분석. 293명 참가자, ISI·GAD-7·TEQ·PHQ-9 심리검사 사전·사후 효과 측정. LLM 자동 평가 코드 구현 및 Turn/Session Level 분석 전담.</div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">GPT-4.0</span><span class="tag">HyperCLOVA</span><span class="tag">심리검사분석</span></div>
     </div>
   </div>
 
   <!-- Small projects -->
   <h3 style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:600;color:var(--muted);margin:2.5rem 0 1.2rem">기타 프로젝트</h3>
   <div class="sm-grid fade">
-    <div id="sm-chatbot" class="sm-card" onclick="openProj('chatbot')" style="cursor:pointer"><div class="sm-ico">🤖</div><div class="sm-title">심리상담챗봇 효과 분석</div><div class="sm-org">한국정보과학회 KCC2024 · KSC2024 장려상 ×2</div><div class="sm-contrib">기여도 70% · 데이터 분석 코드 전담</div><div class="sm-desc">GPT-3.5·4.0·HyperCLOVA 심리상담 챗봇 대화·설문 데이터 분석. 293명 참가자, ISI·GAD-7·TEQ·PHQ-9 심리검사 사전·사후 효과 측정. LLM 자동 평가 코드 구현 및 Turn/Session Level 분석 전담.</div><div class="tags"><span class="tag">Python</span><span class="tag">GPT-4.0</span><span class="tag">HyperCLOVA</span><span class="tag">심리검사분석</span></div></div>
-
     <div id="sm-lifecare" class="sm-card" onclick="openProj('lifecare')" style="cursor:pointer"><div class="sm-ico">🧬</div><div class="sm-title">장내미생물 기반 알츠하이머 초기진단</div><div class="sm-org">수업 프로젝트 · R + Python (Random Forest)</div><div class="sm-contrib">기여도 90%</div><div class="sm-desc">장내 마이크로바이옴 데이터를 활용해 전임상 알츠하이머 초기진단 가능성 탐색. R로 탐색적 분석 후 Python Random Forest 모델 구축. 의생명 도메인 집중 학습 병행.</div><div class="tags"><span class="tag">R</span><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">마이크로바이옴</span></div></div>
+
+    <div id="sm-dam" class="sm-card" onclick="openProj('dam')" style="cursor:pointer"><div class="sm-ico">🌊</div><div class="sm-title">한국 다목적댐 수문운영 분석</div><div class="sm-org">한국수자원공사 공개 데이터 · 2024</div><div class="sm-contrib">단독 진행</div><div class="sm-desc">K-water 9개 다목적댐 2024년 79,056건 시계열 데이터 분석. 저수율 위기 구간 자동 탐지. Folium 인터랙티브 지도 매핑.</div><div class="tags"><span class="tag">Python</span><span class="tag">GeoPandas</span><span class="tag">Matplotlib</span><span class="tag">시계열분석</span></div></div>
 
     <!-- 임시 비활성화: 반려동물 장소 검색 플랫폼
     <div id="sm-bigdata" class="sm-card" onclick="openProj('bigdata')" style="cursor:pointer"><div class="sm-ico">🐾</div><div class="sm-title">LLM 기반 반려동물 장소 검색 플랫폼</div><div class="sm-org">수업 프로젝트 · Make + Python</div><div class="sm-desc">자동화 툴 Make, Python, Text-to-SQL을 파이프라인으로 연결한 반려동물 동반 가능 장소 검색 서비스. SQL 정확도 테스트 및 프롬프트 데이터베이스 최적화 수행.</div><div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Text-to-SQL</span><span class="tag">Make자동화</span></div></div>
@@ -458,7 +441,7 @@
     wind: {
       ico:'💨', title:'기상터빈 데이터 융합 기반 풍력 발전량 예측 고도화',
       org:'풍력발전량 예측 공모전 · 교내 AI빅데이터 경진대회',
-      contrib:'기여도 50% · 데이터 수집·정제·가공 담당',
+      contrib:'기여도 60% · 데이터 수집·정제·가공 담당',
       badges:[{txt:'🏅 공모전 장려상',cls:'bdg-award'},{txt:'🏆 우수상',cls:'bdg-award'}],
       images:[
         {src:'images/wind/wind_paper_p1.png', cap:'논문 — 기상터빈 데이터 융합 기반 풍력 발전량 예측 고도화'},
@@ -512,6 +495,10 @@
   <div class="proj-fig-cap">단지별 모델링 접근 전략</div>
   <img src="images/wind/wind_ppt_p13.png" class="proj-figure" alt="최종 파이프라인">
   <div class="proj-fig-cap">최종 예측 파이프라인 (경주 · 양양 · 영덕)</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">연구 포스터</div>
+  <img src="images/wind/wind_paper_p1.png" class="proj-figure" alt="풍력발전량 예측 연구 포스터">
 </div>`,
       tags:['Python','LDAPS','SCADA','LSTM','HGBR','시계열','예측모델','기상데이터'],
       links:[],
@@ -552,23 +539,59 @@
 </div>
 <div class="proj-section">
   <div class="proj-section-title">데이터 구성</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">CRF(임상기록), 센서(심박수·가속도), 위치(BLE) 3종 데이터 통합. 병원별 센서 배치와 제공 변수가 달라 기관별 매핑 작업 필요. 예측 과제는 BPRS·YMRS·MADRS·HAMA 4개 지표 회귀 예측(Regression)과 응급 이벤트 발생 여부 분류 예측(Classification) 두 가지로 정의.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">서울대병원(SNUH)·동국대일산병원(DUMC)·용인정신병원(YMH) 3개 기관에서 수집된 CRF 임상기록, 웨어러블 센서, BLE 실내 위치 추적 3종 데이터를 통합했습니다.</p>
+
+  <div style="margin:1rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📋 CRF — 초기평가 (trait) · 280 × 50</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">인구통계(나이·성별·학력·직업·종교), 과거력(정신과 입원 횟수·약물 순응도), 자해·범죄 이력 포함. 정신건강 평가 도구: <b>C-SSRS</b>(자살생각·행동), <b>HCR-20</b>(자타해 위험도), <b>CTQ</b>(아동기 트라우마), <b>BIS</b>(충동성), <b>ASRS</b>(ADHD), <b>AUDIT</b>(알코올). 최종진단은 조현스펙트럼·우울삽화·조증삽화 3분류 및 정신증 동반 여부로 구분.</p>
+  </div>
+
+  <div style="margin:1rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📋 CRF — 주간·응급평가 (state) · 1,085 × 31</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">초기·주간(최대 12주)·응급 평가 기록. 현재 투약 정보(항정신병제·항우울제·기분조절제·진정수면제·Clozapine), 응급처치 종류(주사·격리·강박) 및 시각 포함. 주간 증상 척도: <b>BPRS</b>(정신병), <b>YMRS</b>(조증), <b>MADRS</b>(우울), <b>HAMA</b>(불안). 응급 이벤트(CBI) 총 77건 · 37명 환자.</p>
+  </div>
+
+  <div style="margin:1rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">⌚ 웨어러블 센서 데이터 · 79,595,108 × 14</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">스마트워치 6초 주기 생체신호 수집. 측정 항목: 심박수(0–253 bpm), 3축 가속도(X·Y·Z), 칼로리, 이동거리, 수면지수, 걸음수. 기관별: DUMC 9.7M · SNUH 30.3M · YMH 39.6M. 용인정신병원은 수면지수 측정 미지원.</p>
+  </div>
+
+  <div style="margin:1rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📍 BLE 실내 위치 데이터 · 27,035,394 × 7</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">BLE 태그 기반 실내 위치 추적 (위도·경도·시각). 기관별: DUMC 2.1M · SNUH 7.7M · YMH 17.2M. 기관별 스캐너 메타데이터(24–51개)와 병합해 병동 내 공간(환자실·복도·보호실·상담실 등)으로 매핑.</p>
+  </div>
+
   <img src="images/safer/safer_slide_p5.png" class="proj-figure" alt="데이터 구성">
   <div class="proj-fig-cap">데이터 구성 및 특성 — CRF · 센서 · 위치 3종</div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">데이터 분석 및 시각화</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">CRF 임상기록의 주별 상태변화 추적 및 응급 이벤트 타임라인 분석. 센서 데이터(심박수·가속도)는 시계열 전처리 및 패턴 시각화 수행. 위치 데이터는 위도·경도 raw 데이터를 Room·Hallway·Safety·Therapy 등 8개 공간 카테고리로 매핑하고, 환자 이동 동선을 시계열로 시뮬레이션.</p>
+
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📋 CRF 분석</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">state 테이블을 주간평가(1,007건)와 응급이벤트(77건)로 분리. 환자별 결측치 분포 파악 후, BPRS·YMRS·MADRS·HAMA 4개 척도 점수를 시간축에 시각화. 응급처치 유형(주사·격리·강박)을 각각 다른 색상·선으로 구분해 증상 변화와 함께 표시. 이중 x축으로 주간평가와 응급이벤트를 동일 그래프에 표현.</p>
+  </div>
+
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📍 위치 데이터 분석</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">3개 기관 위치 데이터 통합 및 품질 검증. 기관별 스캐너 메타데이터와 병합해 병동 내 공간 카테고리화. Plotly 기반 환자 이동 동선 인터랙티브 애니메이션 구현. PIL로 병동 도면 이미지를 오버레이(회전·투명도 조정)해 실제 병동 구조와 이동 경로를 함께 시각화.</p>
+  </div>
+
   <video controls style="width:100%;border-radius:10px;margin:.7rem 0 .25rem;border:1px solid rgba(58,90,174,.1);">
     <source src="images/safer/patient_simulation.mp4" type="video/mp4">
   </video>
   <div class="proj-fig-cap">환자 병동 내 이동 동선 시계열 시뮬레이션</div>
-  <img src="images/safer/safer_slide_p11.png" class="proj-figure" alt="공간 카테고리 매핑">
-  <div class="proj-fig-cap">위도·경도 → 8개 공간 카테고리 매핑 기준</div>
+
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">⌚ 센서 데이터 분석</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">심박수=0 비율을 기반으로 환자별 착용 순응도 파악. STEP 이상치(65535, 센서 오버플로우) 탐지 및 처리. 시간대별 활동 패턴 시각화로 수면·활동 주기 확인. CBI 응급이벤트 발생 시점을 심박수·가속도 시계열에 오버레이해 처치 전후 생체신호 변화 추적.</p>
+  </div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">전처리 파이프라인</div>
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">TRAIT·STATE·SENSOR·LOCATION 다중 테이블을 키 기반으로 병합하고, 시계열 resampling(6s·30s → 1시간 집계) 후 Feature set 생성.</p>
+  <img src="images/safer/safer_slide_p11.png" class="proj-figure" alt="공간 카테고리 매핑">
+  <div class="proj-fig-cap">위도·경도 → 8개 공간 카테고리 매핑 기준</div>
   <img src="images/safer/diagram1.jpg" class="proj-figure" alt="전처리 파이프라인 1">
   <div class="proj-fig-cap">데이터 전처리 파이프라인 초기 설계 기준 ① (이후 구조 변경)</div>
   <img src="images/safer/diagram2.jpg" class="proj-figure" alt="전처리 파이프라인 2">
@@ -579,6 +602,9 @@
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">Conv1d + GRU Hybrid 모델로 34개 변수 기반 4개 지표 예측. 기존 논문(R²=0.83) 재현 시도 과정에서 split 전 SoftImpute·MinMaxScaler fit으로 인한 data leakage 문제를 발견. 누수 제거 후 val R²=0.18로 하락, 재현 불가 확인.</p>
   <img src="images/safer/safer_slide_p14.png" class="proj-figure" alt="Hybrid 모델">
   <div class="proj-fig-cap">Conv1d + GRU Hybrid 모델 구조</div>
+</div>
+<div style="font-size:.82rem;color:#64748B;padding:.7rem 1rem;border:1px solid rgba(58,90,174,.15);border-radius:.5rem;background:rgba(58,90,174,.04);margin-top:1rem;">
+  ※ 본 연구의 코드는 현재 비공개로 관리되고 있습니다. 열람을 원하시면 이메일로 GitHub 계정을 보내주시면 접근 권한을 드리겠습니다.
 </div>`,
       tags:['Python','Plotly','PIL','Pandas','시계열전처리','BLE위치데이터','BPRS/YMRS','Conv1d+GRU'],
       links:[],
@@ -973,8 +999,8 @@
 
   // ── Attach click listeners ──
   const cardMap = {
-    'card-dam':'dam','card-wind':'wind','card-safer':'safer',
-    'sm-chatbot':'chatbot','sm-lifecare':'lifecare','sm-bigdata':'bigdata',
+    'card-safer':'safer','card-chatbot':'chatbot','card-wind':'wind',
+    'sm-dam':'dam','sm-lifecare':'lifecare','sm-bigdata':'bigdata',
     'sm-mimic':'mimic','sm-noise':'noise','sm-delirium':'delirium',
     'sm-vision':'vision','sm-sport':'sport',
   };
