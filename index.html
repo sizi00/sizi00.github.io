@@ -242,20 +242,40 @@
         <div class="tags"><span class="tag">Python</span><span class="tag">Plotly Express</span><span class="tag">PIL</span><span class="tag">도면합성</span><span class="tag">BPRS/YMRS</span><span class="tag">임상데이터</span><span class="tag">Pandas</span></div>
       </div>
       <div class="vis">
-        <div class="vis-title">연구 데이터 규모</div>
-        <div class="bar-row"><span class="bar-lbl">위치 데이터</span><div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div><span style="font-size:.68rem;color:var(--muted)">28M+ 행</span></div>
-        <div class="bar-row"><span class="bar-lbl">센서 데이터</span><div class="bar-bg"><div class="bar-fill" style="width:100%;animation-delay:.08s"></div></div><span style="font-size:.68rem;color:var(--muted)">80M+ 행</span></div>
-        <div class="bar-row"><span class="bar-lbl">참여 환자</span><div class="bar-bg"><div class="bar-fill" style="width:62%;animation-delay:.16s"></div></div><span style="font-size:.68rem;color:var(--muted)">100명+</span></div>
-        <div class="bar-row"><span class="bar-lbl">협력 병원</span><div class="bar-bg"><div class="bar-fill" style="width:18%;animation-delay:.24s"></div></div><span style="font-size:.68rem;color:var(--muted)">3개소</span></div>
-        <div style="border-top:1px solid var(--border);margin-top:1rem;padding-top:.9rem">
-          <div class="vis-title">수집 데이터 종류</div>
-          <div style="display:flex;flex-direction:column;gap:.5rem;font-size:.78rem;color:var(--fg)">
-            <div style="display:flex;align-items:center;gap:.5rem"><span style="color:var(--c1)">●</span><span>BLE 실내 위치 추적 (병동 도면 오버레이)</span></div>
-            <div style="display:flex;align-items:center;gap:.5rem"><span style="color:var(--c1)">●</span><span>웨어러블 센서 (심박수 · 3축 가속도)</span></div>
-            <div style="display:flex;align-items:center;gap:.5rem"><span style="color:var(--c1)">●</span><span>임상척도 주간평가 (BPRS·YMRS·MADRS·HAMA)</span></div>
-            <div style="display:flex;align-items:center;gap:.5rem"><span style="color:var(--c1)">●</span><span>격리·강제처치(CBI) 이벤트 타임라인</span></div>
+        <div style="display:flex;justify-content:space-around;align-items:center;margin-bottom:.85rem">
+          <div style="text-align:center">
+            <div style="font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">3</div>
+            <div style="font-size:.61rem;color:var(--muted);margin-top:.1rem">개 기관</div>
+          </div>
+          <div style="width:1px;height:2rem;background:rgba(58,90,174,.15)"></div>
+          <div style="text-align:center">
+            <div style="font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">280</div>
+            <div style="font-size:.61rem;color:var(--muted);margin-top:.1rem">명 환자</div>
+          </div>
+          <div style="width:1px;height:2rem;background:rgba(58,90,174,.15)"></div>
+          <div style="text-align:center">
+            <div style="font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">77</div>
+            <div style="font-size:.61rem;color:var(--muted);margin-top:.1rem">건 CBI</div>
           </div>
         </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem">
+          <div style="text-align:center;padding:.6rem .2rem;border-radius:8px;background:rgba(255,255,255,.75);border:1px solid rgba(58,90,174,.13)">
+            <div style="font-size:1.1rem;margin-bottom:.25rem">📋</div>
+            <div style="font-size:.66rem;font-weight:700;color:var(--txt);margin-bottom:.15rem">임상척도</div>
+            <div style="font-size:.57rem;color:var(--muted);line-height:1.4">BPRS·YMRS</div>
+          </div>
+          <div style="text-align:center;padding:.6rem .2rem;border-radius:8px;background:rgba(255,255,255,.75);border:1px solid rgba(58,90,174,.13)">
+            <div style="font-size:1.1rem;margin-bottom:.25rem">⌚</div>
+            <div style="font-size:.66rem;font-weight:700;color:var(--txt);margin-bottom:.15rem">웨어러블</div>
+            <div style="font-size:.57rem;color:var(--muted);line-height:1.4">심박·가속도</div>
+          </div>
+          <div style="text-align:center;padding:.6rem .2rem;border-radius:8px;background:rgba(255,255,255,.75);border:1px solid rgba(58,90,174,.13)">
+            <div style="font-size:1.1rem;margin-bottom:.25rem">📍</div>
+            <div style="font-size:.66rem;font-weight:700;color:var(--txt);margin-bottom:.15rem">BLE 위치</div>
+            <div style="font-size:.57rem;color:var(--muted);line-height:1.4">실내 추적</div>
+          </div>
+        </div>
+        <img src="images/safer/eda_crf_scores_4_101-14KNJ.png" alt="환자 임상척도 시계열" style="width:100%;border-radius:8px;border:1px solid rgba(58,90,174,.12);margin-top:.75rem;display:block">
       </div>
     </div>
 
@@ -527,7 +547,7 @@
         {src:'images/safer/safer_slide_p16.png', cap:'p16 — 참고문헌'},
         {src:'images/safer/safer_slide_p17.png', cap:'p17 — 부록'},
       ],
-      desc:'서울대병원·동국대병원·용인정신·의정부을지대 4개 기관 다기관 연구. 웨어러블 센서 데이터로 급성기 정신병동 환자의 증상 악화 및 자타해 위험 예측 AI 알고리즘 개발.',
+      desc:'서울대병원·동국대병원·용인정신병원 3개 기관 다기관 연구. 웨어러블 센서 데이터로 급성기 정신병동 환자의 증상 악화 및 자타해 위험 예측 AI 알고리즘 개발.',
       highlights:[
         '🏥 4개 기관 다기관 실제 환자 데이터 — CRF·센서·위치 3종 통합 파이프라인 구성',
         '🗺️ BLE 위치 데이터 → 8개 공간 카테고리 매핑 및 환자 이동 동선 시계열 시뮬레이션 구현',
@@ -572,6 +592,26 @@
     <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">state 테이블을 주간평가(1,007건)와 응급이벤트(77건)로 분리. 환자별 결측치 분포 파악 후, BPRS·YMRS·MADRS·HAMA 4개 척도 점수를 시간축에 시각화. 응급처치 유형(주사·격리·강박)을 각각 다른 색상·선으로 구분해 증상 변화와 함께 표시. 이중 x축으로 주간평가와 응급이벤트를 동일 그래프에 표현.</p>
   </div>
 
+  <img src="images/safer/eda_crf_weekly_count.png" class="proj-figure" alt="주차별 평가 건수">
+  <div class="proj-fig-cap">주차별 평가 건수 — 1주차 231건에서 12주차 6건으로 자연 감소 (퇴원·탈락)</div>
+
+  <img src="images/safer/eda_crf_scores_4_101-14KNJ.png" class="proj-figure" alt="환자 척도 시계열 ①">
+  <div class="proj-fig-cap">환자 척도 시계열 ① — 주사 처치(빨간 점선) 이후 BPRS·YMRS 점수 뚜렷하게 감소</div>
+
+  <img src="images/safer/eda_crf_scores_5_102-128KYJ.png" class="proj-figure" alt="환자 척도 시계열 ②">
+  <div class="proj-fig-cap">환자 척도 시계열 ② — 입원 후반 MADRS 급등 후 CBI 이벤트 군집 발생, 재발 패턴 관찰</div>
+
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">⌚ 센서 데이터 분석</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">심박수=0 비율을 기반으로 환자별 착용 순응도 파악. STEP 이상치(65535, 센서 오버플로우) 탐지 및 처리. 시간대별 활동 패턴 시각화로 수면·활동 주기 확인. CBI 응급이벤트 발생 시점을 심박수·가속도 시계열에 오버레이해 처치 전후 생체신호 변화 추적.</p>
+  </div>
+
+  <img src="images/safer/eda_sensor_heartbeat_zero_ratio.png" class="proj-figure" alt="착용 순응도">
+  <div class="proj-fig-cap">환자별 워치 착용 순응도 — HEARTBEAT=0 비율 기준. 44명 중 8명(18%)이 절반 이상 미착용으로 데이터 품질 이슈 확인</div>
+
+  <img src="images/safer/eda_sensor_heartbeat_1_103-20YSB.png" class="proj-figure" alt="심박수 시계열 with CBI">
+  <div class="proj-fig-cap">환자 103-20YSB 심박수 시계열 — CBI 주사 처치(빨간 점선) 전후 심박수 패턴 변화 관찰</div>
+
   <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
     <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📍 위치 데이터 분석</div>
     <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">3개 기관 위치 데이터 통합 및 품질 검증. 기관별 스캐너 메타데이터와 병합해 병동 내 공간 카테고리화. Plotly 기반 환자 이동 동선 인터랙티브 애니메이션 구현. PIL로 병동 도면 이미지를 오버레이(회전·투명도 조정)해 실제 병동 구조와 이동 경로를 함께 시각화.</p>
@@ -581,11 +621,6 @@
     <source src="images/safer/patient_simulation.mp4" type="video/mp4">
   </video>
   <div class="proj-fig-cap">환자 병동 내 이동 동선 시계열 시뮬레이션</div>
-
-  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
-    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">⌚ 센서 데이터 분석</div>
-    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">심박수=0 비율을 기반으로 환자별 착용 순응도 파악. STEP 이상치(65535, 센서 오버플로우) 탐지 및 처리. 시간대별 활동 패턴 시각화로 수면·활동 주기 확인. CBI 응급이벤트 발생 시점을 심박수·가속도 시계열에 오버레이해 처치 전후 생체신호 변화 추적.</p>
-  </div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">전처리 파이프라인</div>
@@ -598,10 +633,21 @@
   <div class="proj-fig-cap">데이터 전처리 파이프라인 초기 설계 기준 ②</div>
 </div>
 <div class="proj-section">
-  <div class="proj-section-title">모델링 및 검증</div>
+  <div class="proj-section-title">기존 논문 코드 재현</div>
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">Conv1d + GRU Hybrid 모델로 34개 변수 기반 4개 지표 예측. 기존 논문(R²=0.83) 재현 시도 과정에서 split 전 SoftImpute·MinMaxScaler fit으로 인한 data leakage 문제를 발견. 누수 제거 후 val R²=0.18로 하락, 재현 불가 확인.</p>
   <img src="images/safer/safer_slide_p14.png" class="proj-figure" alt="Hybrid 모델">
   <div class="proj-fig-cap">Conv1d + GRU Hybrid 모델 구조</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">모델 재설계 및 실험</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">data leakage 제거 이후 기존 아키텍처의 구조적 문제를 파악하고 모델을 재설계했습니다. 기존 모델은 정형 데이터(trait, weekly)와 시계열 데이터를 하나의 X로 통합해 trait 변수가 시간축마다 반복되는 비효율 구조였습니다. 이를 <strong>X_tab(정형, MLP)</strong>과 <strong>X_seq(시계열, GRU/LSTM)</strong>으로 분리하고 멀티모달 fusion 방식(concat, late fusion, cross-attention 등)을 검토했습니다.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.75rem;">학습 과정에서 train/val 간 target 평균 분포 차이가 큰 것을 발견했습니다. 가설 3개를 세우고 체계적으로 검증한 결과, 환자 간 baseline 점수 차이가 주요 원인임을 확인했습니다.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.75rem;">학습 과정에서 train/val 간 target 평균 분포 차이가 큰 것을 발견했습니다. 가설 3개를 세우고 체계적으로 검증한 결과, 환자 간 baseline 점수 차이가 주요 원인임을 확인했습니다.</p>
+  <img src="images/safer/slide_1217_p2.png" class="proj-figure" alt="가설 검증">
+  <div class="proj-fig-cap">가설 검증 — 데이터셋 정렬 / split type / target 분포 차이 순차 검증. 환자 간 baseline 점수 차이가 주요 원인으로 확인</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.75rem;">delta target 재정의, 환자별 정규화 등을 시도했으나 성능 저하. 최종적으로 <strong>입원 초기 임상척도값 4개를 feature에 추가</strong>하여 val R² 평균 약 +0.4 향상을 달성했습니다. 환자별 baseline 정보가 예측에 핵심 역할을 한다는 점을 확인했으며, 제한된 데이터 규모(280명)에서의 inductive bias 설계의 중요성을 인식했습니다.</p>
+  <img src="images/safer/slide_1217_p5.png" class="proj-figure" alt="실험 결과">
+  <div class="proj-fig-cap">initial 지표값 feature 추가 실험 결과 — 기존 대비 val R² 평균 +0.4 향상. 환자 baseline 정보가 예측에 핵심 역할임을 확인</div>
 </div>
 <div style="font-size:.82rem;color:#64748B;padding:.7rem 1rem;border:1px solid rgba(58,90,174,.15);border-radius:.5rem;background:rgba(58,90,174,.04);margin-top:1rem;">
   ※ 본 연구의 코드는 현재 비공개로 관리되고 있습니다. 열람을 원하시면 이메일로 GitHub 계정을 보내주시면 접근 권한을 드리겠습니다.
