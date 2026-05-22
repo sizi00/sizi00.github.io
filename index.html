@@ -309,7 +309,7 @@
     <div id="sm-dam" class="sm-card" onclick="openProj('dam')" style="cursor:pointer"><div class="sm-ico">🌊</div><div class="sm-title">한국 다목적댐 수문운영 분석</div><div class="sm-org">한국수자원공사 공개 데이터 · 2024</div><div class="sm-contrib">단독 진행</div><div class="sm-desc">K-water 9개 다목적댐 2024년 79,056건 시계열 데이터 분석. 저수율 위기 구간 자동 탐지. Folium 인터랙티브 지도 매핑.</div><div class="tags"><span class="tag">Python</span><span class="tag">GeoPandas</span><span class="tag">Matplotlib</span><span class="tag">시계열분석</span></div></div>
     -->
 
-    <div id="sm-bigdata" class="sm-card" onclick="openProj('bigdata')" style="cursor:pointer"><div class="sm-ico">🐾</div><div class="sm-title">LLM 기반 반려동물 장소 검색 플랫폼</div><div class="sm-org">수업 프로젝트 · Make + Python</div><div class="sm-contrib">2024.09 ~ 2024.12 · 기여도 40% (5인)</div><div class="sm-desc">자동화 툴 Make, Python, Text-to-SQL을 파이프라인으로 연결한 반려동물 동반 가능 장소 검색 서비스. SQL 정확도 테스트 및 프롬프트 데이터베이스 최적화 수행.</div><div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Text-to-SQL</span><span class="tag">Make자동화</span></div></div>
+    <div id="sm-bigdata" class="sm-card" onclick="openProj('bigdata')" style="cursor:pointer"><div class="sm-ico">🐾</div><div class="sm-title">LLM 기반 반려동물 장소 검색 플랫폼</div><div class="sm-org">수업 프로젝트 · n8n + Python</div><div class="sm-contrib">2024.09 ~ 2024.12 · 기여도 40% (5인)</div><div class="sm-desc">n8n 자동화·Python·Text-to-SQL을 파이프라인으로 연결한 반려동물 동반 가능 장소 검색 서비스. SQL 정확도 테스트 및 프롬프트 데이터베이스 최적화 수행.</div><div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Text-to-SQL</span><span class="tag">n8n</span></div></div>
 
     <!-- 임시 비활성화: MIMIC4 의료 데이터 분석
     <div id="sm-mimic" class="sm-card" onclick="openProj('mimic')" style="cursor:pointer"><div class="sm-ico">🏥</div><div class="sm-title">MIMIC4 의료 데이터 분석</div><div class="sm-org">수업 프로젝트 · SQL</div><div class="sm-desc">연령별 입원 이유·사망률 분석. 다빈도 진단명·사망 진단명 SQL 분석 및 시각화.</div><div class="tags"><span class="tag">SQL</span><span class="tag">데이터분석</span><span class="tag">시각화</span></div></div>
@@ -1068,18 +1068,108 @@
     },
     bigdata: {
       ico:'🐾', title:'LLM 기반 반려동물 동반 장소 검색 플랫폼',
-      org:'수업 프로젝트 · Make + Python',
+      org:'수업 프로젝트 · n8n + Python',
       contrib:'2024.09 ~ 2024.12 · 기여도 40% (5인)',
       badges:[],
-      images:[],
-      desc:'Make 자동화·Python·Text-to-SQL 파이프라인 구성. 자연어로 반려동물 동반 장소 검색 서비스 구현. SQL 변환 정확도 테스트·프롬프트 DB 최적화.',
-      highlights:[
-        '🔗 Make 자동화 + Python + PostgreSQL 파이프라인 구성',
-        '🧪 Text-to-SQL 변환 정확도 테스트 및 에러 분석',
-        '🗃️ 프롬프트 데이터베이스 최적화로 응답 일관성 향상',
+      images:[
+        {src:'images/bigdata/arch1_login.png', cap:'워크플로우 ① — 로그인·회원가입 파이프라인'},
+        {src:'images/bigdata/arch2_chatbot.png', cap:'워크플로우 ② — 챗봇 대화 처리 (Webhook → OpenAI → PostgreSQL)'},
+        {src:'images/bigdata/arch3_reservation.png', cap:'워크플로우 ③ — 예약 시 사용자·사업주 이메일 발송'},
+        {src:'images/bigdata/db_structure.png', cap:'DB 구축 — 한국문화정보원 공공데이터 → PostgreSQL (Snowflake ID)'},
+        {src:'images/bigdata/db_schema.png', cap:'DB 스키마 — Facilities·Owner·Users·Reservation·ChatbotConversation'},
+        {src:'images/bigdata/accuracy_table.png', cap:'Text-to-SQL 모델별 정확도 비교 (GPT-4-Turbo 62.04% 최고)'},
       ],
-      tags:['Python','LLM','Text-to-SQL','Make자동화','PostgreSQL','프롬프트엔지니어링'],
+      desc:'n8n 자동화 워크플로우·OpenAI API·PostgreSQL을 연결한 반려동물 동반 가능 장소 검색 플랫폼. 자연어 질의를 SQL로 변환하는 Text-to-SQL 파이프라인 구성 및 GPT 모델별 정확도 비교 실험.',
+      highlights:[
+        '⚙️ 자동화 워크플로우 기반 로그인·챗봇·예약 3개 독립 파이프라인 설계',
+        '🧪 GPT-3.5 / GPT-4-Turbo / GPT-4o-mini 모델별 Text-to-SQL 정확도 비교 실험',
+        '🗃️ 시스템 프롬프트 9개 규칙 설계로 SQL 변환 정확도 62.04% 달성',
+        '🐾 한국문화정보원 공공데이터 23,929개 반려동물 동반 시설 통합',
+      ],
+      tags:['Python','n8n','OpenAI API','Text-to-SQL','PostgreSQL','Gradio','프롬프트엔지니어링'],
       links:[],
+      body:`
+<div class="proj-section">
+  <div class="proj-section-title">배경</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">반려동물 보유 가구가 급증하는 반면, 동반 가능 장소 정보는 여러 플랫폼에 산재되어 있어 한 번에 검색하기 어렵다. 특히 고령 반려인(60대 이상이 40%)은 복잡한 인터페이스에서 정보 접근이 어렵다는 문제가 있었다. 이를 해결하기 위해 자동화 도구 n8n과 LLM을 결합해 자연어 기반 검색이 가능한 플랫폼을 MVP로 빠르게 구현하였다.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">시스템 아키텍처</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">Gradio UI → Webhook → OpenAI API (Text-to-SQL) → PostgreSQL 순서로 파이프라인을 구성하였다. 워크플로우를 3개로 분리하여 각각 로그인/회원가입, 챗봇 검색, 예약 및 이메일 발송을 독립적으로 처리하였다. 사용자 ID는 Snowflake 알고리즘으로 생성하여 69년간 고유성을 보장하였다.</p>
+  <img src="images/bigdata/arch1_login.png" class="proj-figure" alt="워크플로우 ① 로그인·회원가입">
+  <div class="proj-fig-cap">워크플로우 ① — 로그인·회원가입 파이프라인</div>
+  <img src="images/bigdata/arch2_chatbot.png" class="proj-figure" alt="워크플로우 ② 챗봇 대화처리">
+  <div class="proj-fig-cap">워크플로우 ② — 챗봇 대화 처리 (Webhook → OpenAI → PostgreSQL)</div>
+  <img src="images/bigdata/arch3_reservation.png" class="proj-figure" alt="워크플로우 ③ 예약·이메일">
+  <div class="proj-fig-cap">워크플로우 ③ — 예약 시 사용자·사업주 이메일 발송</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">Text-to-SQL 정확도 비교 실험</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">자연어 질의를 SQL로 변환하는 핵심 기능의 모델 선정을 위해 GPT-3.5-Turbo, GPT-4-Turbo, GPT-4o-mini 세 모델을 동일한 테스트셋으로 비교하였다. 서울시 공공 DB 22개, 324개 학습 데이터를 기반으로 정확도·응답속도·비용을 함께 평가하였다.</p>
+  <table style="width:100%;border-collapse:collapse;font-size:.82rem;margin-top:.75rem;">
+    <thead>
+      <tr style="background:rgba(58,90,174,.08);">
+        <th style="padding:.5rem .75rem;text-align:left;color:#3A5AAE;font-weight:600;border-bottom:2px solid rgba(58,90,174,.2);">모델</th>
+        <th style="padding:.5rem .75rem;text-align:center;color:#3A5AAE;font-weight:600;border-bottom:2px solid rgba(58,90,174,.2);">정확도</th>
+        <th style="padding:.5rem .75rem;text-align:center;color:#3A5AAE;font-weight:600;border-bottom:2px solid rgba(58,90,174,.2);">응답시간</th>
+        <th style="padding:.5rem .75rem;text-align:center;color:#3A5AAE;font-weight:600;border-bottom:2px solid rgba(58,90,174,.2);">비용 (입력/출력)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06);">
+        <td style="padding:.5rem .75rem;color:#475569;">RYANSQL</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">58.00%</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#94a3b8;">—</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#94a3b8;">—</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06);">
+        <td style="padding:.5rem .75rem;color:#475569;">BRIDGE</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">60.00%</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#94a3b8;">—</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#94a3b8;">—</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06);">
+        <td style="padding:.5rem .75rem;color:#475569;">GPT-3.5-Turbo</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">50.31%</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">0.68s</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">$0.5 / $1.5</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(0,0,0,.06);background:rgba(58,90,174,.04);">
+        <td style="padding:.5rem .75rem;color:#3A5AAE;font-weight:600;">GPT-4-Turbo ✓</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#3A5AAE;font-weight:600;">62.04%</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">1.78s</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">$10 / $30</td>
+      </tr>
+      <tr>
+        <td style="padding:.5rem .75rem;color:#475569;">GPT-4o-mini</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">55.86%</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">1.00s</td>
+        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">$0.15 / $0.6</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="color:#475569;font-size:.85rem;margin-top:.6rem;">기존 Text-to-SQL 벤치마크 모델(RYANSQL·BRIDGE)과 비교했을 때도 GPT-4-Turbo가 62.04%로 가장 높아 최종 모델로 채택하였다.</p>
+  <img src="images/bigdata/accuracy_table.png" class="proj-figure" alt="모델별 정확도 비교">
+  <div class="proj-fig-cap">GPT-4-Turbo 62.04% — 벤치마크 모델 대비 최고 정확도</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">프롬프트 최적화</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">모델 선정 후 시스템 프롬프트에 9개의 규칙을 설계하여 SQL 변환 일관성을 높였다. 컬럼명에 큰따옴표 강제 사용, LIKE 연산자로 부분 검색 지원, category_3 조건 포함 강제, JSON 배열 형식 출력 고정, 예시를 통한 In-Context Learning 등을 적용하였다. 또한 자주 쓰이는 질의 패턴을 프롬프트 데이터베이스로 구축·관리하여 응답 일관성을 향상시켰다.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">데이터</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">한국문화정보원 공공데이터에서 전국 반려동물 동반 가능 문화시설 23,929개를 수집하였다. 5개 대분류·13개 소분류 카테고리, 위치(위도/경도), 운영시간, 주차 여부 등의 정보를 PostgreSQL에 통합하였다. 주소 필드는 시도·시군구·법정읍면동·도로명 등 분산된 컬럼을 하나로 병합 처리하였다.</p>
+  <img src="images/bigdata/db_structure.png" class="proj-figure" alt="DB 구축">
+  <div class="proj-fig-cap">한국문화정보원 공공데이터 → PostgreSQL (Snowflake ID 생성)</div>
+  <img src="images/bigdata/db_schema.png" class="proj-figure" alt="DB 스키마">
+  <div class="proj-fig-cap">DB 스키마 — Facilities·Owner·Users·Reservation·ChatbotConversation</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">챗봇 동작 데모</div>
+  <video controls style="width:100%;border-radius:8px;border:1px solid rgba(58,90,174,.12);margin-top:.5rem;">
+    <source src="images/bigdata/chatbot_demo.mp4" type="video/mp4">
+  </video>
+</div>`,
     },
     mimic: {
       ico:'🏥', title:'MIMIC-IV 기반 임상 데이터 분석',
