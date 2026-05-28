@@ -280,7 +280,7 @@
     <div id="card-wind" class="card fade" onclick="openProj('wind')" style="cursor:pointer">
       <div class="p-ico">💨</div>
       <div class="p-badges"><span class="bdg bdg-award">🏅 장려상</span><span class="bdg bdg-award">🏆 우수상</span></div>
-      <div class="p-title">풍력발전량 예측 분석</div>
+      <div class="p-title">풍력발전량 예측 고도화</div>
       <div class="p-org" style="font-size:.75rem;color:var(--c1)">2025 · 풍력발전량 예측 공모전 · 교내 AI빅데이터 경진대회</div>
       <div class="p-contrib">2025.06 ~ 2025.12 · 기여도 60% (2인)</div>
       <div class="p-desc">LDAPS 기상 예측·SCADA 터빈 실측 데이터 융합. 단지별 특성에 따라 LSTM·물리모델+HGBR 각각 설계 적용.</div>
@@ -456,7 +456,7 @@
       links:[{href:'https://github.com/sizi00/korea_dam_hydro_analysis',txt:'⬡ GitHub'},{href:'dam_map.html',txt:'🗺️ 인터랙티브 지도'}],
     },
     wind: {
-      ico:'💨', title:'기상터빈 데이터 융합 기반 풍력 발전량 예측 고도화',
+      ico:'💨', title:'풍력발전량 예측 고도화',
       org:'풍력발전량 예측 공모전 · 교내 AI빅데이터 경진대회',
       contrib:'2025.06 ~ 2025.12 · 기여도 60% (2인)',
       badges:[{txt:'🏅 공모전 장려상',cls:'bdg-award'},{txt:'🏆 우수상',cls:'bdg-award'}],
@@ -494,17 +494,86 @@
 </div>
 <div class="proj-section">
   <div class="proj-section-title">데이터 구성</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">두 가지 데이터를 전처리 후 통합하여 사용. <strong style="color:#334155">LDAPS</strong>는 국지예보모델 기반 시간 단위 기상 예측 데이터로 위·경도 격자 정보와 풍속·풍향·온습도·기압 등 핵심 변수를 포함하며 <strong style="color:#334155">SCADA</strong>는 터빈 및 변전 설비의 풍속·생산 전력 실측 데이터(10분 단위)로, 단지별 제공 변수에 차이가 있음 (경주: 전체 변수 / 양양·영덕: 풍속·풍향만).<br><br>LDAPS 원본 데이터는 24MB × 48개 × 약 1,917일 = <strong style="color:#334155">약 2.1TB</strong> 규모로 로컬 다운로드가 불가능해, 서버에서 Google Drive와 rclone을 연동하여 데이터를 불러오는 방식으로 처리.</p>
-  <img src="images/wind/wind_ppt_p3.png" class="proj-figure" alt="데이터 구성">
-  <div class="proj-fig-cap">LDAPS · SCADA 데이터 구성 및 특징</div>
+  <div style="overflow-x:auto;margin:.75rem 0;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">데이터</th>
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);white-space:nowrap;width:6rem;">단위</th>
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">핵심 내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.5rem .8rem;color:#334155;">LDAPS</td>
+          <td style="padding:.5rem .8rem;color:#64748B;white-space:nowrap;">시간 단위</td>
+          <td style="padding:.5rem .8rem;color:#64748B;">국지예보모델 기반 기상 예측 — 풍속·풍향·온습도·기압 등 (위·경도 격자), 풍속/풍향 기반 특징 추출에 사용</td>
+        </tr>
+        <tr>
+          <td style="padding:.5rem .8rem;color:#334155;">SCADA</td>
+          <td style="padding:.5rem .8rem;color:#64748B;white-space:nowrap;">10분 단위</td>
+          <td style="padding:.5rem .8rem;color:#64748B;">터빈·변전 설비 풍속·생산 전력 실측, 단지별 변수 차이 (경주: 전체 / 양양·영덕: 풍속·풍향만)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:.82rem;color:#475569;margin:.5rem 0;">※ LDAPS 원본 약 <strong style="color:#334155;">2.1TB</strong> 규모 — 로컬 다운로드 불가, 서버 + rclone으로 Google Drive 연동 처리</p>
+  <div style="margin-top:.9rem;">
+    <div style="font-size:.78rem;font-weight:700;color:#334155;margin-bottom:.4rem;">단지별 데이터 기간</div>
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.45rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);width:22%;">단지</th>
+          <th style="padding:.45rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">학습 데이터</th>
+          <th style="padding:.45rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">예측 기간</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;">경주</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">2020 ~ 2023 (4년치)</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">2024년 1년</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;">양양</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">2024.4 ~ 2025.3 짝수달 (약 6개월)</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">2024.4 ~ 2025.3 홀수달</td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#334155;">영덕</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">2024.4 ~ 2025.3 홀수달 (약 6개월)</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">2024.4 ~ 2025.3 짝수달</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">전처리 전략</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;"><strong style="color:#334155">LDAPS:</strong> 발전 단지 위치 기준 데이터 필터링, 48시간 예보 중 최근 24시간만 사용(KST 기준).<br><strong style="color:#334155">SCADA:</strong> 이상치·중복·결측치 제거, 풍향 범위 통일(-180~180 → 0~360), 10분 샘플을 SIN/COS → ATAN2 원형 평균으로 1시간 단위 재구성.</p>
-  <img src="images/wind/wind_ppt_p5.png" class="proj-figure" alt="LDAPS 전처리">
-  <div class="proj-fig-cap">LDAPS 전처리 — 발전 단지 위치 기준 필터링 및 예보 시간 처리</div>
-  <img src="images/wind/wind_ppt_p7.png" class="proj-figure" alt="SCADA 전처리">
-  <div class="proj-fig-cap">SCADA 전처리 — 이상치 제거 및 1시간 단위 재구성</div>
+  <div style="margin:.75rem 0;">
+    <span style="display:inline-block;font-size:.72rem;font-weight:700;color:#475569;background:#E2E8F0;border-radius:20px;padding:.15rem .65rem;margin-bottom:.5rem;letter-spacing:.04em;">LDAPS</span>
+    <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .6rem;padding-left:1.2rem;">
+      <li>발전 단지 위치 기준 데이터 필터링</li>
+      <li>48시간 예보 중 최근 24시간만 사용 (KST 기준)</li>
+    </ul>
+    <img src="images/wind/wind_ppt_p5.png" class="proj-figure" alt="LDAPS 전처리">
+    <div class="proj-fig-cap">LDAPS 전처리 — 발전 단지 위치 기준 필터링 및 예보 시간 처리</div>
+    <span style="display:inline-block;font-size:.72rem;font-weight:700;color:#475569;background:#E2E8F0;border-radius:20px;padding:.15rem .65rem;margin-bottom:.5rem;letter-spacing:.04em;">SCADA</span>
+    <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;padding-left:1.2rem;">
+      <li>이상치·중복·결측치 제거 — 207,870 × 29 → 22,943 × 22
+        <ul style="margin:.3rem 0 .5rem;padding-left:1.1rem;">
+          <li>풍향 범위 통일 (-180~180 → 0~360)</li>
+          <li>터빈·발전단지별 허용 범위 기준 비정상 구간 제거</li>
+        </ul>
+      </li>
+      <li>풍향 원형 평균 및 출력 집계로 1시간 단위 재구성
+        <ul style="margin:.3rem 0;padding-left:1.1rem;">
+          <li>10분 샘플 6개 중 5개 이상 존재 시에만 사용</li>
+          <li>풍향 SIN/COS → ATAN2 복원 / 출력 합계 OR 평균</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">파생 변수 생성</div>
@@ -513,24 +582,24 @@
     <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
       <thead>
         <tr style="background:rgba(58,90,174,.07);">
-          <th style="padding:.55rem .8rem;text-align:left;color:#3A5AAE;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">그룹</th>
-          <th style="padding:.55rem .8rem;text-align:left;color:#3A5AAE;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">역할</th>
-          <th style="padding:.55rem .8rem;text-align:left;color:#3A5AAE;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">주요 변수</th>
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);white-space:nowrap;width:7rem;">그룹</th>
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">역할</th>
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">주요 변수</th>
         </tr>
       </thead>
       <tbody>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.5rem .8rem;color:#334155;font-weight:600;">바람 세기·방향성</td>
+          <td style="padding:.5rem .8rem;color:#334155;white-space:nowrap;">바람 세기·방향성</td>
           <td style="padding:.5rem .8rem;color:#64748B;">공간적 방향성 반영</td>
           <td style="padding:.5rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">ws_10m, wind_dir_sin/cos, ws_hub, gust_range_50m</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.5rem .8rem;color:#334155;font-weight:600;">밀도·대기 상태</td>
+          <td style="padding:.5rem .8rem;color:#334155;white-space:nowrap;">밀도·대기 상태</td>
           <td style="padding:.5rem .8rem;color:#64748B;">밀도·안정도에 따른 출력 스케일 반영</td>
           <td style="padding:.5rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">rho_air, ws_density_corr, ta_diff, pblh_norm</td>
         </tr>
         <tr>
-          <td style="padding:.5rem .8rem;color:#334155;font-weight:600;">시간 주기성</td>
+          <td style="padding:.5rem .8rem;color:#334155;white-space:nowrap;">시간 주기성</td>
           <td style="padding:.5rem .8rem;color:#64748B;">패턴·계절성 반영</td>
           <td style="padding:.5rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">hour_sin/cos, month_sin/cos, doy_sin/cos, weekday</td>
         </tr>
@@ -540,14 +609,15 @@
 </div>
 <div class="proj-section">
   <div class="proj-section-title">모델링</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">단지별 제공 변수 구성이 달라 단일 모델 대신 각 단지 특성에 맞게 설계.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">경주는 4년치 학습 데이터로 딥러닝 적용이 가능했고, 양양·영덕은 약 6개월로 데이터가 부족해 단지별 특성에 맞춰 모델을 달리 설계했다.</p>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.75rem 0;">
     <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:1rem;">
       <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">경주 — LSTM</div>
       <ul style="color:#475569;font-size:.82rem;line-height:1.75;padding-left:1.1rem;margin:0;">
         <li>장기 시계열 패턴 반영</li>
         <li>시퀀스 길이 8주(56일×24H)</li>
-        <li>5개 시드 앙상블</li>
+        <li>검증에서 BEST EPOCH 선택 → 전체 과거 데이터로 재학습(REFIT)</li>
+        <li>5개 시드 앙상블 (3, 7, 11, 17, 23)</li>
         <li>손실함수: NMAE (10% 이상 구간 가중)</li>
       </ul>
     </div>
@@ -590,7 +660,8 @@
 </div>
 <div class="proj-section">
   <div class="proj-section-title">결과</div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:.75rem 0;">
+  <div style="font-size:.78rem;font-weight:700;color:#334155;margin:.75rem 0 .4rem;">자체 검증 결과 (Validation Set)</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:.75rem;">
     <div style="text-align:center;padding:.9rem .5rem;background:rgba(58,90,174,.05);border:1px solid rgba(58,90,174,.13);border-radius:10px;">
       <div style="font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">10.87%</div>
       <div style="font-size:.72rem;color:#64748B;margin-top:.25rem;">경주 NMAE</div>
@@ -604,9 +675,10 @@
       <div style="font-size:.72rem;color:#64748B;margin-top:.25rem;">영덕 NMAE</div>
     </div>
   </div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;text-align:center;">예선 통과 30팀 중 <strong style="color:#3A5AAE;">7위</strong> 기록</p>
-  <img src="images/wind/wind_ppt_p14.png" class="proj-figure" alt="제출 결과">
-  <div class="proj-fig-cap">최종 제출 결과 및 리더보드 순위</div>
+  <div style="font-size:.78rem;font-weight:700;color:#334155;margin:.9rem 0 .4rem;">최종 제출 결과</div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;">예선 통과 30팀 중 <strong style="color:#3A5AAE;">7위</strong> 기록</p>
+  <img src="images/wind/wind_leaderboard.png" class="proj-figure" alt="전체 참가팀 순위">
+  <div class="proj-fig-cap">전체 참가팀 순위 — 리더보드</div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">연구 포스터</div>
@@ -641,38 +713,58 @@
       ],
       desc:'서울대병원·동국대병원·용인정신병원 3개 기관 다기관 연구. 웨어러블 센서 데이터로 급성기 정신병동 환자의 증상 악화 및 자타해 위험 예측 AI 알고리즘 개발.',
       highlights:[
-        '🏥 4개 기관 다기관 실제 환자 데이터 — CRF·센서·위치 3종 통합 파이프라인 구성',
+        '🔍 기존 논문(R²=0.83) 재현 중 data leakage 직접 발견·검증 — 누수 제거 후 val R²=0.18로 하락, 재현 불가 확인',
+        '🏥 3개 기관 다기관 실제 환자 데이터 — CRF·센서·위치 3종 통합 파이프라인 단독 구성',
         '🗺️ BLE 위치 데이터 → 8개 공간 카테고리 매핑 및 환자 이동 동선 시계열 시뮬레이션 구현',
-        '🔍 기존 논문 재현 과정에서 data leakage 문제 발견 및 검증',
       ],
       body:`<div class="proj-section">
   <div class="proj-section-title">배경</div>
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">급성기 정신병동에 입원한 중증 정신질환 환자들의 증상 악화 및 자타해 위험을 조기 예측하는 AI 알고리즘 개발을 목표로 한 다기관 협력 연구이다. 서울대병원·동국대병원·용인정신병원 3개 기관의 실제 환자 데이터를 활용하였다.</p>
+  <div style="font-size:.82rem;color:#475569;line-height:1.85;margin-top:.6rem;">
+    <span style="font-weight:600;color:#334155;">예측 태스크</span>
+    <ul style="margin:.4rem 0 0;padding-left:1.2rem;">
+      <li>① <strong style="color:#334155;">4개 임상척도(BPRS·YMRS·MADRS·HAMA) 점수 예측</strong></li>
+      <li>② <strong style="color:#334155;">응급이벤트(CBI) 발생 여부 예측</strong></li>
+      <li style="list-style:none;color:#475569;">→ 이 중 ① 담당</li>
+    </ul>
+  </div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">데이터 구성</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">서울대병원(SNUH)·동국대일산병원(DUMC)·용인정신병원(YMH) 3개 기관에서 수집된 CRF 임상기록 및 주간평가 설문 데이터, 웨어러블 센서 데이터, BLE 실내 위치 추적 데이터를 제공받음.</p>
-
-  <div style="margin:1rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
-    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📋 CRF — 초기평가 (trait) · 280 × 50</div>
-    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">인구통계(나이·성별·학력·직업·종교), 과거력(정신과 입원 횟수·약물 순응도), 자해·범죄 이력 포함. 정신건강 평가 도구: <b>C-SSRS</b>(자살생각·행동), <b>HCR-20</b>(자타해 위험도), <b>CTQ</b>(아동기 트라우마), <b>BIS</b>(충동성), <b>ASRS</b>(ADHD), <b>AUDIT</b>(알코올). 최종진단은 조현스펙트럼·우울삽화·조증삽화 3분류 및 정신증 동반 여부로 구분.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">서울대병원(SNUH)·동국대일산병원(DUMC)·용인정신병원(YMH) 3개 기관에서 CRF 임상기록, 웨어러블 센서, BLE 위치 데이터를 제공받아 통합.</p>
+  <div style="overflow-x:auto;margin:.75rem 0;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">데이터</th>
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">규모</th>
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">핵심 내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.5rem .8rem;color:#334155;">📋 CRF 초기평가</td>
+          <td style="padding:.5rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;color:#1E293B;">280 × 50</td>
+          <td style="padding:.5rem .8rem;color:#64748B;">HCR-20·C-SSRS·CTQ 등 9개 평가도구, 진단·자해이력·충동성 포함</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.5rem .8rem;color:#334155;">📋 CRF 주간·응급</td>
+          <td style="padding:.5rem .8rem;font-family:'Courier New',monospace;font-size:.76rem;color:#1E293B;">1,085 × 31</td>
+          <td style="padding:.5rem .8rem;color:#64748B;">BPRS·YMRS·MADRS·HAMA 주간 증상 척도, 응급처치(CBI) 77건·37명</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.5rem .8rem;color:#334155;">⌚ 웨어러블 센서</td>
+          <td style="padding:.5rem .8rem;font-family:'Courier New',monospace;font-size:.76rem;color:#1E293B;">79.6M × 14</td>
+          <td style="padding:.5rem .8rem;color:#64748B;">심박수·3축 가속도·수면지수·걸음수 (6초 주기, 기관별 9.7M~39.6M)</td>
+        </tr>
+        <tr>
+          <td style="padding:.5rem .8rem;color:#334155;">📍 BLE 위치</td>
+          <td style="padding:.5rem .8rem;font-family:'Courier New',monospace;font-size:.76rem;color:#1E293B;">27M × 7</td>
+          <td style="padding:.5rem .8rem;color:#64748B;">실내 위도·경도 (기관별 24~51개 스캐너), 병동 공간 카테고리 매핑</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-  <div style="margin:1rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
-    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📋 CRF — 주간·응급평가 (state) · 1,085 × 31</div>
-    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">초기·주간(최대 12주)·응급 평가 기록. 현재 투약 정보(항정신병제·항우울제·기분조절제·진정수면제·Clozapine), 응급처치 종류(주사·격리·강박) 및 시각 포함. 주간 증상 척도: <b>BPRS</b>(정신병), <b>YMRS</b>(조증), <b>MADRS</b>(우울), <b>HAMA</b>(불안). 응급 이벤트(CBI) 총 77건 · 37명 환자.</p>
-  </div>
-
-  <div style="margin:1rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
-    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">⌚ 웨어러블 센서 데이터 · 79,595,108 × 14</div>
-    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">스마트워치 6초 주기 생체신호 수집. 측정 항목: 심박수(0–253 bpm), 3축 가속도(X·Y·Z), 칼로리, 이동거리, 수면지수, 걸음수. 기관별: DUMC 9.7M · SNUH 30.3M · YMH 39.6M. 용인정신병원은 수면지수 측정 미지원.</p>
-  </div>
-
-  <div style="margin:1rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
-    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📍 BLE 실내 위치 데이터 · 27,035,394 × 7</div>
-    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">BLE 태그 기반 실내 위치 추적 (위도·경도·시각). 기관별: DUMC 2.1M · SNUH 7.7M · YMH 17.2M. 기관별 스캐너 메타데이터(24–51개)와 병합해 병동 내 공간(환자실·복도·보호실·상담실 등)으로 매핑.</p>
-  </div>
-
   <img src="images/safer/safer_slide_p5.png" class="proj-figure" alt="데이터 구성">
   <div class="proj-fig-cap">데이터 구성 및 특성 — CRF · 센서 · 위치 3종</div>
 </div>
@@ -681,7 +773,12 @@
 
   <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
     <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📋 CRF 분석</div>
-    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">state 테이블을 주간평가(1,007건)와 응급이벤트(77건)로 분리. 환자별 결측치 분포 파악 후, BPRS·YMRS·MADRS·HAMA 4개 척도 점수를 시간축에 시각화. 응급처치 유형(주사·격리·강박)을 각각 다른 색상·선으로 구분해 증상 변화와 함께 표시. 이중 x축으로 주간평가와 응급이벤트를 동일 그래프에 표현.</p>
+    <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;padding-left:1.2rem;">
+      <li>state 테이블을 주간평가(1,007건)와 응급이벤트(77건)로 분리</li>
+      <li>환자별 결측치 분포 파악 후 BPRS·YMRS·MADRS·HAMA 4개 척도 점수를 시간축에 시각화</li>
+      <li>응급처치 유형(주사·격리·강박)을 색상·선으로 구분해 증상 변화와 함께 표시</li>
+      <li>이중 x축으로 주간평가와 응급이벤트를 동일 그래프에 표현</li>
+    </ul>
   </div>
 
   <img src="images/safer/eda_crf_weekly_count.png" class="proj-figure" alt="주차별 평가 건수">
@@ -695,7 +792,12 @@
 
   <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
     <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">⌚ 센서 데이터 분석</div>
-    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">심박수=0 비율을 기반으로 환자별 착용 순응도 파악. STEP 이상치(65535, 센서 오버플로우) 탐지 및 처리. 시간대별 활동 패턴 시각화로 수면·활동 주기 확인. CBI 응급이벤트 발생 시점을 심박수·가속도 시계열에 오버레이해 처치 전후 생체신호 변화 추적.</p>
+    <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;padding-left:1.2rem;">
+      <li>심박수=0 비율 기반 환자별 착용 순응도 파악</li>
+      <li>STEP 이상치(65535, 센서 오버플로우) 탐지 및 처리</li>
+      <li>시간대별 활동 패턴 시각화 — 수면·활동 주기 확인</li>
+      <li>CBI 이벤트 시점을 심박수·가속도 시계열에 오버레이 → 처치 전후 생체신호 변화 추적</li>
+    </ul>
   </div>
 
   <img src="images/safer/eda_sensor_heartbeat_zero_ratio.png" class="proj-figure" alt="착용 순응도">
@@ -706,7 +808,12 @@
 
   <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
     <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📍 위치 데이터 분석</div>
-    <p style="font-size:.82rem;color:#475569;line-height:1.7;margin:0;">3개 기관 위치 데이터 통합 및 품질 검증. 기관별 스캐너 메타데이터와 병합해 병동 내 공간 카테고리화. Plotly 기반 환자 이동 동선 인터랙티브 애니메이션 구현. PIL로 병동 도면 이미지를 오버레이(회전·투명도 조정)해 실제 병동 구조와 이동 경로를 함께 시각화.</p>
+    <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;padding-left:1.2rem;">
+      <li>3개 기관 위치 데이터 통합 및 품질 검증</li>
+      <li>기관별 스캐너 메타데이터와 병합해 병동 내 공간 카테고리화</li>
+      <li>Plotly 기반 환자 이동 동선 인터랙티브 애니메이션 구현</li>
+      <li>PIL로 병동 도면 이미지 오버레이(회전·투명도 조정) — 실제 병동 구조와 이동 경로 함께 시각화</li>
+    </ul>
   </div>
 
   <video controls style="width:100%;border-radius:10px;margin:.7rem 0 .25rem;border:1px solid rgba(58,90,174,.1);">
@@ -717,30 +824,57 @@
 <div class="proj-section">
   <div class="proj-section-title">전처리 파이프라인</div>
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">TRAIT·STATE·SENSOR·LOCATION 다중 테이블을 키 기반으로 병합하고, 시계열 resampling(6s·30s → 1시간 집계) 후 Feature set 생성.</p>
+  <ol style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.3rem;">
+    <li><strong style="color:#334155;">read_and_clean</strong> — 6개 테이블 로딩·정제 (trait, initial, weekly, event, sensor, location)</li>
+    <li><strong style="color:#334155;">align_by_keys</strong> — 키 기반 정렬</li>
+    <li><strong style="color:#334155;">resample_timeseries</strong> — 센서·위치 1시간 단위 리샘플링</li>
+    <li><strong style="color:#334155;">build_anchors</strong> — 주간평가·응급이벤트 기준 예측 앵커 생성</li>
+    <li><strong style="color:#334155;">build_targets</strong> — 타겟 레이블 생성</li>
+    <li><strong style="color:#334155;">extract_segment_by_anchors</strong> — 앵커 기준 lookback 윈도우 추출</li>
+    <li><strong style="color:#334155;">filter_anchors</strong> — 유효 센서 비율 기반 앵커 필터링</li>
+  </ol>
   <img src="images/safer/safer_slide_p11.png" class="proj-figure" alt="공간 카테고리 매핑">
   <div class="proj-fig-cap">위도·경도 → 8개 공간 카테고리 매핑 기준</div>
   <img src="images/safer/diagram1.jpg" class="proj-figure" alt="전처리 파이프라인 1">
-  <div class="proj-fig-cap">데이터 전처리 파이프라인 초기 설계 기준 ① (이후 구조 변경)</div>
+  <div class="proj-fig-cap">데이터 전처리 파이프라인 ①</div>
   <img src="images/safer/diagram2.jpg" class="proj-figure" alt="전처리 파이프라인 2">
-  <div class="proj-fig-cap">데이터 전처리 파이프라인 초기 설계 기준 ②</div>
+  <div class="proj-fig-cap">데이터 전처리 파이프라인 ②</div>
 </div>
 <div class="proj-section">
-  <div class="proj-section-title">기존 논문 코드 재현</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">Conv1d + GRU Hybrid 모델로 34개 변수 기반 4개 지표 예측. 기존 논문(R²=0.83) 재현 시도 과정에서 split 전 SoftImpute·MinMaxScaler fit으로 인한 data leakage 문제를 발견. 누수 제거 후 val R²=0.18로 하락, 재현 불가 확인.</p>
+  <div class="proj-section-title">기존 논문 검증 및 Data Leakage 발견</div>
+  <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.2rem;">
+    <li><strong style="color:#334155;">Conv1d + GRU Hybrid</strong> — 34개 변수 기반 4개 지표(BPRS·YMRS·MADRS·HAMA) 예측</li>
+    <li>split 전 SoftImpute·MinMaxScaler fit → <strong style="color:#334155;">data leakage 발견</strong></li>
+    <li>누수 제거 후 val R² 0.83 → <strong style="color:#334155;">0.18로 하락, 재현 불가 확인</strong></li>
+  </ul>
   <img src="images/safer/safer_slide_p14.png" class="proj-figure" alt="Hybrid 모델">
   <div class="proj-fig-cap">Conv1d + GRU Hybrid 모델 구조</div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">모델 재설계 및 실험</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">data leakage 제거 이후 기존 아키텍처의 구조적 문제를 파악하고 모델을 재설계함. 기존 모델은 정형 데이터(trait, weekly)와 시계열 데이터를 하나의 X로 통합해 trait 변수가 시간축마다 반복되는 비효율 구조였음. 이를 <strong>X_tab(정형, MLP)</strong>과 <strong>X_seq(시계열, GRU/LSTM)</strong>으로 분리하고 멀티모달 fusion 방식(concat, late fusion, cross-attention 등)을 검토.</p>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.75rem;">학습 과정에서 train/val 간 target 평균 분포 차이가 큰 것을 발견. 가설 3개를 세우고 체계적으로 검증한 결과, 환자 간 baseline 점수 차이가 주요 원인임을 확인함.</p>
+  <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.2rem;">
+    <li>기존 모델: 정형·시계열 데이터를 하나의 X로 통합 → trait 변수가 시간축마다 반복되는 비효율 구조</li>
+    <li><strong style="color:#334155;">X_tab(정형, MLP)</strong>과 <strong style="color:#334155;">X_seq(시계열, GRU/LSTM)</strong>으로 분리</li>
+    <li>멀티모달 fusion 방식(concat, late fusion, cross-attention) 검토</li>
+  </ul>
+  <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.2rem;">
+    <li>학습 중 train/val 간 target 평균 분포 차이가 큰 것을 발견</li>
+    <li>가설 3개(데이터셋 정렬 / split type / target 분포 차이) 수립 후 체계적으로 검증</li>
+    <li>환자 간 <strong style="color:#334155;">baseline 점수 차이</strong>가 주요 원인임을 확인</li>
+  </ul>
   <img src="images/safer/slide_1217_p2.png" class="proj-figure" alt="가설 검증">
   <div class="proj-fig-cap">가설 검증 — 데이터셋 정렬 / split type / target 분포 차이 순차 검증. 환자 간 baseline 점수 차이가 주요 원인으로 확인</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.75rem;">delta target 재정의, 환자별 정규화 등을 시도했으나 성능 저하. 최종적으로 <strong>입원 초기 임상척도값 4개를 feature에 추가</strong>하여 val R² 평균 약 +0.4 향상을 달성. 환자별 baseline 정보가 예측에 핵심 역할을 한다는 점을 확인하였으며, 제한된 데이터 규모(280명)에서의 inductive bias 설계의 중요성을 인식함.</p>
+  <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.2rem;">
+    <li>delta target 재정의·환자별 정규화 시도 → 성능 저하</li>
+    <li><strong style="color:#334155;">입원 초기 임상척도값 4개를 feature 추가</strong> → val R² 평균 <strong style="color:#334155;">+0.4 향상</strong></li>
+    <li>환자 baseline 정보가 예측 핵심 역할 확인 — 280명 규모에서 inductive bias 설계의 중요성 인식</li>
+  </ul>
   <img src="images/safer/slide_1217_p5.png" class="proj-figure" alt="실험 결과">
   <div class="proj-fig-cap">initial 지표값 feature 추가 실험 결과 — 기존 대비 val R² 평균 +0.4 향상. 환자 baseline 정보가 예측에 핵심 역할임을 확인</div>
 </div>
-<p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.75rem;">졸업 시점까지 EDA, 전처리 파이프라인, 기존 논문 검증, 모델 재설계 및 성능 개선 실험을 완료하고 인계.</p>
+<div class="proj-section">
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">졸업 시점까지 EDA, 전처리 파이프라인, 기존 논문 검증, 모델 재설계 및 성능 개선 실험을 완료하고 인계.</p>
+</div>
 <div style="font-size:.82rem;color:#64748B;padding:.7rem 1rem;border:1px solid rgba(58,90,174,.15);border-radius:.5rem;background:rgba(58,90,174,.04);margin-top:1rem;">
   ※ 본 연구의 코드는 현재 비공개로 관리되고 있습니다. 열람을 원하시면 이메일로 GitHub 계정을 보내주시면 접근 권한을 드리겠습니다.
 </div>`,
@@ -760,7 +894,7 @@
       ],
       desc:'GPT-3.5·4.0·HyperCLOVA 심리상담 챗봇의 대화·설문 데이터를 분석한 두 편의 논문. 데이터 분석과 코드 구현 전담.',
       highlights:[
-        '🤖 GPT-3.5·4.0·HyperCLOVA 심리상담 챗봇 대화·설문 데이터 분석 — 총 293명, 2,834 대화',
+        '🤖 GPT-3.5·4.0·HyperCLOVA 심리상담 챗봇 대화·설문 데이터 분석 — 총 293명, 2,720건 응답',
         '📊 LLM 자동 평가 코드 구현 · Turn/Session Level 이중 평가 체계 설계 및 분석 전담',
         '🏆 KCC2024 · KSC2024 학부생부문 장려상 각각 수상',
       ],
@@ -770,7 +904,7 @@
 </div>
 <div class="proj-section">
   <div class="proj-section-title">연구 목적</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">GPT-3.5·GPT-4.0 챗봇의 사용자 만족도를 측정하고, 동일 대화에 대해 GPT-4o로 자동 평가한 결과를 나란히 비교. LLM이 사람 평가를 대체할 수 있는지 직접 확인하고자 했음.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">GPT-3.5·GPT-4.0 챗봇의 사용자 만족도를 측정하고, 동일 대화에 대해 gpt-4-turbo로 자동 평가한 결과를 나란히 비교. LLM이 사람 평가를 대체할 수 있는지 직접 확인하고자 했음.</p>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">연구 설계 & 데이터</div>
@@ -778,30 +912,57 @@
     <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:1rem;">
       <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📋 실험 구성</div>
       <ul style="color:#475569;font-size:.82rem;line-height:1.75;padding-left:1.1rem;margin:0;">
-        <li>대상 챗봇: GPT-3.5, GPT-4.0 (생성형 2개)</li>
-        <li>각 챗봇별 97~98명 배정</li>
-        <li>5주간 심리상담 진행</li>
-        <li>매 세션 후 만족도 설문 수집</li>
+        <li>총 80명 (GPT-3.5 37명 / GPT-4.0 43명)</li>
+        <li>1일 1회 취침 전 상담, 5회 이상 답변 경험 후 3개 무작위 선택 평가</li>
+        <li>총 평가 횟수: GPT-3.5 239회 / GPT-4.0 254회</li>
       </ul>
     </div>
     <div style="background:rgba(98,100,196,.04);border:1px solid rgba(98,100,196,.12);border-radius:10px;padding:1rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#6264C4;margin-bottom:.5rem;">📊 사용자 평가 지표</div>
+      <div style="font-size:.78rem;font-weight:700;color:#6264C4;margin-bottom:.5rem;">📊 평가 항목 (5점 리커트)</div>
       <ul style="color:#475569;font-size:.82rem;line-height:1.75;padding-left:1.1rem;margin:0;">
-        <li><strong>만족도</strong> — 상담 서비스 전반 만족</li>
-        <li><strong>신뢰도</strong> — 챗봇 응답에 대한 신뢰</li>
-        <li><strong>충성도</strong> — 재사용 의향</li>
+        <li>해결방법 적절성 / 설득적 표현</li>
+        <li>답변 부드러운 정도 / 심리적 위안</li>
+        <li>고민·답변 연관성 / 문장 완성도</li>
+        <li>종합만족도 / 사용자 노력 점수</li>
       </ul>
     </div>
   </div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">LLM 자동 평가 (직접 구현)</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">GPT-4o로 대화 데이터를 자동 평가하는 코드를 직접 구현. 사용자가 직접 매긴 만족도·신뢰도·충성도와 동일한 지표로 LLM이 대화를 평가하도록 설계해, 두 평가 결과를 직접 비교.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">gpt-4-turbo로 대화 데이터를 자동 평가하는 코드를 직접 구현. 사용자 입력과 챗봇 답변 스레드를 복원해 사용자 관점의 종합만족도를 평가하도록 설계. GPT-3.5 1,368개·GPT-4.0 1,352개 총 2,720개 응답에 대해 자동 평가를 수행했음.</p>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">결과</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;"><strong style="color:#334155">사용자 만족도:</strong> GPT-4.0이 GPT-3.5보다 만족도·신뢰도·충성도 모두 유의미하게 높게 나옴.</p>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.6rem;"><strong style="color:#334155">LLM 평가와의 비교:</strong> GPT-4.0 > GPT-3.5 순위는 일치했으나 점수 격차는 달랐음. LLM 자동 평가가 사용자 평가를 그대로 대체하기엔 한계가 있음을 직접 확인.</p>
+  <div style="overflow-x:auto;margin:.6rem 0 .75rem;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.45rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);"></th>
+          <th style="padding:.45rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">GPT-3.5</th>
+          <th style="padding:.45rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">GPT-4.0</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;">이용 일수 (평균)</td>
+          <td style="padding:.45rem .8rem;text-align:center;font-weight:700;color:#334155;">7.24일</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">7.05일</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;">사용자 만족도</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">3.81점</td>
+          <td style="padding:.45rem .8rem;text-align:center;font-weight:700;color:#334155;">3.90점</td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#334155;">LLM 자동 평가 (gpt-4-turbo)</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">4.28점</td>
+          <td style="padding:.45rem .8rem;text-align:center;font-weight:700;color:#334155;">4.32점</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">GPT-4.0 사용자 만족도가 근소하게 높았으나, GPT-3.5 사용자는 이용 일수가 더 길었음 — 응답 속도가 빨라 바로 답을 받고 싶은 욕구를 충족했기 때문으로 분석됨. gpt-4-turbo는 챗봇 유형과 무관하게 대부분의 답변을 3.5점 이상으로 평가해 실제 사용자 체감과 동떨어진 결과를 보였음. LLM이 상담 당시 사용자가 느낀 감정적 요소를 충분히 반영하지 못하기 때문으로 해석됨.</p>
   <img src="images/chatbot/chatbot_poster1_p1.png" class="proj-figure" alt="논문 1 포스터">
   <div class="proj-fig-cap">KCC2024 포스터</div>
 </div>
@@ -820,10 +981,10 @@
     <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:1rem;">
       <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">📋 실험 구성</div>
       <ul style="color:#475569;font-size:.82rem;line-height:1.75;padding-left:1.1rem;margin:0;">
-        <li>검색형 챗봇 1개</li>
-        <li>생성형 챗봇 3개: HyperCLOVA, GPT-3.5, GPT-4.0</li>
-        <li>총 293명, 5주간 상담</li>
-        <li>사전·사후 심리검사 실시</li>
+        <li>챗봇R(검색형), 챗봇H(HyperCLOVA), 챗봇G3.5, 챗봇G4.0</li>
+        <li>총 213명 (PHQ-9 10점 이상 중등도 우울 선별), 1,466건 평가지</li>
+        <li>1일 1회 상담 후 평가지 작성</li>
+        <li>참여 전·후 심리검사 4종 실시</li>
       </ul>
     </div>
     <div style="background:rgba(98,100,196,.04);border:1px solid rgba(98,100,196,.12);border-radius:10px;padding:1rem;">
@@ -842,33 +1003,69 @@
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">4개 챗봇 간 대화 품질 비교를 위해 Turn Level과 Session Level 평가 코드를 직접 구현하고 분석을 전담.</p>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.6rem 0;">
     <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:1rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.4rem;">Turn Level Evaluation</div>
-      <p style="color:#475569;font-size:.82rem;line-height:1.7;margin:0;">대화 한 턴 단위로 공감성·적절성·유용성 평가. 반응 방향·제휴·고유·군본 항목 포함.</p>
+      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.4rem;">Turn Level Evaluation (7항목)</div>
+      <p style="color:#475569;font-size:.82rem;line-height:1.7;margin:0;">대화 한 턴 단위 평가 — 해결방법 적절성, 설득하는 표현, 부드러운 태도, 심리적 위안, 질문 연관성, 고민 연관성, 문장 완결성</p>
     </div>
     <div style="background:rgba(98,100,196,.04);border:1px solid rgba(98,100,196,.12);border-radius:10px;padding:1rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#6264C4;margin-bottom:.4rem;">Session Level Evaluation</div>
-      <p style="color:#475569;font-size:.82rem;line-height:1.7;margin:0;">세션 전체 단위로 상담 만족도를 종합 평가. 챗봇별 세션 흐름 비교 분석.</p>
+      <div style="font-size:.78rem;font-weight:700;color:#6264C4;margin-bottom:.4rem;">Session Level Evaluation (3항목)</div>
+      <p style="color:#475569;font-size:.82rem;line-height:1.7;margin:0;">1회 상담 전체 단위 평가 — 종합만족도, 사용자 노력 점수, 추천 정도</p>
     </div>
   </div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">결과</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;"><strong style="color:#334155">대화 품질:</strong> Turn Level — GPT-4.0(27.51) &gt; GPT-3.5(25.34) &gt; HyperCLOVA(24.91). Session Level — GPT-3.5(27.08) &gt; GPT-4.0(25.34) &gt; HyperCLOVA(21.90). 전반적으로 생성형 모델이 검색형보다 높게 나왔음.</p>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.6rem;"><strong style="color:#334155">심리 개선 효과:</strong> ISI(불면증)·PHQ-9(우울) 점수가 사후에 유의미하게 감소해 실질적인 심리 개선 효과를 확인했음.</p>
+  <div style="overflow-x:auto;margin:.6rem 0 .75rem;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.45rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">평가</th>
+          <th style="padding:.45rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">챗봇R</th>
+          <th style="padding:.45rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">챗봇H</th>
+          <th style="padding:.45rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">GPT-3.5</th>
+          <th style="padding:.45rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">GPT-4.0</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;">Turn Level (7항목 합)</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">24.91</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">25.34</td>
+          <td style="padding:.45rem .8rem;text-align:center;font-weight:700;color:#334155;">29.46</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">29.24</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;">Session Level (3항목 합)</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">9.79</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">10.05</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">11.33</td>
+          <td style="padding:.45rem .8rem;text-align:center;font-weight:700;color:#334155;">11.45</td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#334155;">심리검사 합 (개선량)</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">-5.45</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">-5.74</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#64748B;">-2.60</td>
+          <td style="padding:.45rem .8rem;text-align:center;font-weight:700;color:#334155;">-6.74</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">전체 14개 항목 중 GPT-4.0이 8개에서 최고점. Turn Level에선 GPT-3.5가 근소하게 앞섰으나, Session Level과 심리검사 개선에선 GPT-4.0이 우세. 단 <strong style="color:#334155">부드러운 태도</strong> 항목은 공감 응답 기반인 챗봇R이 최고점(4.13)으로, 검색형과 생성형의 결합이 필요함을 시사했음.</p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:.75rem 0;">
     <div style="text-align:center;padding:.85rem .4rem;background:rgba(58,90,174,.05);border:1px solid rgba(58,90,174,.13);border-radius:10px;">
-      <div style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">-16.52%</div>
+      <div style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">-6.69%</div>
       <div style="font-size:.7rem;color:#64748B;margin-top:.2rem;">ISI 감소 (불면증 개선)</div>
+    </div>
+    <div style="text-align:center;padding:.85rem .4rem;background:rgba(58,90,174,.05);border:1px solid rgba(58,90,174,.13);border-radius:10px;">
+      <div style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">-16.52%</div>
+      <div style="font-size:.7rem;color:#64748B;margin-top:.2rem;">GAD-7 감소 (불안 개선)</div>
     </div>
     <div style="text-align:center;padding:.85rem .4rem;background:rgba(58,90,174,.05);border:1px solid rgba(58,90,174,.13);border-radius:10px;">
       <div style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">-16.05%</div>
       <div style="font-size:.7rem;color:#64748B;margin-top:.2rem;">PHQ-9 감소 (우울 개선)</div>
     </div>
-    <div style="text-align:center;padding:.85rem .4rem;background:rgba(58,90,174,.05);border:1px solid rgba(58,90,174,.13);border-radius:10px;">
-      <div style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">-0.55%</div>
-      <div style="font-size:.7rem;color:#64748B;margin-top:.2rem;">GAD-7 감소 (불안)</div>
-    </div>
   </div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;margin-top:.5rem;">특히 PHQ-9(우울) 개선은 GPT-4.0 사용자 평균 <strong style="color:#334155;">-3.62점</strong>으로, GPT-3.5 사용자(-0.96점)보다 약 3.8배 높은 개선 효과를 보였음.</p>
   <img src="images/chatbot/chatbot_poster2_p1.png" class="proj-figure" alt="논문 2 포스터">
   <div class="proj-fig-cap">KSC2024 포스터</div>
 </div>`,
@@ -978,34 +1175,34 @@
     <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
       <thead>
         <tr style="background:rgba(58,90,174,.07);">
-          <th style="padding:.5rem .8rem;text-align:left;color:#3A5AAE;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">그룹</th>
-          <th style="padding:.5rem .8rem;text-align:left;color:#3A5AAE;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">의미</th>
-          <th style="padding:.5rem .8rem;text-align:left;color:#3A5AAE;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">주요 변수</th>
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">그룹</th>
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">의미</th>
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">주요 변수</th>
         </tr>
       </thead>
       <tbody>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">A</td>
+          <td style="padding:.45rem .8rem;color:#334155;">A</td>
           <td style="padding:.45rem .8rem;color:#64748B;">베타-아밀로이드</td>
           <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">PET_amyloid, CSF.ratio.ab42.ab40</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">T</td>
+          <td style="padding:.45rem .8rem;color:#334155;">T</td>
           <td style="padding:.45rem .8rem;color:#64748B;">타우 단백질</td>
           <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">PET.Tau, CSF.ptau</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">N</td>
+          <td style="padding:.45rem .8rem;color:#334155;">N</td>
           <td style="padding:.45rem .8rem;color:#64748B;">신경퇴행</td>
           <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">CSF.ttau, WMH_volume, CortSig, Hippocampus.Volume</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">G</td>
+          <td style="padding:.45rem .8rem;color:#334155;">G</td>
           <td style="padding:.45rem .8rem;color:#64748B;">유전</td>
           <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">Polygenic.Risk.Score, APOE4.status</td>
         </tr>
         <tr>
-          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">CC</td>
+          <td style="padding:.45rem .8rem;color:#334155;">CC</td>
           <td style="padding:.45rem .8rem;color:#64748B;">임상 정보</td>
           <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">Age, Sex, BMI, Hypertension, Diabetes 등</td>
         </tr>
