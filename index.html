@@ -868,30 +868,140 @@
 </div>
 <div class="proj-section">
   <div class="proj-section-title">모델 재설계 및 실험</div>
+
+  <!-- 베이스라인 확인 -->
   <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
     <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">베이스라인 확인</div>
     <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0;padding-left:1.2rem;">
       <li>전처리 파이프라인 완성 후 기존 논문 feature set·모델 구조 그대로 적용</li>
-      <li>val R² <strong style="color:#334155;">-0.06 → 0.04</strong> (+0.10 향상) — 파이프라인 개선 효과 확인, 그러나 여전히 낮은 성능으로 모델 재설계로 이어짐</li>
+      <li>val R² <strong style="color:#334155;">-0.06 → 0.04</strong> (+0.10 향상) — 파이프라인 개선 효과 확인, 그러나 여전히 낮은 성능으로 추가 실험으로 이어짐</li>
     </ul>
   </div>
   <img src="images/safer/safer_slide_p14.png" class="proj-figure" alt="기존 feature set·모델 베이스라인">
   <div class="proj-fig-cap">전처리 파이프라인 완성 후 기존 논문 feature set·모델 구조 그대로 적용한 베이스라인 실험 결과</div>
+
   <hr class="sec-rule" style="margin:1.2rem 0;">
-  <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.2rem;">
-    <li>학습 중 train/val 간 target 평균 분포 차이가 큰 것을 발견</li>
-    <li>가설 3개(데이터셋 정렬 / split type / target 분포 차이) 수립 후 체계적으로 검증</li>
-    <li>환자 간 <strong style="color:#334155;">baseline 점수 차이</strong>가 주요 원인임을 확인</li>
+
+  <img src="images/safer/model_baseline.png" class="proj-figure" alt="train/val 학습 곡선">
+  <div class="proj-fig-cap">베이스라인 모델 loss · R² 학습 곡선 — train loss 수렴, val loss 정체 / train R² → 0.9, val R² → -0.1</div>
+
+  <hr class="sec-rule" style="margin:1.2rem 0;">
+
+  <!-- 가설 수립 및 검증 -->
+  <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin:.4rem 0 .6rem;">가설 수립 및 검증</div>
+  <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .6rem;">학습 곡선에서 train R²→0.9, val R²→-0.1 확인 후 원인 규명을 위해 가설 3개 수립.</p>
+  <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0 0 .8rem;padding-left:1.2rem;">
+    <li><strong style="color:#334155;">가설1 — 데이터셋 정렬 오류?</strong> &nbsp;val_dataloader = train_dataloader 설정 → 동일 성능 확인 → <strong style="color:#dc2626;">기각</strong></li>
+    <li><strong style="color:#334155;">가설2 — split type이 분포 불균형을 증폭시키는가?</strong> &nbsp;by_patient → by_time 실험 → 소폭 변화, 근본 원인 아님 → <strong style="color:#dc2626;">기각</strong></li>
+    <li><strong style="color:#334155;">가설3 — target 분포 차이?</strong> &nbsp;train · val 지표 평균 비교 → 전 지표에서 유의미한 차이 확인 → <strong style="color:#16a34a;">원인 확인</strong></li>
   </ul>
-  <img src="images/safer/slide_1217_p2.png" class="proj-figure" alt="가설 검증">
-  <div class="proj-fig-cap">가설 검증 — 데이터셋 정렬 / split type / target 분포 차이 순차 검증. 환자 간 baseline 점수 차이가 주요 원인으로 확인</div>
-  <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.2rem;">
-    <li>delta target 재정의·환자별 정규화 시도 → 성능 저하</li>
-    <li><strong style="color:#334155;">입원 초기 임상척도값 4개를 feature 추가</strong> → val R² 평균 <strong style="color:#334155;">+0.4 향상</strong></li>
-    <li>환자 baseline 정보가 예측 핵심 역할 확인 — 280명 규모에서 inductive bias 설계의 중요성 인식</li>
+  <div style="overflow-x:auto;margin:.5rem 0;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">Target</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">Train 평균</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">Val 평균</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">차이</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">BPRS</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#475569;">12.48</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#475569;">18.50</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#dc2626;font-weight:700;">+6.0</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">YMRS</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#475569;">6.39</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#475569;">8.99</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#dc2626;font-weight:700;">+2.6</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">MADRS</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#475569;">10.83</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#475569;">14.86</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#dc2626;font-weight:700;">+4.0</td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">HAMA</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#475569;">6.99</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#475569;">8.95</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#dc2626;font-weight:700;">+2.0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="proj-fig-cap">train · val 4개 target 지표 평균 비교 — val 환자군의 증상 수준이 전반적으로 높음</div>
+
+  <hr class="sec-rule" style="margin:1.2rem 0;">
+
+  <!-- 해결 및 결과 -->
+  <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin:.4rem 0 .6rem;">해결 시도 및 결과</div>
+  <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0 0 .8rem;padding-left:1.2rem;">
+    <li>delta target 재정의 · 환자별 정규화 시도 → 성능 저하, 기각</li>
+    <li><strong style="color:#334155;">입원 초기 임상척도값(IN_BPRS · IN_YMRS · IN_MADRS · IN_HAMA) 4개를 feature 추가</strong> → val R² 평균 <strong style="color:#334155;">+0.4 향상</strong></li>
+    <li>환자 baseline 정보가 예측의 핵심 신호임을 확인 — 280명 규모에서 inductive bias 설계의 중요성 인식</li>
   </ul>
-  <img src="images/safer/slide_1217_p5.png" class="proj-figure" alt="실험 결과">
-  <div class="proj-fig-cap">initial 지표값 feature 추가 실험 결과 — 기존 대비 val R² 평균 +0.4 향상. 환자 baseline 정보가 예측에 핵심 역할임을 확인</div>
+  <div style="overflow-x:auto;margin:.5rem 0;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);" rowspan="2">Target</th>
+          <th style="padding:.4rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:1px solid rgba(58,90,174,.1);" colspan="3">Train</th>
+          <th style="padding:.4rem .8rem;text-align:center;color:#3A5AAE;font-weight:700;border-bottom:1px solid rgba(58,90,174,.1);" colspan="3">Val</th>
+        </tr>
+        <tr style="background:rgba(58,90,174,.04);">
+          <th style="padding:.35rem .6rem;text-align:right;color:#64748B;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);">RMSE</th>
+          <th style="padding:.35rem .6rem;text-align:right;color:#64748B;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);">MAE</th>
+          <th style="padding:.35rem .6rem;text-align:right;color:#64748B;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);">R²</th>
+          <th style="padding:.35rem .6rem;text-align:right;color:#3A5AAE;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);">RMSE</th>
+          <th style="padding:.35rem .6rem;text-align:right;color:#3A5AAE;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);">MAE</th>
+          <th style="padding:.35rem .6rem;text-align:right;color:#3A5AAE;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);">R²</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">BPRS</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">4.28</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">3.06</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">0.70</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">9.57</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">6.80</td>
+          <td style="padding:.45rem .6rem;text-align:right;font-weight:700;color:#3A5AAE;">0.22</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">YMRS</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">3.67</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">2.63</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">0.65</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">5.85</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">4.07</td>
+          <td style="padding:.45rem .6rem;text-align:right;font-weight:700;color:#3A5AAE;">0.44</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">MADRS</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">4.63</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">3.60</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">0.71</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">8.10</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">6.32</td>
+          <td style="padding:.45rem .6rem;text-align:right;font-weight:700;color:#3A5AAE;">0.40</td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">HAMA</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">2.85</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">2.04</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">0.63</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">5.72</td>
+          <td style="padding:.45rem .6rem;text-align:right;color:#475569;">3.94</td>
+          <td style="padding:.45rem .6rem;text-align:right;font-weight:700;color:#3A5AAE;">0.31</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="proj-fig-cap">initial 지표값 feature 추가 후 per-target 성능 — val R² 평균 약 0.35 (베이스라인 0.04 대비 +0.4 향상)</div>
 </div>
 <div class="proj-section">
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">졸업 시점까지 EDA, 전처리 파이프라인, 기존 논문 검증, 모델 재설계 및 성능 개선 실험을 완료하고 인계.</p>
