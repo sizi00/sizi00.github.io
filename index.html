@@ -723,8 +723,8 @@
   <div style="font-size:.82rem;color:#475569;line-height:1.85;margin-top:.6rem;">
     <span style="font-weight:600;color:#334155;">예측 태스크</span>
     <ul style="margin:.4rem 0 0;padding-left:1.2rem;">
-      <li>① <strong style="color:#334155;">4개 임상척도(BPRS·YMRS·MADRS·HAMA) 점수 예측</strong></li>
-      <li>② <strong style="color:#334155;">응급이벤트(CBI) 발생 여부 예측</strong></li>
+      <li>① 4개 임상척도(BPRS·YMRS·MADRS·HAMA) 점수 예측</li>
+      <li>② 응급이벤트(CBI) 발생 여부 예측</li>
       <li style="list-style:none;color:#475569;">→ 이 중 ① 담당</li>
     </ul>
   </div>
@@ -795,6 +795,7 @@
     <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;padding-left:1.2rem;">
       <li>심박수=0 비율 기반 환자별 착용 순응도 파악</li>
       <li>STEP 이상치(65535, 센서 오버플로우) 탐지 및 처리</li>
+      <li>센서 6초·위치 30초 주기 설계이나 실제 로그의 약 50%가 간격 불일치 — 샘플링 신뢰도 검증 후 전처리 기준에 반영</li>
       <li>시간대별 활동 패턴 시각화 — 수면·활동 주기 확인</li>
       <li>CBI 이벤트 시점을 심박수·가속도 시계열에 오버레이 → 처치 전후 생체신호 변화 추적</li>
     </ul>
@@ -822,12 +823,37 @@
   <div class="proj-fig-cap">환자 병동 내 이동 동선 시계열 시뮬레이션</div>
 </div>
 <div class="proj-section">
+  <div class="proj-section-title">기존 논문 검증 및 Data Leakage 발견</div>
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">논문 방식</div>
+    <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0;padding-left:1.2rem;">
+      <li><strong style="color:#334155;">Conv1d + GRU Hybrid</strong> — 34개 변수 기반 4개 지표(BPRS·YMRS·MADRS·HAMA) 예측</li>
+      <li>2024.05.01 기준 날짜 split — 이전 모집 → 5-fold 내부검증(R²=0.83), 이후 모집 → 외부검증(R²=0.74)</li>
+    </ul>
+  </div>
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(220,38,38,.15);border-radius:.6rem;background:rgba(220,38,38,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#dc2626;margin-bottom:.5rem;">Data Leakage 발견</div>
+    <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0;padding-left:1.2rem;">
+      <li>split 전 전체 데이터에 SoftImpute·MinMaxScaler fit → test 데이터 정보가 결측 대체에 포함되는 <strong style="color:#334155;">누수 발생</strong></li>
+    </ul>
+  </div>
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">재현 결과 및 한계</div>
+    <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0;padding-left:1.2rem;">
+      <li>누수 제거 후 내부검증 R² 0.83 → <strong style="color:#334155;">-0.06으로 하락</strong></li>
+      <li>data leakage 외에도 전처리 코드 오류, split 방식 차이 등 복합 원인으로 <strong style="color:#334155;">완전한 재현 불가</strong>로 판단</li>
+    </ul>
+  </div>
+  <img src="images/safer/leakage_result.png" class="proj-figure" alt="기존 논문 재현 결과">
+  <div class="proj-fig-cap">기존 논문 재현 실험 결과 — leakage 제거 후 split 방식별 성능 비교 및 data leakage 근거 코드</div>
+</div>
+<div class="proj-section">
   <div class="proj-section-title">전처리 파이프라인</div>
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">TRAIT·STATE·SENSOR·LOCATION 다중 테이블을 키 기반으로 병합하고, 시계열 resampling(6s·30s → 1시간 집계) 후 Feature set 생성.</p>
   <ol style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.3rem;">
     <li><strong style="color:#334155;">read_and_clean</strong> — 6개 테이블 로딩·정제 (trait, initial, weekly, event, sensor, location)</li>
     <li><strong style="color:#334155;">align_by_keys</strong> — 키 기반 정렬</li>
-    <li><strong style="color:#334155;">resample_timeseries</strong> — 센서·위치 1시간 단위 리샘플링</li>
+    <li><strong style="color:#334155;">resample_timeseries</strong> — 센서 6s·위치 30s 단위 리샘플링</li>
     <li><strong style="color:#334155;">build_anchors</strong> — 주간평가·응급이벤트 기준 예측 앵커 생성</li>
     <li><strong style="color:#334155;">build_targets</strong> — 타겟 레이블 생성</li>
     <li><strong style="color:#334155;">extract_segment_by_anchors</strong> — 앵커 기준 lookback 윈도우 추출</li>
@@ -841,22 +867,17 @@
   <div class="proj-fig-cap">데이터 전처리 파이프라인 ②</div>
 </div>
 <div class="proj-section">
-  <div class="proj-section-title">기존 논문 검증 및 Data Leakage 발견</div>
-  <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.2rem;">
-    <li><strong style="color:#334155;">Conv1d + GRU Hybrid</strong> — 34개 변수 기반 4개 지표(BPRS·YMRS·MADRS·HAMA) 예측</li>
-    <li>split 전 SoftImpute·MinMaxScaler fit → <strong style="color:#334155;">data leakage 발견</strong></li>
-    <li>누수 제거 후 val R² 0.83 → <strong style="color:#334155;">0.18로 하락, 재현 불가 확인</strong></li>
-  </ul>
-  <img src="images/safer/safer_slide_p14.png" class="proj-figure" alt="Hybrid 모델">
-  <div class="proj-fig-cap">Conv1d + GRU Hybrid 모델 구조</div>
-</div>
-<div class="proj-section">
   <div class="proj-section-title">모델 재설계 및 실험</div>
-  <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.2rem;">
-    <li>기존 모델: 정형·시계열 데이터를 하나의 X로 통합 → trait 변수가 시간축마다 반복되는 비효율 구조</li>
-    <li><strong style="color:#334155;">X_tab(정형, MLP)</strong>과 <strong style="color:#334155;">X_seq(시계열, GRU/LSTM)</strong>으로 분리</li>
-    <li>멀티모달 fusion 방식(concat, late fusion, cross-attention) 검토</li>
-  </ul>
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">베이스라인 확인</div>
+    <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0;padding-left:1.2rem;">
+      <li>전처리 파이프라인 완성 후 기존 논문 feature set·모델 구조 그대로 적용</li>
+      <li>val R² <strong style="color:#334155;">-0.06 → 0.04</strong> (+0.10 향상) — 파이프라인 개선 효과 확인, 그러나 여전히 낮은 성능으로 모델 재설계로 이어짐</li>
+    </ul>
+  </div>
+  <img src="images/safer/safer_slide_p14.png" class="proj-figure" alt="기존 feature set·모델 베이스라인">
+  <div class="proj-fig-cap">전처리 파이프라인 완성 후 기존 논문 feature set·모델 구조 그대로 적용한 베이스라인 실험 결과</div>
+  <hr class="sec-rule" style="margin:1.2rem 0;">
   <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.2rem;">
     <li>학습 중 train/val 간 target 평균 분포 차이가 큰 것을 발견</li>
     <li>가설 3개(데이터셋 정렬 / split type / target 분포 차이) 수립 후 체계적으로 검증</li>
