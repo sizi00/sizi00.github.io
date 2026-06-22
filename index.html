@@ -1101,8 +1101,8 @@
   <div style="font-size:.8rem;color:#64748B;margin-top:.15rem;">Chat-GPT 심리상담 챗봇에 대한 사용자 만족도 및 거대언어모델 기반 만족도 평가 비교</div>
 </div>
 <div class="proj-section">
-  <div class="proj-section-title">연구 목적</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">GPT-3.5·GPT-4.0 챗봇의 사용자 만족도를 측정하고, 동일 대화에 대해 gpt-4-turbo로 자동 평가한 결과를 나란히 비교. LLM이 사람 평가를 대체할 수 있는지 직접 확인하고자 했음.</p>
+  <div class="proj-section-title">연구 배경</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">코로나19 이후 우울증 환자가 급증했음에도 정신과 진료에 대한 편견과 높은 비용으로 인해 실제 치료로 이어지는 비율은 낮다. 이러한 심리적·경제적 진입장벽을 낮추기 위해 LLM 기반 심리상담 챗봇을 도입하려는 시도가 증가하고 있다. 그러나 대다수 연구가 영어 데이터 기반이며, 실제 사용자가 평가한 만족도와 LLM이 자동으로 평가한 만족도가 얼마나 일치하는지 검증한 연구는 부족하다.</p>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">연구 설계 & 데이터</div>
@@ -1125,13 +1125,200 @@
       </ul>
     </div>
   </div>
+  <!-- 데이터 수집 과정 시각화 -->
+  <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:1.1rem;margin:.75rem 0 .9rem;">
+    <div style="text-align:center;font-size:.8rem;font-weight:700;color:#334155;margin-bottom:.9rem;letter-spacing:.02em;">심리 상담 챗봇 데이터 수집 과정</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.5rem;">
+      <div style="display:flex;flex-direction:column;gap:.25rem;">
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <div style="background:rgba(58,90,174,.12);color:#3A5AAE;font-size:.7rem;font-weight:700;padding:.3rem .6rem;border-radius:6px;white-space:nowrap;">선발 설문조사</div>
+          <div style="font-size:.68rem;color:#64748B;">PHQ-9</div>
+        </div>
+        <div style="color:#CBD5E1;font-size:.85rem;padding-left:.4rem;">↓</div>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <div style="background:rgba(58,90,174,.12);color:#3A5AAE;font-size:.7rem;font-weight:700;padding:.3rem .6rem;border-radius:6px;">사전설문</div>
+          <div style="font-size:.68rem;color:#64748B;">ISI · GAD-7 · TEQ</div>
+        </div>
+      </div>
+      <div style="border:1px solid #E2E8F0;border-radius:8px;padding:.65rem .8rem;font-size:.72rem;color:#475569;line-height:1.6;background:#fff;">
+        <div style="font-size:.68rem;font-weight:700;color:#6264C4;margin-bottom:.2rem;">Prompt</div>
+        <div style="margin-bottom:.45rem;color:#64748B;">심리상담가로서 따뜻한 말투로 대답해주세요.</div>
+        <div style="display:flex;gap:.4rem;">
+          <div style="background:rgba(58,90,174,.08);border:1px solid rgba(58,90,174,.2);border-radius:4px;padding:.15rem .45rem;font-size:.68rem;color:#3A5AAE;font-weight:700;">챗봇 v3.5</div>
+          <div style="background:rgba(98,100,196,.08);border:1px solid rgba(98,100,196,.2);border-radius:4px;padding:.15rem .45rem;font-size:.68rem;color:#6264C4;font-weight:700;">챗봇 v4.0</div>
+        </div>
+      </div>
+    </div>
+    <div style="color:#CBD5E1;font-size:.85rem;padding-left:.4rem;margin-bottom:.3rem;">↓</div>
+    <div style="margin-bottom:.4rem;">
+      <div style="background:rgba(58,90,174,.12);color:#3A5AAE;font-size:.7rem;font-weight:700;padding:.3rem .6rem;border-radius:6px;display:inline-block;">본평가</div>
+    </div>
+    <div style="border:1.5px solid #CBD5E1;border-radius:8px;padding:.75rem;margin-bottom:.5rem;">
+      <div style="display:grid;grid-template-columns:auto auto auto auto auto;align-items:center;gap:.3rem .5rem;">
+        <div style="grid-column:1/4;font-size:.68rem;font-weight:700;color:#64748B;background:#F1F5F9;padding:.2rem .5rem;border-radius:4px;text-align:center;">심리 상담</div>
+        <div></div>
+        <div style="font-size:.68rem;font-weight:700;color:#64748B;background:#F1F5F9;padding:.2rem .5rem;border-radius:4px;text-align:center;">만족도 평가</div>
+        <div style="background:rgba(30,41,59,.1);color:#334155;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Human</div>
+        <div style="color:#CBD5E1;font-size:.8rem;text-align:center;">→</div>
+        <div style="background:rgba(98,100,196,.12);color:#6264C4;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Chatbot</div>
+        <div style="color:#CBD5E1;font-size:.8rem;text-align:center;">→</div>
+        <div style="background:rgba(58,90,174,.12);color:#3A5AAE;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Survey</div>
+        <div style="background:rgba(30,41,59,.1);color:#334155;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Human</div>
+        <div style="color:#CBD5E1;font-size:.8rem;text-align:center;">→</div>
+        <div style="background:rgba(98,100,196,.12);color:#6264C4;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Chatbot</div>
+        <div style="color:#CBD5E1;font-size:.8rem;text-align:center;">→</div>
+        <div style="background:rgba(58,90,174,.12);color:#3A5AAE;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Survey</div>
+        <div style="background:rgba(30,41,59,.1);color:#334155;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Human</div>
+        <div style="color:#CBD5E1;font-size:.8rem;text-align:center;">→</div>
+        <div style="background:rgba(98,100,196,.12);color:#6264C4;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Chatbot</div>
+        <div></div><div></div>
+        <div style="background:rgba(30,41,59,.1);color:#334155;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Human</div>
+        <div style="color:#CBD5E1;font-size:.8rem;text-align:center;">→</div>
+        <div style="background:rgba(98,100,196,.12);color:#6264C4;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Chatbot</div>
+        <div></div><div></div>
+        <div style="background:rgba(30,41,59,.1);color:#334155;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Human</div>
+        <div style="color:#CBD5E1;font-size:.8rem;text-align:center;">→</div>
+        <div style="background:rgba(98,100,196,.12);color:#6264C4;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Chatbot</div>
+        <div style="color:#CBD5E1;font-size:.8rem;text-align:center;">→</div>
+        <div style="background:rgba(58,90,174,.12);color:#3A5AAE;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:6px;text-align:center;">Survey</div>
+      </div>
+      <div style="font-size:.67rem;color:#94A3B8;margin-top:.5rem;">* 1회 상담당 응답 5개 이상 시, 무작위 3개 선택 평가</div>
+    </div>
+    <div style="color:#CBD5E1;font-size:.85rem;padding-left:.4rem;margin-bottom:.3rem;">↓</div>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:start;">
+      <div style="background:rgba(58,90,174,.12);color:#3A5AAE;font-size:.7rem;font-weight:700;padding:.3rem .6rem;border-radius:6px;white-space:nowrap;">사후설문</div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:.2rem .6rem;font-size:.67rem;line-height:1.75;">
+        <div style="font-weight:700;color:#3A5AAE;">PHQ-9</div><div style="color:#94A3B8;">불면증의 정도를 평가하기 위해 개발된 자가보고식 설문 지표</div>
+        <div style="font-weight:700;color:#3A5AAE;">ISI</div><div style="color:#94A3B8;">범불안장애 진단 및 선별을 목적으로 개발된 설문 지표</div>
+        <div style="font-weight:700;color:#3A5AAE;">GAD-7</div><div style="color:#94A3B8;">공감적 반응을 체계적으로 측정하는 데 사용되는 설문 지표</div>
+        <div style="font-weight:700;color:#3A5AAE;">TEQ</div><div style="color:#94A3B8;">DSM-5의 주요 우울증 기준에 해당하는 자가 보고식 설문 지표</div>
+      </div>
+    </div>
+  </div>
+  <div style="background:rgba(58,90,174,.03);border:1px solid rgba(58,90,174,.10);border-radius:10px;padding:1rem;">
+    <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">🤖 거대언어모델 기반 평가 (직접 구현)</div>
+    <p style="color:#475569;font-size:.82rem;line-height:1.75;margin:0 0 .5rem;">gpt-4-turbo로 대화 데이터를 자동 평가하는 코드를 직접 구현. 사용자 입력과 챗봇 답변 스레드를 복원해 사용자 관점의 종합만족도를 평가하도록 프롬프트 설계. GPT-3.5 1,368개·GPT-4.0 1,352개 총 2,720개 응답에 대해 자동 평가 수행.</p>
+    <div style="background:rgba(98,100,196,.06);border:1px solid rgba(98,100,196,.15);border-radius:6px;padding:.45rem .7rem;">
+      <div style="font-size:.65rem;font-weight:700;color:#6264C4;margin-bottom:.15rem;">만족도 평가 LLM · GPT-4.0-turbo</div>
+      <div style="font-size:.63rem;color:#64748B;line-height:1.5;">Prompt: 내담자의 입장에서 챗봇의 답변에 대한 만족도를 평가해주세요.</div>
+    </div>
+  </div>
+  <!-- 만족도 점수 산출 과정 시각화 -->
+  <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:1.1rem;margin:.75rem 0 0;">
+    <div style="text-align:center;font-size:.8rem;font-weight:700;color:#334155;margin-bottom:.85rem;letter-spacing:.02em;">만족도 점수 산출 과정</div>
+    <!-- ① 대화 원본 데이터 -->
+    <div style="font-size:.68rem;font-weight:700;color:#64748B;margin-bottom:.35rem;">① 대화 원본 데이터</div>
+    <div style="overflow-x:auto;margin-bottom:.6rem;">
+      <table style="width:100%;border-collapse:collapse;font-size:.7rem;">
+        <thead>
+          <tr style="background:rgba(58,90,174,.06);">
+            <th style="padding:.28rem .5rem;color:#64748B;font-weight:700;border-bottom:1px solid #E2E8F0;white-space:nowrap;">id_msg</th>
+            <th style="padding:.28rem .5rem;color:#64748B;font-weight:700;border-bottom:1px solid #E2E8F0;white-space:nowrap;">username</th>
+            <th style="padding:.28rem .5rem;color:#64748B;font-weight:700;border-bottom:1px solid #E2E8F0;">person (내담자)</th>
+            <th style="padding:.28rem .5rem;color:#64748B;font-weight:700;border-bottom:1px solid #E2E8F0;">chatbot</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #F1F5F9;">
+            <td style="padding:.28rem .5rem;color:#475569;text-align:center;">23</td>
+            <td style="padding:.28rem .5rem;color:#475569;text-align:center;">홍길동</td>
+            <td style="padding:.28rem .5rem;color:#475569;">닮은 이야기가 뭐야?</td>
+            <td style="padding:.28rem .5rem;color:#475569;">'닮은 이야기'란 비슷한 경험이나 감정 상태를 말해요...</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F1F5F9;">
+            <td style="padding:.28rem .5rem;color:#475569;text-align:center;">24</td>
+            <td style="padding:.28rem .5rem;color:#475569;text-align:center;">홍길동</td>
+            <td style="padding:.28rem .5rem;color:#475569;">그런 사람들의 이야기를 들려줄 수 있어?</td>
+            <td style="padding:.28rem .5rem;color:#475569;">그런 생각을 느끼는 분들의 이야기를 들어드릴 준비가...</td>
+          </tr>
+          <tr>
+            <td style="padding:.28rem .5rem;color:#94A3B8;text-align:center;">...</td>
+            <td style="padding:.28rem .5rem;color:#94A3B8;text-align:center;">...</td>
+            <td style="padding:.28rem .5rem;color:#94A3B8;">...</td>
+            <td style="padding:.28rem .5rem;color:#94A3B8;">...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- 분기 화살표 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.3rem;">
+      <div style="text-align:center;color:#CBD5E1;font-size:.8rem;">↓</div>
+      <div style="text-align:center;color:#CBD5E1;font-size:.8rem;">↓</div>
+    </div>
+    <!-- ②③ LLM 평가 | ④ 사용자 만족도 (동시 진행) -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.3rem;">
+      <!-- 왼쪽: LLM 평가 파이프라인 -->
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:.7rem;">
+        <div style="font-size:.68rem;font-weight:700;color:#6264C4;margin-bottom:.4rem;">② LLM 평가 → 메시지별 점수</div>
+        <table style="width:100%;border-collapse:collapse;font-size:.7rem;">
+          <thead>
+            <tr style="background:rgba(98,100,196,.06);">
+              <th style="padding:.25rem .4rem;color:#64748B;font-weight:700;border-bottom:1px solid #E2E8F0;">id_msg</th>
+              <th style="padding:.25rem .4rem;color:#64748B;font-weight:700;border-bottom:1px solid #E2E8F0;">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #F1F5F9;"><td style="padding:.22rem .4rem;color:#475569;text-align:center;">23</td><td style="padding:.22rem .4rem;color:#6264C4;text-align:center;font-weight:600;">5</td></tr>
+            <tr style="border-bottom:1px solid #F1F5F9;"><td style="padding:.22rem .4rem;color:#475569;text-align:center;">24</td><td style="padding:.22rem .4rem;color:#6264C4;text-align:center;font-weight:600;">5</td></tr>
+            <tr style="border-bottom:1px solid #F1F5F9;"><td style="padding:.22rem .4rem;color:#475569;text-align:center;">26</td><td style="padding:.22rem .4rem;color:#6264C4;text-align:center;font-weight:600;">4</td></tr>
+            <tr><td style="padding:.22rem .4rem;color:#94A3B8;text-align:center;">...</td><td style="padding:.22rem .4rem;color:#94A3B8;text-align:center;">...</td></tr>
+          </tbody>
+        </table>
+        <div style="text-align:center;color:#CBD5E1;font-size:.8rem;margin:.35rem 0;">↓</div>
+        <div style="font-size:.65rem;color:#6264C4;font-weight:700;margin-bottom:.25rem;">③ 내담자별 LLM 만족도 점수 평균</div>
+        <table style="width:100%;border-collapse:collapse;font-size:.7rem;">
+          <thead><tr style="background:rgba(98,100,196,.06);"><th style="padding:.22rem .4rem;color:#64748B;border-bottom:1px solid #E2E8F0;">username</th><th style="padding:.22rem .4rem;color:#64748B;border-bottom:1px solid #E2E8F0;">score</th></tr></thead>
+          <tbody><tr><td style="padding:.22rem .4rem;color:#475569;text-align:center;">홍길동</td><td style="padding:.22rem .4rem;color:#6264C4;text-align:center;font-weight:700;">4.3</td></tr></tbody>
+        </table>
+      </div>
+      <!-- 오른쪽: 사용자 만족도 설문 -->
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:.7rem;">
+        <div style="font-size:.68rem;font-weight:700;color:#3A5AAE;margin-bottom:.4rem;">④ 내담자별 사용자 만족도 점수 평균</div>
+        <div style="background:rgba(58,90,174,.06);border:1px solid rgba(58,90,174,.15);border-radius:6px;padding:.45rem .6rem;margin-bottom:.4rem;">
+          <div style="font-size:.63rem;color:#64748B;line-height:1.5;">5점 리커트 척도 설문 응답을 사용자별로 평균</div>
+        </div>
+        <table style="width:100%;border-collapse:collapse;font-size:.7rem;margin-top:.3rem;">
+          <thead>
+            <tr style="background:rgba(58,90,174,.06);">
+              <th style="padding:.25rem .4rem;color:#64748B;font-weight:700;border-bottom:1px solid #E2E8F0;">username</th>
+              <th style="padding:.25rem .4rem;color:#64748B;font-weight:700;border-bottom:1px solid #E2E8F0;">score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="padding:.22rem .4rem;color:#475569;text-align:center;">홍길동</td><td style="padding:.22rem .4rem;color:#3A5AAE;text-align:center;font-weight:700;">3.8</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- 수렴 화살표 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.3rem;">
+      <div style="text-align:center;color:#CBD5E1;font-size:.8rem;">↓</div>
+      <div style="text-align:center;color:#CBD5E1;font-size:.8rem;"></div>
+    </div>
+    <!-- 최종 비교 -->
+    <div style="background:#fff;border:1.5px solid #E2E8F0;border-radius:8px;padding:.7rem;">
+      <div style="font-size:.68rem;font-weight:700;color:#334155;margin-bottom:.5rem;text-align:center;">③ vs ④ 비교 — 사용자별 LLM 평균 vs 실제 만족도</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
+        <div>
+          <div style="font-size:.65rem;color:#6264C4;font-weight:700;margin-bottom:.25rem;text-align:center;">내담자별 LLM 만족도 점수 평균</div>
+          <table style="width:100%;border-collapse:collapse;font-size:.7rem;">
+            <thead><tr style="background:rgba(98,100,196,.06);"><th style="padding:.22rem .4rem;color:#64748B;border-bottom:1px solid #E2E8F0;">username</th><th style="padding:.22rem .4rem;color:#64748B;border-bottom:1px solid #E2E8F0;">score</th></tr></thead>
+            <tbody><tr><td style="padding:.22rem .4rem;color:#475569;text-align:center;">홍길동</td><td style="padding:.22rem .4rem;color:#6264C4;text-align:center;font-weight:700;">4.3</td></tr></tbody>
+          </table>
+        </div>
+        <div>
+          <div style="font-size:.65rem;color:#3A5AAE;font-weight:700;margin-bottom:.25rem;text-align:center;">내담자별 사용자 만족도 점수 평균</div>
+          <table style="width:100%;border-collapse:collapse;font-size:.7rem;">
+            <thead><tr style="background:rgba(58,90,174,.06);"><th style="padding:.22rem .4rem;color:#64748B;border-bottom:1px solid #E2E8F0;">username</th><th style="padding:.22rem .4rem;color:#64748B;border-bottom:1px solid #E2E8F0;">score</th></tr></thead>
+            <tbody><tr><td style="padding:.22rem .4rem;color:#475569;text-align:center;">홍길동</td><td style="padding:.22rem .4rem;color:#3A5AAE;text-align:center;font-weight:700;">3.8</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="proj-section">
-  <div class="proj-section-title">LLM 자동 평가 (직접 구현)</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">gpt-4-turbo로 대화 데이터를 자동 평가하는 코드를 직접 구현. 사용자 입력과 챗봇 답변 스레드를 복원해 사용자 관점의 종합만족도를 평가하도록 설계. GPT-3.5 1,368개·GPT-4.0 1,352개 총 2,720개 응답에 대해 자동 평가를 수행했음.</p>
-</div>
-<div class="proj-section">
-  <div class="proj-section-title">결과</div>
+  <div class="proj-section-title">주요 발견</div>
   <div style="overflow-x:auto;margin:.6rem 0 .75rem;">
     <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
       <thead>
@@ -1160,9 +1347,35 @@
       </tbody>
     </table>
   </div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">GPT-4.0 사용자 만족도가 근소하게 높았으나, GPT-3.5 사용자는 이용 일수가 더 길었음 — 응답 속도가 빨라 바로 답을 받고 싶은 욕구를 충족했기 때문으로 분석됨. gpt-4-turbo는 챗봇 유형과 무관하게 대부분의 답변을 3.5점 이상으로 평가해 실제 사용자 체감과 동떨어진 결과를 보였음. LLM이 상담 당시 사용자가 느낀 감정적 요소를 충분히 반영하지 못하기 때문으로 해석됨.</p>
-  <img src="images/chatbot/chatbot_poster1_p1.png" class="proj-figure" alt="논문 1 포스터">
-  <div class="proj-fig-cap">KCC2024 포스터</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.6rem 0 .75rem;">
+    <div style="background:rgba(58,90,174,.03);border:1px solid rgba(58,90,174,.10);border-radius:10px;padding:1rem;">
+      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.4rem;">GPT-3.5 만족 이유</div>
+      <p style="color:#475569;font-size:.82rem;line-height:1.7;margin:0;">공감 기반 답변, 빠른 응답 속도 — 바로 답을 받고 싶은 욕구 충족</p>
+      <div style="font-size:.78rem;font-weight:700;color:#94A3B8;margin:.6rem 0 .3rem;">불만족 이유</div>
+      <p style="color:#475569;font-size:.82rem;line-height:1.7;margin:0;">모범답안 느낌, 상투적·맥락 부자연스러운 답변</p>
+    </div>
+    <div style="background:rgba(98,100,196,.03);border:1px solid rgba(98,100,196,.10);border-radius:10px;padding:1rem;">
+      <div style="font-size:.78rem;font-weight:700;color:#6264C4;margin-bottom:.4rem;">GPT-4.0 만족 이유</div>
+      <p style="color:#475569;font-size:.82rem;line-height:1.7;margin:0;">고민을 잘 이해하고 유용한 정보·적절한 해결책 제시</p>
+      <div style="font-size:.78rem;font-weight:700;color:#94A3B8;margin:.6rem 0 .3rem;">불만족 이유</div>
+      <p style="color:#475569;font-size:.82rem;line-height:1.7;margin:0;">형식적인 답변, 느린 응답 속도</p>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.75rem 0 .5rem;">
+    <div style="display:flex;flex-direction:column;">
+      <img src="images/chatbot/그림2.png" class="proj-figure" alt="챗봇 종류별 만족도 점수 분포" style="margin:0;height:220px;object-fit:contain;background:#fff;">
+      <div class="proj-fig-cap">챗봇 종류별 만족도 점수 분포</div>
+    </div>
+    <div style="display:flex;flex-direction:column;">
+      <img src="images/chatbot/그림4.png" class="proj-figure" alt="LLM 기반 평가 만족도 및 사용자 만족도 분포" style="margin:0;height:220px;object-fit:contain;background:#fff;">
+      <div class="proj-fig-cap">LLM 기반 평가 만족도 및 사용자 만족도 분포</div>
+    </div>
+  </div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">gpt-4-turbo는 챗봇 유형과 무관하게 대부분의 답변을 3.5점 이상으로 과대평가 — 사용자가 상담 시 느끼는 감정적 요소를 반영하지 못하기 때문으로 해석됨. 이용 일수와 만족도가 비례하지 않는다는 점도 확인.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">결론</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">GPT-3.5는 빠른 응답으로 이용 일수가 높았고, GPT-4.0은 응답 품질로 사용자 만족도가 높았다. 두 모델 모두 LLM 자동 평가(gpt-4-turbo)보다 실제 사용자 만족도가 낮게 나타나, LLM 기반 자동 평가는 답변의 논리적 형식은 포착하지만 사용자가 느끼는 감정적 요소를 충분히 반영하지 못함을 확인했다.</p>
 </div>
 
 <div style="border-left:3px solid #6264C4;padding-left:1rem;margin:1.8rem 0 .6rem;">
@@ -1264,8 +1477,18 @@
     </div>
   </div>
   <p style="color:#475569;font-size:.85rem;line-height:1.75;margin-top:.5rem;">특히 PHQ-9(우울) 개선은 GPT-4.0 사용자 평균 <strong style="color:#334155;">-3.62점</strong>으로, GPT-3.5 사용자(-0.96점)보다 약 3.8배 높은 개선 효과를 보였음.</p>
-  <img src="images/chatbot/chatbot_poster2_p1.png" class="proj-figure" alt="논문 2 포스터">
-  <div class="proj-fig-cap">KSC2024 포스터</div>
+</div>
+<div class="proj-section" style="padding-top:0;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
+    <div>
+      <img src="images/chatbot/chatbot_poster1_p1.png" class="proj-figure" alt="KCC2024 포스터" style="margin:0;">
+      <div class="proj-fig-cap">KCC2024 포스터</div>
+    </div>
+    <div>
+      <img src="images/chatbot/chatbot_poster2_p1.png" class="proj-figure" alt="KSC2024 포스터" style="margin:0;">
+      <div class="proj-fig-cap">KSC2024 포스터</div>
+    </div>
+  </div>
 </div>`,
       tags:['Python','GPT-4.0','GPT-3.5','HyperCLOVA','ISI','GAD-7','PHQ-9','Statistical Analysis','LLM Evaluation'],
       links:[{href:'https://github.com/sizi00/care-chatbot',txt:'⬡ GitHub'}],
