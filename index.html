@@ -235,8 +235,8 @@
         <div class="p-title">SAFER · 웨어러블 센서 기반 정신병동 환자 위험 예측</div>
         <div class="p-org">서울대학교병원 · 동국대병원 · 용인정신병원 협력 연구</div>
         <div class="p-contrib">2025.04 ~ 2025.12 · 단독 진행</div>
-        <div class="p-desc">3개 기관 정신병동 환자 웨어러블·CRF·위치 데이터 기반 임상척도 예측 AI 개발. 데이터 파이프라인 단독 설계·구현, 기존 논문 data leakage 발견 및 검증, 가설 기반 feature 개선으로 val R² +0.4 향상.</div>
-        <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Time Series</span><span class="tag">Conv1d+GRU</span><span class="tag">XGBoost</span><span class="tag">Pandas</span><span class="tag">Clinical Data</span><span class="tag">BLE</span><span class="tag">Plotly</span><span class="tag">PIL</span></div>
+        <div class="p-desc">3개 기관 정신병동 환자 웨어러블·CRF·위치 데이터 기반 임상척도 예측 AI 개발. 데이터 파이프라인 단독 설계·구현, 기존 논문 data leakage 발견, 가설 기반 feature 개선으로 val R² +0.4 향상.</div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Time Series</span><span class="tag">Conv1d+GRU</span><span class="tag">Pandas</span><span class="tag">Clinical Data</span><span class="tag">BLE</span><span class="tag">Plotly</span><span class="tag">PIL</span></div>
       </div>
       <div class="vis">
         <div style="display:flex;justify-content:space-around;align-items:center;margin-bottom:.85rem">
@@ -246,20 +246,20 @@
           </div>
           <div style="width:1px;height:2rem;background:rgba(58,90,174,.15)"></div>
           <div style="text-align:center">
-            <div style="font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">280</div>
-            <div style="font-size:.61rem;color:var(--muted);margin-top:.1rem">명 환자</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">79.6M</div>
+            <div style="font-size:.61rem;color:var(--muted);margin-top:.1rem">rows 센서</div>
           </div>
           <div style="width:1px;height:2rem;background:rgba(58,90,174,.15)"></div>
           <div style="text-align:center">
-            <div style="font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">77</div>
-            <div style="font-size:.61rem;color:var(--muted);margin-top:.1rem">건 CBI</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">+0.4</div>
+            <div style="font-size:.61rem;color:var(--muted);margin-top:.1rem">val R² 향상</div>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem">
           <div style="text-align:center;padding:.6rem .2rem;border-radius:8px;background:rgba(255,255,255,.75);border:1px solid rgba(58,90,174,.13)">
             <div style="font-size:1.1rem;margin-bottom:.25rem">📋</div>
             <div style="font-size:.66rem;font-weight:700;color:var(--txt);margin-bottom:.15rem">임상척도</div>
-            <div style="font-size:.57rem;color:var(--muted);line-height:1.4">BPRS·YMRS</div>
+            <div style="font-size:.57rem;color:var(--muted);line-height:1.4">BPRS·YMRS·MADRS·HAMA</div>
           </div>
           <div style="text-align:center;padding:.6rem .2rem;border-radius:8px;background:rgba(255,255,255,.75);border:1px solid rgba(58,90,174,.13)">
             <div style="font-size:1.1rem;margin-bottom:.25rem">⌚</div>
@@ -283,8 +283,8 @@
       <div class="p-title">풍력발전량 예측 고도화</div>
       <div class="p-org" style="font-size:.75rem;color:var(--c1)">2025 · 풍력발전량 예측 공모전 · 교내 AI빅데이터 경진대회</div>
       <div class="p-contrib">2025.06 ~ 2025.12 · 기여도 60% (2인)</div>
-      <div class="p-desc">LDAPS 기상 예측·SCADA 터빈 실측 데이터 융합. 단지별 특성에 따라 LSTM·물리모델+HGBR 각각 설계 적용.</div>
-      <div class="tags"><span class="tag">Python</span><span class="tag">LDAPS</span><span class="tag">SCADA</span><span class="tag">LSTM</span><span class="tag">HGBR</span><span class="tag">Time Series</span><span class="tag">예측모델</span><span class="tag">기상데이터</span></div>
+      <div class="p-desc">LDAPS·SCADA 이기종 데이터 융합, 단지별 맞춤 모델(경주 LSTM · 양양·영덕 물리모델+HGBR) + 다단계 후처리 보정 설계. 272팀 중 7위.</div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">LDAPS</span><span class="tag">SCADA</span><span class="tag">LSTM</span><span class="tag">HGBR</span><span class="tag">Isotonic Regression</span><span class="tag">Ensemble</span><span class="tag">Time Series</span><span class="tag">예측모델</span><span class="tag">기상데이터</span></div>
     </div>
 
     <!-- Chatbot -->
@@ -375,7 +375,8 @@
       <div id="proj-badges" style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.6rem;"></div>
       <h2 id="proj-title" style="font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;color:#0F172A;margin-bottom:.3rem;"></h2>
       <div id="proj-org" style="font-size:.85rem;color:#3A5AAE;font-weight:500;margin-bottom:.3rem;"></div>
-      <div id="proj-contrib" style="font-size:.8rem;color:#94A3B8;margin-bottom:1.1rem;"></div>
+      <div id="proj-contrib" style="font-size:.8rem;color:#94A3B8;margin-bottom:.25rem;"></div>
+      <div id="proj-role" style="font-size:.78rem;color:#64748B;margin-bottom:1rem;display:none;"></div>
       <p id="proj-desc" style="color:#64748B;line-height:1.85;font-size:.95rem;margin-bottom:1.4rem;"></p>
       <div id="proj-highlights" style="background:#F0F4FF;border:1px solid rgba(58,90,174,.12);border-radius:12px;padding:1.2rem 1.4rem;margin-bottom:1.4rem;"></div>
       <div id="proj-body" style="margin-top:.4rem;border-top:1px solid rgba(58,90,174,.08);padding-top:1.2rem;"></div>
@@ -459,6 +460,7 @@
       ico:'💨', title:'풍력발전량 예측 고도화',
       org:'풍력발전량 예측 공모전 · 교내 AI빅데이터 경진대회',
       contrib:'2025.06 ~ 2025.12 · 기여도 60% (2인)',
+      role:'단지별 모델 전략 수립, 전처리 로직 설계 및 코드 기여, 발표자료·포스터 제작 (코드 구현 협업)',
       badges:[{txt:'🏅 공모전 장려상',cls:'bdg-award'},{txt:'🏆 우수상',cls:'bdg-award'}],
       images:[
         {src:'images/wind/wind_paper_p1.png', cap:'논문 — 기상터빈 데이터 융합 기반 풍력 발전량 예측 고도화'},
@@ -481,16 +483,30 @@
         {src:'images/wind/wind_ppt_p15.png', cap:'발표자료 p15 — 한계점 및 향후 연구'},
         {src:'images/wind/wind_ppt_p16.png', cap:'발표자료 p16 — 참고문헌'},
       ],
-      desc:'LDAPS 기상 예측 데이터와 SCADA 터빈 실측 데이터를 융합해 경주·양양·영덕 3개 풍력발전 단지의 발전량을 예측한 공모전 프로젝트.',
+      desc:'LDAPS 기상 예측과 SCADA 터빈 실측 데이터를 융합, 단지별 맞춤 모델과 다단계 후처리 보정으로 272팀 중 7위를 달성한 풍력 발전량 예측 공모전 프로젝트.',
       highlights:[
         '🗄️ LDAPS 2.1TB 대용량 데이터 — 서버 + rclone으로 Google Drive 연동 처리',
-        '🌤️ LDAPS 기상 예측 + SCADA 실측 이기종 데이터 융합 및 전처리 파이프라인 구성',
+        '🌤️ LDAPS 기상 예측 + SCADA 실측 이기종 데이터 수집·전처리 파이프라인 구성',
         '⚙️ 단지별 데이터 특성 분석 후 경주(LSTM) · 양양·영덕(물리모델+HGBR) 각각 설계',
-        '🏅 공모전 장려상 → 포스터 발전 → 교내 경진대회 우수상',
+        '🔧 경주 5단계·양양·영덕 2단계 후처리 보정 설계 (선형 보정 → 앙상블 가중 → 계절 블렌드 → 섹터×시간 Isotonic → High-Wind Clip)',
+        '🏅 272팀 중 7위 · 공모전 장려상 · 교내 AI빅데이터 우수상',
       ],
       body:`<div class="proj-section">
-  <div class="proj-section-title">배경</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">2025 풍력 발전량 예측 공모전(B.D.AX × 동서발전 × 60HZ)에서 경주·양양·영덕 3개 풍력발전 단지의 발전량 예측을 수행했다. 기상 예측 데이터(LDAPS)와 터빈 실측 데이터(SCADA)를 융합하는 전처리 파이프라인 구성과 데이터 수집·정제·가공을 담당했으며 전반적인 모델 설계에도 참여하였다.</p>
+  <div class="proj-section-title">문제정의 및 목표</div>
+  <div style="font-size:.78rem;font-weight:700;color:#334155;margin:.5rem 0 .35rem;">문제</div>
+  <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .6rem;padding-left:1.2rem;">
+    <li>풍력 발전량은 바람의 시공간 변동성 + 지형·난류 영향으로 예측 난도가 높음</li>
+    <li>파워커브 비선형성으로 고풍속 구간에서 과예측·편향 발생</li>
+    <li>LDAPS 예보 불확실성 + SCADA 실측 데이터 품질 편차 존재</li>
+  </ul>
+  <img src="images/wind/wind_turbin.png" class="proj-figure" alt="풍력터빈 파워커브">
+  <div class="proj-fig-cap">풍력터빈 파워커브 — Region II 비선형 구간에서 과예측 발생</div>
+  <div style="font-size:.78rem;font-weight:700;color:#334155;margin:.9rem 0 .35rem;">목표</div>
+  <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;padding-left:1.2rem;">
+    <li>LDAPS 기반 24시간 예측 모델 구축</li>
+    <li>SCADA 실측 데이터를 활용해 예측 편향 보정</li>
+    <li>대회 평가 기준(NMAE) 최소화</li>
+  </ul>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">데이터 구성</div>
@@ -518,35 +534,6 @@
     </table>
   </div>
   <p style="font-size:.82rem;color:#475569;margin:.5rem 0;">※ LDAPS 원본 약 <strong style="color:#334155;">2.1TB</strong> 규모 — 로컬 다운로드 불가, 서버 + rclone으로 Google Drive 연동 처리</p>
-  <div style="margin-top:.9rem;">
-    <div style="font-size:.78rem;font-weight:700;color:#334155;margin-bottom:.4rem;">단지별 데이터 기간</div>
-    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
-      <thead>
-        <tr style="background:rgba(58,90,174,.07);">
-          <th style="padding:.45rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);width:22%;">단지</th>
-          <th style="padding:.45rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">학습 데이터</th>
-          <th style="padding:.45rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">예측 기간</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;">경주</td>
-          <td style="padding:.45rem .8rem;color:#64748B;">2020 ~ 2023 (4년치)</td>
-          <td style="padding:.45rem .8rem;color:#64748B;">2024년 1년</td>
-        </tr>
-        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;">양양</td>
-          <td style="padding:.45rem .8rem;color:#64748B;">2024.4 ~ 2025.3 짝수달 (약 6개월)</td>
-          <td style="padding:.45rem .8rem;color:#64748B;">2024.4 ~ 2025.3 홀수달</td>
-        </tr>
-        <tr>
-          <td style="padding:.45rem .8rem;color:#334155;">영덕</td>
-          <td style="padding:.45rem .8rem;color:#64748B;">2024.4 ~ 2025.3 홀수달 (약 6개월)</td>
-          <td style="padding:.45rem .8rem;color:#64748B;">2024.4 ~ 2025.3 짝수달</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">전처리 전략</div>
@@ -556,8 +543,42 @@
       <li>발전 단지 위치 기준 데이터 필터링</li>
       <li>48시간 예보 중 최근 24시간만 사용 (KST 기준)</li>
     </ul>
-    <img src="images/wind/wind_ppt_p5.png" class="proj-figure" alt="LDAPS 전처리">
-    <div class="proj-fig-cap">LDAPS 전처리 — 발전 단지 위치 기준 필터링 및 예보 시간 처리</div>
+    <img src="images/wind/ldaps_preprocessing.png" class="proj-figure" alt="LDAPS 데이터 필터링 흐름">
+    <div class="proj-fig-cap">LDAPS 데이터 필터링 — 발전 단지 위도·경도 기준 격자 데이터 추출 흐름</div>
+    <p style="color:#475569;font-size:.82rem;line-height:1.85;margin:.75rem 0 .4rem;">LDAPS 원본 변수에서 물리적 의미를 반영한 파생 변수를 4가지 그룹으로 설계.</p>
+    <div style="overflow-x:auto;margin-bottom:.9rem;">
+      <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+        <thead>
+          <tr style="background:rgba(58,90,174,.07);">
+            <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);white-space:nowrap;width:7rem;">그룹</th>
+            <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">역할</th>
+            <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">주요 변수</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+            <td style="padding:.5rem .8rem;color:#334155;white-space:nowrap;">바람 세기·방향성</td>
+            <td style="padding:.5rem .8rem;color:#64748B;">공간적 방향성 반영</td>
+            <td style="padding:.5rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">ws_10m, wind_dir_10m, wind_dir_sin/cos, ws_hub</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+            <td style="padding:.5rem .8rem;color:#334155;white-space:nowrap;">밀도·대기 상태</td>
+            <td style="padding:.5rem .8rem;color:#64748B;">밀도·안정도에 따른 출력 스케일 반영</td>
+            <td style="padding:.5rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">rho_air, ws_density_corr, ta_diff, pblh_norm</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+            <td style="padding:.5rem .8rem;color:#334155;white-space:nowrap;">고도·지형</td>
+            <td style="padding:.5rem .8rem;color:#64748B;">터빈 위치별 풍속 조건 반영</td>
+            <td style="padding:.5rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">shear_50m_10m</td>
+          </tr>
+          <tr>
+            <td style="padding:.5rem .8rem;color:#334155;white-space:nowrap;">시간 주기성</td>
+            <td style="padding:.5rem .8rem;color:#64748B;">패턴·계절성 반영</td>
+            <td style="padding:.5rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">hour_sin/cos, month_sin/cos, doy_sin/cos, weekday</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <span style="display:inline-block;font-size:.72rem;font-weight:700;color:#475569;background:#E2E8F0;border-radius:20px;padding:.15rem .65rem;margin-bottom:.5rem;letter-spacing:.04em;">SCADA</span>
     <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;padding-left:1.2rem;">
       <li>이상치·중복·결측치 제거 — 207,870 × 29 → 22,943 × 22
@@ -569,98 +590,120 @@
       <li>풍향 원형 평균 및 출력 집계로 1시간 단위 재구성
         <ul style="margin:.3rem 0;padding-left:1.1rem;">
           <li>10분 샘플 6개 중 5개 이상 존재 시에만 사용</li>
-          <li>풍향 SIN/COS → ATAN2 복원 / 출력 합계 OR 평균</li>
+          <li>풍향 SIN/COS → ATAN2 복원 / 누적값 합계, 순간값 평균</li>
         </ul>
       </li>
     </ul>
+    <img src="images/wind/scada_preprocessing.png" class="proj-figure" alt="SCADA 전처리 흐름">
+    <div class="proj-fig-cap">SCADA 전처리 — 10분 단위 원본 데이터에서 1시간 단위 재구성 흐름</div>
   </div>
 </div>
 <div class="proj-section">
-  <div class="proj-section-title">파생 변수 생성</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">LDAPS 원본 변수에서 물리적 의미를 반영한 파생 변수를 3가지 그룹으로 설계.</p>
-  <div style="overflow-x:auto;margin-top:.75rem;">
+  <div class="proj-section-title">단지별 모델링 전략</div>
+  <p style="font-size:.82rem;color:#64748B;margin:.3rem 0 1rem;line-height:1.7;">발전단지별 데이터 특성과 패턴 차이를 고려하여 단지 맞춤형 모델 및 보정 전략을 적용</p>
+  <div style="overflow-x:auto;margin-bottom:1.2rem;">
     <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
       <thead>
         <tr style="background:rgba(58,90,174,.07);">
-          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);white-space:nowrap;width:7rem;">그룹</th>
-          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">역할</th>
-          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">주요 변수</th>
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);width:18%;">단지</th>
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">데이터 특성</th>
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">모델</th>
+          <th style="padding:.55rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">선정 이유</th>
         </tr>
       </thead>
       <tbody>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.5rem .8rem;color:#334155;white-space:nowrap;">바람 세기·방향성</td>
-          <td style="padding:.5rem .8rem;color:#64748B;">공간적 방향성 반영</td>
-          <td style="padding:.5rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">ws_10m, wind_dir_sin/cos, ws_hub, gust_range_50m</td>
-        </tr>
-        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.5rem .8rem;color:#334155;white-space:nowrap;">밀도·대기 상태</td>
-          <td style="padding:.5rem .8rem;color:#64748B;">밀도·안정도에 따른 출력 스케일 반영</td>
-          <td style="padding:.5rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">rho_air, ws_density_corr, ta_diff, pblh_norm</td>
+          <td style="padding:.5rem .8rem;color:#334155;font-weight:600;">경주</td>
+          <td style="padding:.5rem .8rem;color:#64748B;">장기 패턴 강함 (4년치)</td>
+          <td style="padding:.5rem .8rem;color:#334155;font-weight:600;">LSTM</td>
+          <td style="padding:.5rem .8rem;color:#64748B;">장기 시계열 패턴 반영</td>
         </tr>
         <tr>
-          <td style="padding:.5rem .8rem;color:#334155;white-space:nowrap;">시간 주기성</td>
-          <td style="padding:.5rem .8rem;color:#64748B;">패턴·계절성 반영</td>
-          <td style="padding:.5rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">hour_sin/cos, month_sin/cos, doy_sin/cos, weekday</td>
+          <td style="padding:.5rem .8rem;color:#334155;font-weight:600;">양양·영덕</td>
+          <td style="padding:.5rem .8rem;color:#64748B;">물리 기반 관계 강함 (약 6개월)</td>
+          <td style="padding:.5rem .8rem;color:#334155;font-weight:600;">물리모델 + HGBR</td>
+          <td style="padding:.5rem .8rem;color:#64748B;">잔차 구조 반영</td>
         </tr>
       </tbody>
     </table>
   </div>
-</div>
-<div class="proj-section">
-  <div class="proj-section-title">모델링</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">경주는 4년치 학습 데이터로 딥러닝 적용이 가능했고, 양양·영덕은 약 6개월로 데이터가 부족해 단지별 특성에 맞춰 모델을 달리 설계했다.</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.75rem 0;">
-    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:1rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">경주 — LSTM</div>
-      <ul style="color:#475569;font-size:.82rem;line-height:1.75;padding-left:1.1rem;margin:0;">
-        <li>장기 시계열 패턴 반영</li>
-        <li>시퀀스 길이 8주(56일×24H)</li>
-        <li>검증에서 BEST EPOCH 선택 → 전체 과거 데이터로 재학습(REFIT)</li>
-        <li>5개 시드 앙상블 (3, 7, 11, 17, 23)</li>
-        <li>손실함수: NMAE (10% 이상 구간 가중)</li>
-      </ul>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+    <div style="border:1px solid rgba(58,90,174,.15);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">
+      <div style="background:rgba(58,90,174,.08);padding:.6rem 1rem;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;color:#3A5AAE;text-align:center;">경주</div>
+      <div style="padding:.9rem 1rem;display:grid;grid-template-rows:1fr auto 1fr;flex:1;">
+        <div>
+          <div style="font-size:.73rem;font-weight:700;color:#475569;background:#F1F5F9;border-radius:6px;padding:.3rem .65rem;display:inline-block;margin-bottom:.4rem;">학습</div>
+          <ul style="font-size:.8rem;color:#475569;line-height:1.75;margin:.4rem 0 0;padding-left:1.1rem;">
+            <li>8주(56일×24H) 시계열 입력 → 24시간 출력 예측</li>
+            <li>계절·일주 주기성 반영을 위해 LSTM 적용</li>
+            <li>검증에서 Best Epoch 선택 후 전체 기간 재학습(Refit)</li>
+            <li>5개 시드 앙상블 (3, 7, 11, 17, 23)</li>
+            <li>손실함수: NMAE (10% 이상 구간 가중)</li>
+          </ul>
+        </div>
+        <div style="text-align:center;color:#CBD5E1;font-size:1rem;padding:.5rem 0;">↓</div>
+        <div>
+          <div style="font-size:.73rem;font-weight:700;color:#475569;background:#F1F5F9;border-radius:6px;padding:.3rem .65rem;display:inline-block;margin-bottom:.4rem;">예측값 보정</div>
+          <ol style="font-size:.8rem;color:#475569;line-height:1.75;margin:.4rem 0 0;padding-left:1.1rem;">
+            <li>시간대별 선형 보정</li>
+            <li>소프트맥스 가중 앙상블</li>
+            <li>계절 베이스라인 블렌드</li>
+            <li>풍향 섹터×시간 ISOTONIC</li>
+            <li>HIGH-WIND CLIP</li>
+          </ol>
+        </div>
+      </div>
     </div>
-    <div style="background:rgba(98,100,196,.04);border:1px solid rgba(98,100,196,.12);border-radius:10px;padding:1rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#6264C4;margin-bottom:.5rem;">양양·영덕 — 물리모델 + HGBR</div>
-      <ul style="color:#475569;font-size:.82rem;line-height:1.75;padding-left:1.1rem;margin:0;">
-        <li>풍력 물리 모델 (P ∝ ρ·WS³)</li>
-        <li>HGBR로 잔차 보정</li>
-        <li>풍속·풍향 변수만 있는 단지 특성 대응</li>
-      </ul>
+    <div style="border:1px solid rgba(98,100,196,.15);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">
+      <div style="background:rgba(98,100,196,.08);padding:.6rem 1rem;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;color:#6264C4;text-align:center;">양양·영덕</div>
+      <div style="padding:.9rem 1rem;display:grid;grid-template-rows:1fr auto 1fr;flex:1;">
+        <div>
+          <div style="font-size:.73rem;font-weight:700;color:#475569;background:#F1F5F9;border-radius:6px;padding:.3rem .65rem;display:inline-block;margin-bottom:.4rem;">학습</div>
+          <ul style="font-size:.8rem;color:#475569;line-height:1.75;margin:.4rem 0 0;padding-left:1.1rem;">
+            <li>공기밀도+허브풍속 기반 물리모델로 기본 출력 생성 (P ∝ ρ·WS³)</li>
+            <li>잔차를 HGBR로 학습·보정</li>
+            <li>풍속·풍향 변수만 있는 단지 특성 대응</li>
+          </ul>
+        </div>
+        <div style="text-align:center;color:#CBD5E1;font-size:1rem;padding:.5rem 0;">↓</div>
+        <div>
+          <div style="font-size:.73rem;font-weight:700;color:#475569;background:#F1F5F9;border-radius:6px;padding:.3rem .65rem;display:inline-block;margin-bottom:.4rem;">예측값 보정</div>
+          <ol style="font-size:.8rem;color:#475569;line-height:1.75;margin:.4rem 0 0;padding-left:1.1rem;">
+            <li>시간대별 ISOTONIC 보정</li>
+            <li>HIGH-WIND CLIP</li>
+          </ol>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<div class="proj-section">
-  <div class="proj-section-title">예측값 보정</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">모델 출력 이후 단지별로 추가 보정 과정을 거쳐 최종 예측값을 산출.</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.75rem 0;">
-    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:1rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.6rem;">경주 (7단계)</div>
-      <ol style="color:#475569;font-size:.82rem;line-height:1.9;padding-left:1.2rem;margin:0;">
-        <li>시간대별 선형 보정</li>
-        <li>소프트맥스 가중 앙상블</li>
-        <li>계절 베이스라인 블렌드</li>
-        <li>풍향 섹터×시간 ISOTONIC</li>
-        <li>HIGH-WIND CLIP</li>
-        <li>불확실도 적응 혼합 (B-게이팅)</li>
-        <li>마이크로 튜닝</li>
-      </ol>
-    </div>
-    <div style="background:rgba(98,100,196,.04);border:1px solid rgba(98,100,196,.12);border-radius:10px;padding:1rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#6264C4;margin-bottom:.6rem;">양양·영덕 (2단계)</div>
-      <ol style="color:#475569;font-size:.82rem;line-height:1.9;padding-left:1.2rem;margin:0;">
-        <li>시간대별 ISOTONIC 보정</li>
-        <li>HIGH-WIND CLIP</li>
-      </ol>
-    </div>
-  </div>
-  <img src="images/wind/wind_ppt_p13.png" class="proj-figure" alt="최종 파이프라인">
-  <div class="proj-fig-cap">최종 예측 파이프라인 (경주 · 양양 · 영덕)</div>
+
 </div>
 <div class="proj-section">
   <div class="proj-section-title">결과</div>
-  <div style="font-size:.78rem;font-weight:700;color:#334155;margin:.75rem 0 .4rem;">자체 검증 결과 (Validation Set)</div>
+
+  <div style="font-size:.78rem;font-weight:700;color:#334155;margin:.75rem 0 .4rem;">보정 전후 예측 비교 (경주)</div>
+  <div style="margin-bottom:.9rem;">
+    <div style="margin-bottom:.8rem;">
+      <div style="font-size:.72rem;color:#64748B;margin-bottom:.35rem;font-weight:600;">① 후처리 전 — Ensemble Raw</div>
+      <ul style="font-size:.8rem;color:#475569;line-height:1.75;margin:0;padding-left:1.1rem;">
+        <li>피크 구간 과대/과소 예측으로 출력 변동 폭이 실제보다 크게 나타남</li>
+        <li>고풍속 구간에서 예측 곡선이 실제보다 흔들림이 큼</li>
+      </ul>
+      <img src="images/wind/before.png" class="proj-figure" alt="후처리 전 예측 vs 실제">
+      <div class="proj-fig-cap">후처리 전 — Ensemble Raw vs Actual (경주, Last 4 Weeks)</div>
+    </div>
+    <div>
+      <div style="font-size:.72rem;color:#64748B;margin-bottom:.35rem;font-weight:600;">② 후처리 후 — Final</div>
+      <ul style="font-size:.8rem;color:#475569;line-height:1.75;margin:0;padding-left:1.1rem;">
+        <li>시간대별/섹터별 보정으로 예측 곡선의 평균 수준이 실제 값에 정렬</li>
+        <li>고풍속 구간 과예측 억제 및 변동성 감소로 실제 추세를 안정적으로 추종</li>
+      </ul>
+      <img src="images/wind/after.png" class="proj-figure" alt="후처리 후 예측 vs 실제">
+      <div class="proj-fig-cap">후처리 후 — Final vs Actual (경주, Last 4 Weeks)</div>
+    </div>
+  </div>
+
+  <div style="font-size:.78rem;font-weight:700;color:#334155;margin:.9rem 0 .4rem;">단지별 최종 NMAE 예측 결과</div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:.75rem;">
     <div style="text-align:center;padding:.9rem .5rem;background:rgba(58,90,174,.05);border:1px solid rgba(58,90,174,.13);border-radius:10px;">
       <div style="font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">10.87%</div>
@@ -675,8 +718,14 @@
       <div style="font-size:.72rem;color:#64748B;margin-top:.25rem;">영덕 NMAE</div>
     </div>
   </div>
+  <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .75rem;padding-left:1.2rem;">
+    <li>세 발전단지 모두 NMAE 10~11% 수준으로 안정적인 예측 정확도 확보</li>
+    <li>실계통 운영기관(EirGrid/SONI) Day-Ahead 단지 기준 <strong style="color:#334155;">≈11~16%</strong>와 비교해 경쟁력 있는 수준</li>
+    <li>지형·기상 조건 및 데이터 품질 차이에 따라 절대값은 달라질 수 있으나, 주요 오차 구간(정격용량 ≥10%)에서의 성능 안정성 확인</li>
+  </ul>
+
   <div style="font-size:.78rem;font-weight:700;color:#334155;margin:.9rem 0 .4rem;">최종 제출 결과</div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;">예선 통과 30팀 중 <strong style="color:#3A5AAE;">7위</strong> 기록</p>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;">272팀 참가 중 예선 통과 30팀 내 <strong style="color:#3A5AAE;">7위</strong> 기록</p>
   <img src="images/wind/wind_leaderboard.png" class="proj-figure" alt="전체 참가팀 순위">
   <div class="proj-fig-cap">전체 참가팀 순위 — 리더보드</div>
 </div>
@@ -684,7 +733,7 @@
   <div class="proj-section-title">연구 포스터</div>
   <img src="images/wind/wind_paper_p1.png" class="proj-figure" alt="풍력발전량 예측 연구 포스터">
 </div>`,
-      tags:['Python','LDAPS','SCADA','LSTM','HGBR','Time Series','예측모델','기상데이터'],
+      tags:['Python','LDAPS','SCADA','LSTM','HGBR','Isotonic Regression','Ensemble','Time Series','예측모델','기상데이터'],
       links:[{href:'https://github.com/sizi00/wind-power-forecasting',txt:'⬡ GitHub'}],
     },
     safer: {
@@ -713,13 +762,13 @@
       ],
       desc:'서울대병원·동국대병원·용인정신병원 3개 기관 다기관 연구. 웨어러블 센서 데이터로 급성기 정신병동 환자의 증상 악화 및 자타해 위험 예측 AI 알고리즘 개발.',
       highlights:[
-        '🔍 기존 논문(R²=0.83) 재현 중 data leakage 직접 발견·검증 — 누수 제거 후 val R²=-0.06으로 하락, 재현 불가 확인',
+        '🔍 기존 논문(R²=0.83) 재현 중 data leakage 직접 발견 및 재현 불가 확인 — 누수 제거 후 val R²=-0.06으로 하락, 복합 원인으로 완전한 재현 불가 판단',
         '🏗️ CRF·웨어러블·위치 3종 다기관 데이터 전처리 파이프라인 단독 설계·구현 — 7단계 모듈화',
         '📈 입원 초기 임상척도값 feature 추가로 val R² 평균 +0.4 향상 — 환자 baseline이 예측 핵심임을 검증',
       ],
       body:`<div class="proj-section">
   <div class="proj-section-title">배경</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">급성기 정신병동에 입원한 중증 정신질환 환자들의 증상 악화 및 자타해 위험을 조기 예측하는 AI 알고리즘 개발을 목표로 한 다기관 협력 연구이다. 서울대병원·동국대병원·용인정신병원 3개 기관의 실제 환자 데이터를 활용하였다. 본격적인 모델 개발에 앞서 Transformer·ViT·SimCLR·CLIP·MAE·DINO·Wearable FM 등 SSL 관련 논문 스터디를 병행하며 웨어러블 도메인 자기지도학습 기술을 파악하였다.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">급성기 정신병동에 입원한 중증 정신질환 환자들의 증상 악화 및 자타해 위험을 조기 예측하는 AI 알고리즘 개발을 목표로 한 다기관 협력 연구이다. 서울대병원·동국대병원·용인정신병원 3개 기관의 실제 환자 데이터를 활용하였다.</p>
   <div style="font-size:.82rem;color:#475569;line-height:1.85;margin-top:.6rem;">
     <span style="font-weight:600;color:#334155;">예측 태스크</span>
     <ul style="margin:.4rem 0 0;padding-left:1.2rem;">
@@ -849,7 +898,7 @@
 </div>
 <div class="proj-section">
   <div class="proj-section-title">전처리 파이프라인</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">TRAIT·STATE·SENSOR·LOCATION 다중 테이블을 키 기반으로 병합하고, 시계열 resampling(6s·30s → 1시간 집계) 후 Feature set 생성.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">TRAIT·STATE·SENSOR·LOCATION 다중 테이블을 키 기반으로 병합하고, 시계열 resampling(6s·30s) 후 Feature set 생성.</p>
   <ol style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.3rem;">
     <li><strong style="color:#334155;">read_and_clean</strong> — 6개 테이블 로딩·정제 (trait, initial, weekly, event, sensor, location)</li>
     <li><strong style="color:#334155;">align_by_keys</strong> — 키 기반 정렬</li>
@@ -907,25 +956,25 @@
       </thead>
       <tbody>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">BPRS</td>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">BPRS <span style="font-weight:400;color:#94a3b8;font-size:.8em;">0–69</span></td>
           <td style="padding:.45rem .8rem;text-align:right;color:#475569;">12.48</td>
           <td style="padding:.45rem .8rem;text-align:right;color:#475569;">18.50</td>
           <td style="padding:.45rem .8rem;text-align:right;color:#dc2626;font-weight:700;">+6.0</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">YMRS</td>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">YMRS <span style="font-weight:400;color:#94a3b8;font-size:.8em;">0–54</span></td>
           <td style="padding:.45rem .8rem;text-align:right;color:#475569;">6.39</td>
           <td style="padding:.45rem .8rem;text-align:right;color:#475569;">8.99</td>
           <td style="padding:.45rem .8rem;text-align:right;color:#dc2626;font-weight:700;">+2.6</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">MADRS</td>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">MADRS <span style="font-weight:400;color:#94a3b8;font-size:.8em;">0–48</span></td>
           <td style="padding:.45rem .8rem;text-align:right;color:#475569;">10.83</td>
           <td style="padding:.45rem .8rem;text-align:right;color:#475569;">14.86</td>
           <td style="padding:.45rem .8rem;text-align:right;color:#dc2626;font-weight:700;">+4.0</td>
         </tr>
         <tr>
-          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">HAMA</td>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">HAMA <span style="font-weight:400;color:#94a3b8;font-size:.8em;">0–39</span></td>
           <td style="padding:.45rem .8rem;text-align:right;color:#475569;">6.99</td>
           <td style="padding:.45rem .8rem;text-align:right;color:#475569;">8.95</td>
           <td style="padding:.45rem .8rem;text-align:right;color:#dc2626;font-weight:700;">+2.0</td>
@@ -1004,13 +1053,31 @@
   <div class="proj-fig-cap">initial 지표값 feature 추가 후 per-target 성능 — val R² 평균 약 0.35 (베이스라인 0.04 대비 +0.4 향상)</div>
 </div>
 <div class="proj-section">
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">졸업 시점까지 EDA, 전처리 파이프라인, 기존 논문 검증, 모델 재설계 및 성능 개선 실험을 완료하고 인계.</p>
+  <div class="proj-section-title">한계 및 향후 방향</div>
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">① 정형·시계열 데이터 결합 방식</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .5rem;">기존 모델은 trait 같은 정형 데이터와 센서 시계열 데이터를 동일한 X 테이블로 통합해 입력했다. 이 경우 trait 변수는 모든 타임스텝에서 동일한 값을 갖는 상수 변수가 되어 각 modality의 특성을 충분히 살리지 못한다.</p>
+    <div style="font-size:.79rem;color:#334155;font-weight:600;margin-bottom:.35rem;">→ 멀티모달 구조로 재설계 (향후 방향)</div>
+    <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;padding-left:1.2rem;">
+      <li><strong style="color:#334155;">X_seq</strong> (N, 168, F_seq) — 1시간 단위 7일 lookback 시계열 → GRU / LSTM / Transformer 인코딩</li>
+      <li><strong style="color:#334155;">X_tab</strong> (N, F_tab) — trait · initial · weekly 정형 변수 → MLP 인코딩</li>
+      <li>Fusion 방식 실험 필요 — concat/sum 후 FC, 별도 출력의 weighted sum, cross-attention (TFT) 등</li>
+    </ul>
+  </div>
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">② Initial 데이터 활용 제약</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;">입원 초기 임상척도값(IN_BPRS 등) 추가 시 성능이 향상됨을 확인했으나, 실제 임상 환경에서 initial 데이터가 항상 확보 가능한지 불투명하다. 실제 활용 가능성을 고려하면 initial 변수를 제외한 설정이 더 현실적일 수 있다.</p>
+  </div>
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">③ 일반화 성능의 한계</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;">Train 대비 Validation 성능이 현저히 낮아 현재 설정에서 일반화 한계를 확인했다. 소규모(n≈280) 다기관 데이터에서 기관 간 분포 차이와 데이터 부족이 복합적으로 작용한 것으로 판단된다. 또한 R² 기반 평가는 지표 간 분산 차이와 이상치에 민감해 임상적 유용성을 충분히 반영하지 못할 수 있음 — metric 전환 검토 필요.</p>
+  </div>
 </div>
 <div style="font-size:.82rem;color:#64748B;padding:.7rem 1rem;border:1px solid rgba(58,90,174,.15);border-radius:.5rem;background:rgba(58,90,174,.04);margin-top:1rem;">
   ※ 본 연구의 코드는 현재 비공개로 관리되고 있습니다. 열람을 원하시면 이메일로 GitHub 계정을 보내주시면 접근 권한을 드리겠습니다.
 </div>`,
-      tags:['Python','PyTorch','Time Series','Conv1d+GRU','XGBoost','Pandas','Clinical Data','BLE','Plotly','PIL'],
-      links:[{href:'https://github.com/sizi00/ssl-paper-study',txt:'⬡ SSL 논문 스터디'}],
+      tags:['Python','PyTorch','Time Series','Conv1d+GRU','Pandas','Clinical Data','BLE','Plotly','PIL'],
+      links:[],
     },
     chatbot: {
       ico:'🤖', title:'심리상담 챗봇 효과 분석',
@@ -1778,6 +1845,8 @@
     document.getElementById('proj-title').textContent = p.title;
     document.getElementById('proj-org').textContent = p.org;
     document.getElementById('proj-contrib').textContent = p.contrib || '';
+    const roleEl = document.getElementById('proj-role');
+    if(p.role){ roleEl.textContent = '담당: ' + p.role; roleEl.style.display='block'; } else { roleEl.style.display='none'; }
     const bodyEl = document.getElementById('proj-body');
     if(bodyEl){ bodyEl.innerHTML = p.body || ''; bodyEl.style.display = p.body ? 'block' : 'none'; }
     // hide carousel if body exists
