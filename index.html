@@ -1726,28 +1726,59 @@
       ],
       body:`<div class="proj-section">
   <div class="proj-section-title">배경</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">알츠하이머병(AD) 환자에서 장내 미생물 군집 불균형이 관찰된다는 기존 연구를 바탕으로, 장내 미생물 데이터만으로 전임상 AD를 조기 진단할 수 있는지 검증한 프로젝트이다. 기존 연구 대부분이 증상이 발현된 환자를 대상으로 해 전임상 단계 데이터가 부족했고, 전임상 AD와 장내 미생물 변화의 연관성 연구가 거의 이루어지지 않아 이 지점에 주목했다.</p>
-  <p style="color:#94A3B8;font-size:.8rem;margin-top:.4rem;">※ Ferreiro et al.(2023) 논문 방법론을 기반으로 진행한 재현 연구. R EDA는 논문 공식 첨부 코드를 참고·재현, ML 예측 모델은 논문 설정을 기반으로 처음부터 직접 구현.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">알츠하이머병(AD)은 기억력 저하 같은 증상이 나타나기 10~20년 전부터 뇌에 아밀로이드 단백질이 축적된다. 이 전임상 단계에서 진단이 이루어진다면 치료 개입 가능성이 훨씬 높아지지만, 현재 전임상 AD를 확인하려면 아밀로이드 PET 스캔이나 척추 천자(CSF 검사)가 필요해 비용과 침습성 문제로 일반적인 스크리닝이 어렵다.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.75rem;">기존 연구에서 AD 환자의 장내 미생물 군집 불균형이 관찰됐지만, 대부분 증상이 발현된 환자를 대상으로 해 전임상 단계 연구는 거의 없었다. 분변 샘플로 측정 가능한 장내미생물이 비침습적 1차 스크리닝 지표로 활용될 수 있다면, 건강검진 수준에서 위험군을 걸러낸 뒤 PET/CSF로 확진하는 파이프라인이 가능해진다. 이 가능성을 머신러닝 모델로 정량적으로 검증하고자 했다.</p>
+  <p style="color:#94A3B8;font-size:.8rem;margin-top:.6rem;">※ Ferreiro et al.(2023) 논문 방법론을 기반으로 진행한 재현 연구. R EDA는 논문 공식 첨부 코드를 참고·재현, ML 예측 모델은 논문 설정을 기반으로 처음부터 직접 구현.</p>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">데이터 구성</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">총 164명 — 전임상 AD 49명, 대조군 115명 (연령 68~94세, 남성 45% · 여성 55%). 평균 2,150만 리드 깊이로 장내 미생물 시퀀싱. 전임상 AD 정의는 CDR 0이면서 Aβ PET Centiloid > 16.4 또는 CSF Aβ42/Aβ40 비율 < 0.0673 기준을 적용했음.</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin:.85rem 0;">
-    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:.9rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.4rem;">Meta data</div>
-      <p style="color:#475569;font-size:.8rem;line-height:1.7;margin:0;">성별·인종·APOE4 상태·질병 이력(고혈압·당뇨병 등), 유전적 위험도(Polygenic Risk Score)</p>
+  <div style="display:flex;align-items:stretch;border:1px solid rgba(100,116,139,.15);border-radius:10px;overflow:hidden;margin-bottom:1.2rem;background:rgba(100,116,139,.03);">
+    <div style="flex:1;padding:.9rem .5rem;text-align:center;border-right:1px solid rgba(100,116,139,.12);">
+      <div style="font-size:1.2rem;font-weight:700;color:#3A5AAE;line-height:1;">164</div>
+      <div style="font-size:.71rem;color:#94A3B8;margin-top:.35rem;">총 참가자</div>
     </div>
-    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:.9rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.4rem;">마이크로바이옴 data</div>
-      <p style="color:#475569;font-size:.8rem;line-height:1.7;margin:0;">MetaPhlAn3 Taxonomic 데이터(종 풍부도), HUMAnN3 Pathway 데이터(대사 경로 상대적 풍부도)</p>
+    <div style="flex:1.4;padding:.9rem .5rem;text-align:center;border-right:1px solid rgba(100,116,139,.12);">
+      <div style="font-size:1.2rem;font-weight:700;color:#3A5AAE;line-height:1;">49 / 115</div>
+      <div style="font-size:.71rem;color:#94A3B8;margin-top:.35rem;">전임상AD / 대조군</div>
     </div>
-    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:.9rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.4rem;">영양소 data</div>
-      <p style="color:#475569;font-size:.8rem;line-height:1.7;margin:0;">비타민·미네랄·지방 등 영양소별 섭취량 및 칼로리 출처(지방·단수화물)별 데이터</p>
+    <div style="flex:1;padding:.9rem .5rem;text-align:center;border-right:1px solid rgba(100,116,139,.12);">
+      <div style="font-size:1.2rem;font-weight:700;color:#475569;line-height:1;">68~94세</div>
+      <div style="font-size:.71rem;color:#94A3B8;margin-top:.35rem;">연령 범위</div>
+    </div>
+    <div style="flex:1.2;padding:.9rem .5rem;text-align:center;border-right:1px solid rgba(100,116,139,.12);">
+      <div style="font-size:1.2rem;font-weight:700;color:#475569;line-height:1;">45% / 55%</div>
+      <div style="font-size:.71rem;color:#94A3B8;margin-top:.35rem;">남성 / 여성</div>
+    </div>
+    <div style="flex:1;padding:.9rem .5rem;text-align:center;">
+      <div style="font-size:1.2rem;font-weight:700;color:#475569;line-height:1;">2,150만</div>
+      <div style="font-size:.71rem;color:#94A3B8;margin-top:.35rem;">평균 리드</div>
     </div>
   </div>
-  <img src="images/lifecare/lc_p9.png" class="proj-figure" alt="데이터 소개">
-  <div class="proj-fig-cap">전임상 AD 49명 vs 대조군 115명 — 데이터 소개</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem;">
+    <div style="border-left:3px solid #94A3B8;padding:.9rem 1.1rem;background:rgba(100,116,139,.04);border-radius:0 8px 8px 0;">
+      <div style="font-size:.78rem;font-weight:700;color:#64748B;margin-bottom:.5rem;letter-spacing:.03em;">대조군</div>
+      <p style="color:#475569;font-size:.82rem;line-height:1.85;margin:0;">CDR = 0<br>Centiloid ≤ 16.4<br><span style="color:#94A3B8;">또는</span> CSF Aβ42/Aβ40 ≥ 0.0673</p>
+    </div>
+    <div style="border-left:3px solid #3A5AAE;padding:.9rem 1.1rem;background:rgba(58,90,174,.04);border-radius:0 8px 8px 0;">
+      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;letter-spacing:.03em;">전임상 AD</div>
+      <p style="color:#475569;font-size:.82rem;line-height:1.85;margin:0;">CDR = 0<br>Centiloid > 16.4 또는 PiB-PET SUVR > 1.42<br><span style="color:#94A3B8;font-size:.76rem;">PET 없을 시: CSF Aβ42/Aβ40 &lt; 0.0673</span></p>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-top:1rem;">
+    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:1rem;">
+      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">Meta data</div>
+      <p style="color:#475569;font-size:.8rem;line-height:1.75;margin:0;">성별·인종·APOE4 상태·질병 이력(고혈압·당뇨병 등), 유전적 위험도(Polygenic Risk Score)</p>
+    </div>
+    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:1rem;">
+      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">마이크로바이옴 data</div>
+      <p style="color:#475569;font-size:.8rem;line-height:1.75;margin:0;">MetaPhlAn3 Taxonomic 데이터(종 풍부도), HUMAnN3 Pathway 데이터(대사 경로 상대적 풍부도)</p>
+    </div>
+    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:1rem;">
+      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">영양소 data</div>
+      <p style="color:#475569;font-size:.8rem;line-height:1.75;margin:0;">비타민·미네랄·지방 등 영양소별 섭취량 및 칼로리 출처(지방·탄수화물)별 데이터</p>
+      <p style="color:#94A3B8;font-size:.73rem;margin:.4rem 0 0;">EDA 분석에서 활용 (ML 모델 변수 제외)</p>
+    </div>
+  </div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">탐색적 분석 (EDA)</div>
@@ -1755,24 +1786,49 @@
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">미생물 데이터의 어떤 수준(다양성 → 군집 구조 → 특정 균종)에서 전임상 AD와의 연관성이 나타나는지를 단계적으로 좁혀 들어가는 방식으로 분석을 진행했음.</p>
 
   <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">① Alpha Diversity — 다양성 지표로는 구별 불가</div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;">종 풍부도(Richness)와 균등성(Shannon) 모두 전임상 AD 그룹과 대조군 간 유의미한 차이가 없었음. 장내 미생물이 "얼마나 다양한가"는 전임상 AD를 구별하는 지표가 되지 않음을 확인. → 단순 다양성 지표만으로는 부족하며, 미생물 조성의 구조적 차이를 더 세밀하게 분석할 필요성을 시사.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:center;margin:.5rem 0 .85rem;">
+    <p style="color:#475569;font-size:.85rem;line-height:1.75;margin:0;">종 풍부도(Richness)와 균등성(Shannon) 모두 전임상 AD 그룹과 대조군 간 유의미한 차이가 없었음. 장내 미생물이 "얼마나 다양한가"는 전임상 AD를 구별하는 지표가 되지 않음을 확인. → 단순 다양성 지표만으로는 부족하며, 미생물 조성의 구조적 차이를 더 세밀하게 분석할 필요성을 시사.</p>
+    <div>
+      <img src="images/lifecare/lc_eda_alpha.png" class="proj-figure" alt="Alpha Diversity" style="margin:.3rem 0 0;">
+      <div class="proj-fig-cap">Richness · Shannon — 두 그룹 간 유의미한 차이 없음</div>
+    </div>
+  </div>
 
   <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">② Beta Diversity — 군집 구조에서 신호 발견</div>
   <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">PCoA:</strong> 미생물 군집 구조를 저차원으로 시각화했을 때 전임상 AD 그룹과 대조군 간 분포가 일부 구분되는 양상을 확인. 다양성 지표와 달리, 군집 구조 수준에서는 두 그룹 간 차이가 있을 가능성을 시사 → 마이크로바이옴 데이터가 ML 피처로 유효함을 확인.</p>
-  <img src="images/lifecare/lc_p14.png" class="proj-figure" alt="Beta Diversity PCoA">
-  <div class="proj-fig-cap">Beta Diversity PCoA — 전임상 AD(1) vs 대조군(0) 군집 분포</div>
   <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">CAP (Constrained Analysis of Principal Coordinates):</strong> 나이·APOE4 상태·당뇨·BMI·Hypertension 등 임상 변수를 조건으로 추가했을 때 군집 간 차이가 유의미하게 설명됨. → 임상 변수가 미생물 군집 구조의 차이를 결정하는 핵심 요인임을 확인 — ML 모델에서 A/T/N/G/CC 임상 변수 프레임워크를 체계적으로 설계한 근거.</p>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">바이오마커 상관관계:</strong> 미생물 군집 구조(Taxonomic/Functional PCoA)가 PET Amyloid·PET Tau·Cortical Signature와 상관관계가 있으며, 전임상 그룹과 건강 그룹이 이 상관관계에서 명확히 구분됨. → 군집 구조의 차이가 Aβ 바이오마커와 연결되어 있음을 시사 — 모델에서 Aβ 관련 임상 변수(CC) 제외 시 Accuracy가 90.8% → 71.7%로 급감하는 결과와 일치.</p>
-  <img src="images/lifecare/lc_p16.png" class="proj-figure" alt="바이오마커 상관관계">
-  <div class="proj-fig-cap">미생물 군집 구조와 Aβ·Tau 바이오마커 상관관계 분석</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.5rem 0 .85rem;">
+    <div>
+      <img src="images/lifecare/lc_eda_pcoa.png" class="proj-figure" alt="Beta Diversity PCoA" style="margin:.3rem 0 0;height:220px;object-fit:contain;object-position:center;">
+      <div class="proj-fig-cap">PCoA — 전임상 AD(1) vs 대조군(0) 군집 분포</div>
+    </div>
+    <div>
+      <img src="images/lifecare/lc_eda_cap.png" class="proj-figure" alt="CAP" style="margin:.3rem 0 0;height:220px;object-fit:contain;object-position:center;">
+      <div class="proj-fig-cap">CAP — 임상 변수 조건 추가 시 군집 간 차이 설명</div>
+    </div>
+  </div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">바이오마커 상관관계:</strong> 미생물 군집 구조(Taxonomic/Functional PCoA)가 PET Amyloid·PET Tau·Cortical Signature와 상관관계가 있으며, 전임상 그룹과 건강 그룹이 이 상관관계에서 명확히 구분됨. → 군집 구조의 차이가 Aβ 바이오마커와 연결되어 있음을 시사 — 모델에서 Aβ 제외 시 Accuracy 90.8% → 71.7%로 급감하는 결과와 일치.</p>
+  <img src="images/lifecare/lc_eda_biomarker.png" class="proj-figure" alt="바이오마커 상관관계">
+  <div class="proj-fig-cap">미생물 군집 구조(Tax/Functional PCoA)와 Aβ·Tau·신경퇴행 바이오마커 상관관계</div>
 
-  <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">③ MaAsLin2 — 특정 균종이 AD와 연관</div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;">다중 선형 혼합 모델(음이항 회귀) 기반의 MaAsLin2로 개별 균종과 전임상 AD 상태 간 연관성을 분석. <strong style="color:#334155">Bacteroides intestinalis</strong>는 전임상 AD 그룹에서 유의미하게 높은 빈도로 나타났고, <strong style="color:#334155">Bifidobacterium longum</strong>은 건강 그룹에서 더 높게 나타남. → 전체 taxa 중 일부만 AD와 연관된다는 생물학적 근거 확인 — 250개 이상의 taxa를 전부 피처로 쓰지 않고 Boruta 알고리즘으로 기여하는 taxa만 선별한 이유.</p>
-  <img src="images/lifecare/lc_p17.png" class="proj-figure" alt="MaAsLin2 Taxa 결과">
-  <div class="proj-fig-cap">MaAsLin2 — 전임상 AD와 유의미하게 연관된 Taxa</div>
+  <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">③ MaAsLin2 · Pathway — 특정 균종·경로가 AD와 연관</div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">MaAsLin2:</strong> 음이항 회귀 기반으로 개별 균종과 전임상 AD 상태 간 연관성을 분석. <strong style="color:#334155;">Bacteroides intestinalis</strong>는 전임상 AD 그룹에서 유의미하게 높았고, <strong style="color:#334155;">Bifidobacterium longum</strong>은 건강 그룹에서 더 높게 나타남. → 전체 taxa 중 일부만 AD와 연관된다는 생물학적 근거 — Boruta로 기여 taxa만 선별한 이유.</p>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">Pathway:</strong> 지방산 합성·TCA 사이클 관련 대사 경로에서 두 그룹 간 풍부도 차이를 확인. → 미생물의 기능적 활성 수준에서도 AD와의 연관성이 존재함을 시사.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.5rem 0 .85rem;">
+    <div>
+      <img src="images/lifecare/lc_eda_taxa.png" class="proj-figure" alt="MaAsLin2 Taxa" style="margin:.3rem 0 0;">
+      <div class="proj-fig-cap">MaAsLin2 — 전임상 AD와 연관된 Taxa (coefficient)</div>
+    </div>
+    <div>
+      <img src="images/lifecare/lc_eda_pathway.png" class="proj-figure" alt="Pathway" style="margin:.3rem 0 0;">
+      <div class="proj-fig-cap">Pathway 풍부도 — 전임상 AD vs 대조군 비교</div>
+    </div>
+  </div>
 
   <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">④ 영양 섭취량 비교</div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;">칼로리·지방·단수화물·단백질 등 영양소 섭취 패턴을 비교했으나 전임상 AD와 직접적인 연관성은 발견되지 않았음. → ML 모델 피처 구성에서 제외.</p>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;">칼로리·지방·탄수화물·단백질 등 12개 영양소 섭취 패턴을 비교했으나 전임상 AD와 직접적인 연관성은 발견되지 않았음. → ML 모델 피처 구성에서 제외.</p>
+  <img src="images/lifecare/lc_eda_nutrition.png" class="proj-figure" alt="영양소 비교">
+  <div class="proj-fig-cap">영양소 섭취 패턴 비교 (12개 항목) — 전임상 AD vs 대조군, 유의미한 차이 없음</div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">모델링</div>
