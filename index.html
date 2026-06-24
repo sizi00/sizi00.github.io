@@ -302,13 +302,13 @@
   <!-- Small projects -->
   <h3 style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:600;color:var(--muted);margin:2.5rem 0 1.2rem">기타 프로젝트</h3>
   <div class="sm-grid fade">
-    <div id="sm-bigdata" class="sm-card" onclick="openProj('bigdata')" style="cursor:pointer"><div class="sm-ico">🐾</div><div class="sm-title">LLM 기반 반려동물 장소 검색 플랫폼</div><div class="sm-org">수업 프로젝트 · n8n + Python</div><div class="sm-contrib">2024.09 ~ 2024.12 · 기여도 40% (5인)</div><div class="sm-desc">n8n 자동화·Python·Text-to-SQL을 파이프라인으로 연결한 반려동물 동반 가능 장소 검색 서비스. Gradio 기반 챗봇·로그인 UI 프로토타입 구현, SQL 정확도 테스트 및 프롬프트 최적화 수행.</div><div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Text-to-SQL</span><span class="tag">n8n</span><span class="tag">Gradio</span></div></div>
+    <div id="sm-bigdata" class="sm-card" onclick="openProj('bigdata')" style="cursor:pointer"><div class="sm-ico">🐾</div><div class="sm-title">LLM 기반 반려동물 장소 검색 플랫폼</div><div class="sm-org">수업 프로젝트 · n8n + Python + SQL</div><div class="sm-contrib">2024.09 ~ 2024.12 · 기여도 40% (5인)</div><div class="sm-desc">n8n 자동화 워크플로우·OpenAI API·PostgreSQL을 연결한 반려동물 동반 가능 장소 검색 서비스. 자연어 질의를 SQL로 변환하는 Text-to-SQL 기반 챗봇 구현 및 GPT 모델 3종 정확도 비교 실험 수행.</div><div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Text-to-SQL</span><span class="tag">n8n</span><span class="tag">Gradio</span></div></div>
 
     <!-- 임시 비활성화: 다목적댐 수문운영 분석
     <div id="sm-dam" class="sm-card" onclick="openProj('dam')" style="cursor:pointer"><div class="sm-ico">🌊</div><div class="sm-title">한국 다목적댐 수문운영 분석</div><div class="sm-org">한국수자원공사 공개 데이터 · 2024</div><div class="sm-contrib">단독 진행</div><div class="sm-desc">K-water 9개 다목적댐 2024년 79,056건 Time Series 데이터 분석. 저수율 위기 구간 자동 탐지. Folium 인터랙티브 지도 매핑.</div><div class="tags"><span class="tag">Python</span><span class="tag">GeoPandas</span><span class="tag">Matplotlib</span><span class="tag">Time Series Analysis</span></div></div>
     -->
 
-    <div id="sm-lifecare" class="sm-card" onclick="openProj('lifecare')" style="cursor:pointer"><div class="sm-ico">🧬</div><div class="sm-title">장내미생물 기반 알츠하이머 초기진단</div><div class="sm-org">수업 프로젝트 · R + Python (Random Forest)</div><div class="sm-contrib">2024.09 ~ 2024.12 · 기여도 80% (3인)</div><div class="sm-desc">장내 마이크로바이옴 데이터를 활용해 전임상 알츠하이머 초기진단 가능성 탐색. R로 탐색적 분석 후 Python Random Forest 모델 구축. 의생명 도메인 집중 학습 병행.</div><div class="tags"><span class="tag">R</span><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">Scikit-learn</span><span class="tag">Microbiome</span></div></div>
+    <div id="sm-lifecare" class="sm-card" onclick="openProj('lifecare')" style="cursor:pointer"><div class="sm-ico">🧬</div><div class="sm-title">장내미생물 기반 전임상 알츠하이머 조기진단</div><div class="sm-org">수업 프로젝트 · R + Python (Random Forest)</div><div class="sm-contrib">2024.09 ~ 2024.12 · 기여도 80% (3인)</div><div class="sm-desc">Ferreiro et al.(2023) 방법론 기반 재현 연구. R EDA(Alpha·Beta Diversity, MaAsLin2) + Boruta 변수 선택 + 4가지 변수 조합 × 8모델 Random Forest 비교 실험.</div><div class="tags"><span class="tag">R</span><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">Scikit-learn</span><span class="tag">Boruta</span><span class="tag">Microbiome</span></div></div>
 
     <!-- 임시 비활성화: MIMIC4 의료 데이터 분석
     <div id="sm-mimic" class="sm-card" onclick="openProj('mimic')" style="cursor:pointer"><div class="sm-ico">🏥</div><div class="sm-title">MIMIC4 의료 데이터 분석</div><div class="sm-org">수업 프로젝트 · SQL</div><div class="sm-desc">연령별 입원 이유·사망률 분석. 다빈도 진단명·사망 진단명 SQL 분석 및 시각화.</div><div class="tags"><span class="tag">SQL</span><span class="tag">데이터분석</span><span class="tag">시각화</span></div></div>
@@ -1597,9 +1597,8 @@
           </tr>
         </tbody>
       </table>
-      <ul style="margin:0;padding-left:1.1rem;font-size:.8rem;color:#475569;line-height:1.9;">
+      <ul style="margin:.5rem 0 0;padding-left:1.1rem;font-size:.8rem;color:#475569;line-height:1.9;">
         <li>gpt-4-turbo는 챗봇 유형과 무관하게 대부분 답변을 3.5점 이상으로 과대평가 — 사용자의 감정적 요소를 반영하지 못하기 때문으로 해석</li>
-        <li>이용 일수와 만족도가 비례하지 않음을 확인</li>
         <li>두 모델 모두 LLM 자동 평가보다 실제 사용자 만족도가 낮게 나타나, LLM 평가는 논리적 형식은 포착하지만 감정적 요소를 충분히 반영하지 못함</li>
       </ul>
     </div>
@@ -1680,7 +1679,7 @@
       links:[{href:'https://github.com/sizi00/care-chatbot',txt:'⬡ GitHub'}],
     },
     lifecare: {
-      ico:'🧬', title:'장내미생물 기반 전임상 알츠하이머 초기진단',
+      ico:'🧬', title:'장내미생물 기반 전임상 알츠하이머 조기진단',
       org:'수업 프로젝트 · R + Python (Random Forest)',
       contrib:'2024.09 ~ 2024.12 · 기여도 80% (3인)',
       badges:[],
@@ -1719,15 +1718,16 @@
         {src:'images/lifecare/lc_p32.png', cap:'p32'},
         {src:'images/lifecare/lc_p33.png', cap:'p33'},
       ],
-      desc:'전임상 AD 환자와 대조군 164명의 장내 미생물·임상 데이터를 분석해 조기 진단 가능성을 탐색한 수업 프로젝트. EDA 4단계(Alpha·Beta Diversity, MaAsLin2, 영양 분석) + Random Forest 8가지 모델 비교.',
+      desc:'Ferreiro et al.(2023) 논문 방법론 기반으로, 전임상 AD 환자·대조군 164명의 장내 미생물·임상 데이터로 조기 진단 가능성을 탐색. R EDA(Alpha·Beta Diversity, MaAsLin2) + Boruta 변수 선택 + Random Forest 8가지 변수 조합 × 100 seed 반복 실험.',
       highlights:[
-        '🧬 164명 장내 미생물 시퀀싱 — A/T/N/G/CC 임상 변수 프레임워크 × Boruta taxa 선택 적용',
+        '🧬 A/T/N/G/CC 바이오마커 프레임워크 기반 변수 구조화 + Boruta 알고리즘으로 진단 기여 taxa 선별',
         '🔬 R(Alpha·Beta Diversity, MaAsLin2 연관성) + Python(Random Forest) 이원화 파이프라인 구성',
         '🌲 4가지 변수 조합 × Base/WithTaxa = 8모델, 100 seed 반복 실험 — ALL 모델 Accuracy 90.8%',
       ],
       body:`<div class="proj-section">
   <div class="proj-section-title">배경</div>
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">알츠하이머병(AD) 환자에서 장내 미생물 군집 불균형이 관찰된다는 기존 연구를 바탕으로, 장내 미생물 데이터만으로 전임상 AD를 조기 진단할 수 있는지 검증한 프로젝트이다. 기존 연구 대부분이 증상이 발현된 환자를 대상으로 해 전임상 단계 데이터가 부족했고, 전임상 AD와 장내 미생물 변화의 연관성 연구가 거의 이루어지지 않아 이 지점에 주목했다.</p>
+  <p style="color:#94A3B8;font-size:.8rem;margin-top:.4rem;">※ Ferreiro et al.(2023) 논문 방법론을 기반으로 진행한 재현 연구. R EDA는 논문 공식 첨부 코드를 참고·재현, ML 예측 모델은 논문 설정을 기반으로 처음부터 직접 구현.</p>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">데이터 구성</div>
@@ -1752,29 +1752,27 @@
 <div class="proj-section">
   <div class="proj-section-title">탐색적 분석 (EDA)</div>
   <p style="color:#94A3B8;font-size:.8rem;margin-bottom:.6rem;">※ EDA 분석은 Ferreiro et al. (2023) 논문 첨부 공식 R 코드를 참고·재현했음.</p>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">Alpha Diversity, Beta Diversity, 특정 Taxa·Pathway 연관성, 영양 섭취량 비교 4단계로 분석을 진행했음.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">미생물 데이터의 어떤 수준(다양성 → 군집 구조 → 특정 균종)에서 전임상 AD와의 연관성이 나타나는지를 단계적으로 좁혀 들어가는 방식으로 분석을 진행했음.</p>
 
-  <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">① Alpha Diversity (다양성 지표)</div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;">종 풍부도(Richness)와 균등성(Shannon)을 비교한 결과, 두 지표 모두 전임상 AD와 직접적인 연관이 없는 것으로 나타났음. 종의 수나 균등성만으로는 전임상 AD를 구분하기 어렵다는 것을 확인했음.</p>
-  <img src="images/lifecare/lc_p13.png" class="proj-figure" alt="Alpha Diversity">
-  <div class="proj-fig-cap">Alpha Diversity (Richness · Shannon) — 전임상 AD vs 대조군 비교</div>
+  <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">① Alpha Diversity — 다양성 지표로는 구별 불가</div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;">종 풍부도(Richness)와 균등성(Shannon) 모두 전임상 AD 그룹과 대조군 간 유의미한 차이가 없었음. 장내 미생물이 "얼마나 다양한가"는 전임상 AD를 구별하는 지표가 되지 않음을 확인. → 단순 다양성 지표만으로는 부족하며, 미생물 조성의 구조적 차이를 더 세밀하게 분석할 필요성을 시사.</p>
 
-  <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">② Beta Diversity (군집 차이)</div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;">PCoA 분석에서 군집 간 분포가 약간 구분되는 양상을 확인했음. CAP 분석에서는 나이·APOE4 상태·당뇨병·BMI 등 임상 변수를 추가했을 때 군집 차이에 유의미한 기여를 하는 것으로 나타났음. 또한 미생물 군집 구조(Taxonomic/Functional PCoA)와 아밀로이드 바이오마커(PET Amyloid, Tau) 간 상관관계를 추가 분석했음.</p>
+  <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">② Beta Diversity — 군집 구조에서 신호 발견</div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">PCoA:</strong> 미생물 군집 구조를 저차원으로 시각화했을 때 전임상 AD 그룹과 대조군 간 분포가 일부 구분되는 양상을 확인. 다양성 지표와 달리, 군집 구조 수준에서는 두 그룹 간 차이가 있을 가능성을 시사 → 마이크로바이옴 데이터가 ML 피처로 유효함을 확인.</p>
   <img src="images/lifecare/lc_p14.png" class="proj-figure" alt="Beta Diversity PCoA">
   <div class="proj-fig-cap">Beta Diversity PCoA — 전임상 AD(1) vs 대조군(0) 군집 분포</div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">CAP (Constrained Analysis of Principal Coordinates):</strong> 나이·APOE4 상태·당뇨·BMI·Hypertension 등 임상 변수를 조건으로 추가했을 때 군집 간 차이가 유의미하게 설명됨. → 임상 변수가 미생물 군집 구조의 차이를 결정하는 핵심 요인임을 확인 — ML 모델에서 A/T/N/G/CC 임상 변수 프레임워크를 체계적으로 설계한 근거.</p>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">바이오마커 상관관계:</strong> 미생물 군집 구조(Taxonomic/Functional PCoA)가 PET Amyloid·PET Tau·Cortical Signature와 상관관계가 있으며, 전임상 그룹과 건강 그룹이 이 상관관계에서 명확히 구분됨. → 군집 구조의 차이가 Aβ 바이오마커와 연결되어 있음을 시사 — 모델에서 Aβ 관련 임상 변수(CC) 제외 시 Accuracy가 90.8% → 71.7%로 급감하는 결과와 일치.</p>
   <img src="images/lifecare/lc_p16.png" class="proj-figure" alt="바이오마커 상관관계">
-  <div class="proj-fig-cap">미생물 군집 구조와 아밀로이드 바이오마커 상관관계 분석</div>
+  <div class="proj-fig-cap">미생물 군집 구조와 Aβ·Tau 바이오마커 상관관계 분석</div>
 
-  <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">③ 특정 Taxa · Pathway 연관성 (MaAsLin2)</div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;">MaAsLin2로 전임상 AD와 유의미하게 연관된 특정 균종과 대사 경로를 분석했음. Taxa 분석에서 <strong style="color:#334155">Bacteroides intestinalis</strong>는 전임상 AD와 양의 상관, <strong style="color:#334155">Bifidobacterium longum</strong>은 건강 상태와 양의 상관이 확인됐음. Pathway 분석(HUMAnN3)에서는 특정 대사 경로가 AD와 양 또는 음의 연관성을 가짐을 확인했음.</p>
+  <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">③ MaAsLin2 — 특정 균종이 AD와 연관</div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;">다중 선형 혼합 모델(음이항 회귀) 기반의 MaAsLin2로 개별 균종과 전임상 AD 상태 간 연관성을 분석. <strong style="color:#334155">Bacteroides intestinalis</strong>는 전임상 AD 그룹에서 유의미하게 높은 빈도로 나타났고, <strong style="color:#334155">Bifidobacterium longum</strong>은 건강 그룹에서 더 높게 나타남. → 전체 taxa 중 일부만 AD와 연관된다는 생물학적 근거 확인 — 250개 이상의 taxa를 전부 피처로 쓰지 않고 Boruta 알고리즘으로 기여하는 taxa만 선별한 이유.</p>
   <img src="images/lifecare/lc_p17.png" class="proj-figure" alt="MaAsLin2 Taxa 결과">
-  <div class="proj-fig-cap">MaAsLin2 — 전임상 AD와 유의미하게 연관된 특정 Taxa 분석 결과</div>
-  <img src="images/lifecare/lc_p18.png" class="proj-figure" alt="Pathway 분석 결과">
-  <div class="proj-fig-cap">HUMAnN3 Pathway 분석 — AD와 연관된 대사 경로</div>
+  <div class="proj-fig-cap">MaAsLin2 — 전임상 AD와 유의미하게 연관된 Taxa</div>
 
   <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">④ 영양 섭취량 비교</div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;">칼로리·지방·단수화물·단백질 등 영양소 섭취 패턴을 비교했으나 전임상 AD와 직접적인 연관성은 발견되지 않았음.</p>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;">칼로리·지방·단수화물·단백질 등 영양소 섭취 패턴을 비교했으나 전임상 AD와 직접적인 연관성은 발견되지 않았음. → ML 모델 피처 구성에서 제외.</p>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">모델링</div>
@@ -1867,13 +1865,14 @@
   <div class="proj-section-title">결론</div>
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">전임상 AD 상태에서도 장내 미생물 조성이 건강한 사람들과 구별되며, Aβ·타우 단백질 등 초기 병리학적 바이오마커와의 상관관계를 확인. 장내 미생물 데이터 기반 Random Forest 모델이 전임상 AD 예측의 정확도·특이도를 향상시킬 수 있음을 증명. 장내 미생물군이 조기 AD 진단을 위한 바이오마커로서의 잠재력을 가짐을 시사.</p>
 </div>`,
-      tags:['R','Python','Random Forest','Scikit-learn','KNNImputer','Microbiome'],
+      tags:['R','Python','Random Forest','Scikit-learn','KNNImputer','Boruta','MaAsLin2','Microbiome'],
       links:[{href:'https://github.com/sizi00/gut-microbiome-preclinical-AD',txt:'⬡ GitHub'}],
     },
     bigdata: {
       ico:'🐾', title:'LLM 기반 반려동물 동반 장소 검색 플랫폼',
-      org:'수업 프로젝트 · n8n + Python',
+      org:'수업 프로젝트 · n8n + Python + SQL',
       contrib:'2024.09 ~ 2024.12 · 기여도 40% (5인)',
+      role:'n8n 워크플로우 전체 설계 및 초기 구현, Text-to-SQL 전담 (프롬프트 설계·GPT 모델 비교), Gradio 챗봇 초기 구현 (팀원 인계)',
       badges:[],
       images:[
         {src:'images/bigdata/arch1_login.png', cap:'워크플로우 ① — 로그인·회원가입 파이프라인'},
@@ -1885,94 +1884,146 @@
       ],
       desc:'n8n 자동화 워크플로우·OpenAI API·PostgreSQL을 연결한 반려동물 동반 가능 장소 검색 플랫폼. 자연어 질의를 SQL로 변환하는 Text-to-SQL 파이프라인 구성 및 GPT 모델별 정확도 비교 실험.',
       highlights:[
-        '⚙️ 자동화 워크플로우 기반 로그인·챗봇·예약 3개 독립 파이프라인 설계',
-        '🧪 GPT-3.5 / GPT-4-Turbo / GPT-4o-mini 모델별 Text-to-SQL 정확도 비교 실험',
-        '🗃️ 시스템 프롬프트 9개 규칙 설계로 SQL 변환 정확도 62.04% 달성',
-        '🐾 한국문화정보원 공공데이터 23,929개 반려동물 동반 시설 통합',
+        '⚙️ n8n 기반 로그인·챗봇·예약 3개 독립 워크플로우 설계',
+        '🗄️ PostgreSQL ERD 5개 테이블 설계 및 공공데이터 23,929건 적재',
+        '🗃️ GPT-4-Turbo + 9개 규칙 프롬프트로 Text-to-SQL 전용 모델 대비 최고 정확도 달성',
       ],
-      tags:['Python','n8n','OpenAI API','Text-to-SQL','PostgreSQL','Gradio','Prompt Engineering'],
+      tags:['Python','n8n','OpenAI API','Text-to-SQL','SQL','PostgreSQL','Gradio','Prompt Engineering'],
       links:[{href:'https://github.com/sizi00/pet-friendly-place-search',txt:'⬡ GitHub'}],
       body:`
 <div class="proj-section">
   <div class="proj-section-title">배경</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">반려동물 보유 가구가 급증하는 반면, 동반 가능 장소 정보는 여러 플랫폼에 산재되어 있어 한 번에 검색하기 어렵다. 특히 고령 반려인(60대 이상이 40%)은 복잡한 인터페이스에서 정보 접근이 어렵다는 문제가 있었다. 이를 해결하기 위해 자동화 도구 n8n과 LLM을 결합해 자연어 기반 검색이 가능한 플랫폼을 MVP로 빠르게 구현하였다.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">빅데이터플랫폼 수업 팀프로젝트로, 실제 서비스를 기획·구현하는 전 과정을 경험하기 위해 시작했다. 숙련된 개발자가 없고 대규모 서버 구축이 불가한 상황에서 단기간 내 MVP를 만들어야 했기 때문에, 코딩 없이 워크플로우를 구성할 수 있는 자동화 툴 <strong style="color:#334155;">n8n</strong>을 핵심 기술로 채택했다.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.6rem;">주제는 반려동물 동반 가능 장소 검색 서비스로 선정했다. 2022년 기준 전체 인구의 15%가 반려동물과 함께 생활하지만 동반 가능 장소 정보는 여러 플랫폼에 산재되어 있어 찾기 불편하다. 특히 반려인 중 60대 이상이 40%를 차지하는데, 디지털 리터러시가 부족한 사용자에게 복잡한 인터페이스는 진입장벽이 크다. 이를 해결하기 위해 자연어로 장소를 검색할 수 있는 챗봇 방식을 도입했다.</p>
 </div>
 <div class="proj-section">
-  <div class="proj-section-title">시스템 아키텍처</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">Gradio UI → Webhook → OpenAI API (Text-to-SQL) → PostgreSQL 순서로 파이프라인을 구성하였다. 워크플로우를 3개로 분리하여 각각 로그인/회원가입, 챗봇 검색, 예약 및 이메일 발송을 독립적으로 처리하였다. 사용자 ID는 Snowflake 알고리즘으로 생성하여 69년간 고유성을 보장하였다.</p>
-  <img src="images/bigdata/arch1_login.png" class="proj-figure" alt="워크플로우 ① 로그인·회원가입">
-  <div class="proj-fig-cap">워크플로우 ① — 로그인·회원가입 파이프라인</div>
-  <img src="images/bigdata/arch2_chatbot.png" class="proj-figure" alt="워크플로우 ② 챗봇 대화처리">
-  <div class="proj-fig-cap">워크플로우 ② — 챗봇 대화 처리 (Webhook → OpenAI → PostgreSQL)</div>
-  <img src="images/bigdata/arch3_reservation.png" class="proj-figure" alt="워크플로우 ③ 예약·이메일">
-  <div class="proj-fig-cap">워크플로우 ③ — 예약 시 사용자·사업주 이메일 발송</div>
-</div>
-<div class="proj-section">
-  <div class="proj-section-title">Text-to-SQL 정확도 비교 실험</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">자연어 질의를 SQL로 변환하는 핵심 기능의 모델 선정을 위해 GPT-3.5-Turbo, GPT-4-Turbo, GPT-4o-mini 세 모델을 동일한 테스트셋으로 비교하였다. 서울시 공공 DB 22개, 324개 학습 데이터를 기반으로 정확도·응답속도·비용을 함께 평가하였다.</p>
-  <table style="width:100%;border-collapse:collapse;font-size:.82rem;margin-top:.75rem;">
-    <thead>
-      <tr style="background:rgba(58,90,174,.08);">
-        <th style="padding:.5rem .75rem;text-align:left;color:#3A5AAE;font-weight:600;border-bottom:2px solid rgba(58,90,174,.2);">모델</th>
-        <th style="padding:.5rem .75rem;text-align:center;color:#3A5AAE;font-weight:600;border-bottom:2px solid rgba(58,90,174,.2);">정확도</th>
-        <th style="padding:.5rem .75rem;text-align:center;color:#3A5AAE;font-weight:600;border-bottom:2px solid rgba(58,90,174,.2);">응답시간</th>
-        <th style="padding:.5rem .75rem;text-align:center;color:#3A5AAE;font-weight:600;border-bottom:2px solid rgba(58,90,174,.2);">비용 (입력/출력)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="border-bottom:1px solid rgba(0,0,0,.06);">
-        <td style="padding:.5rem .75rem;color:#475569;">RYANSQL</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">58.00%</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#94a3b8;">—</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#94a3b8;">—</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(0,0,0,.06);">
-        <td style="padding:.5rem .75rem;color:#475569;">BRIDGE</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">60.00%</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#94a3b8;">—</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#94a3b8;">—</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(0,0,0,.06);">
-        <td style="padding:.5rem .75rem;color:#475569;">GPT-3.5-Turbo</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">50.31%</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">0.68s</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">$0.5 / $1.5</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(0,0,0,.06);background:rgba(58,90,174,.04);">
-        <td style="padding:.5rem .75rem;color:#3A5AAE;font-weight:600;">GPT-4-Turbo ✓</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#3A5AAE;font-weight:600;">62.04%</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">1.78s</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">$10 / $30</td>
-      </tr>
-      <tr>
-        <td style="padding:.5rem .75rem;color:#475569;">GPT-4o-mini</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">55.86%</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">1.00s</td>
-        <td style="padding:.5rem .75rem;text-align:center;color:#475569;">$0.15 / $0.6</td>
-      </tr>
-    </tbody>
-  </table>
-  <p style="color:#475569;font-size:.85rem;margin-top:.6rem;">기존 Text-to-SQL 벤치마크 모델(RYANSQL·BRIDGE)과 비교했을 때도 GPT-4-Turbo가 62.04%로 가장 높아 최종 모델로 채택하였다.</p>
-  <img src="images/bigdata/accuracy_table.png" class="proj-figure" alt="모델별 정확도 비교">
-  <div class="proj-fig-cap">GPT-4-Turbo 62.04% — 벤치마크 모델 대비 최고 정확도</div>
-</div>
-<div class="proj-section">
-  <div class="proj-section-title">프롬프트 최적화</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">모델 선정 후 시스템 프롬프트에 9개의 규칙을 설계하여 SQL 변환 일관성을 높였다. 컬럼명에 큰따옴표 강제 사용, LIKE 연산자로 부분 검색 지원, category_3 조건 포함 강제, JSON 배열 형식 출력 고정, 예시를 통한 In-Context Learning 등을 적용하였다. 또한 자주 쓰이는 질의 패턴을 프롬프트 데이터베이스로 구축·관리하여 응답 일관성을 향상시켰다.</p>
-</div>
-<div class="proj-section">
-  <div class="proj-section-title">데이터</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">한국문화정보원 공공데이터에서 전국 반려동물 동반 가능 문화시설 23,929개를 수집하였다. 5개 대분류·13개 소분류 카테고리, 위치(위도/경도), 운영시간, 주차 여부 등의 정보를 PostgreSQL에 통합하였다. 주소 필드는 시도·시군구·법정읍면동·도로명 등 분산된 컬럼을 하나로 병합 처리하였다.</p>
-  <img src="images/bigdata/db_structure.png" class="proj-figure" alt="DB 구축">
-  <div class="proj-fig-cap">한국문화정보원 공공데이터 → PostgreSQL (Snowflake ID 생성)</div>
+  <div class="proj-section-title">DB 설계 및 구축</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">서비스에 필요한 데이터를 5개 테이블로 설계하고 PostgreSQL에 구축했다.</p>
+  <div style="overflow-x:auto;margin:.75rem 0;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">테이블</th>
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">역할</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">Facilities</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">시설 정보 (위치·카테고리·운영시간·반려동물 관련 조건 등)</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">Users</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">사용자 정보</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">Owners</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">사업주 정보</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">Reservation</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">예약 정보 (날짜·시간·사용자·시설·사업주 연결)</td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">ChatConversation</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">챗봇 대화 내역 (JSON 형태로 저장)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <img src="images/bigdata/db_schema.png" class="proj-figure" alt="DB 스키마">
-  <div class="proj-fig-cap">DB 스키마 — Facilities·Owner·Users·Reservation·ChatbotConversation</div>
+  <div class="proj-fig-cap">ERD — 5개 테이블 구조</div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;margin-top:.6rem;">시설 데이터는 한국문화정보원(KCISA) 공공데이터에서 전국 반려동물 동반 가능 문화시설 23,929개를 수집해 적재했다. 사용자·사업주 고유 ID는 Twitter의 Snowflake 알고리즘으로 생성 — 41bit 기반으로 69년간 고유성을 보장하며 동일 밀리초에 4,096개 생성이 가능하다.</p>
+  <img src="images/bigdata/db_structure.png" class="proj-figure" alt="DB 구축 흐름">
+  <div class="proj-fig-cap">한국문화정보원 공공데이터 → PostgreSQL 구축 흐름</div>
 </div>
 <div class="proj-section">
-  <div class="proj-section-title">챗봇 동작 데모</div>
-  <video controls style="width:100%;border-radius:8px;border:1px solid rgba(58,90,174,.12);margin-top:.5rem;">
+  <div class="proj-section-title">n8n 워크플로우</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">MVP 3개 기능(회원가입/로그인, 챗봇 검색, 예약)을 각각 독립된 n8n 워크플로우로 구현했다. Webhook으로 요청을 받아 PostgreSQL 조회·저장·이메일 발송까지 코드 없이 노드 연결만으로 처리했다.</p>
+  <img src="images/bigdata/arch1_login.png" class="proj-figure" alt="워크플로우 ① 로그인·회원가입">
+  <div class="proj-fig-cap">워크플로우 ① — Homepage Webhook → 로그인 또는 회원가입 분기 처리</div>
+  <img src="images/bigdata/arch2_chatbot.png" class="proj-figure" alt="워크플로우 ② 챗봇 대화처리">
+  <div class="proj-fig-cap">워크플로우 ② — Webhook → OpenAI(Text-to-SQL) → PostgreSQL 검색 → 응답 반환</div>
+  <img src="images/bigdata/arch3_reservation.png" class="proj-figure" alt="워크플로우 ③ 예약·이메일">
+  <div class="proj-fig-cap">워크플로우 ③ — 예약 시 사용자·사업주에게 확인 이메일 자동 발송</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">Text-to-SQL</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">챗봇의 핵심은 사용자의 자연어 발화를 SQL로 변환해 DB에서 검색 결과를 반환하는 것이다. 비정형 요구사항을 정형화하는 이 과정에 LLM 기반 Text-to-SQL 방식을 채택했다.</p>
+  <div style="font-size:.8rem;font-weight:700;color:#334155;margin:.9rem 0 .4rem;">프롬프트 최적화</div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;">시스템 프롬프트에 9개 규칙을 설계해 SQL 변환 일관성을 높였다.</p>
+  <div style="margin:.6rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0;padding-left:1.2rem;">
+      <li>정의된 컬럼명 그대로 사용</li>
+      <li>SELECT 구문만 생성</li>
+      <li>조건에 LIKE 연산자 + 와일드카드(%) 적용</li>
+      <li>별도 지정 없는 경우 facility_name 기준 정렬</li>
+      <li>컬럼명은 큰따옴표로 처리</li>
+      <li>카테고리 요청 시 category_3 조건 강제 포함</li>
+      <li>반환 컬럼 9개 고정 (facility_uid, facility_name, road_address 등)</li>
+      <li>LIMIT 3 적용</li>
+      <li>결과를 JSON 배열로 출력</li>
+    </ul>
+  </div>
+  <div style="font-size:.8rem;font-weight:700;color:#334155;margin:.9rem 0 .4rem;">모델 선정 실험</div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;">AIHub "자연어 기반 질의(NL2SQL) 검색 생성 데이터" (서울 열린데이터 기반 22개 DB · 324건)를 활용해 GPT 3종과 기존 Text-to-SQL 전용 모델을 정확도·응답시간·비용 기준으로 비교했다.</p>
+  <div style="overflow-x:auto;margin:.75rem 0;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">모델</th>
+          <th style="padding:.5rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">정확도</th>
+          <th style="padding:.5rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">응답시간</th>
+          <th style="padding:.5rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">비용 (입력/출력)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#64748B;">RYANSQL</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#475569;">58.00%</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#94a3b8;">—</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#94a3b8;">—</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#64748B;">BRIDGE</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#475569;">60.00%</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#94a3b8;">—</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#94a3b8;">—</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#64748B;">GPT-3.5-Turbo</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#475569;">50.31%</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#475569;">0.68s</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#475569;">$0.5 / $1.5</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);background:rgba(58,90,174,.04);">
+          <td style="padding:.45rem .8rem;color:#3A5AAE;font-weight:600;">GPT-4-Turbo ✓</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#3A5AAE;font-weight:600;">62.04%</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#475569;">1.78s</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#475569;">$10 / $30</td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#64748B;">GPT-4o-mini</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#475569;">55.86%</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#475569;">1.00s</td>
+          <td style="padding:.45rem .8rem;text-align:center;color:#475569;">$0.15 / $0.6</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;">GPT-4-Turbo가 62.04%로 Text-to-SQL 전용 모델(RYANSQL·BRIDGE)을 포함해 가장 높은 정확도를 기록해 최종 선택했다.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">Frontend</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">Python 기반 UI 라이브러리 Gradio로 프론트엔드를 구현했다. 채팅 인터페이스와 검색 결과 예약 버튼(첫 번째·두 번째·세 번째)을 구성해 MVP 기능을 모두 포함했다.</p>
+  <video controls style="width:100%;border-radius:10px;margin:.7rem 0 .25rem;border:1px solid rgba(58,90,174,.1);">
     <source src="images/bigdata/chatbot_demo.mp4" type="video/mp4">
   </video>
+  <div class="proj-fig-cap">챗봇 동작 데모 — 자연어 검색 → 결과 반환 → 예약</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">결론</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">n8n 자동화 툴로 단기간 내 플랫폼 서비스 MVP를 구현했다. LLM 기반 Text-to-SQL로 자연어 요구사항을 정형화해 DB 검색으로 연결하는 파이프라인을 완성했으며, 회원가입부터 챗봇 검색·예약·이메일 발송까지 전체 서비스 흐름을 구현했다.</p>
 </div>`,
     },
     mimic: {
