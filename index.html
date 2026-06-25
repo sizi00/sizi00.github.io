@@ -308,7 +308,7 @@
     <div id="sm-dam" class="sm-card" onclick="openProj('dam')" style="cursor:pointer"><div class="sm-ico">🌊</div><div class="sm-title">한국 다목적댐 수문운영 분석</div><div class="sm-org">한국수자원공사 공개 데이터 · 2024</div><div class="sm-contrib">단독 진행</div><div class="sm-desc">K-water 9개 다목적댐 2024년 79,056건 Time Series 데이터 분석. 저수율 위기 구간 자동 탐지. Folium 인터랙티브 지도 매핑.</div><div class="tags"><span class="tag">Python</span><span class="tag">GeoPandas</span><span class="tag">Matplotlib</span><span class="tag">Time Series Analysis</span></div></div>
     -->
 
-    <div id="sm-lifecare" class="sm-card" onclick="openProj('lifecare')" style="cursor:pointer"><div class="sm-ico">🧬</div><div class="sm-title">장내미생물 기반 전임상 알츠하이머 조기진단</div><div class="sm-org">수업 프로젝트 · R + Python (Random Forest)</div><div class="sm-contrib">2024.09 ~ 2024.12 · 기여도 80% (3인)</div><div class="sm-desc">Ferreiro et al.(2023) 방법론 기반 재현 연구. R EDA(Alpha·Beta Diversity, MaAsLin2) + Boruta 변수 선택 + 4가지 변수 조합 × 8모델 Random Forest 비교 실험.</div><div class="tags"><span class="tag">R</span><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">Scikit-learn</span><span class="tag">Boruta</span><span class="tag">Microbiome</span></div></div>
+    <div id="sm-lifecare" class="sm-card" onclick="openProj('lifecare')" style="cursor:pointer"><div class="sm-ico">🧬</div><div class="sm-title">장내미생물 기반 전임상 알츠하이머 조기진단</div><div class="sm-org">수업 프로젝트 · R + Python (Random Forest)</div><div class="sm-contrib">2024.09 ~ 2024.12 · 기여도 80% (3인)</div><div class="sm-desc">Ferreiro et al.(2023) 논문 방법론 기반으로, 전임상 AD 164명 장내미생물·임상 데이터 분석. R EDA(Alpha·Beta Diversity, MaAsLin2) + Boruta 변수 선택 + 4가지 조합 × 8모델 Random Forest 비교 실험.</div><div class="tags"><span class="tag">R</span><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">Scikit-learn</span><span class="tag">Boruta</span><span class="tag">MaAsLin2</span><span class="tag">Microbiome</span></div></div>
 
     <!-- 임시 비활성화: MIMIC4 의료 데이터 분석
     <div id="sm-mimic" class="sm-card" onclick="openProj('mimic')" style="cursor:pointer"><div class="sm-ico">🏥</div><div class="sm-title">MIMIC4 의료 데이터 분석</div><div class="sm-org">수업 프로젝트 · SQL</div><div class="sm-desc">연령별 입원 이유·사망률 분석. 다빈도 진단명·사망 진단명 SQL 분석 및 시각화.</div><div class="tags"><span class="tag">SQL</span><span class="tag">데이터분석</span><span class="tag">시각화</span></div></div>
@@ -1682,47 +1682,14 @@
       ico:'🧬', title:'장내미생물 기반 전임상 알츠하이머 조기진단',
       org:'수업 프로젝트 · R + Python (Random Forest)',
       contrib:'2024.09 ~ 2024.12 · 기여도 80% (3인)',
+      role:'논문 방법론 파악 및 분석 설계 · R EDA 수행 및 결과 해석 · Python ML 파이프라인 구현 · 발표',
       badges:[],
-      images:[
-        {src:'images/lifecare/lc_p1.png', cap:'p1'},
-        {src:'images/lifecare/lc_p2.png', cap:'p2'},
-        {src:'images/lifecare/lc_p3.png', cap:'p3'},
-        {src:'images/lifecare/lc_p4.png', cap:'p4'},
-        {src:'images/lifecare/lc_p5.png', cap:'p5'},
-        {src:'images/lifecare/lc_p6.png', cap:'p6'},
-        {src:'images/lifecare/lc_p7.png', cap:'p7'},
-        {src:'images/lifecare/lc_p8.png', cap:'p8'},
-        {src:'images/lifecare/lc_p9.png', cap:'p9'},
-        {src:'images/lifecare/lc_p10.png', cap:'p10'},
-        {src:'images/lifecare/lc_p11.png', cap:'p11'},
-        {src:'images/lifecare/lc_p12.png', cap:'p12'},
-        {src:'images/lifecare/lc_p13.png', cap:'p13'},
-        {src:'images/lifecare/lc_p14.png', cap:'p14'},
-        {src:'images/lifecare/lc_p15.png', cap:'p15'},
-        {src:'images/lifecare/lc_p16.png', cap:'p16'},
-        {src:'images/lifecare/lc_p17.png', cap:'p17'},
-        {src:'images/lifecare/lc_p18.png', cap:'p18'},
-        {src:'images/lifecare/lc_p19.png', cap:'p19'},
-        {src:'images/lifecare/lc_p20.png', cap:'p20'},
-        {src:'images/lifecare/lc_p21.png', cap:'p21'},
-        {src:'images/lifecare/lc_p22.png', cap:'p22'},
-        {src:'images/lifecare/lc_p23.png', cap:'p23'},
-        {src:'images/lifecare/lc_p24.png', cap:'p24'},
-        {src:'images/lifecare/lc_p25.png', cap:'p25'},
-        {src:'images/lifecare/lc_p26.png', cap:'p26'},
-        {src:'images/lifecare/lc_p27.png', cap:'p27'},
-        {src:'images/lifecare/lc_p28.png', cap:'p28'},
-        {src:'images/lifecare/lc_p29.png', cap:'p29'},
-        {src:'images/lifecare/lc_p30.png', cap:'p30'},
-        {src:'images/lifecare/lc_p31.png', cap:'p31'},
-        {src:'images/lifecare/lc_p32.png', cap:'p32'},
-        {src:'images/lifecare/lc_p33.png', cap:'p33'},
-      ],
+      images:[],
       desc:'Ferreiro et al.(2023) 논문 방법론 기반으로, 전임상 AD 환자·대조군 164명의 장내 미생물·임상 데이터로 조기 진단 가능성을 탐색. R EDA(Alpha·Beta Diversity, MaAsLin2) + Boruta 변수 선택 + Random Forest 8가지 변수 조합 × 100 seed 반복 실험.',
       highlights:[
         '🧬 A/T/N/G/CC 바이오마커 프레임워크 기반 변수 구조화 + Boruta 알고리즘으로 진단 기여 taxa 선별',
         '🔬 R(Alpha·Beta Diversity, MaAsLin2 연관성) + Python(Random Forest) 이원화 파이프라인 구성',
-        '🌲 4가지 변수 조합 × Base/WithTaxa = 8모델, 100 seed 반복 실험 — ALL 모델 Accuracy 90.8%',
+        '🌲 4가지 변수 조합 × Base/+Taxa = 총 8모델 — 기본 임상 정보(CC)에 taxa 추가 시 Specificity +10.6%p 향상',
       ],
       body:`<div class="proj-section">
   <div class="proj-section-title">배경</div>
@@ -1787,7 +1754,10 @@
 
   <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">① Alpha Diversity — 다양성 지표로는 구별 불가</div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:center;margin:.5rem 0 .85rem;">
-    <p style="color:#475569;font-size:.85rem;line-height:1.75;margin:0;">종 풍부도(Richness)와 균등성(Shannon) 모두 전임상 AD 그룹과 대조군 간 유의미한 차이가 없었음. 장내 미생물이 "얼마나 다양한가"는 전임상 AD를 구별하는 지표가 되지 않음을 확인. → 단순 다양성 지표만으로는 부족하며, 미생물 조성의 구조적 차이를 더 세밀하게 분석할 필요성을 시사.</p>
+    <div>
+      <p style="color:#475569;font-size:.85rem;line-height:1.75;margin:0;">종 풍부도(Richness)와 균등성(Shannon) 모두 전임상 AD 그룹과 대조군 간 유의미한 차이가 없었음.</p>
+      <p style="color:#3A5AAE;font-size:.82rem;line-height:1.7;margin:.4rem 0 0;">↳ 단순 다양성 지표만으로는 부족하며, 군집 조성의 구조적 차이를 더 세밀하게 분석할 필요성을 시사.</p>
+    </div>
     <div>
       <img src="images/lifecare/lc_eda_alpha.png" class="proj-figure" alt="Alpha Diversity" style="margin:.3rem 0 0;">
       <div class="proj-fig-cap">Richness · Shannon — 두 그룹 간 유의미한 차이 없음</div>
@@ -1795,8 +1765,16 @@
   </div>
 
   <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">② Beta Diversity — 군집 구조에서 신호 발견</div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">PCoA:</strong> 미생물 군집 구조를 저차원으로 시각화했을 때 전임상 AD 그룹과 대조군 간 분포가 일부 구분되는 양상을 확인. 다양성 지표와 달리, 군집 구조 수준에서는 두 그룹 간 차이가 있을 가능성을 시사 → 마이크로바이옴 데이터가 ML 피처로 유효함을 확인.</p>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">CAP (Constrained Analysis of Principal Coordinates):</strong> 나이·APOE4 상태·당뇨·BMI·Hypertension 등 임상 변수를 조건으로 추가했을 때 군집 간 차이가 유의미하게 설명됨. → 임상 변수가 미생물 군집 구조의 차이를 결정하는 핵심 요인임을 확인 — ML 모델에서 A/T/N/G/CC 임상 변수 프레임워크를 체계적으로 설계한 근거.</p>
+  <div style="margin:.5rem 0 .6rem;">
+    <div style="font-size:.82rem;font-weight:600;color:#334155;margin-bottom:.3rem;">• PCoA</div>
+    <p style="color:#475569;font-size:.85rem;line-height:1.75;margin:0 0 0 .85rem;">미생물 군집 구조를 저차원으로 시각화했을 때 전임상 AD 그룹과 대조군 간 분포가 일부 구분되는 양상 확인.</p>
+    <p style="color:#3A5AAE;font-size:.82rem;line-height:1.7;margin:.3rem 0 0 .85rem;">↳ 전임상 단계에서 이미 군집 구조 수준의 차이가 존재함을 확인.</p>
+  </div>
+  <div style="margin:.5rem 0 .6rem;">
+    <div style="font-size:.82rem;font-weight:600;color:#334155;margin-bottom:.3rem;">• CAP</div>
+    <p style="color:#475569;font-size:.85rem;line-height:1.75;margin:0 0 0 .85rem;">나이·APOE4 상태·당뇨·BMI·Hypertension 등 임상 변수를 조건으로 추가했을 때 군집 간 차이가 유의미하게 설명됨.</p>
+    <p style="color:#3A5AAE;font-size:.82rem;line-height:1.7;margin:.3rem 0 0 .85rem;">↳ 장내미생물 군집 구조가 임상 변수들과 밀접히 연결되어 있음을 확인.</p>
+  </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.5rem 0 .85rem;">
     <div>
       <img src="images/lifecare/lc_eda_pcoa.png" class="proj-figure" alt="Beta Diversity PCoA" style="margin:.3rem 0 0;height:220px;object-fit:contain;object-position:center;">
@@ -1807,13 +1785,25 @@
       <div class="proj-fig-cap">CAP — 임상 변수 조건 추가 시 군집 간 차이 설명</div>
     </div>
   </div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">바이오마커 상관관계:</strong> 미생물 군집 구조(Taxonomic/Functional PCoA)가 PET Amyloid·PET Tau·Cortical Signature와 상관관계가 있으며, 전임상 그룹과 건강 그룹이 이 상관관계에서 명확히 구분됨. → 군집 구조의 차이가 Aβ 바이오마커와 연결되어 있음을 시사 — 모델에서 Aβ 제외 시 Accuracy 90.8% → 71.7%로 급감하는 결과와 일치.</p>
+  <div style="margin:.5rem 0 .6rem;">
+    <div style="font-size:.82rem;font-weight:600;color:#334155;margin-bottom:.3rem;">• 바이오마커 상관관계</div>
+    <p style="color:#475569;font-size:.85rem;line-height:1.75;margin:0 0 0 .85rem;">미생물 군집 구조(Taxonomic/Functional PCoA)가 PET Amyloid·PET Tau·Cortical Signature와 상관관계가 있으며, 전임상 그룹과 건강 그룹이 명확히 구분됨.</p>
+    <p style="color:#3A5AAE;font-size:.82rem;line-height:1.7;margin:.3rem 0 0 .85rem;">↳ 장내미생물 군집 구조가 뇌의 AD 병리 지표(아밀로이드·타우)와 연관됨을 시사.</p>
+  </div>
   <img src="images/lifecare/lc_eda_biomarker.png" class="proj-figure" alt="바이오마커 상관관계">
   <div class="proj-fig-cap">미생물 군집 구조(Tax/Functional PCoA)와 Aβ·Tau·신경퇴행 바이오마커 상관관계</div>
 
   <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">③ MaAsLin2 · Pathway — 특정 균종·경로가 AD와 연관</div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">MaAsLin2:</strong> 음이항 회귀 기반으로 개별 균종과 전임상 AD 상태 간 연관성을 분석. <strong style="color:#334155;">Bacteroides intestinalis</strong>는 전임상 AD 그룹에서 유의미하게 높았고, <strong style="color:#334155;">Bifidobacterium longum</strong>은 건강 그룹에서 더 높게 나타남. → 전체 taxa 중 일부만 AD와 연관된다는 생물학적 근거 — Boruta로 기여 taxa만 선별한 이유.</p>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;"><strong style="color:#334155;">Pathway:</strong> 지방산 합성·TCA 사이클 관련 대사 경로에서 두 그룹 간 풍부도 차이를 확인. → 미생물의 기능적 활성 수준에서도 AD와의 연관성이 존재함을 시사.</p>
+  <div style="margin:.5rem 0 .6rem;">
+    <div style="font-size:.82rem;font-weight:600;color:#334155;margin-bottom:.3rem;">• MaAsLin2</div>
+    <p style="color:#475569;font-size:.85rem;line-height:1.75;margin:0 0 0 .85rem;">Bacteroides intestinalis는 전임상 AD에서 유의미하게 높고, Bifidobacterium longum은 건강 그룹에서 더 높게 나타남.</p>
+    <p style="color:#3A5AAE;font-size:.82rem;line-height:1.7;margin:.3rem 0 0 .85rem;">↳ AD와 선택적으로 연관된 균종이 존재함을 확인.</p>
+  </div>
+  <div style="margin:.5rem 0 .6rem;">
+    <div style="font-size:.82rem;font-weight:600;color:#334155;margin-bottom:.3rem;">• Pathway</div>
+    <p style="color:#475569;font-size:.85rem;line-height:1.75;margin:0 0 0 .85rem;">지방산 합성·TCA 사이클 관련 대사 경로에서 두 그룹 간 풍부도 차이 확인.</p>
+    <p style="color:#3A5AAE;font-size:.82rem;line-height:1.7;margin:.3rem 0 0 .85rem;">↳ 미생물의 기능적 활성 수준에서도 AD와의 연관성이 존재함을 시사.</p>
+  </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.5rem 0 .85rem;">
     <div>
       <img src="images/lifecare/lc_eda_taxa.png" class="proj-figure" alt="MaAsLin2 Taxa" style="margin:.3rem 0 0;">
@@ -1826,14 +1816,27 @@
   </div>
 
   <div style="margin:.85rem 0 .4rem;font-size:.82rem;font-weight:700;color:#334155;">④ 영양 섭취량 비교</div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;">칼로리·지방·탄수화물·단백질 등 12개 영양소 섭취 패턴을 비교했으나 전임상 AD와 직접적인 연관성은 발견되지 않았음. → ML 모델 피처 구성에서 제외.</p>
+  <p style="color:#475569;font-size:.85rem;line-height:1.75;margin:.3rem 0 0;">칼로리·지방·탄수화물·단백질 등 12개 영양소 섭취 패턴을 비교했으나 전임상 AD와 직접적인 연관성은 발견되지 않았음.</p>
+  <p style="color:#3A5AAE;font-size:.82rem;line-height:1.7;margin:.3rem 0 .5rem;">↳ 영양 섭취 패턴만으로는 전임상 AD를 구별하기 어려움을 확인.</p>
   <img src="images/lifecare/lc_eda_nutrition.png" class="proj-figure" alt="영양소 비교">
   <div class="proj-fig-cap">영양소 섭취 패턴 비교 (12개 항목) — 전임상 AD vs 대조군, 유의미한 차이 없음</div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">모델링</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">임상 데이터 변수를 AD 연구의 A/T/N/G/CC 프레임워크로 구조화하고, 미생물 데이터는 Boruta 알고리즘으로 25회 이상 선택된 taxa만 추려 변수로 사용.</p>
-  <div style="overflow-x:auto;margin:.75rem 0;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:.3rem;margin:.6rem 0 1.3rem;">
+    <span style="background:rgba(58,90,174,.1);border:1px solid rgba(58,90,174,.25);border-radius:6px;padding:.28rem .7rem;font-size:.77rem;font-weight:600;color:#3A5AAE;">① 변수 구성</span>
+    <span style="color:#CBD5E1;font-size:.85rem;">→</span>
+    <span style="background:rgba(100,116,139,.06);border:1px solid rgba(100,116,139,.18);border-radius:6px;padding:.28rem .7rem;font-size:.77rem;font-weight:600;color:#64748B;">② 결측치 처리</span>
+    <span style="color:#CBD5E1;font-size:.85rem;">→</span>
+    <span style="background:rgba(100,116,139,.06);border:1px solid rgba(100,116,139,.18);border-radius:6px;padding:.28rem .7rem;font-size:.77rem;font-weight:600;color:#64748B;">③ 모델 구성</span>
+  </div>
+
+  <div style="font-size:.82rem;font-weight:700;color:#334155;margin-bottom:.5rem;">① 변수 구성</div>
+  <div style="display:flex;flex-direction:column;gap:.3rem;margin:0 0 .7rem;">
+    <div style="color:#475569;font-size:.85rem;line-height:1.7;">• 임상 데이터: AD 연구의 A/T/N/G/CC 프레임워크로 구조화</div>
+    <div style="color:#475569;font-size:.85rem;line-height:1.7;">• 미생물 데이터: Boruta 알고리즘으로 모델 성능에 영향을 미치는 변수로 25회 이상 선택된 미생물만 사용</div>
+  </div>
+  <div style="overflow-x:auto;margin:0 0 1.1rem;">
     <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
       <thead>
         <tr style="background:rgba(58,90,174,.07);">
@@ -1844,84 +1847,203 @@
       </thead>
       <tbody>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;">A</td>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">A</td>
           <td style="padding:.45rem .8rem;color:#64748B;">베타-아밀로이드</td>
           <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">PET_amyloid, CSF.ratio.ab42.ab40</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;">T</td>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">T</td>
           <td style="padding:.45rem .8rem;color:#64748B;">타우 단백질</td>
           <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">PET.Tau, CSF.ptau</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;">N</td>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">N</td>
           <td style="padding:.45rem .8rem;color:#64748B;">신경퇴행</td>
           <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">CSF.ttau, WMH_volume, CortSig, Hippocampus.Volume</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
-          <td style="padding:.45rem .8rem;color:#334155;">G</td>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">G</td>
           <td style="padding:.45rem .8rem;color:#64748B;">유전</td>
           <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">Polygenic.Risk.Score, APOE4.status</td>
         </tr>
-        <tr>
-          <td style="padding:.45rem .8rem;color:#334155;">CC</td>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">CC</td>
           <td style="padding:.45rem .8rem;color:#64748B;">임상 정보</td>
           <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">Age, Sex, BMI, Hypertension, Diabetes 등</td>
+        </tr>
+        <tr style="background:rgba(58,90,174,.03);">
+          <td style="padding:.45rem .8rem;color:#3A5AAE;font-weight:600;">Label</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">아밀로이드 양성 여부</td>
+          <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">amyloid.positive.AF<br>(1: PET_amyloid &gt; 16.4 또는 CSF.ratio.ab42.ab40 &lt; 0.0673)</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p style="color:#475569;font-size:.85rem;line-height:1.75;margin-top:.6rem;">위 그룹을 조합한 4가지 변수 설정에 미생물 taxa 포함 여부(Base vs WithTaxa)를 교차해 총 8가지 모델을 구성. 각 모델은 다른 seed로 100번 반복, 60/40 분할(train 내 10-Fold CV), test accuracy·sensitivity·specificity로 평가.</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:.75rem 0;">
-    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:.9rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.4rem;">ALL</div>
-      <p style="color:#475569;font-size:.8rem;margin:0;">모든 임상 변수 포함</p>
+
+  <div style="font-size:.82rem;font-weight:700;color:#334155;margin-bottom:.6rem;">② 결측치 처리</div>
+  <div style="display:grid;grid-template-columns:0.35fr 130px 0.35fr;gap:.75rem;align-items:center;justify-content:center;margin:0 0 1.1rem;">
+    <div>
+      <div style="font-size:.73rem;color:#64748B;font-weight:600;margin-bottom:.35rem;text-align:center;">변수별 결측치 확인</div>
+      <img src="images/lifecare/lc_missing_before.png" style="width:100%;border-radius:8px;border:1px solid rgba(100,116,139,.15);" alt="결측치 확인">
     </div>
-    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:.9rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.4rem;">ALL - A</div>
-      <p style="color:#475569;font-size:.8rem;margin:0;">베타-아밀로이드 변수 제외 — A 없이 예측 가능한지 검증</p>
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45rem;padding:0 .5rem;">
+      <div style="font-size:.77rem;font-weight:600;color:#3A5AAE;text-align:center;line-height:1.65;white-space:nowrap;">KNNImputer<br>(k=5)</div>
+      <div style="font-size:1.4rem;color:#3A5AAE;">→</div>
+      <div style="font-size:.72rem;color:#94A3B8;text-align:center;line-height:1.6;">주변 5개 값<br>평균으로 대체</div>
     </div>
-    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:.9rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.4rem;">CC + G</div>
-      <p style="color:#475569;font-size:.8rem;margin:0;">유전 + 임상 정보만 — 비침습적 지표만으로 예측</p>
-    </div>
-    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:.9rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.4rem;">CC</div>
-      <p style="color:#475569;font-size:.8rem;margin:0;">임상 정보만 — 가장 접근 쉬운 변수 조합</p>
+    <div>
+      <div style="font-size:.73rem;color:#64748B;font-weight:600;margin-bottom:.35rem;text-align:center;">결측치 처리 결과</div>
+      <img src="images/lifecare/lc_missing_after.png" style="width:100%;border-radius:8px;border:1px solid rgba(100,116,139,.15);" alt="결측치 처리 결과">
     </div>
   </div>
-  <img src="images/lifecare/lc_p25.png" class="proj-figure" alt="결측치 처리">
-  <div class="proj-fig-cap">KNNImputer 결측치 처리 — 주변 5개 값 평균으로 NaN 대체</div>
-  <img src="images/lifecare/lc_p27.png" class="proj-figure" alt="모델 구성">
-  <div class="proj-fig-cap">모델 구성 — 100 seed 반복 · 10-Fold CV · Accuracy/Sensitivity/Specificity 평가</div>
+
+  <div style="font-size:.82rem;font-weight:700;color:#334155;margin-bottom:.5rem;">③ 모델 구성</div>
+  <div style="margin:0 0 .75rem;">
+    <div style="color:#475569;font-size:.85rem;line-height:1.7;">• 바이오마커 없는 환경에서 장내미생물 기여도를 정량적으로 측정하기 위한 설계</div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:.75rem;background:rgba(58,90,174,.05);border:1px solid rgba(58,90,174,.15);border-radius:8px;padding:.6rem 1rem;margin:0 0 .75rem;">
+    <span style="font-size:.85rem;font-weight:600;color:#334155;">4가지 변수 조합</span>
+    <span style="color:#3A5AAE;font-size:1rem;font-weight:700;">×</span>
+    <span style="background:rgba(58,90,174,.1);border:1px solid rgba(58,90,174,.2);border-radius:5px;padding:.15rem .55rem;font-size:.8rem;font-weight:600;color:#3A5AAE;">Base</span>
+    <span style="color:#94A3B8;font-size:.85rem;">/</span>
+    <span style="background:rgba(58,90,174,.1);border:1px solid rgba(58,90,174,.2);border-radius:5px;padding:.15rem .55rem;font-size:.8rem;font-weight:600;color:#3A5AAE;">+ Taxa</span>
+    <span style="color:#3A5AAE;font-size:1rem;font-weight:700;">=</span>
+    <span style="font-size:.95rem;font-weight:700;color:#3A5AAE;">총 8모델</span>
+  </div>
+  <div style="overflow-x:auto;margin:0 0 1.1rem;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">변수 조합</th>
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">포함 그룹</th>
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">의미</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">ALL</td>
+          <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">A · T · N · G · CC</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">모든 임상 변수 포함 — 상한 성능 확인</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">ALL - A</td>
+          <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">T · N · G · CC</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">아밀로이드 제외 — A 의존도 확인</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">CC + G</td>
+          <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">G · CC</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">비침습적 변수 + 유전 정보</td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;">CC</td>
+          <td style="padding:.45rem .8rem;color:#64748B;font-family:'Courier New',monospace;font-size:.76rem;">CC</td>
+          <td style="padding:.45rem .8rem;color:#64748B;">가장 접근 쉬운 기본 임상 정보만</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <img src="images/lifecare/model.png" class="proj-figure" alt="모델 구성 다이어그램" style="margin-top:.3rem;">
+  <div class="proj-fig-cap">모델 구성 — 각각 다른 seed로 100번 반복 · 10-Fold CV · Acc/Sens/Spec 평가</div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">결과</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">베타-아밀로이드 변수 포함 여부가 성능에 가장 큰 영향을 미쳤음. taxa 변수 추가는 전반적으로 Specificity를 개선했으나 Sensitivity는 소폭 하락하는 경향이 있었음.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">베타-아밀로이드 변수 포함 여부가 성능에 가장 큰 영향을 미쳤음. taxa 변수 추가는 전반적으로 Specificity를 개선했으나 Sensitivity는 하락하는 경향이 있었음.</p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:.75rem 0;">
     <div style="text-align:center;padding:.9rem .5rem;background:rgba(58,90,174,.05);border:1px solid rgba(58,90,174,.13);border-radius:10px;">
       <div style="font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">90.8%</div>
       <div style="font-size:.72rem;color:#64748B;margin-top:.25rem;">ALL Accuracy</div>
     </div>
     <div style="text-align:center;padding:.9rem .5rem;background:rgba(58,90,174,.05);border:1px solid rgba(58,90,174,.13);border-radius:10px;">
-      <div style="font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">73.7%</div>
-      <div style="font-size:.72rem;color:#64748B;margin-top:.25rem;">ALL Sensitivity</div>
+      <div style="font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">98.5%</div>
+      <div style="font-size:.72rem;color:#64748B;margin-top:.25rem;">CC+Taxa Specificity</div>
+      <div style="font-size:.68rem;color:#94A3B8;margin-top:.1rem;">기본 임상+장내미생물</div>
     </div>
     <div style="text-align:center;padding:.9rem .5rem;background:rgba(58,90,174,.05);border:1px solid rgba(58,90,174,.13);border-radius:10px;">
-      <div style="font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">99.9%</div>
-      <div style="font-size:.72rem;color:#64748B;margin-top:.25rem;">ALL Specificity</div>
+      <div style="font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#3A5AAE,#6264C4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">↑+10.6%p</div>
+      <div style="font-size:.72rem;color:#64748B;margin-top:.25rem;">CC Specificity 향상</div>
+      <div style="font-size:.68rem;color:#94A3B8;margin-top:.1rem;">CC Base→+Taxa</div>
     </div>
   </div>
-  <img src="images/lifecare/lc_p28.png" class="proj-figure" alt="모델 결과 박스플롯">
-  <div class="proj-fig-cap">8가지 모델 성능 비교 — Base vs WithTaxa (Accuracy · Sensitivity · Specificity)</div>
-  <img src="images/lifecare/lc_p29.png" class="proj-figure" alt="모델 성능 수치">
-  <div class="proj-fig-cap">변수 조합별 성능 수치 — ALL 모델 최고 성능, 베타-아밀로이드 제외 시 Accuracy 0.717로 급감</div>
+  <img src="images/lifecare/lc_result_graph.png" class="proj-figure" alt="모델 결과 박스플롯">
+  <div class="proj-fig-cap">8가지 모델 성능 비교 — Base vs +Taxa (Accuracy · Sensitivity · Specificity)</div>
+  <div style="display:flex;flex-direction:column;gap:.5rem;margin:.9rem 0;">
+    <div style="color:#475569;font-size:.88rem;line-height:1.8;">• 바이오마커 변수가 적을수록 taxa 추가 시 성능 향상폭이 커지는 패턴이 뚜렷하게 나타남.</div>
+    <div style="color:#475569;font-size:.88rem;line-height:1.8;">• CC 모델(기본 임상 정보만): taxa 추가 시 Specificity <strong style="color:#334155;">87.9% → 98.5% (+10.6%p)</strong></div>
+    <div style="color:#475569;font-size:.88rem;line-height:1.8;">• CC+G 모델: taxa 추가 시 Specificity <strong style="color:#334155;">90.6% → 98.4% (+7.8%p)</strong></div>
+    <div style="color:#94A3B8;font-size:.8rem;line-height:1.75;margin-top:.15rem;">↳ 침습적 바이오마커 없이도 장내미생물 데이터가 전임상 AD 스크리닝 성능을 실질적으로 보완할 수 있음을 시사.</div>
+  </div>
+  <div style="overflow-x:auto;margin:.75rem 0;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;text-align:center;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:1px solid rgba(58,90,174,.15);" rowspan="2">모델</th>
+          <th style="padding:.5rem .8rem;color:#64748B;font-weight:700;border-bottom:1px solid rgba(58,90,174,.15);border-left:1px solid rgba(58,90,174,.12);" colspan="2">Accuracy</th>
+          <th style="padding:.5rem .8rem;color:#64748B;font-weight:700;border-bottom:1px solid rgba(58,90,174,.15);border-left:1px solid rgba(58,90,174,.12);" colspan="2">Sensitivity</th>
+          <th style="padding:.5rem .8rem;color:#64748B;font-weight:700;border-bottom:1px solid rgba(58,90,174,.15);border-left:1px solid rgba(58,90,174,.12);" colspan="2">Specificity</th>
+        </tr>
+        <tr style="background:rgba(58,90,174,.04);">
+          <th style="padding:.4rem .6rem;color:#94A3B8;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);border-left:1px solid rgba(58,90,174,.12);">Base</th>
+          <th style="padding:.4rem .6rem;color:#3A5AAE;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);">+Taxa</th>
+          <th style="padding:.4rem .6rem;color:#94A3B8;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);border-left:1px solid rgba(58,90,174,.12);">Base</th>
+          <th style="padding:.4rem .6rem;color:#3A5AAE;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);">+Taxa</th>
+          <th style="padding:.4rem .6rem;color:#94A3B8;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);border-left:1px solid rgba(58,90,174,.12);">Base</th>
+          <th style="padding:.4rem .6rem;color:#3A5AAE;font-weight:600;font-size:.76rem;border-bottom:2px solid rgba(58,90,174,.15);">+Taxa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;text-align:left;">ALL</td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">90.8%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;">88.5%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">73.7%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;">66.9%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">99.9%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;">100.0%</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;text-align:left;">ALL - A</td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">71.7%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;">71.0%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">24.9%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;">21.7%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">96.7%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;">97.4%</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;text-align:left;">CC + G</td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">66.3%</td>
+          <td style="padding:.45rem .6rem;color:#3A5AAE;font-weight:700;">68.5% <span style="font-size:.7rem;color:#94A3B8;">↑2.2</span></td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">21.0%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;">12.6%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">90.6%</td>
+          <td style="padding:.45rem .6rem;color:#3A5AAE;font-weight:700;">98.4% <span style="font-size:.7rem;color:#94A3B8;">↑7.8</span></td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#334155;font-weight:600;text-align:left;">CC</td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">63.5%</td>
+          <td style="padding:.45rem .6rem;color:#3A5AAE;font-weight:700;">68.5% <span style="font-size:.7rem;color:#94A3B8;">↑5.0</span></td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">17.8%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;">12.6%</td>
+          <td style="padding:.45rem .6rem;color:#64748B;border-left:1px solid rgba(58,90,174,.08);">87.9%</td>
+          <td style="padding:.45rem .6rem;color:#3A5AAE;font-weight:700;">98.5% <span style="font-size:.7rem;color:#94A3B8;">↑10.6</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="proj-fig-cap">변수 조합별 평균 성능 (100 seed 반복) — +Taxa 시 CC·CC+G 모델의 Accuracy·Specificity 개선</div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">결론</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">전임상 AD 상태에서도 장내 미생물 조성이 건강한 사람들과 구별되며, Aβ·타우 단백질 등 초기 병리학적 바이오마커와의 상관관계를 확인. 장내 미생물 데이터 기반 Random Forest 모델이 전임상 AD 예측의 정확도·특이도를 향상시킬 수 있음을 증명. 장내 미생물군이 조기 AD 진단을 위한 바이오마커로서의 잠재력을 가짐을 시사.</p>
+  <div style="display:flex;flex-direction:column;gap:.6rem;">
+    <div style="color:#475569;font-size:.88rem;line-height:1.8;">• 전임상 AD 상태에서도 장내 미생물군의 조성이 건강한 사람들과 구별되며, 아밀로이드 베타(Aβ)와 타우 단백질 같은 AD 초기 병리학적 바이오마커와 상관관계가 있음을 확인.</div>
+    <div style="color:#475569;font-size:.88rem;line-height:1.8;">• 장내 미생물군 데이터를 활용한 머신러닝 모델이 전임상 AD 예측에 있어 정확도·특이도를 향상시킬 수 있음을 증명.</div>
+    <div style="color:#475569;font-size:.88rem;line-height:1.8;">• 장내 미생물군은 조기 AD 진단 및 새로운 치료 전략 개발에 있어 중요한 바이오마커로 활용될 잠재력을 가짐.</div>
+    <div style="color:#94A3B8;font-size:.83rem;line-height:1.8;">• 단, 클래스 불균형(전임상 AD 49명 vs 대조군 115명)으로 인해 Sensitivity가 낮게 나타나는 한계가 있으며, 더 균형 잡힌 대규모 데이터셋에서의 검증이 필요함.</div>
+  </div>
 </div>`,
-      tags:['R','Python','Random Forest','Scikit-learn','KNNImputer','Boruta','MaAsLin2','Microbiome'],
+      tags:['R','Python','Random Forest','Scikit-learn','Boruta','MaAsLin2','Microbiome'],
       links:[{href:'https://github.com/sizi00/gut-microbiome-preclinical-AD',txt:'⬡ GitHub'}],
     },
     bigdata: {
