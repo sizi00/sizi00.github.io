@@ -316,9 +316,9 @@
 
     <div id="sm-vision" class="sm-card" onclick="openProj('vision')" style="cursor:pointer"><div class="sm-ico">🔬</div><div class="sm-title">조건부 VAE 기반 구리 부식 이미지 생성</div><div class="sm-org">연구실 프로젝트 · 한국정보과학회 포스터 발표</div><div class="sm-contrib">2024.05 ~ 2026.03 · 기여도 80% (2인)</div><div class="sm-desc">전자제품 PCB 구리 부식 이미지를 조건부 VAE(cVAE)로 합성하여 안전 검사 데이터 부족 문제를 해결. 부식 유형별 이미지 생성 및 손실 함수 최적화 실험.</div><div class="tags"><span class="tag">PyTorch</span><span class="tag">CVAE</span><span class="tag">Image Generation</span><span class="tag">Computer Vision</span></div></div>
 
-    <div id="sm-delirium" class="sm-card" onclick="openProj('delirium')" style="cursor:pointer"><div class="sm-ico">🫀</div><div class="sm-title">중환자실 섬망 예측 연구</div><div class="sm-org">가톨릭대학병원 협력 연구</div><div class="sm-contrib">2025.01 ~ 2025.03 · 단독 진행</div><div class="sm-desc">중환자실 생체 신호(Vitalsign 시계열) 기반 섬망 예측 연구 참여. MIMIC-IV ICD-9/10 진단코드 처리, 다중 테이블(subject_id, hadm_id, stay_id) 병합 및 검증 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">MIMIC-IV</span><span class="tag">Time Series Preprocessing</span></div></div>
+    <div id="sm-noise" class="sm-card" onclick="openProj('noise')" style="cursor:pointer"><div class="sm-ico">🔊</div><div class="sm-title">재난 무전기 노이즈 제거 연구</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-contrib">2025.01 ~ 2025.03 · 담당 파트 100%</div><div class="sm-desc">재난 현장 무전기 하울링·배경 노이즈 제거 기술 성능 평가. WAV 분절·dBFS 분석 파이프라인 직접 구현 및 기존/개발 장비 거리·소음 유형별 비교 실험.</div><div class="tags"><span class="tag">Python</span><span class="tag">Signal Processing</span><span class="tag">Audio Analysis</span><span class="tag">실험설계</span></div></div>
 
-    <div id="sm-noise" class="sm-card" onclick="openProj('noise')" style="cursor:pointer"><div class="sm-ico">🔊</div><div class="sm-title">재난 무전기 노이즈 제거 연구</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-contrib">2025.01 ~ 2025.03 · 담당 파트 100%</div><div class="sm-desc">재난 현장 무전기 통신 노이즈 제거 기술 실험 설계 및 연구보고서 공동 작성.</div><div class="tags"><span class="tag">Signal Processing</span><span class="tag">실험설계</span></div></div>
+    <div id="sm-delirium" class="sm-card" onclick="openProj('delirium')" style="cursor:pointer"><div class="sm-ico">🫀</div><div class="sm-title">중환자실 섬망 예측 연구</div><div class="sm-org">가톨릭대학병원 협력 연구</div><div class="sm-contrib">2025.01 ~ 2025.03 · 단독 진행</div><div class="sm-desc">중환자실 생체 신호(Vitalsign 시계열) 기반 섬망 예측 연구 참여. MIMIC-IV ICD-9/10 진단코드 처리, 다중 테이블(subject_id, hadm_id, stay_id) 병합 및 검증 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">MIMIC-IV</span><span class="tag">Time Series Preprocessing</span></div></div>
 
     <div id="sm-sport" class="sm-card" onclick="openProj('sport')" style="cursor:pointer"><div class="sm-ico">🏃</div><div class="sm-title">교양체육 성취목표척도 개발 및 분석</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-contrib">2024.06 · 담당 파트 100%</div><div class="sm-desc">대학 교양체육 성취목표척도 개발 및 타당화. 코치 관계·자율성 지지·심리적 욕구·웰빙 간 관계를 설문 데이터로 분석. 탐색적 요인분석(EFA) 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">EFA</span><span class="tag">Factor Analysis</span><span class="tag">Sports Psychology</span></div></div>
   </div>
@@ -2261,7 +2261,25 @@
 </div>
 <div class="proj-section">
   <div class="proj-section-title">연구 1 — 하울링 제거 성능 평가</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">30cm·60cm 두 거리에서 기존 장비와 개발 장비의 하울링 음압을 비교. 하울링이 포함된 음원에서 공백 제거 후 평균 dBFS 산출.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;"><strong style="color:#334155;">분석 목적</strong> — 녹음 거리(30cm·60cm)가 하울링 강도에 미치는 영향을 파악하고, 노이즈 제거 기술의 거리별 성능을 정량 비교.</p>
+  <div style="display:flex;flex-direction:column;gap:.3rem;margin:.6rem 0 .9rem;padding:.75rem 1rem;background:#F8FAFF;border:1px solid rgba(58,90,174,.12);border-radius:10px;">
+    <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.2rem;">분석 방법</div>
+    <div style="font-size:.83rem;color:#475569;line-height:1.7;">• 하울링 음원에서 공백 구간 제거 후 실제 하울링 포함 구간만 추출</div>
+    <div style="font-size:.83rem;color:#475569;line-height:1.7;">• 추출된 구간의 평균 dBFS 산출 (pydub)</div>
+    <div style="font-size:.83rem;color:#475569;line-height:1.7;">• 거리별·장비별 평균 dB 비교 및 감소율 계산</div>
+  </div>
+  <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem;">파형 비교</div>
+  <div style="display:grid;grid-template-columns:auto 1fr 1fr;gap:.4rem;align-items:center;margin-bottom:.75rem;">
+    <div></div>
+    <div style="font-size:.78rem;color:#64748B;font-weight:600;text-align:center;">기존 장비</div>
+    <div style="font-size:.78rem;color:#64748B;font-weight:600;text-align:center;">개발 장비</div>
+    <div style="font-size:.78rem;color:#64748B;font-weight:600;writing-mode:vertical-rl;text-align:center;transform:rotate(180deg);padding:.3rem 0;">30cm</div>
+    <img src="images/sound/original_30cm.png" style="width:100%;border-radius:6px;border:1px solid rgba(100,116,139,.15);">
+    <img src="images/sound/collabo_30cm.png" style="width:100%;border-radius:6px;border:1px solid rgba(100,116,139,.15);">
+    <div style="font-size:.78rem;color:#64748B;font-weight:600;writing-mode:vertical-rl;text-align:center;transform:rotate(180deg);padding:.3rem 0;">60cm</div>
+    <img src="images/sound/original_60cm.png" style="width:100%;border-radius:6px;border:1px solid rgba(100,116,139,.15);">
+    <img src="images/sound/collabo_60cm.png" style="width:100%;border-radius:6px;border:1px solid rgba(100,116,139,.15);">
+  </div>
   <div style="overflow-x:auto;margin:.75rem 0;">
     <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
       <thead>
@@ -2288,52 +2306,97 @@
       </tbody>
     </table>
   </div>
-  <p style="color:#475569;font-size:.82rem;line-height:1.75;">30cm에서 약 248%, 60cm에서 약 150% 하울링 감소 — 녹음 거리와 무관하게 일관된 성능 확인.</p>
+  <p style="color:#475569;font-size:.82rem;line-height:1.75;">30cm 33.05dB↓(248%) · 60cm 27.71dB↓(150%) — 두 거리 모두 일관된 하울링 감쇠 효과 확인.</p>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">연구 2 — 배경 노이즈 제거 성능 평가</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">Car Noise · Rain Noise 두 환경에서 DJI·H1n·Porta 3개 장비로 측정. 음원을 10초 단위로 분절하여 voice/noise 구간을 분리한 뒤 noise 구간의 평균 dBFS 비교.</p>
-  <div style="overflow-x:auto;margin:.75rem 0;">
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;"><strong style="color:#334155;">분석 목적</strong> — Car·Rain 두 배경 소음 환경에서 DJI·H1n·Porta 3개 장비로 노이즈 제거 성능 정량 비교.</p>
+  <div style="display:flex;flex-direction:column;gap:.3rem;margin:.6rem 0 .9rem;padding:.75rem 1rem;background:#F8FAFF;border:1px solid rgba(58,90,174,.12);border-radius:10px;">
+    <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.2rem;">실험 설계</div>
+    <div style="font-size:.83rem;color:#475569;line-height:1.7;">• 소음 유형: Car_noise · Rain_noise</div>
+    <div style="font-size:.83rem;color:#475569;line-height:1.7;">• 녹음 장비: DJI · H1n · Porta</div>
+    <div style="font-size:.83rem;color:#475569;line-height:1.7;">• 음원 패턴: 10초 간격 voice/noise 반복 → 분절 후 noise 구간 평균 dBFS 산출</div>
+  </div>
+  <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem;">파형 비교 (H1n 기준)</div>
+  <div style="display:grid;grid-template-columns:auto 1fr 1fr;gap:.4rem;align-items:center;margin-bottom:.9rem;">
+    <div></div>
+    <div style="font-size:.78rem;color:#64748B;font-weight:600;text-align:center;">기존 장비</div>
+    <div style="font-size:.78rem;color:#64748B;font-weight:600;text-align:center;">개발 장비</div>
+    <div style="font-size:.78rem;color:#64748B;font-weight:600;writing-mode:vertical-rl;text-align:center;transform:rotate(180deg);padding:.3rem 0;">Car noise</div>
+    <img src="images/sound/0304_original_car_noise_H1n.png" style="width:100%;border-radius:6px;border:1px solid rgba(100,116,139,.15);">
+    <img src="images/sound/0304_collabo_car_noise_H1n.png" style="width:100%;border-radius:6px;border:1px solid rgba(100,116,139,.15);">
+    <div style="font-size:.78rem;color:#64748B;font-weight:600;writing-mode:vertical-rl;text-align:center;transform:rotate(180deg);padding:.3rem 0;">Rain noise</div>
+    <img src="images/sound/0304_original_rain_noise_H1n.png" style="width:100%;border-radius:6px;border:1px solid rgba(100,116,139,.15);">
+    <img src="images/sound/0304_collabo_rain_noise_H1n.png" style="width:100%;border-radius:6px;border:1px solid rgba(100,116,139,.15);">
+  </div>
+  <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem;">Car Noise 결과</div>
+  <div style="overflow-x:auto;margin-bottom:.4rem;">
     <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
       <thead>
         <tr style="background:rgba(58,90,174,.07);">
-          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);" rowspan="2">장비</th>
-          <th style="padding:.5rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:1px solid rgba(58,90,174,.1);" colspan="2">Car Noise</th>
-          <th style="padding:.5rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:1px solid rgba(58,90,174,.1);border-left:1px solid rgba(58,90,174,.1);" colspan="2">Rain Noise</th>
-        </tr>
-        <tr style="background:rgba(58,90,174,.04);">
-          <th style="padding:.4rem .8rem;text-align:right;color:#94A3B8;font-weight:600;border-bottom:2px solid rgba(58,90,174,.15);">감소량</th>
-          <th style="padding:.4rem .8rem;text-align:right;color:#94A3B8;font-weight:600;border-bottom:2px solid rgba(58,90,174,.15);">감소율</th>
-          <th style="padding:.4rem .8rem;text-align:right;color:#94A3B8;font-weight:600;border-bottom:2px solid rgba(58,90,174,.15);border-left:1px solid rgba(58,90,174,.1);">감소량</th>
-          <th style="padding:.4rem .8rem;text-align:right;color:#94A3B8;font-weight:600;border-bottom:2px solid rgba(58,90,174,.15);">감소율</th>
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">장비</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">기존 장비 평균 dB</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">개발 장비 평균 dB</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">감소량</th>
         </tr>
       </thead>
       <tbody>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
           <td style="padding:.45rem .8rem;color:#334155;">DJI</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;">21.81 dB↓</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">52.5%</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;border-left:1px solid rgba(58,90,174,.1);">31.35 dB↓</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">92.9%</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-41.58</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-63.39</td>
+          <td style="padding:.45rem .8rem;text-align:right;font-weight:600;color:#3A5AAE;">21.81 dB↓</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
           <td style="padding:.45rem .8rem;color:#334155;">H1n</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;">24.10 dB↓</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">126.9%</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;border-left:1px solid rgba(58,90,174,.1);">35.21 dB↓</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">240.0%</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-18.99</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-43.09</td>
+          <td style="padding:.45rem .8rem;text-align:right;font-weight:600;color:#3A5AAE;">24.10 dB↓</td>
         </tr>
         <tr>
           <td style="padding:.45rem .8rem;color:#334155;">Porta</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;">36.51 dB↓</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">127.8%</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;border-left:1px solid rgba(58,90,174,.1);">30.52 dB↓</td>
-          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">121.8%</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-28.57</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-65.08</td>
+          <td style="padding:.45rem .8rem;text-align:right;font-weight:600;color:#3A5AAE;">36.51 dB↓</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p style="color:#475569;font-size:.82rem;line-height:1.75;">Car/Rain 전체 평균 노이즈 감소량 <strong style="color:#334155;">29.92dB</strong> — 소음 유형과 무관하게 안정적인 노이즈 제거 성능 확인.</p>
+  <p style="color:#475569;font-size:.82rem;line-height:1.75;margin-bottom:.9rem;">Car Noise 환경 평균 노이즈 감소량 <strong style="color:#334155;">27.47dB</strong> (102.38%)</p>
+  <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem;">Rain Noise 결과</div>
+  <div style="overflow-x:auto;margin-bottom:.4rem;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">장비</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">기존 장비 평균 dB</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">개발 장비 평균 dB</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">감소량</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;">DJI</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-33.73</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-65.08</td>
+          <td style="padding:.45rem .8rem;text-align:right;font-weight:600;color:#3A5AAE;">31.35 dB↓</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;">H1n</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-14.67</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-49.88</td>
+          <td style="padding:.45rem .8rem;text-align:right;font-weight:600;color:#3A5AAE;">35.21 dB↓</td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#334155;">Porta</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-25.06</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-55.58</td>
+          <td style="padding:.45rem .8rem;text-align:right;font-weight:600;color:#3A5AAE;">30.52 dB↓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:#475569;font-size:.82rem;line-height:1.75;">Rain Noise 환경 평균 노이즈 감소량 <strong style="color:#334155;">32.36dB</strong> (151.58%) · Car/Rain 전체 평균 <strong style="color:#334155;">29.92dB↓</strong></p>
 </div>`,
     },
     delirium: {
