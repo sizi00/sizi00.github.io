@@ -318,9 +318,9 @@
 
     <div id="sm-noise" class="sm-card" onclick="openProj('noise')" style="cursor:pointer"><div class="sm-ico">🔊</div><div class="sm-title">재난 무전기 노이즈 제거 연구</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-contrib">2025.01 ~ 2025.03 · 담당 파트 100%</div><div class="sm-desc">재난 현장 무전기 하울링·배경 노이즈 제거 기술 성능 평가. WAV 분절·dBFS 분석 파이프라인 직접 구현 및 기존/개발 장비 거리·소음 유형별 비교 실험.</div><div class="tags"><span class="tag">Python</span><span class="tag">Signal Processing</span><span class="tag">Audio Analysis</span><span class="tag">실험설계</span></div></div>
 
-    <div id="sm-delirium" class="sm-card" onclick="openProj('delirium')" style="cursor:pointer"><div class="sm-ico">🫀</div><div class="sm-title">중환자실 섬망 예측 연구</div><div class="sm-org">가톨릭대학병원 협력 연구</div><div class="sm-contrib">2025.01 ~ 2025.03 · 담당 파트 100%</div><div class="sm-desc">중환자실 생체 신호(Vitalsign 시계열) 기반 섬망 예측 연구 참여. MIMIC-IV ICD-9/10 진단코드 처리, 다중 테이블(subject_id, hadm_id, stay_id) 병합 및 검증 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">MIMIC-IV</span><span class="tag">Time Series Preprocessing</span></div></div>
+    <div id="sm-sport" class="sm-card" onclick="openProj('sport')" style="cursor:pointer"><div class="sm-ico">🏃</div><div class="sm-title">교양체육 성취목표척도 개발 및 분석</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-contrib">2024.06 · 담당 파트 100%</div><div class="sm-desc">교양체육 성취목표척도 개발 연구 참여. 코치 관계·자율성 지지·심리적 욕구·웰빙 간 관계를 설문 데이터로 분석. 기술통계·상관분석·클러스터링 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">K-means</span><span class="tag">DBSCAN</span><span class="tag">Sports Psychology</span></div></div>
 
-    <div id="sm-sport" class="sm-card" onclick="openProj('sport')" style="cursor:pointer"><div class="sm-ico">🏃</div><div class="sm-title">교양체육 성취목표척도 개발 및 분석</div><div class="sm-org">연구실 프로젝트 · 연구보고서 작성</div><div class="sm-contrib">2024.06 · 담당 파트 100%</div><div class="sm-desc">대학 교양체육 성취목표척도 개발 및 타당화. 코치 관계·자율성 지지·심리적 욕구·웰빙 간 관계를 설문 데이터로 분석. 탐색적 요인분석(EFA) 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">EFA</span><span class="tag">Factor Analysis</span><span class="tag">Sports Psychology</span></div></div>
+    <div id="sm-delirium" class="sm-card" onclick="openProj('delirium')" style="cursor:pointer"><div class="sm-ico">🫀</div><div class="sm-title">중환자실 섬망 예측 연구</div><div class="sm-org">가톨릭대학병원 협력 연구</div><div class="sm-contrib">2025.01 ~ 2025.03 · 담당 파트 100%</div><div class="sm-desc">중환자실 생체 신호(Vitalsign 시계열) 기반 섬망 예측 연구 참여. MIMIC-IV ICD-9/10 진단코드 처리, 다중 테이블(subject_id, hadm_id, stay_id) 병합 및 검증 담당.</div><div class="tags"><span class="tag">Python</span><span class="tag">MIMIC-IV</span><span class="tag">Time Series Preprocessing</span></div></div>
   </div>
 </div>
 
@@ -344,7 +344,7 @@
   <h2 class="sec-title">기술 스택</h2>
   <div class="skill-grid fade">
     <div class="skill-grp"><div class="skill-h">Languages</div><div class="skill-tags"><span class="sk">Python</span><span class="sk">R</span><span class="sk">SQL</span></div></div>
-    <div class="skill-grp"><div class="skill-h">Analysis</div><div class="skill-tags"><span class="sk">Pandas</span><span class="sk">NumPy</span><span class="sk">Matplotlib</span><span class="sk">Plotly</span><span class="sk">Seaborn</span><span class="sk">Folium</span><span class="sk">PIL</span></div></div>
+    <div class="skill-grp"><div class="skill-h">Analysis</div><div class="skill-tags"><span class="sk">Pandas</span><span class="sk">NumPy</span><span class="sk">SciPy</span><span class="sk">Matplotlib</span><span class="sk">Plotly</span><span class="sk">Seaborn</span><span class="sk">PIL</span></div></div>
     <div class="skill-grp"><div class="skill-h">ML & DL</div><div class="skill-tags"><span class="sk">Scikit-learn</span><span class="sk">PyTorch</span></div></div>
     <div class="skill-grp"><div class="skill-h">Tools</div><div class="skill-tags"><span class="sk">Git</span><span class="sk">Jupyter</span><span class="sk">VSCode</span><span class="sk">OpenAI API</span><span class="sk">Gradio</span><span class="sk">n8n</span><span class="sk">Claude Code</span></div></div>
   </div>
@@ -2654,26 +2654,114 @@
       contrib:'2024.06 · 담당 파트 100%',
       badges:[],
       images:[],
-      desc:'교양체육 성취목표척도(Achievement Goal Scale) 개발·타당화. 코치 관계·자율성 지지·심리적 욕구·웰빙 구조 설문 분석. 탐색적 요인분석(EFA)·기술통계 담당.',
+      desc:'교양체육 성취목표척도(Achievement Goal Scale) 개발 연구 참여. 코치 관계·자율성 지지·심리적 욕구·웰빙 구조 설문 분석. 기술통계·상관분석·클러스터링 담당.',
       highlights:[
-        '📋 교양체육 성취목표척도(Achievement Goal Scale) 개발 및 타당화',
+        '📋 교양체육 성취목표척도(Achievement Goal Scale) 개발 연구 참여',
         '🤝 코치 관계 · 자율성 지지 · 심리적 욕구 · 웰빙 구조 분석',
-        '📊 설문 데이터 전처리, 탐색적 요인분석(EFA), 기술통계 분석 담당',
+        '📊 설문 문자열 파싱·역채점 전처리, 기술통계·상관분석·k-means·DBSCAN 담당',
       ],
       body:`
 <div class="proj-section">
   <div class="proj-section-title">배경</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">연구실에서 진행한 교양체육 관련 스포츠심리 설문 데이터 분석 프로젝트이다. 성취목표척도 개발·타당화, 자율성지지·운동행동·심리적욕구 구조 분석, 코치관계·심리적웰빙 상관 분석 등 3종 설문지·4종 엑셀 데이터(최대 712명)를 수집·정제·분석하였다.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">스포츠심리학 연구 3건에서 설문 데이터 분석을 담당하였다. Likert 척도 응답이 연속 숫자 문자열 형태로 저장된 데이터를 처리하는 파싱 파이프라인부터 군집화·통계 검증까지 전 과정을 Python으로 직접 구현하였다.</p>
 </div>
 <div class="proj-section">
-  <div class="proj-section-title">상관관계 분석</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">성취목표·참여동기·주관적안녕감·생활기술·흥미 5개 변수 간 상관관계 분석. 5개 변수 모두 서로 유의미한 상관 확인. 자율성지지·운동행동·심리적욕구 설문에서는 자율성지지와 심리적욕구 간 강한 상관, 운동행동은 두 변수 모두와 상관이 낮은 것으로 분석. 코치관계 설문에서는 심리적욕구–코치선수관계(r=0.53), 심리적욕구–심리적웰빙(r=0.44) 강한 상관 확인.</p>
+  <div class="proj-section-title">데이터 전처리</div>
+  <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:.8rem 1rem;font-size:.85rem;color:#475569;line-height:1.9;">
+    <div>· Likert 문항을 이어붙인 연속 숫자 문자열 → 문항별 평균 파싱 함수 직접 구현 (3개 데이터셋 공통 적용)</div>
+    <div>· 자율성지지 설문 부정 문항 7개 역채점 처리 (6−n 변환)</div>
+    <div>· 심리적욕구 12문항 → 자율성 · 유능성 · 관계성 각 4문항씩 세분화</div>
+  </div>
 </div>
 <div class="proj-section">
-  <div class="proj-section-title">k-means 클러스터링</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">자율성지지·운동행동·심리적욕구 기반 k-means(k=3) 군집 분류. Cluster 1은 자율성지지(4.45)·심리적욕구(4.86)가 가장 높으나 운동행동(1.07)은 최저 — 경력이 가장 높고 학년이 가장 낮은 그룹으로, 어린 나이부터 스포츠를 시작할수록 자율성 지지와 심리적 욕구에 긍정적 영향을 미쳤을 가능성 제시.</p>
+  <div class="proj-section-title">분석 개요</div>
+  <table style="width:100%;border-collapse:collapse;font-size:.83rem;margin:.4rem 0;">
+    <thead>
+      <tr style="background:#F1F5F9;">
+        <th style="padding:.5rem .7rem;text-align:left;border-bottom:2px solid #CBD5E1;color:#334155;font-weight:600;">연구</th>
+        <th style="padding:.5rem .7rem;text-align:center;border-bottom:2px solid #CBD5E1;color:#334155;font-weight:600;">대상</th>
+        <th style="padding:.5rem .7rem;text-align:left;border-bottom:2px solid #CBD5E1;color:#334155;font-weight:600;">분석 방법</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #E2E8F0;">
+        <td style="padding:.5rem .7rem;color:#334155;font-weight:500;">성취목표척도 개발</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#64748B;">712명</td>
+        <td style="padding:.5rem .7rem;color:#64748B;">기술통계 · 상관분석 · k-means(k=3,5) · 종목별 피벗</td>
+      </tr>
+      <tr style="border-bottom:1px solid #E2E8F0;">
+        <td style="padding:.5rem .7rem;color:#334155;font-weight:500;">자율성지지 · 운동행동 · 심리적욕구</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#64748B;">190명</td>
+        <td style="padding:.5rem .7rem;color:#64748B;">역채점 · 상관분석 · k-means · DBSCAN · ANOVA</td>
+      </tr>
+      <tr>
+        <td style="padding:.5rem .7rem;color:#334155;font-weight:500;">코치관계 · 심리적욕구 · 웰빙</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#64748B;">63명</td>
+        <td style="padding:.5rem .7rem;color:#64748B;">상관분석 · 산점도 · 박스플롯</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">k-means 군집 특성 (자율성지지, k=3)</div>
+  <table style="width:100%;border-collapse:collapse;font-size:.83rem;margin:.4rem 0;">
+    <thead>
+      <tr style="background:#F1F5F9;">
+        <th style="padding:.5rem .7rem;text-align:center;border-bottom:2px solid #CBD5E1;color:#334155;font-weight:600;">군집</th>
+        <th style="padding:.5rem .7rem;text-align:center;border-bottom:2px solid #CBD5E1;color:#334155;font-weight:600;">자율성지지</th>
+        <th style="padding:.5rem .7rem;text-align:center;border-bottom:2px solid #CBD5E1;color:#334155;font-weight:600;">운동행동</th>
+        <th style="padding:.5rem .7rem;text-align:center;border-bottom:2px solid #CBD5E1;color:#334155;font-weight:600;">심리적욕구</th>
+        <th style="padding:.5rem .7rem;text-align:left;border-bottom:2px solid #CBD5E1;color:#334155;font-weight:600;">특징</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #E2E8F0;">
+        <td style="padding:.5rem .7rem;text-align:center;color:#334155;font-weight:600;">0</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#64748B;">4.04</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#64748B;">2.69</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#64748B;">4.25</td>
+        <td style="padding:.5rem .7rem;color:#64748B;">자율성지지·심리적욕구 중-고 수준</td>
+      </tr>
+      <tr style="border-bottom:1px solid #E2E8F0;">
+        <td style="padding:.5rem .7rem;text-align:center;color:#334155;font-weight:600;">1</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#3A5AAE;font-weight:600;">4.45</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#DC2626;font-weight:600;">1.07</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#3A5AAE;font-weight:600;">4.86</td>
+        <td style="padding:.5rem .7rem;color:#64748B;">자율성·욕구 최고 / 운동행동 최저 — 경력 최고, 학년 최저</td>
+      </tr>
+      <tr>
+        <td style="padding:.5rem .7rem;text-align:center;color:#334155;font-weight:600;">2</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#64748B;">3.32</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#64748B;">2.51</td>
+        <td style="padding:.5rem .7rem;text-align:center;color:#64748B;">3.43</td>
+        <td style="padding:.5rem .7rem;color:#64748B;">자율성지지·심리적욕구 전반 저수준 — 최대 규모</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="font-size:.8rem;color:#94A3B8;margin-top:.4rem;">ANOVA 검증: 운동행동 F=49.2 · 자율성지지 F=11.6 · 심리적욕구 F=14.3 (모두 p&lt;0.001)</div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">주요 발견</div>
+  <div style="display:flex;flex-direction:column;gap:.4rem;font-size:.85rem;color:#475569;line-height:1.8;">
+    <div>· Cluster 0 · 2는 자율성지지와 심리적욕구 수준에 따라 고-저로 분리되는 양상</div>
+    <div>· Cluster 1: 어린 나이부터 스포츠를 시작한 고경력 선수 그룹 — 자율성지지·심리적욕구는 가장 높으나 운동행동은 최저</div>
+    <div style="padding-left:1rem;color:#64748B;">↳ 오랜 훈련 과정에서 동기부여가 부족하거나 상실되었을 가능성을 시사</div>
+    <div>· 코치선수관계↔심리적욕구 r=0.53, 심리적욕구↔웰빙 r=0.44 — 코치와의 관계가 심리적 욕구 충족을 매개해 웰빙에 영향</div>
+  </div>
+</div>
+<div class="proj-section">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.4rem 0;">
+    <div>
+      <img src="images/sport/sport_corr_heatmap.png" style="width:100%;border-radius:6px;border:1px solid #E2E8F0;">
+      <div class="proj-fig-cap">5개 변수 상관관계 히트맵 (성취목표척도, n=712)</div>
+    </div>
+    <div>
+      <img src="images/sport/sport_kmeans_3d.png" style="width:100%;border-radius:6px;border:1px solid #E2E8F0;">
+      <div class="proj-fig-cap">k-means 군집 3D 시각화 (자율성지지, n=190)</div>
+    </div>
+  </div>
 </div>`,
-      tags:['Python','R','설문분석','Factor Analysis','Sports Psychology','Statistical Analysis'],
+      tags:['Python','Scikit-learn','K-means','DBSCAN','ANOVA','Sports Psychology'],
       links:[],
     },
   };
