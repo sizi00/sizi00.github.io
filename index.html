@@ -2243,14 +2243,98 @@
       org:'연구실 프로젝트 · 연구보고서 작성',
       contrib:'2025.01 ~ 2025.03 · 담당 파트 100%',
       badges:[],
-      desc:'재난 무전기 통신 노이즈 제거 기술 실험·평가. WAV 분절 전처리·SNR 조건별 노이즈 특성 분석. 연구보고서 공동 집필.',
+      desc:'재난 현장 무전기 하울링·배경 노이즈 제거 기술 성능 평가. Python으로 WAV 분절·dBFS 분석 파이프라인 직접 구현. 기존/개발 장비를 거리·소음 유형별로 비교 실험하여 정량 평가. 연구보고서 공동 집필.',
       highlights:[
-        '🎙️ WAV 오디오 파일 분절(segmentation) 전처리 파이프라인 구현',
-        '🔧 SNR(신호 대 잡음비) 조건 변화에 따른 노이즈 특성 실험',
-        '📝 실험 설계, 결과 분석, 연구보고서 공동 집필 참여',
+        '🎙️ WAV 로드·모노 변환·10초 분절·voice/noise 태그 — 분석 파이프라인 직접 구현',
+        '🔊 하울링 제거: 30cm 33.05dB↓(248%) · 60cm 27.71dB↓(150%)',
+        '🌧️ 배경 노이즈(Car/Rain) × 3개 장비 비교 — 전체 평균 29.92dB 감소',
       ],
-      tags:['Python','Signal Processing','SNR Analysis','WAV처리','실험설계'],
+      tags:['Python','pydub','Signal Processing','Audio Analysis','WAV처리','실험설계'],
       links:[],
+      body:`<div class="proj-section">
+  <div class="proj-section-title">배경</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">재난 현장 무전기 통신은 하울링·배경 소음으로 인해 명확한 의사소통이 어렵다. 노이즈 제거 기술이 적용된 개발 장비와 기존 장비의 성능을 비교하는 실험을 설계하고, 오디오 분석 파이프라인을 직접 구현하여 정량적 성능 평가를 수행하였다.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">분석 방법</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">WAV 파일 로드 및 모노 변환 → 파형 시각화 → 10초 단위 분절 + voice/noise 태그 자동 부여 → 파일별 평균 dBFS 계산 → 장비·거리·소음 유형별 감소량 산출. pydub 기반으로 전 과정을 Python으로 구현.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">연구 1 — 하울링 제거 성능 평가</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">30cm·60cm 두 거리에서 기존 장비와 개발 장비의 하울링 음압을 비교. 하울링이 포함된 음원에서 공백 제거 후 평균 dBFS 산출.</p>
+  <div style="overflow-x:auto;margin:.75rem 0;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">거리</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">기존 장비 평균 dB</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">개발 장비 평균 dB</th>
+          <th style="padding:.5rem .8rem;text-align:right;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">감소량</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;">30cm</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-13.32</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-46.35</td>
+          <td style="padding:.45rem .8rem;text-align:right;font-weight:600;color:#3A5AAE;">33.05 dB↓</td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#334155;">60cm</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-18.44</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">-46.16</td>
+          <td style="padding:.45rem .8rem;text-align:right;font-weight:600;color:#3A5AAE;">27.71 dB↓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:#475569;font-size:.82rem;line-height:1.75;">30cm에서 약 248%, 60cm에서 약 150% 하울링 감소 — 녹음 거리와 무관하게 일관된 성능 확인.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">연구 2 — 배경 노이즈 제거 성능 평가</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">Car Noise · Rain Noise 두 환경에서 DJI·H1n·Porta 3개 장비로 측정. 음원을 10초 단위로 분절하여 voice/noise 구간을 분리한 뒤 noise 구간의 평균 dBFS 비교.</p>
+  <div style="overflow-x:auto;margin:.75rem 0;">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.5rem .8rem;text-align:left;color:#64748B;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);" rowspan="2">장비</th>
+          <th style="padding:.5rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:1px solid rgba(58,90,174,.1);" colspan="2">Car Noise</th>
+          <th style="padding:.5rem .8rem;text-align:center;color:#64748B;font-weight:700;border-bottom:1px solid rgba(58,90,174,.1);border-left:1px solid rgba(58,90,174,.1);" colspan="2">Rain Noise</th>
+        </tr>
+        <tr style="background:rgba(58,90,174,.04);">
+          <th style="padding:.4rem .8rem;text-align:right;color:#94A3B8;font-weight:600;border-bottom:2px solid rgba(58,90,174,.15);">감소량</th>
+          <th style="padding:.4rem .8rem;text-align:right;color:#94A3B8;font-weight:600;border-bottom:2px solid rgba(58,90,174,.15);">감소율</th>
+          <th style="padding:.4rem .8rem;text-align:right;color:#94A3B8;font-weight:600;border-bottom:2px solid rgba(58,90,174,.15);border-left:1px solid rgba(58,90,174,.1);">감소량</th>
+          <th style="padding:.4rem .8rem;text-align:right;color:#94A3B8;font-weight:600;border-bottom:2px solid rgba(58,90,174,.15);">감소율</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;">DJI</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;">21.81 dB↓</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">52.5%</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;border-left:1px solid rgba(58,90,174,.1);">31.35 dB↓</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">92.9%</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.45rem .8rem;color:#334155;">H1n</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;">24.10 dB↓</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">126.9%</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;border-left:1px solid rgba(58,90,174,.1);">35.21 dB↓</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">240.0%</td>
+        </tr>
+        <tr>
+          <td style="padding:.45rem .8rem;color:#334155;">Porta</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;">36.51 dB↓</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">127.8%</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#3A5AAE;font-weight:600;border-left:1px solid rgba(58,90,174,.1);">30.52 dB↓</td>
+          <td style="padding:.45rem .8rem;text-align:right;color:#64748B;">121.8%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:#475569;font-size:.82rem;line-height:1.75;">Car/Rain 전체 평균 노이즈 감소량 <strong style="color:#334155;">29.92dB</strong> — 소음 유형과 무관하게 안정적인 노이즈 제거 성능 확인.</p>
+</div>`,
     },
     delirium: {
       ico:'🫀', title:'중환자실 섬망 예측 연구',
@@ -2320,6 +2404,7 @@
       ico:'🔬', title:'조건부 VAE 기반 구리 부식 이미지 생성',
       org:'연구실 프로젝트 · 한국정보과학회 포스터 발표',
       contrib:'2024.05 ~ 2026.03 · 기여도 80% (2인)',
+      role:'연구 설계 · 데이터 전처리 · 모델 구현 · 논문 작성 · 포스터 제작',
       badges:[{txt:'📄 논문 발표',cls:'bdg-res'}],
       images:[
         {src:'images/vision/vision_poster_p1.png', cap:'포스터 — 조건부 VAE 기반 구리 부식 이미지 생성 및 손실 함수 최적화'},
@@ -2329,53 +2414,64 @@
         '🧪 MIL-STD-810G 규격 온습도 챔버로 직접 부식 실험 — 56개 시편 280장 이미지 수집',
         '📡 RF프로브 + VNA로 s-파라미터(S11·S21·Phase) 측정 — 이미지와 쌍으로 구성',
         '⚗️ 손실 함수 6조합(L1/L2/VGG/KLD) 체계적 비교 → L2+VGG+KLD 최적 확인',
-        '📊 MSE·LPIPS 정량 평가, 부식률 조건 반영 상관계수 0.998',
+        '📊 MSE 최소(L2+VGG+KLD) · LPIPS 최소(L2+KLD) — 조건 반영도·시각적 유사도 동시 검토',
       ],
       body:`<div class="proj-section">
   <div class="proj-section-title">배경</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">전자제품 소형화로 구리 사용량이 증가하면서 PCB 내 구리 소자의 부식이 시스템 불량으로 이어질 수 있다. 부식 정도를 실시간 모니터링하기 위한 AI 학습 데이터로 실제 부식 이미지가 필요하지만, 부식 실험 자체가 오랜 시간이 걸려 데이터가 부족한 문제가 있다. 이를 해결하기 위해 부식률을 조건으로 입력받아 구리 부식 이미지를 생성하는 CVAE 모델을 설계하였다. 수원대학교 데이터과학부·기계공학과 협력 연구이며 중소벤처기업부 기술개발사업 지원을 받았다.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">전자제품 소형화로 구리 사용량이 증가하면서 PCB 내 구리 소자의 부식이 시스템 불량으로 이어질 위험이 커지고 있다. 그러나 전자제품 내부의 부식을 확인하려면 제품을 직접 분해하는 파괴 검사가 필요해 모바일 기기처럼 소형화된 제품에는 적용하기 어렵다. 이에 본 연구에서는 비파괴 검사(NDT) 방식인 S-파라미터를 활용해 부식 정도를 간접적으로 측정하는 방향을 택했다.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.75rem;">AI 모델 학습에는 다양한 부식 단계의 이미지 데이터가 필요하지만, 실제 부식 실험은 수 주기에 걸쳐 진행되어 데이터 확보에 시간이 많이 걸린다. 이 문제를 해결하기 위해 부식률을 조건으로 입력받아 구리 부식 이미지를 생성하는 CVAE 모델을 설계하였다. 수원대학교 데이터과학부·기계공학과 협력 연구이며 중소벤처기업부 기술개발사업 지원을 받았다.</p>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">데이터 수집</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">구리 시편 56개를 ESPEC 온습도 챔버에서 MIL-STD-810G 규격 가속 온습도 사이클로 부식시켰다. 1주기=24시간, 총 5주기 진행. 각 주기마다 이미지를 획득해 총 <strong style="color:#334155;">280장</strong>의 부식 이미지를 수집했다.</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.75rem 0;">
-    <div style="background:rgba(58,90,174,.04);border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:1rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">마킹 이미지</div>
-      <ul style="color:#475569;font-size:.82rem;line-height:1.75;padding-left:1.1rem;margin:0;">
-        <li>R 채널이 부식을 가장 잘 반영 → R 채널 기반 마킹</li>
-        <li>부식률 = 마킹 R 채널 픽셀 평균값 (0~100%)</li>
-        <li>(110×330) → (256×256) 리사이즈</li>
-      </ul>
-    </div>
-    <div style="background:rgba(98,100,196,.04);border:1px solid rgba(98,100,196,.12);border-radius:10px;padding:1rem;">
-      <div style="font-size:.78rem;font-weight:700;color:#6264C4;margin-bottom:.5rem;">s-파라미터</div>
-      <ul style="color:#475569;font-size:.82rem;line-height:1.75;padding-left:1.1rem;margin:0;">
-        <li>RF프로브 + VNA(벡터 네트워크 애널라이저)로 측정</li>
-        <li>S11, S21, Phase11, Phase21</li>
-        <li>300kHz ~ 14GHz 구간 201개 값</li>
-      </ul>
-    </div>
+
+  <div style="font-size:.82rem;font-weight:700;color:#334155;margin-bottom:.5rem;">① 구리 시편 부식 실험</div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.8;margin-bottom:.75rem;">전자제품 내 구리 소자를 모사한 시편 56개를 ESPEC 온습도 챔버에서 MIL-STD-810G 규격 가속 온습도 사이클로 부식시켰다. 1주기=24시간, 총 5주기 진행. 각 주기마다 이미지를 획득해 총 <strong style="color:#334155;">280장</strong>의 부식 이미지를 수집했다.</p>
+  <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;grid-template-rows:auto auto;column-gap:.5rem;row-gap:.3rem;margin:.5rem 0 .3rem;">
+    <img src="images/vision/cycle_1.png" style="width:100%;max-height:90px;object-fit:contain;border-radius:7px;border:1px solid rgba(100,116,139,.15);">
+    <div style="color:#3A5AAE;font-size:1.2rem;text-align:center;display:flex;align-items:center;justify-content:center;">→</div>
+    <img src="images/vision/cycle_3.png" style="width:100%;max-height:90px;object-fit:contain;border-radius:7px;border:1px solid rgba(100,116,139,.15);">
+    <div style="color:#3A5AAE;font-size:1.2rem;text-align:center;display:flex;align-items:center;justify-content:center;">→</div>
+    <img src="images/vision/cycle_5.png" style="width:100%;max-height:90px;object-fit:contain;border-radius:7px;border:1px solid rgba(100,116,139,.15);">
+    <div style="font-size:.73rem;color:#64748B;text-align:center;">1주기</div>
+    <div></div>
+    <div style="font-size:.73rem;color:#64748B;text-align:center;">3주기</div>
+    <div></div>
+    <div style="font-size:.73rem;color:#64748B;text-align:center;">5주기</div>
   </div>
+  <div class="proj-fig-cap">주기가 진행될수록 부식이 시편 전체로 퍼져나감</div>
+
+  <div style="font-size:.82rem;font-weight:700;color:#334155;margin:.9rem 0 .5rem;">② 마킹 이미지 및 부식률</div>
+  <div style="display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:auto auto;column-gap:.75rem;row-gap:.3rem;margin:.4rem 0 .65rem;">
+    <img src="images/vision/orig_sample.png" style="width:100%;max-height:120px;object-fit:contain;border-radius:7px;border:1px solid rgba(100,116,139,.15);">
+    <div style="color:#3A5AAE;font-size:1.2rem;display:flex;align-items:center;justify-content:center;">→</div>
+    <img src="images/vision/marking_sample.png" style="width:100%;max-height:120px;object-fit:contain;border-radius:7px;border:1px solid rgba(100,116,139,.15);">
+    <div style="font-size:.73rem;color:#64748B;text-align:center;">원본 이미지</div>
+    <div></div>
+    <div style="font-size:.73rem;color:#64748B;text-align:center;">R채널 마킹 이미지</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:.3rem;margin:.4rem 0;">
+    <div style="color:#475569;font-size:.82rem;line-height:1.75;">• 촬영 → R채널 기반 부식 부위 마킹 → 마킹된 R채널 픽셀 평균값으로 부식률 계산 (0~100%)</div>
+    <div style="color:#94A3B8;font-size:.76rem;">(110×330) → (256×256) 리사이즈 후 학습 데이터로 사용</div>
+  </div>
+
+  <div style="font-size:.82rem;font-weight:700;color:#334155;margin:.9rem 0 .5rem;">③ S-파라미터</div>
+  <p style="color:#475569;font-size:.85rem;line-height:1.8;">RF프로브 + VNA(벡터 네트워크 애널라이저)로 각 주기마다 측정. S11·S21·Phase11·Phase21 네 가지 값을 300kHz~14GHz 구간의 201개 주파수 포인트로 측정. 각 마킹 이미지와 1:1로 쌍을 이루며 모델 입력으로 사용.</p>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">모델 구조</div>
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">Encoder에 마킹 이미지와 s-파라미터를 입력해 잠재 공간(μ, σ)을 추출하고, 샘플링된 z벡터와 부식률(조건)을 Decoder에 입력하여 부식 이미지를 생성하는 CVAE 구조.</p>
-  <div style="background:#F8FAFF;border:1px solid rgba(58,90,174,.12);border-radius:10px;padding:.9rem 1.1rem;margin:.6rem 0;font-size:.82rem;color:#475569;line-height:1.9;">
-    <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
-      <span style="background:rgba(58,90,174,.1);border-radius:6px;padding:.15rem .55rem;color:#3A5AAE;font-weight:600;">마킹 이미지 + s-파라미터</span>
-      <span style="color:#94A3B8;">→ Encoder →</span>
-      <span style="background:rgba(98,100,196,.1);border-radius:6px;padding:.15rem .55rem;color:#6264C4;font-weight:600;">μ, σ → z벡터</span>
-      <span style="color:#94A3B8;">→ Decoder (+ 부식률) →</span>
-      <span style="background:rgba(58,90,174,.1);border-radius:6px;padding:.15rem .55rem;color:#3A5AAE;font-weight:600;">생성 이미지</span>
-    </div>
-    <div style="margin-top:.6rem;color:#94A3B8;font-size:.76rem;">ReLU · Adam · lr=1e-4 · batch=32 · latent_dim=50 · epoch=2,000</div>
-  </div>
-  <img src="images/vision/CVAE_model_figure.png" alt="CVAE 모델 구조" class="proj-figure" style="cursor:zoom-in;" onclick="event.stopPropagation();openLightbox('images/vision/CVAE_model_figure.png')">
+  <img src="images/vision/CVAE_model_figure.png" alt="CVAE 모델 구조" class="proj-figure" style="cursor:zoom-in;margin:.6rem 0;" onclick="event.stopPropagation();openLightbox('images/vision/CVAE_model_figure.png')">
   <div class="proj-fig-cap">CVAE 모델 구조 — Encoder · 잠재 공간 · Decoder</div>
+  <div style="margin-top:.6rem;color:#94A3B8;font-size:.76rem;text-align:center;">ReLU · Adam · lr=1e-4 · batch=32 · latent_dim=50 · epoch=2,000</div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">손실 함수 실험</div>
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">KLD를 기본으로 고정하고 L1·L2·VGG(Perceptual) 조합 6가지를 비교. MSE(조건 반영도)와 LPIPS(시각적 유사도) 두 지표로 평가.</p>
+  <div style="display:flex;flex-direction:column;gap:.35rem;margin:.6rem 0 .9rem;">
+    <div style="font-size:.82rem;color:#475569;line-height:1.7;"><span style="font-family:'Courier New',monospace;font-weight:600;color:#334155;">KLD</span> — 잠재 변수 분포를 정규분포로 유도 (기본 고정)</div>
+    <div style="font-size:.82rem;color:#475569;line-height:1.7;"><span style="font-family:'Courier New',monospace;font-weight:600;color:#334155;">L1 / L2</span> — 생성 이미지의 밝기·부식률을 원본에 가깝게</div>
+    <div style="font-size:.82rem;color:#475569;line-height:1.7;"><span style="font-family:'Courier New',monospace;font-weight:600;color:#334155;">VGG</span> — 고차원 특징 기반으로 부식 패턴 학습</div>
+  </div>
   <div style="overflow-x:auto;margin:.75rem 0;">
     <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
       <thead>
@@ -2426,11 +2522,60 @@
       </tbody>
     </table>
   </div>
-  <p style="color:#475569;font-size:.82rem;line-height:1.75;margin-top:.5rem;">L2가 부식률(조건) 반영에 유리하고, VGG Perceptual Loss가 부식 패턴 학습에 기여. 조합 5(L2+VGG+KLD)에서 생성 이미지와 조건 부식률 간 상관계수 <strong style="color:#334155;">0.998</strong>.</p>
+  <p style="color:#475569;font-size:.82rem;line-height:1.75;margin-top:.5rem;">L2가 부식률(조건) 반영에 유리하고, VGG Perceptual Loss가 부식 패턴 학습에 기여. L1+VGG 조합(조합4)은 MSE가 1340.96으로 성능이 크게 저하돼 L1과 VGG의 조합은 부적합함을 확인.</p>
 </div>
 <div class="proj-section">
-  <div class="proj-section-title">향후 방향</div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;">280장이라는 데이터 규모의 한계로 생성 이미지의 세부 패턴 재현에 아쉬움이 남는다. Diffusion 모델 적용 시 데이터 효율 측면에서 개선 가능성이 있으며, s-파라미터를 단독 입력으로 부식 부위를 직접 시각화하는 방향도 후속 연구로 검토 중이다.</p>
+  <div class="proj-section-title">결과</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">L2+VGG+KLD 조합(조합5) 모델이 생성한 마킹 이미지와 원본 마킹 이미지를 부식률 구간별로 비교. 부식률이 높아질수록 이미지 전반에 부식이 확산되는 패턴이 생성 이미지에서도 유사하게 재현됨.</p>
+  <div style="overflow-x:auto;margin:.85rem 0;">
+    <table style="width:100%;border-collapse:collapse;font-size:.8rem;text-align:center;">
+      <thead>
+        <tr style="background:rgba(58,90,174,.04);">
+          <th style="padding:.35rem .6rem;text-align:left;width:90px;border-bottom:1px solid rgba(58,90,174,.1);"></th>
+          <th colspan="5" style="padding:.35rem .4rem;color:#64748B;font-weight:700;font-size:.76rem;border-bottom:1px solid rgba(58,90,174,.1);">부식률 (%)</th>
+        </tr>
+        <tr style="background:rgba(58,90,174,.07);">
+          <th style="padding:.4rem .6rem;border-bottom:2px solid rgba(58,90,174,.15);text-align:left;"></th>
+          <th style="padding:.4rem .4rem;color:#3A5AAE;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">17.02</th>
+          <th style="padding:.4rem .4rem;color:#3A5AAE;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">46.98</th>
+          <th style="padding:.4rem .4rem;color:#3A5AAE;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">64.51</th>
+          <th style="padding:.4rem .4rem;color:#3A5AAE;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">80.08</th>
+          <th style="padding:.4rem .4rem;color:#3A5AAE;font-weight:700;border-bottom:2px solid rgba(58,90,174,.15);">93.64</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(58,90,174,.08);">
+          <td style="padding:.5rem .6rem;color:#64748B;font-weight:600;font-size:.75rem;text-align:left;white-space:nowrap;">원본 마킹</td>
+          <td style="padding:.4rem;"><img src="images/vision/37_17.02.png" style="width:100%;max-width:90px;border-radius:5px;display:block;margin:0 auto;"></td>
+          <td style="padding:.4rem;"><img src="images/vision/37_46.98.png" style="width:100%;max-width:90px;border-radius:5px;display:block;margin:0 auto;"></td>
+          <td style="padding:.4rem;"><img src="images/vision/37_64.51.png" style="width:100%;max-width:90px;border-radius:5px;display:block;margin:0 auto;"></td>
+          <td style="padding:.4rem;"><img src="images/vision/37_80.08.png" style="width:100%;max-width:90px;border-radius:5px;display:block;margin:0 auto;"></td>
+          <td style="padding:.4rem;"><img src="images/vision/37_93.64.png" style="width:100%;max-width:90px;border-radius:5px;display:block;margin:0 auto;"></td>
+        </tr>
+        <tr>
+          <td style="padding:.5rem .6rem;color:#3A5AAE;font-weight:600;font-size:.75rem;text-align:left;white-space:nowrap;">생성 이미지</td>
+          <td style="padding:.4rem;"><img src="images/vision/g_37_17.02.png" style="width:100%;max-width:90px;border-radius:5px;display:block;margin:0 auto;"></td>
+          <td style="padding:.4rem;"><img src="images/vision/g_37_46.98.png" style="width:100%;max-width:90px;border-radius:5px;display:block;margin:0 auto;"></td>
+          <td style="padding:.4rem;"><img src="images/vision/g_37_64.51.png" style="width:100%;max-width:90px;border-radius:5px;display:block;margin:0 auto;"></td>
+          <td style="padding:.4rem;"><img src="images/vision/g_37_80.08.png" style="width:100%;max-width:90px;border-radius:5px;display:block;margin:0 auto;"></td>
+          <td style="padding:.4rem;"><img src="images/vision/g_37_93.64.png" style="width:100%;max-width:90px;border-radius:5px;display:block;margin:0 auto;"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">결론 및 향후 방향</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">CVAE를 통해 부식률 조건을 반영한 마킹 이미지 생성이 가능함을 확인하고, L2+VGG+KLD 손실 조합이 최적임을 실험적으로 검증하였다. 다만 280장이라는 데이터 규모의 한계로 세부 패턴 재현에 아쉬움이 남으며, Diffusion 모델 적용 시 데이터 효율 측면에서 개선 가능성이 있다.</p>
+</div>
+<div class="proj-section">
+  <div class="proj-section-title">후속 연구 참여</div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;">본 CVAE 연구를 기반으로, S-parameter 신호에서 부식 이미지를 직접 생성하는 <strong style="color:#334155;">signal-to-image modality translation</strong> 연구를 IEEE 논문으로 확장하였다 (2저자 참여).</p>
+  <div style="display:flex;flex-direction:column;gap:.4rem;margin:.75rem 0;">
+    <div style="color:#475569;font-size:.85rem;line-height:1.75;">• Signal Autoencoder + Embedding Mapping Model(EMM) + 사전학습 Image AutoencoderKL로 구성된 3단계 프레임워크 연구 설계 참여</div>
+    <div style="color:#475569;font-size:.85rem;line-height:1.75;">• 도메인 특화 평가 지표 설계 — EVCS(임베딩 벡터 유사도), CLCS(부식 위치 공간 유사도), CRM(부식률 MSE)</div>
+    <div style="color:#94A3B8;font-size:.8rem;line-height:1.75;margin-top:.1rem;">↳ 데이터 부족 및 쌍 데이터 구성 한계로 논문 제출 중단.</div>
+  </div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">포스터</div>
