@@ -960,9 +960,11 @@
   <!-- 베이스라인 확인 -->
   <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
     <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">베이스라인 확인</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .6rem;">3개 기관·280명 규모의 소규모 다기관 임상 데이터와 정신과 척도 예측이라는 문제 특성을 고려하여, 목표를 <strong style="color:#334155;">val R² 0.3~0.4대</strong>로 설정. 환자 단위로 train:val:test = 7:1.5:1.5 split.</p>
     <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0;padding-left:1.2rem;">
       <li>전처리 파이프라인 완성 후 기존 논문 feature set·모델 구조 그대로 적용</li>
       <li>val R² <strong style="color:#334155;">-0.06 → 0.04</strong> (+0.10 향상) — 파이프라인 개선 효과 확인, 그러나 여전히 낮은 성능으로 추가 실험으로 이어짐</li>
+      <li>train R² <strong style="color:#334155;">0.44 → 0.9</strong> — leakage만 제거한 최소 수정 버전 대비 대폭 상승. 모델의 학습 잠재력 자체는 충분하다고 판단 → <strong style="color:#334155;">남은 문제는 일반화(val) 격차</strong>로 좁혀서 접근</li>
     </ul>
   </div>
   <img src="images/safer/safer_slide_p14.png" class="proj-figure" alt="기존 feature set·모델 베이스라인">
@@ -1046,6 +1048,7 @@
     <li>delta target 재정의 · 환자별 정규화 시도 → 성능 저하, 기각</li>
     <li><strong style="color:#334155;">입원 초기 임상척도값(IN_BPRS · IN_YMRS · IN_MADRS · IN_HAMA) 4개를 feature 추가</strong> → val R² 평균 <strong style="color:#334155;">+0.4 향상</strong></li>
     <li>환자 baseline 정보가 예측의 핵심 신호임을 확인 — 280명 규모에서 inductive bias 설계의 중요성 인식</li>
+    <li>최종 val R² 평균 <strong style="color:#334155;">0.34</strong>(per-target 0.22~0.44) 달성, train R²는 0.9 → <strong style="color:#334155;">0.67</strong>로 함께 하락 — train/val 격차가 줄어들며 과적합이 완화된 것으로 판단</li>
   </ul>
   <div style="overflow-x:auto;margin:.5rem 0;">
     <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
@@ -1113,7 +1116,7 @@
     <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .5rem;">기존 모델은 trait 같은 정형 데이터와 센서 시계열 데이터를 동일한 X 테이블로 통합해 입력했다. 이 경우 trait 변수는 모든 타임스텝에서 동일한 값을 갖는 상수 변수가 되어 각 modality의 특성을 충분히 살리지 못한다.</p>
     <div style="font-size:.79rem;color:#334155;font-weight:600;margin-bottom:.35rem;">→ 멀티모달 구조로 재설계 (향후 방향)</div>
     <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;padding-left:1.2rem;">
-      <li><strong style="color:#334155;">X_seq</strong> (N, 168, F_seq) — 1시간 단위 7일 lookback 시계열 → GRU / LSTM / Transformer 인코딩</li>
+      <li><strong style="color:#334155;">X_seq</strong> (N, T, F_seq) — 센서 6s·위치 30s 원본 주기를 유지한 7일 lookback 시계열 → GRU / LSTM / Transformer 인코딩</li>
       <li><strong style="color:#334155;">X_tab</strong> (N, F_tab) — trait · initial · weekly 정형 변수 → MLP 인코딩</li>
       <li>Fusion 방식 실험 필요 — concat/sum 후 FC, 별도 출력의 weighted sum, cross-attention (TFT) 등</li>
     </ul>
@@ -1124,7 +1127,13 @@
   </div>
   <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
     <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">③ 일반화 성능의 한계</div>
-    <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;">Train 대비 Validation 성능이 현저히 낮아 현재 설정에서 일반화 한계를 확인했다. 소규모(n≈280) 다기관 데이터에서 기관 간 분포 차이와 데이터 부족이 복합적으로 작용한 것으로 판단된다. 또한 R² 기반 평가는 지표 간 분산 차이와 이상치에 민감해 임상적 유용성을 충분히 반영하지 못할 수 있음 — metric 전환 검토 필요.</p>
+    <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;">Train 대비 Validation 성능이 현저히 낮아 현재 설정에서 일반화 한계를 확인했다. 소규모(n≈280) 다기관 데이터에서 기관 간 분포 차이와 데이터 부족이 복합적으로 작용한 것으로 판단된다.</p>
+  </div>
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">④ 지표별 예측 난이도 차이</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .5rem;">YMRS(조증)·MADRS(우울)처럼 활동량·수면 패턴 변화로 겉으로 드러나는 증상은 상대적으로 예측이 잘 되는 반면, BPRS처럼 환각·망상 등 내적 증상은 웨어러블 센서만으로 포착하기 어렵다.</p>
+    <div style="font-size:.79rem;color:#334155;font-weight:600;margin-bottom:.35rem;">→ 평가 방식 재검토 필요</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;">모든 지표를 R²로 동일하게 평가하기보다, 지표별로 센서 데이터가 실제로 반영할 수 있는 범위를 고려한 평가 방식이 필요하다.</p>
   </div>
 </div>
 <div style="font-size:.82rem;color:#64748B;padding:.7rem 1rem;border:1px solid rgba(58,90,174,.15);border-radius:.5rem;background:rgba(58,90,174,.04);margin-top:1rem;">
