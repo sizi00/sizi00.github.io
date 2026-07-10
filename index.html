@@ -978,11 +978,26 @@
   <!-- 가설 수립 및 검증 -->
   <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin:.4rem 0 .6rem;">가설 수립 및 검증</div>
   <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .6rem;">학습 곡선에서 train R²→0.9, val R²→-0.1 확인 후 원인 규명을 위해 가설 3개 수립.</p>
-  <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0 0 .8rem;padding-left:1.2rem;">
-    <li><strong style="color:#334155;">가설1 — 데이터셋 정렬 오류?</strong> &nbsp;val_dataloader = train_dataloader 설정 → 동일 성능 확인 → <strong style="color:#dc2626;">기각</strong></li>
-    <li><strong style="color:#334155;">가설2 — split type이 분포 불균형을 증폭시키는가?</strong> &nbsp;by_patient → by_time 실험 → 소폭 변화, 근본 원인 아님 → <strong style="color:#dc2626;">기각</strong></li>
-    <li><strong style="color:#334155;">가설3 — target 분포 차이?</strong> &nbsp;train · val 지표 평균 비교 → 전 지표에서 유의미한 차이 확인 → <strong style="color:#16a34a;">원인 확인</strong></li>
-  </ul>
+  <div style="display:flex;flex-direction:column;gap:.6rem;margin:0 0 .8rem;">
+    <div>
+      <div style="font-weight:700;color:#334155;font-size:.82rem;">가설1 — 데이터셋 정렬 오류?</div>
+      <div style="font-size:.82rem;color:#475569;line-height:1.8;padding-left:1.1rem;margin-top:.15rem;">↳ val_dataloader = train_dataloader 설정 → 동일 성능 확인 → <strong style="color:#dc2626;">기각</strong></div>
+    </div>
+    <div>
+      <div style="font-weight:700;color:#334155;font-size:.82rem;">가설2 — split type이 분포 불균형을 증폭시키는가?</div>
+      <div style="font-size:.82rem;color:#475569;line-height:1.8;padding-left:1.1rem;margin-top:.15rem;">↳ by_patient → by_time 실험 → 소폭 변화, 근본 원인 아님 → <strong style="color:#dc2626;">기각</strong></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:.4rem .75rem;margin:.75rem auto;max-width:560px;align-items:center;">
+    <img src="images/safer/1_dataloader.png" class="proj-figure" alt="가설1 검증 — train/val dataloader 동일화" style="margin:0;grid-row:1;grid-column:1;">
+    <img src="images/safer/2_split_time.png" class="proj-figure" alt="가설2 검증 — split type 비교" style="margin:0;grid-row:1;grid-column:2;">
+    <div class="proj-fig-cap" style="grid-row:2;grid-column:1;">가설1 검증 — val_dataloader를 train_dataloader와 동일하게 설정, train·val R² 곡선이 완전히 겹침 (정렬 오류 아님)</div>
+    <div class="proj-fig-cap" style="grid-row:2;grid-column:2;">가설2 검증 — by_patient vs by_time split 비교, 두 방식 모두 val R² 저하 패턴 동일 (split 방식 문제 아님)</div>
+  </div>
+  <div style="margin:0 0 .8rem;">
+    <div style="font-weight:700;color:#334155;font-size:.82rem;">가설3 — target 분포 차이?</div>
+    <div style="font-size:.82rem;color:#475569;line-height:1.8;padding-left:1.1rem;margin-top:.15rem;">↳ train · val 지표 평균 비교 → 전 지표에서 유의미한 차이 확인 → <strong style="color:#16a34a;">원인 확인</strong></div>
+  </div>
   <div style="overflow-x:auto;margin:.5rem 0;">
     <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
       <thead>
