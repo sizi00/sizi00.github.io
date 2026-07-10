@@ -772,11 +772,12 @@
   <div style="font-size:.82rem;color:#475569;line-height:1.85;margin-top:.6rem;">
     <span style="font-weight:600;color:#334155;">예측 태스크</span>
     <ul style="margin:.4rem 0 0;padding-left:1.2rem;">
-      <li>① 4개 임상척도(BPRS·YMRS·MADRS·HAMA) 점수 예측</li>
+      <li>① 4개 임상척도(BPRS·YMRS·MADRS·HAMA) 점수 예측 — 입원 시 초기평가로 1회, 이후 매주 담당의 면담을 통한 주간평가로 수집</li>
       <li>② 응급이벤트(CBI) 발생 여부 예측</li>
       <li style="list-style:none;color:#475569;">→ 이 중 ① 담당</li>
     </ul>
   </div>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.6rem;">9개월간 진행했으며, 초반 3-4개월은 웨어러블 생체신호 관련 self-supervised learning(SSL) 논문들을 스터디하며 방법론을 준비한 뒤 본격적인 데이터 파이프라인 설계와 모델링에 들어갔다.</p>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">데이터 구성</div>
@@ -880,10 +881,11 @@
       <li>2024.05.01 기준 날짜 split — 이전 모집 → 5-fold 내부검증(R²=0.83), 이후 모집 → 외부검증(R²=0.74)</li>
     </ul>
   </div>
-  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(220,38,38,.15);border-radius:.6rem;background:rgba(220,38,38,.03);">
-    <div style="font-size:.8rem;font-weight:700;color:#dc2626;margin-bottom:.5rem;">Data Leakage 발견</div>
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">코드 리뷰 중 발견한 오류</div>
     <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0;padding-left:1.2rem;">
-      <li>split 전 전체 데이터에 SoftImpute·MinMaxScaler fit → test 데이터 정보가 결측 대체에 포함되는 <strong style="color:#334155;">누수 발생</strong></li>
+      <li>피처 엔지니어링 코드에서 엔트로피 계산이 개인별이 아닌 전체 데이터 기준으로 수행되어, 모든 값이 동일하게 들어간 <strong style="color:#334155;">무의미한 컬럼</strong> 존재</li>
+      <li>가장 치명적인 문제 — split 전 전체 데이터에 SoftImpute·MinMaxScaler fit → test 데이터 정보가 결측 대체에 포함되는 <strong style="color:#334155;">Data Leakage</strong></li>
     </ul>
   </div>
   <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
@@ -899,15 +901,52 @@
 <div class="proj-section">
   <div class="proj-section-title">전처리 파이프라인</div>
   <p style="color:#475569;font-size:.9rem;line-height:1.85;">TRAIT·STATE·SENSOR·LOCATION 다중 테이블을 키 기반으로 병합하고, 시계열 resampling(6s·30s) 후 Feature set 생성.</p>
-  <ol style="font-size:.82rem;color:#475569;line-height:1.9;margin:.75rem 0;padding-left:1.3rem;">
-    <li><strong style="color:#334155;">read_and_clean</strong> — 6개 테이블 로딩·정제 (trait, initial, weekly, event, sensor, location)</li>
-    <li><strong style="color:#334155;">align_by_keys</strong> — 키 기반 정렬</li>
-    <li><strong style="color:#334155;">resample_timeseries</strong> — 센서 6s·위치 30s 단위 리샘플링</li>
-    <li><strong style="color:#334155;">build_anchors</strong> — 주간평가·응급이벤트 기준 예측 앵커 생성</li>
-    <li><strong style="color:#334155;">build_targets</strong> — 타겟 레이블 생성</li>
-    <li><strong style="color:#334155;">extract_segment_by_anchors</strong> — 앵커 기준 lookback 윈도우 추출</li>
-    <li><strong style="color:#334155;">filter_anchors</strong> — 유효 센서 비율 기반 앵커 필터링</li>
-  </ol>
+  <div style="display:flex;flex-direction:column;gap:.85rem;margin:.75rem 0;">
+    <div>
+      <div style="font-weight:700;font-family:'Courier New',monospace;font-size:.84rem;color:#334155;">1. read_and_clean</div>
+      <ul style="font-size:.82rem;color:#475569;line-height:1.8;margin:.25rem 0 0;padding-left:1.2rem;">
+        <li>6개 테이블 로딩·정제 (trait, initial, weekly, event, sensor, location)</li>
+        <li>위치 데이터는 스캐너 좌표와 실제 로그 좌표가 정확히 일치하지 않는 경우가 많아, 불일치 시 haversine 거리 기반 kNN으로 최근접 스캐너를 매칭</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-weight:700;font-family:'Courier New',monospace;font-size:.84rem;color:#334155;">2. align_by_keys</div>
+      <ul style="font-size:.82rem;color:#475569;line-height:1.8;margin:.25rem 0 0;padding-left:1.2rem;">
+        <li>키 기반 정렬</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-weight:700;font-family:'Courier New',monospace;font-size:.84rem;color:#334155;">3. resample_timeseries</div>
+      <ul style="font-size:.82rem;color:#475569;line-height:1.8;margin:.25rem 0 0;padding-left:1.2rem;">
+        <li>센서 6s·위치 30s 단위 리샘플링</li>
+        <li>심박수·가속도 같은 연속형 변수는 보간 처리, STEP처럼 누적 증가하는 카운터형 변수는 차분값을 합산하는 방식으로 별도 처리</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-weight:700;font-family:'Courier New',monospace;font-size:.84rem;color:#334155;">4. build_anchors</div>
+      <ul style="font-size:.82rem;color:#475569;line-height:1.8;margin:.25rem 0 0;padding-left:1.2rem;">
+        <li>주간평가·응급이벤트 기준 예측 앵커 생성</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-weight:700;font-family:'Courier New',monospace;font-size:.84rem;color:#334155;">5. build_targets</div>
+      <ul style="font-size:.82rem;color:#475569;line-height:1.8;margin:.25rem 0 0;padding-left:1.2rem;">
+        <li>타겟 레이블 생성</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-weight:700;font-family:'Courier New',monospace;font-size:.84rem;color:#334155;">6. extract_segment_by_anchors</div>
+      <ul style="font-size:.82rem;color:#475569;line-height:1.8;margin:.25rem 0 0;padding-left:1.2rem;">
+        <li>앵커 기준 lookback 윈도우 추출</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-weight:700;font-family:'Courier New',monospace;font-size:.84rem;color:#334155;">7. filter_anchors</div>
+      <ul style="font-size:.82rem;color:#475569;line-height:1.8;margin:.25rem 0 0;padding-left:1.2rem;">
+        <li>윈도우 내 유효 센서 비율이 50% 미만인 앵커는 신뢰도가 낮다고 판단해 제외</li>
+      </ul>
+    </div>
+  </div>
   <img src="images/safer/safer_slide_p11.png" class="proj-figure" alt="공간 카테고리 매핑">
   <div class="proj-fig-cap">위도·경도 → 8개 공간 카테고리 매핑 기준</div>
   <img src="images/safer/diagram1.jpg" class="proj-figure" alt="전처리 파이프라인 1">
