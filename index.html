@@ -1127,7 +1127,7 @@
     <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .5rem;">기존 모델은 trait 같은 정형 데이터와 센서 시계열 데이터를 동일한 X 테이블로 통합해 입력했다. 이 경우 trait 변수는 모든 타임스텝에서 동일한 값을 갖는 상수 변수가 되어 각 modality의 특성을 충분히 살리지 못한다.</p>
     <div style="font-size:.79rem;color:#334155;font-weight:600;margin-bottom:.35rem;">→ 멀티모달 구조로 재설계 (향후 방향)</div>
     <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;padding-left:1.2rem;">
-      <li><strong style="color:#334155;">X_seq</strong> (N, 168, F_seq) — 1시간 단위 7일 lookback 시계열 → GRU / LSTM / Transformer 인코딩</li>
+      <li><strong style="color:#334155;">X_seq</strong> (N, T, F_seq) — 센서 6s·위치 30s 원본 주기를 유지한 7일 lookback 시계열 → GRU / LSTM / Transformer 인코딩</li>
       <li><strong style="color:#334155;">X_tab</strong> (N, F_tab) — trait · initial · weekly 정형 변수 → MLP 인코딩</li>
       <li>Fusion 방식 실험 필요 — concat/sum 후 FC, 별도 출력의 weighted sum, cross-attention (TFT) 등</li>
     </ul>
