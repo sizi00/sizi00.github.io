@@ -777,7 +777,7 @@
       <li style="list-style:none;color:#475569;">→ 이 중 ① 담당</li>
     </ul>
   </div>
-  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.6rem;">9개월간 진행했으며, 초반 3-4개월은 웨어러블 생체신호 관련 self-supervised learning(SSL) 논문들을 스터디하며 방법론을 준비한 뒤 본격적인 데이터 파이프라인 설계와 모델링에 들어갔다.</p>
+  <p style="color:#475569;font-size:.9rem;line-height:1.85;margin-top:.6rem;">9개월간 진행했으며, 초반 3-4개월은 Vision Transformer, contrastive learning(SimCLR·MoCo), CLIP, masked autoencoder(MAE), DINO 같은 self-supervised learning 핵심 방법론들을 기초부터 스터디하고, 이를 웨어러블 생체신호 도메인에 적용한 Foundation Model·Cardiovascular SSL 논문까지 이어서 학습하며 방법론을 준비한 뒤 본격적인 데이터 파이프라인 설계와 모델링을 시작했다.</p>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">데이터 구성</div>
@@ -946,6 +946,17 @@
         <li>윈도우 내 유효 센서 비율이 50% 미만인 앵커는 신뢰도가 낮다고 판단해 제외</li>
       </ul>
     </div>
+  </div>
+  <div style="margin:.8rem 0;padding:.9rem 1rem;border:1px solid rgba(58,90,174,.12);border-radius:.6rem;background:rgba(58,90,174,.03);">
+    <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin-bottom:.5rem;">Feature Set — Hybrid 설계</div>
+    <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .6rem;">기존 논문의 feature engineering 방식을 그대로 재구현. "Hybrid"는 hand-crafted feature(ML 방식)와 시퀀스 딥러닝 모델을 결합한 구조를 의미하며, 6s/30s로 리샘플링된 원본 신호를 1시간 단위로 버킷화한 뒤 시간대별 통계 feature를 추출해 GRU에 순서대로 입력.</p>
+    <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0;padding-left:1.2rem;">
+      <li>심박수·가속도 시간대별 통계(mean·std·min·max·median·first·last·nunique) — 16개</li>
+      <li>STEP·DISTANCE·CALORIES 등 누적형 변수의 시간당 delta — 3개</li>
+      <li>실내 위치 공간 카테고리 one-hot(8종) — 8개</li>
+      <li>위치 entropy(daily·8h, 정규화 포함) 4종 + 위치 분산 — 5개</li>
+      <li>환자 trait(age·sex) — 2개</li>
+    </ul>
   </div>
   <img src="images/safer/safer_slide_p11.png" class="proj-figure" alt="공간 카테고리 매핑">
   <div class="proj-fig-cap">위도·경도 → 8개 공간 카테고리 매핑 기준</div>
@@ -1116,7 +1127,7 @@
     <p style="font-size:.82rem;color:#475569;line-height:1.85;margin:0 0 .5rem;">기존 모델은 trait 같은 정형 데이터와 센서 시계열 데이터를 동일한 X 테이블로 통합해 입력했다. 이 경우 trait 변수는 모든 타임스텝에서 동일한 값을 갖는 상수 변수가 되어 각 modality의 특성을 충분히 살리지 못한다.</p>
     <div style="font-size:.79rem;color:#334155;font-weight:600;margin-bottom:.35rem;">→ 멀티모달 구조로 재설계 (향후 방향)</div>
     <ul style="font-size:.82rem;color:#475569;line-height:1.85;margin:0;padding-left:1.2rem;">
-      <li><strong style="color:#334155;">X_seq</strong> (N, T, F_seq) — 센서 6s·위치 30s 원본 주기를 유지한 7일 lookback 시계열 → GRU / LSTM / Transformer 인코딩</li>
+      <li><strong style="color:#334155;">X_seq</strong> (N, 168, F_seq) — 1시간 단위 7일 lookback 시계열 → GRU / LSTM / Transformer 인코딩</li>
       <li><strong style="color:#334155;">X_tab</strong> (N, F_tab) — trait · initial · weekly 정형 변수 → MLP 인코딩</li>
       <li>Fusion 방식 실험 필요 — concat/sum 후 FC, 별도 출력의 weighted sum, cross-attention (TFT) 등</li>
     </ul>
