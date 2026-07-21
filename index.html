@@ -235,7 +235,7 @@
         <div class="p-title">SAFER · 웨어러블 센서 기반 정신병동 환자 위험 예측</div>
         <div class="p-org">서울대학교병원 · 동국대병원 · 용인정신병원 협력 연구</div>
         <div class="p-contrib">2025.04 ~ 2025.12 · 단독 진행</div>
-        <div class="p-desc">3개 기관 정신병동 환자 웨어러블·CRF·위치 데이터 기반 임상척도 예측 AI 개발. 데이터 파이프라인 단독 설계·구현, 기존 논문 data leakage 발견, 가설 기반 feature 개선으로 val R² +0.4 향상.</div>
+        <div class="p-desc">3개 기관 정신병동 환자 웨어러블·CRF·위치 데이터 기반 임상척도 예측 AI 개발. 데이터 파이프라인 단독 설계·구현, 기존 논문 data leakage 발견, 가설 기반 feature 개선으로 val R² 약 0.4 향상.</div>
         <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Time Series</span><span class="tag">Conv1d+GRU</span><span class="tag">Pandas</span><span class="tag">Clinical Data</span><span class="tag">BLE</span><span class="tag">Plotly</span><span class="tag">PIL</span></div>
       </div>
       <div class="vis">
@@ -251,7 +251,7 @@
           </div>
           <div style="width:1px;height:2rem;background:rgba(58,90,174,.15)"></div>
           <div style="text-align:center">
-            <div style="font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">+0.4</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">약 0.4</div>
             <div style="font-size:.61rem;color:var(--muted);margin-top:.1rem">val R² 향상</div>
           </div>
         </div>
@@ -767,7 +767,7 @@
       highlights:[
         '🔍 기존 논문(R²=0.83) 재현 중 data leakage 직접 발견 및 재현 불가 확인 — 누수 제거 후 val R²=-0.06으로 하락, 복합 원인으로 완전한 재현 불가 판단',
         '🏗️ CRF·웨어러블·위치 3종 다기관 데이터 전처리 파이프라인 단독 설계·구현 — 7단계 모듈화',
-        '📈 입원 초기 임상척도값 feature 추가로 val R² 평균 +0.4 향상 — 환자 baseline이 예측 핵심임을 검증',
+        '📈 입원 초기 임상척도값 feature 추가로 val R² 평균 약 0.4 향상 — 환자 baseline이 예측 핵심임을 검증',
       ],
       body:`<div class="proj-section">
   <div class="proj-section-title">배경</div>
@@ -1060,7 +1060,7 @@
   <div style="font-size:.8rem;font-weight:700;color:#3A5AAE;margin:.4rem 0 .6rem;">해결 시도 및 결과</div>
   <ul style="font-size:.82rem;color:#475569;line-height:1.9;margin:0 0 .8rem;padding-left:1.2rem;">
     <li>delta target 재정의 · 환자별 정규화 시도 → 성능 저하, 기각</li>
-    <li><strong style="color:#334155;">입원 초기 임상척도값(IN_BPRS · IN_YMRS · IN_MADRS · IN_HAMA) 4개를 feature 추가</strong> → val R² 평균 <strong style="color:#334155;">+0.4 향상</strong></li>
+    <li><strong style="color:#334155;">입원 초기 임상척도값(IN_BPRS · IN_YMRS · IN_MADRS · IN_HAMA) 4개를 feature 추가</strong> → val R² 평균 <strong style="color:#334155;">약 0.4 향상</strong></li>
     <li>환자 baseline 정보가 예측의 핵심 신호임을 확인 — 280명 규모에서 inductive bias 설계의 중요성 인식</li>
     <li>최종 val R² 평균 <strong style="color:#334155;">0.34</strong>(per-target 0.22~0.44) 달성, train R²는 0.9 → <strong style="color:#334155;">0.67</strong>로 함께 하락 — train/val 격차가 줄어들며 과적합이 완화된 것으로 판단</li>
   </ul>
@@ -1121,7 +1121,7 @@
       </tbody>
     </table>
   </div>
-  <div class="proj-fig-cap">initial 지표값 feature 추가 후 per-target 성능 — val R² 평균 약 0.35 (베이스라인 0.04 대비 +0.4 향상)</div>
+  <div class="proj-fig-cap">initial 지표값 feature 추가 후 per-target 성능 — val R² 평균 약 0.35 (베이스라인 0.04 대비 약 0.4 향상)</div>
 </div>
 <div class="proj-section">
   <div class="proj-section-title">한계 및 향후 방향</div>
